@@ -1,0 +1,69 @@
+<french>
+    
+	<!-- Menu Stuff -->
+	<entry key = "Welcome"   content = "Bienvenue"/>
+	<entry key = "Offline"   content = "Mode Hors-Ligne"/>
+	<entry key = "YourTime"  content = "Votre temps : "/>
+	<entry key = "Level"     content = "Choix d'un niveau"/>
+	
+	<!-- Game Menu -->
+	<entry key = "Save"      content = "Sauvegarder"/>
+	<entry key = "LoadGame"  content = "Charger une partie"/>
+	<entry key = "SaveGame"  content = "Sauvegarde de la partie"/>
+	<entry key = "Resume"    content = "Reprendre"/>
+	<entry key = "Restart"   content = "Recommencer"/>
+	<entry key = "Options"   content = "Options"/>
+	<entry key = "Quit"      content = "Quitter"/>
+	
+	<!-- Options -->
+	<entry key = "SoundEffects"  content = "Effets sonores :"/>
+	<entry key = "Music"         content = "Musique :"/>
+	
+	<!-- Game Gui -->
+	<entry key = "Time"      content = "Temps : "/>
+	<entry key = "WagesIn1"  content = "Versement des salaires "/>
+	<entry key = "WagesIn2"  content = " dans : "/>
+	<entry key = "Wages"     content = "Salaires : "/>
+	<entry key = "Grant"     content = "Subventions du royaume : "/>
+	<entry key = "DayEnd"    content = "Fin de la journée"/>
+	<entry key = "Total"     content = "Total : "/>
+	<entry key = "FastSave"  content = "Sauvegarde rapide ..."/>
+	<entry key = "Saved"     content = "Partie sauvegardée"/>
+	
+	<!-- Cloud Stuff -->
+	<entry key = "Remember me"  content = "Se souvenir de moi"/>
+	<entry key = "Subscribe"    content = "Inscription"/>
+	<entry key = "Login"        content = "Login"/>
+	<entry key = "LoggingIn"    content = "Connexion en cours"/>
+	<entry key = "UserAccount"  content = "Nom d'utilisateur :"/>
+	<entry key = "Password"     content = "Mot de passe :"/>
+	<entry key = "PasswordConfirm"       content = "Confirmation mot de passe :"/>
+	<entry key = "ErrorServer"           content = "Impossible de se connecter"/>
+	<entry key = "ErrorTimeOut"          content = "Impossible de se connecter : time out"/>
+	<entry key = "ErrorPasswordTooShort" content = "Ce mot de passe est trop court (<5)"/>
+	<entry key = "ErrorPasswordConfirm"  content = "Erreur de confirmation mot de passe"/>
+	<entry key = "SubscriptionThanks"    content = "Merci de votre inscription"/>
+	
+	<!-- Dwarves -->
+	<entry key = "Bartender" content = "Barman"/>
+	<entry key = "Miner"     content = "Mineur"/>
+	<entry key = "Craftsman" content = "Artisan"/>
+	
+	<!-- Rooms -->
+	<entry key = "Dorm"      content = "Dortoir"/>
+	<entry key = "Workshop"  content = "Workshop"/>
+	<entry key = "Tavern"    content = "Tavern"/>
+	
+	<!-- Objects -->
+	<entry key = "Bed"       content = "Lit"/>
+	<entry key = "Anvil"     content = "Enclume"/>
+	<entry key = "Rack"      content = "Ratelier"/>
+	<entry key = "Table"     content = "Table"/>
+	<entry key = "Barrel"    content = "Fut"/>
+	<entry key = "Counter"   content = "Comptoir"/>
+	
+	<!-- Items -->
+	<entry key = "Pickaxe"   content = "Pioche"/>
+	<entry key = "Beer"      content = "Biere"/>	
+	
+</french>

@@ -1,0 +1,13 @@
+package enibdevlab.dwarves.views.scenes.game;
+
+public enum GameState {
+	NORMAL,
+	PLACING_OBJECT,
+	REMOVING_OBJECT,
+	PLACING_ROOM,
+	REMOVING_ROOM,
+	PLACING_DWARF,
+	REMOVING_DWARF,
+	DEFINING_AREA_TO_MINE,
+	REMOVING_AREA_TO_MINE
+}

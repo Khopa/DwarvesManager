@@ -1,0 +1,76 @@
+<english>
+	
+	<!-- Menu Stuff -->
+	<entry key = "Welcome"   content = "Welcome"/>
+	<entry key = "Offline"   content = "Offline Mode"/>
+	<entry key = "YourTime"  content = "Your time :"/>
+	<entry key = "Level"     content = "Choose a level"/>
+	
+	<!-- Cloud Stuff -->
+	<entry key = "Remember me"  content = "Remember me"/>
+	<entry key = "Subscribe"    content = "Subscribe"/>
+	<entry key = "Login"        content = "Login"/>
+	<entry key = "LoggingIn"    content = "Logging In"/>
+	<entry key = "UserAccount"  content = "User Account :"/>
+	<entry key = "Password"     content = "Password :"/>
+	<entry key = "PasswordConfirm"       content = "Confirm your password :"/>
+	<entry key = "ErrorServer"           content = "Unable to connect"/>
+	<entry key = "ErrorTimeOut"          content = "Unable to connect : time out"/>
+	<entry key = "ErrorPasswordTooShort" content = "This password is too short (<5)"/>
+	<entry key = "ErrorPasswordConfirm"  content = "You entered two different password"/>
+	<entry key = "SubscriptionThanks"    content = "Thanks for your subscription"/>
+	
+	<!-- Game Menu -->
+	<entry key = "Save"      content = "Save"/>
+	<entry key = "LoadGame"  content = "Load a game"/>
+	<entry key = "SaveGame"  content = "Save your game"/>
+	<entry key = "Resume"    content = "Resume"/>
+	<entry key = "Restart"   content = "Restart"/>
+	<entry key = "Options"   content = "Options"/>
+	<entry key = "Quit"      content = "Quit"/>
+	
+	<!-- Options -->
+	<entry key = "SoundEffects"  content = "Sound Effects :"/>
+	<entry key = "Music"         content = "Music :"/>
+	
+	<!-- Game Gui -->
+	<entry key = "Time"      content = "Time : "/>
+	<entry key = "WagesIn1"  content = "Wages "/>
+	<entry key = "WagesIn2"  content = " in : "/>
+	<entry key = "Wages"     content = "Wages : "/>
+	<entry key = "Grant"     content = "Kingdom's grant : "/>
+	<entry key = "DayEnd"    content = "End of the day"/>
+	<entry key = "Total"     content = "Total : "/>
+	<entry key = "FastSave"  content = "Fast save"/>
+	<entry key = "Saved"     content = "Game saved"/>
+	
+	<!-- Dwarves -->
+	<entry key = "Bartender" content = "Bartender"/>
+	<entry key = "Miner"     content = "Miner"/>
+	<entry key = "Craftsman" content = "Craftsman"/>
+	
+	<!-- Rooms -->
+	<entry key = "Dorm"      content = "Dorm"/>
+	<entry key = "Workshop"  content = "Workshop"/>
+	<entry key = "Tavern"    content = "Tavern"/>
+	
+	<!-- Objects -->
+	<entry key = "Bed"       content = "Bed"/>
+	<entry key = "Anvil"     content = "Anvil"/>
+	<entry key = "Rack"      content = "Rack"/>
+	<entry key = "Table"     content = "Table"/>
+	<entry key = "Barrel"    content = "Barrel"/>
+	<entry key = "Counter"   content = "Counter"/>
+	
+	<!-- Items -->
+	<entry key = "Pickaxe"   content = "Pickaxe"/>
+	<entry key = "Beer"      content = "Beer"/>
+	
+
+	
+	<!-- Scenarios -->
+	
+	
+	
+</english>
+
