@@ -196,7 +196,7 @@ public class Loader {
 		elf = new BodyConfig(elfBodyTileset, new Vector2(0,0), elfHead, elfMouth, elfEyes, elfHand);
 		
 		// CHARGEMENT DES TEXTURES DE LA GUI
-		guiAtlas = new Tileset("data/sprites/guiAtlas.png", 256, 256);
+		guiAtlas = new Tileset("data/sprites/guiAtlas.png", 128, 128);
 		guiAtlasSmall = new Tileset("data/sprites/guiSmallAtlas.png", 32, 32);
 		iconAtlas = new Tileset("data/sprites/iconAtlas.png", 64, 64);
 		

@@ -41,9 +41,9 @@ public class GameGui extends Table {
 	 *  Activation des menus (utile pour activer les fonctionnalitées au fur et à mesure
 	 *  dans le tuto
 	 */
-	private static boolean RECRUITMENT_ENABLED = false;
-	private static boolean OBJECTS_ENABLED = false;
-	private static boolean ROOM_ENABLED = false;
+	private static boolean RECRUITMENT_ENABLED = true;
+	private static boolean OBJECTS_ENABLED = true;
+	private static boolean ROOM_ENABLED = true;
 	
 	protected static GameGui instance;
 	
@@ -161,7 +161,6 @@ public class GameGui extends Table {
 							  				   new TextureRegionDrawable(Loader.guiAtlas.getTile(1)),
 							  				   Loader.iconAtlas, i, price, name),
 							  c);
-			System.out.println(c);
 		}
 		
 		// Création des boutons pour chaque pièces
@@ -460,8 +459,6 @@ public class GameGui extends Table {
 		super.draw(batch, parentAlpha);
 		GameGui.drawDebug(getStage());
 	}
-	
-	
 	
 	/**
 	 * Active/Désactive le bouton de recrutement
