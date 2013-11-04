@@ -44,6 +44,11 @@ public class GameScene extends Stage{
 	private GameplayLayer gameplayLayer;	
 	
 	/**
+	 * Couche d'overlay scriptable
+	 */
+	private ScriptableOverlay scriptableOverlay;
+	
+	/**
 	 * Gestionnaire d'events
 	 */
 	protected GameplayScreenListener listener;
@@ -139,6 +144,9 @@ public class GameScene extends Stage{
 	 */
 	public void init(){
 	
+		// Overlayer
+		this.scriptableOverlay = new ScriptableOverlay();
+		this.addActor(this.scriptableOverlay);
 		// Fenetre de GUI
 		this.gameGui = new GameGui(DwarvesManager.getSkin(), this.game);
 		this.addActor(this.gameGui);
@@ -148,6 +156,7 @@ public class GameScene extends Stage{
 		// LOg
 		this.gameLog = new GameLog();
 		this.addActor(gameLog);
+		// 
 		
 		this.gameState = GameState.NORMAL;
 		MusicManager.playMusic(this.game.getLevel().getMusicFileName());
@@ -233,6 +242,10 @@ public class GameScene extends Stage{
 
 	public void setGame(Game game) {
 		this.game = game;
+	}
+
+	public ScriptableOverlay getScriptableOverlay() {
+		return scriptableOverlay;
 	}
 
 	public Window getVisualisation() {

@@ -15,6 +15,7 @@ import enibdevlab.dwarves.models.Game;
 import enibdevlab.dwarves.views.audio.SoundManager;
 import enibdevlab.dwarves.views.lang.Language;
 import enibdevlab.dwarves.views.lang.StringManager;
+import enibdevlab.dwarves.views.scenes.game.GameGui;
 
 
 /**
@@ -53,6 +54,15 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 		library.set("log", new log());
 		library.set("clearLog", new clearLog());
 		library.set("getLang", new getLang());
+		library.set("addSprite", new addSprite());
+		library.set("restoreGui", new restoreGUI());
+		library.set("disableRecruitment", new disableRecruitment());
+		library.set("enableRecruitment", new enableRecruitment());
+		library.set("disableRoom", new disableRoom());
+		library.set("enableRoom", new enableRoom());
+		library.set("disableObjects", new disableObjects());
+		library.set("enableObjects", new enableObjects());
+		library.set("addSprite", new addSprite());
 		env.set("dwarf", library);
 		return library;
 	}
@@ -152,6 +162,84 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 			return str;			
 		}
 	}
+	
+	/**
+	 *
+	 * Fonctions GUI
+	 *
+	 */
+	
+	public static class restoreGUI extends ZeroArgFunction{
+		@Override
+		public LuaValue call(){
+			GameGui.setRecruitmentButton(true);
+			GameGui.setObjectButton(true);
+			GameGui.setRoomButton(true);
+			return null;			
+		}
+	}
+	
+	public static class enableRecruitment extends ZeroArgFunction{
+		@Override
+		public LuaValue call(){
+			GameGui.setRecruitmentButton(true);
+			return null;			
+		}
+	}
+	
+	
+	public static class disableRecruitment extends ZeroArgFunction{
+		@Override
+		public LuaValue call(){
+			GameGui.setRecruitmentButton(false);
+			return null;			
+		}
+	}
+	
+	public static class enableRoom extends ZeroArgFunction{
+		@Override
+		public LuaValue call(){
+			GameGui.setRoomButton(true);
+			return null;			
+		}
+	}
+	
+	
+	public static class disableRoom extends ZeroArgFunction{
+		@Override
+		public LuaValue call(){
+			GameGui.setRoomButton(false);
+			return null;			
+		}
+	}
+	
+	public static class enableObjects extends ZeroArgFunction{
+		@Override
+		public LuaValue call(){
+			GameGui.setObjectButton(true);
+			return null;			
+		}
+	}
+	
+	
+	public static class disableObjects extends ZeroArgFunction{
+		@Override
+		public LuaValue call(){
+			GameGui.setObjectButton(false);
+			return null;			
+		}
+	}
+	
+	
+	
+	public static class addSprite extends ThreeArgFunction{
+		@Override
+		public LuaValue call(LuaValue x, LuaValue y, LuaValue name){
+			game.getView().getGameLog().log("It's ok");
+			return null;
+		}
+	}
+	
 	
 	
 	
