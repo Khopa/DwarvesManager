@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 
 import enibdevlab.dwarves.DwarvesManager;
 import enibdevlab.dwarves.controllers.GameClickListener;
+import enibdevlab.dwarves.models.Game;
 
 public class TextMessageWindow extends Window {
 
@@ -39,6 +40,7 @@ public class TextMessageWindow extends Window {
 		ok.addListener(new GameClickListener(null){
 			public void clicked (InputEvent event, float x, float y) {
 				event.getListenerActor().getParent().remove();
+				Game.getInstance().fireDwarfEvent("popupClosed");
 			}
 		});
 		

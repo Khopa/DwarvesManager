@@ -64,6 +64,18 @@ public class GUIAnimation {
 				   );
 	}
 	
+	/**
+	 * Animation to catch user attention
+	 */
+	public static Action blink() {
+		return Actions.forever(
+				   Actions.sequence(
+						   new BetterColorAction(Color.BLUE, .5f),
+						   new BetterColorAction(Color.WHITE, .5f)
+				   )
+				   );
+	}
+	
 	
 
 }

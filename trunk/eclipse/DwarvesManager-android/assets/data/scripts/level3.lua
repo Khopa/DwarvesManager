@@ -19,6 +19,7 @@ end
 -- Cette fonction est appelée à chaque fois que la map est chargée --
 function setup()
 	dwarf.moveCamera(12,6,1) -- Position de départ de la caméra
+	dwarf.restoreGui()
 end
 
 -- Fonction appelée en boucle

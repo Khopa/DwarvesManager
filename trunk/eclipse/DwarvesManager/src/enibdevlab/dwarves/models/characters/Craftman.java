@@ -26,7 +26,7 @@ public class Craftman extends Dwarf {
 
 	@Override
 	public String getJobName() {
-		return StringManager.getString("Bartender");
+		return StringManager.getString("Craftsman");
 	}
 
 	@Override

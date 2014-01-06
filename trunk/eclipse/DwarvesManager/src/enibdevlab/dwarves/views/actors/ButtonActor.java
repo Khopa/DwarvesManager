@@ -19,5 +19,10 @@ public class ButtonActor extends SpriteActor {
 		super.setScale(scaleX, scaleY);
 		controller.setButtonScale(scaleX, scaleY);
 	}
+	
+	@Override
+	public void setScale(float scaleX) {
+		setScale(scaleX, scaleX);
+	}
 
 }

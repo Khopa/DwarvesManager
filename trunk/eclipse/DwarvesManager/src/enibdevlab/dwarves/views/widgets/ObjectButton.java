@@ -38,10 +38,22 @@ public class ObjectButton extends ImageButton {
 	 */
 	private int price = 0;
 	
+	/**
+	 * Activation ou non du bouton
+	 */
+	private boolean enabled = true;
+	
+	/**
+	 * @param imageUp
+	 * @param imageDown
+	 * @param atlas
+	 * @param textureId
+	 */
 	public ObjectButton(Drawable imageUp, Drawable imageDown, Tileset atlas, int textureId){
-		super(imageUp, imageDown, imageDown);
+		super(imageUp, imageDown, imageUp);
 		this.tileset = atlas;
 		this.textureId = textureId;
+		setColor(Color.WHITE);
 	}
 	
 	public ObjectButton(Drawable imageUp, Drawable imageDown, Tileset atlas, int textureId, int price, String name){
@@ -52,11 +64,17 @@ public class ObjectButton extends ImageButton {
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
-		super.draw(batch, parentAlpha);
+		
+		Color tmp = batch.getColor().cpy();
+		
+		super.draw(batch, getColor().a*parentAlpha);
+		batch.setColor(getColor());
+
 		batch.draw(this.tileset.getTile(this.textureId), this.getX()+this.getWidth()/4, this.getY()+this.getHeight()/4);
 		
 		if(name != null){
 			DwarvesManager.font.setColor(Color.WHITE);
+			DwarvesManager.font.setColor(0xff, 0xff, 0xff, 0xf0);
 			TextBounds bounds = DwarvesManager.font.getBounds(name);			
 			DwarvesManager.font.draw(batch, name,
 					this.getX()+ this.getWidth()/2 - bounds.width/2, this.getY()+this.getHeight()-bounds.height);
@@ -74,6 +92,16 @@ public class ObjectButton extends ImageButton {
 			y += bounds.height*2.2;
 			DwarvesManager.font.draw(batch, Integer.toString(price),x,y);
 		}
+		
+		batch.setColor(tmp);
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 }

@@ -21,7 +21,7 @@ public class Mining extends DwarfAction {
 	/**
 	 * Temps par défaut pour effectuer l'action (multiplié par la dureté du bloc)
 	 */
-	private static float MINING_TIME = 1f;
+	private static float MINING_TIME = .5f;
 	
 	/**
 	 * Progression du minage
@@ -102,8 +102,7 @@ public class Mining extends DwarfAction {
 			
 			// On regarde sion a pas cassé la pioche
 			if(((Pickaxe)(this.dwarf.getRightHandItem())).getDamage()>=100 && Difficulty.isPickaxeBreakable()){
-				this.dwarf.setRightHandItem(null);
-				SoundManager.play("break");
+				pickaxeBroke();
 			}
 			
 			finished=true;
@@ -117,8 +116,7 @@ public class Mining extends DwarfAction {
 					));
 			// On regarde si on a pas cassé la pioche
 			if(((Pickaxe)(this.dwarf.getRightHandItem())).getDamage()>=100){
-				this.dwarf.setRightHandItem(null);
-				SoundManager.play("break");
+				pickaxeBroke();
 				finished = true;
 				success  = false;
 			}
@@ -149,4 +147,10 @@ public class Mining extends DwarfAction {
 		}
 	}
 
+	
+	public void pickaxeBroke(){
+		this.dwarf.setRightHandItem(null);
+		SoundManager.play("break");
+		game.fireDwarfEvent("pickaxeBreak",String.valueOf(this.dwarf.getPosition().x),String.valueOf(this.dwarf.getPosition().y));
+	}
 }

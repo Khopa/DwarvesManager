@@ -1,6 +1,7 @@
 package enibdevlab.dwarves.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.badlogic.gdx.utils.XmlReader.Element;
 
@@ -102,6 +103,24 @@ public class Rooms implements IPersistent {
 			
 		}
 		
+		// Supprime tout ce qui n'est pas une case accesible
+		List<MapArea> areaToRemove = new ArrayList<MapArea>();
+		
+		for(MapArea area:room.getAreas()){
+			System.out.println("AREA");
+			for(int i = area.getI(); i < area.getI()+area.getW(); i++){
+				for(int j = area.getJ(); j < area.getJ()+area.getH(); j++){
+					if(area.getTilemap().getTile(0, i, j).isBlocking()){// || area.getTilemap().getTile(0, i, j).isMinable()){
+						areaToRemove.add(new MapArea(i, j, 1, 1, area.getTilemap()));
+					}
+				}
+			}
+		}
+		for(MapArea area:areaToRemove){
+			removeArea(area);
+		}
+		
+		
 	}
 	
 	/**
@@ -129,6 +148,16 @@ public class Rooms implements IPersistent {
 	public void removeRoom(Room room){
 		this.game.getView().getGameplayLayer().removeActor(room.getView()); // La vue de l'objet est aussi retirée
 		this.rooms.remove(room);
+	}
+	
+	/**
+	 * Efface toutes les pièces
+	 */
+	public void clear(){
+		for(Room room:this.getRooms()){
+			this.game.getView().getGameplayLayer().removeActor(room.getView());
+		}
+		this.rooms.clear();
 	}
 
 	public ArrayList<Room> getRooms() {

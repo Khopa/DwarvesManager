@@ -51,8 +51,8 @@
 	
 	<!-- Rooms -->
 	<entry key = "Dorm"      content = "Dortoir"/>
-	<entry key = "Workshop"  content = "Workshop"/>
-	<entry key = "Tavern"    content = "Tavern"/>
+	<entry key = "Workshop"  content = "Atelier"/>
+	<entry key = "Tavern"    content = "Taverne"/>
 	
 	<!-- Objects -->
 	<entry key = "Bed"       content = "Lit"/>

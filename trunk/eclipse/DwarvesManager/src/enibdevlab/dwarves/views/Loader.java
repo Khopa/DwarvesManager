@@ -84,6 +84,11 @@ public class Loader {
 	public static Tileset social;
 	
 	/**
+	 * Levels icons
+	 */
+	public static Tileset levelsIcons;
+	
+	/**
 	 * Atlas des icones
 	 */
 	public static Tileset iconAtlas;
@@ -149,8 +154,8 @@ public class Loader {
 	public static String saveDirectory = "DwarvesManager/Saves/";
 	
 	// Couleurs
-	public static Color AYELLOW = new Color(.9f,.9f,0f,.1f); 
-	public static Color ARED    = new Color(.9f,.1f,.1f,.1f); 
+	public static Color AYELLOW = new Color(0f,.9f,0f,.25f); 
+	public static Color ARED    = new Color(0f,.5f,.7f,.25f); 
 	
 	public static void init(){
 		
@@ -217,6 +222,9 @@ public class Loader {
 		else{
 			mainMenuGui = mainMenuGuiSmall;
 		}
+		
+		// chargement des icones de niveaux
+		levelsIcons = new Tileset("data/sprites/levels.png", 512, 512);
 		
 		//chargement des bouttons sociaux
 		social = new Tileset("data/sprites/social.png", 64, 64);
@@ -381,6 +389,28 @@ public class Loader {
 	 */
 	public static String randomName(){
 		FileHandle file = Gdx.files.internal("data/dwarf.name");
+		String str = file.readString();
+		String[] names = str.split("\n");
+		str = names[DwarvesManager.random.nextInt(names.length-1)];
+		return str.substring(0, 1).toUpperCase() + str.substring(1);
+	}
+	
+	/**
+	 * Retourne un nom aléatoire pour un nain
+	 */
+	public static String randomFirstName(){
+		FileHandle file = Gdx.files.internal("data/dwarf_en.name");
+		String str = file.readString();
+		String[] names = str.split("\n");
+		str = names[DwarvesManager.random.nextInt(names.length-1)];
+		return str.substring(0, 1).toUpperCase() + str.substring(1);
+	}
+	
+	/**
+	 * Retourne un nom aléatoire pour un nain
+	 */
+	public static String randomLastName(){
+		FileHandle file = Gdx.files.internal("data/dwarf_en_last.name");
 		String str = file.readString();
 		String[] names = str.split("\n");
 		str = names[DwarvesManager.random.nextInt(names.length-1)];

@@ -33,7 +33,7 @@ public class Crafting extends DwarfAction {
 	/**
 	 * Rapidité
 	 */
-	private static int SPEED = 20;
+	private static int SPEED = 35;
 	
 	/**
 	 * Atelier ou on travaille

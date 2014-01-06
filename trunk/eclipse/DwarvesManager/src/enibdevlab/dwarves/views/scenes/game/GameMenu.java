@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 
 import enibdevlab.dwarves.DwarvesManager;
+import enibdevlab.dwarves.GameThread;
 import enibdevlab.dwarves.controllers.GameClickListener;
 import enibdevlab.dwarves.models.Game;
 import enibdevlab.dwarves.views.lang.StringManager;
@@ -38,6 +39,7 @@ public class GameMenu extends Window {
 		super("Menu", DwarvesManager.getSkin());
 		
 		this.game = game;
+		GameScene.PAUSED = true;
 		
 		init();
 		build();
@@ -53,6 +55,13 @@ public class GameMenu extends Window {
 		restart = new TextButton(StringManager.getString("Restart"),  skin);
 		options = new TextButton(StringManager.getString("Options"),  skin);
 		exit    = new TextButton(StringManager.getString("Quit"),  skin);
+		
+		resume.pad(10,40,10,40);
+		save.pad(10,40,10,40);
+		load.pad(10,40,10,40);
+		restart.pad(10,40,10,40);
+		options.pad(10,40,10,40);
+		exit.pad(10,40,10,40);
 		
 		resume.addListener(new GameClickListener(null){
 			public void clicked (InputEvent event, float x, float y) {
@@ -87,6 +96,7 @@ public class GameMenu extends Window {
 		
 		exit.addListener(new GameClickListener(null){
 			public void clicked (InputEvent event, float x, float y) {
+				GameThread.getInstance().cancel();
 				DwarvesManager.getInstance().setStage(new MainMenu(DwarvesManager.getInstance()));
 			}
 		});

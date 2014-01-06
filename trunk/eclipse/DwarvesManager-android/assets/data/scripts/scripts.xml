@@ -1,13 +1,54 @@
 <scripts>
-    <script>tuto1.lua</script>
-    <script>tuto2.lua</script>
-    <script>tuto3.lua</script>
-    <script>tuto4.lua</script>
-    <script>tuto5.lua</script>
-    <script>level1.lua</script>
-    <script>level2.lua</script>
-    <script>level3.lua</script>
-    <script>level4.lua</script>
-    <script>level5.lua</script>
-    <script>level6.lua</script>
+    <script name = "tuto1.lua" textureID = "1">
+        <title lang = "fr">Tutorial 1 : Miner</title>
+        <title lang = "en">Tutorial 1 : Mine</title>
+    </script>
+    <script name = "tuto2.lua" textureID = "2">
+        <title lang = "fr">Tutorial 2 : Pioche et Atelier</title>
+        <title lang = "en">Tutorial 2 : Pickaxe and Workshop</title>
+    </script>
+    <script name = "tuto3.lua" textureID = "3">
+        <title lang = "fr">Tutorial 3 : Blocs</title>
+        <title lang = "en">Tutorial 3 : Blocks</title>
+    </script>
+    <script name = "tuto4.lua" textureID = "4">
+        <title lang = "fr">Tutorial 4 : Gemmes</title>
+        <title lang = "en">Tutorial 4 : Gems</title>
+    </script>
+    <script name = "tuto5.lua" textureID = "5">
+        <title lang = "fr">Tutorial 5 : Sommeil</title>
+        <title lang = "en">Tutorial 5 : Sleep</title>
+    </script>
+    <script name = "tuto6.lua" textureID = "6">
+        <title lang = "fr">Tutorial 6 : Taverne</title>
+        <title lang = "en">Tutorial 6 : Tavern</title>
+    </script>
+    <script name = "tuto7.lua" textureID = "7">
+        <title lang = "fr">Tutorial 7 : Une vraie mine</title>
+        <title lang = "en">Tutorial 7 : Your first real mine</title>
+    </script>
+    <script name = "level1.lua" textureID = "8">
+        <title lang = "fr">Niveau 1 : Grandes cavernes</title>
+        <title lang = "en">Level 1 : Big cavern</title>
+    </script>
+    <script name = "level2.lua" textureID = "9">
+        <title lang = "fr">Niveau 2 : Immense empire</title>
+        <title lang = "en">Level 2 : Huge empire</title>
+    </script>
+    <script name = "level3.lua" textureID = "10">
+        <title lang = "fr">Niveau 3 : Petit mais costaud</title>
+        <title lang = "en">Level 3 : Small but tough</title>
+    </script>
+    <script name = "level4.lua" textureID = "11">
+        <title lang = "fr">Niveau 4 : Demi spirale</title>
+        <title lang = "en">Level 4 : Half spiral</title>
+    </script>
+    <script name = "level5.lua" textureID = "12">
+        <title lang = "fr">Niveau 5 : Le sanctuaire perdu</title>
+        <title lang = "en">Level 5 : Lost temple</title>
+    </script>
+    <script name = "level6.lua" textureID = "13">
+        <title lang = "fr">Niveau 6 : Le Labyrinthe</title>
+        <title lang = "en">Level 6 : The Labyrinth</title>
+    </script>
 </scripts>

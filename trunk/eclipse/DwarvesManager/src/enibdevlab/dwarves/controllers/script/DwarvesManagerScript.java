@@ -1,6 +1,7 @@
 package enibdevlab.dwarves.controllers.script;
 
 import org.luaj.vm2.LuaFunction;
+import org.luaj.vm2.LuaString;
 import org.luaj.vm2.LuaValue;
 
 /**
@@ -28,9 +29,15 @@ public class DwarvesManagerScript extends LuaScript{
 	protected LuaFunction luaRun;
 	
 	/**
+	 * Fonction evenement
+	 */
+	protected LuaFunction luaEvent;
+	
+	/**
 	 * Api
 	 */
 	protected LuaValue api;
+	
 	
 	/**
 	 * Constructeur d'un script Dwarves Manager
@@ -48,6 +55,30 @@ public class DwarvesManagerScript extends LuaScript{
 		luaInit  = (LuaFunction) context.get("init");
 		luaSetup = (LuaFunction) context.get("setup");
 		luaRun = (LuaFunction) context.get("run");
+		
+		try{
+			luaEvent = (LuaFunction) context.get("onEvent");
+		}
+		catch(ClassCastException e){
+			luaEvent = null;
+		}
+		
+	}
+	
+	public void receiveDwarfEvent(String name, Object param1, Object param2){
+		System.out.print("DwarfEvent : " + name + " ");
+		System.out.print(param1);
+		System.out.print(" ");
+		System.out.println(param2);
+		
+		String str1 = "null";
+		String str2 = "null";
+		if(param1!=null) str1 = param1.toString();
+		if(param2!=null) str2 = param2.toString();
+		
+		if(luaEvent != null){
+			luaEvent.call(LuaString.valueOf(name), LuaString.valueOf(str1), LuaString.valueOf(str2));
+		}
 	}
 	
 	public String getMapName(){

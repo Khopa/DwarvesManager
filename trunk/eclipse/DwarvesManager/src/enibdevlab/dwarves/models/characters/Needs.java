@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 
 import enibdevlab.dwarves.models.Difficulty;
 import enibdevlab.dwarves.models.misc.IPersistent;
+import enibdevlab.dwarves.views.lang.StringManager;
 
 /**
  * 
@@ -24,12 +25,12 @@ public class Needs implements IPersistent {
 	/**
 	 * Besoin Maximum
 	 */
-	private static int MAX = 40000;
+	public final static int MAX = 40000;
 	
 	/**
 	 * Besoin Minimum
 	 */
-	private static int MIN = 0;
+	public final static int MIN = 0;
 	
 	/**
 	 * Pas d'incrémentation nominal des besoins
@@ -130,7 +131,7 @@ public class Needs implements IPersistent {
 			setSleep(0);
 		}
 		
-		if(this.dwarf.getJobName().equals("Tavernier")) setThirst(0);
+		if(this.dwarf.getJobName().equals(StringManager.getString("Bartender"))) setThirst(0);
 	}
 
 	/*

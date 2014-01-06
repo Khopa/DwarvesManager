@@ -8,6 +8,7 @@ import enibdevlab.dwarves.views.audio.SoundManager;
 import enibdevlab.dwarves.views.lang.StringManager;
 import enibdevlab.dwarves.views.scenes.GameOver;
 import enibdevlab.dwarves.views.scenes.Win;
+import enibdevlab.dwarves.views.scenes.game.GameScene;
 
 /**
  * 
@@ -43,13 +44,23 @@ public class GameThread extends Task {
 	 */
 	private int subventions;
 	
+	/**
+	 * Instance
+	 */
+	private static GameThread instance;
+	
 	public GameThread(Game game){
+		instance = this;
 		subventions = 250;
 		this.game = game;
 	}
 	
+
 	@Override
 	public void run() {
+		
+		if(GameScene.PAUSED) return;
+		
 		elapsedTime ++;
 		dayCounter ++;
 		
@@ -113,6 +124,10 @@ public class GameThread extends Task {
 
 	public int getSubventions() {
 		return subventions;
+	}
+	
+	public static GameThread getInstance() {
+		return instance;
 	}
 
 	public void setElapsedTime(float elapsed) {

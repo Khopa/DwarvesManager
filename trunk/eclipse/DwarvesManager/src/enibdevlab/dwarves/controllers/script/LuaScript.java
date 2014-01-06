@@ -10,8 +10,8 @@ import org.luaj.vm2.compiler.LuaC;
 import org.luaj.vm2.lib.jme.JmePlatform;
 import org.luaj.vm2.lib.jse.JsePlatform;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Application.ApplicationType;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 
 /**
@@ -88,7 +88,8 @@ public class LuaScript {
 				requirementClosure.call();
 			}
 			
-			luaCode = LuaC.compile(scriptFile.read(), "script");
+			String code = scriptFile.readString("UTF-8");
+			luaCode = LuaC.compile(new ByteArrayInputStream(code.getBytes()), "script");
 		
 			LuaClosure closure = new LuaClosure(luaCode, context);
 			closure.call();

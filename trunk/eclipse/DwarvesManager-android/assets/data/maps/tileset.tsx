@@ -16,7 +16,7 @@
  <tile id="3">
   <properties>
    <property name="collide" value="1"/>
-   <property name="hardness" value="3"/>
+   <property name="hardness" value="12"/>
   </properties>
  </tile>
  <tile id="4">
@@ -64,7 +64,7 @@
  <tile id="12">
   <properties>
    <property name="collide" value="1"/>
-   <property name="hardness" value="8"/>
+   <property name="hardness" value="25"/>
   </properties>
  </tile>
  <tile id="13">

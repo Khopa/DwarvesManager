@@ -21,7 +21,7 @@ public class SpriteActor extends Actor {
 		super.draw(batch, parentAlpha);
 		Color color = batch.getColor();
 		batch.setColor(this.getColor());
-		batch.draw(region, getX(), getY(), getWidth()/2, getHeight()/2, getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+		batch.draw(region, getX(), getY(), 0, 0, getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 		batch.setColor(color);
 	}
 	

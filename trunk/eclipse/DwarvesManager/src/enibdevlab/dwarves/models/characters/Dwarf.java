@@ -9,6 +9,8 @@ import enibdevlab.dwarves.controllers.actions.DwarfAction;
 import enibdevlab.dwarves.controllers.actions.ManageNeeds;
 import enibdevlab.dwarves.models.items.Pickaxe;
 import enibdevlab.dwarves.views.Loader;
+import enibdevlab.dwarves.views.lang.Language;
+import enibdevlab.dwarves.views.lang.StringManager;
 
 /**
  * 
@@ -45,8 +47,16 @@ public abstract class Dwarf extends MCharacter {
 	public Dwarf(Vector2 position) {
 		super(position);
 		this.needs = new Needs(this);
-		this.setFirstName("Nain");
-		this.setName(Loader.randomName());
+		
+		if(StringManager.getLang()==Language.FRENCH){
+			this.setFirstName("Nain");
+			this.setName(Loader.randomName());
+		}
+		else{
+			this.setFirstName(Loader.randomFirstName());
+			this.setName(Loader.randomLastName());
+		}
+		
 	}
 	
 	public abstract DwarfAction getWorkingAction();

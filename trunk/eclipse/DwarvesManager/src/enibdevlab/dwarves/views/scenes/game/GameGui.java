@@ -259,8 +259,8 @@ public class GameGui extends Table {
 	 */
 	public void repack(){
 		this.pack();
-		this.setX(DwarvesManager.getWidth()-this.getWidth());
-		this.setY(DwarvesManager.getHeight()-this.getHeight()-2);
+		this.setX(DwarvesManager.getWidth()-this.getWidth()+20);
+		this.setY(DwarvesManager.getHeight()-this.getHeight());
 	}
 	
 	/**
@@ -313,8 +313,10 @@ public class GameGui extends Table {
 		container.row();
 		
 		for(ImageButton imgbtn:this.objectsButton.keySet()){
-			container.add(imgbtn);
-			container.row();
+			if(((ObjectButton)imgbtn).isEnabled()){
+				container.add(imgbtn);
+				container.row();
+			}
 		}
 		
 		this.defaults().space(10);
@@ -339,8 +341,10 @@ public class GameGui extends Table {
 		container.row();
 		
 		for(ImageButton imgbtn:this.roomsButton.keySet()){
-			container.add(imgbtn);
-			container.row();
+			if(((ObjectButton)imgbtn).isEnabled()){
+				container.add(imgbtn);
+				container.row();
+			}
 		}
 		
 		this.defaults().space(10);
@@ -383,8 +387,10 @@ public class GameGui extends Table {
 		container.row();
 		
 		for(ImageButton imgbtn:this.recruitsButton.keySet()){
-			container.add(imgbtn);
-			container.row();
+			if(((ObjectButton)imgbtn).isEnabled()){
+				container.add(imgbtn);
+				container.row();
+			}
 		}
 		
 		this.defaults().space(10);

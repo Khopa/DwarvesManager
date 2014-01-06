@@ -24,8 +24,21 @@ end
 -- Cette fonction est appelée à chaque fois que la map est chargée --
 function setup()
 	dwarf.moveCamera(13,13,0.5) -- Position de départ de la caméra
+	dwarf.restoreGui()
+	dwarf.disableRoom()
+	dwarf.disableObjects()
+	dwarf.configure("Miner", true)
+	dwarf.configure("Barman", false)
+	dwarf.configure("Craftman", false)
 end
 
 -- Fonction appelée en boucle
 function run()
+	-- Eviter les besoins de sommeil et biere sur les premiers tutos 
+	i = 0
+	while i < dwarf.dwarfCount() do
+		dwarf.setSleepNeed(i,0)
+		dwarf.setThirstNeed(i,0)
+		i = i +1
+	end
 end

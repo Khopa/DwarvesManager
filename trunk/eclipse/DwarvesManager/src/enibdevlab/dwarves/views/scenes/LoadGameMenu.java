@@ -114,8 +114,9 @@ public class LoadGameMenu extends Stage {
 			String[] str = new String[LevelFile.getLevels().size()];
 			int i = 0;
 			for(LevelFile level:LevelFile.getLevels()){
-				str[i++] = level.getName();
+				str[i++] = level.getTitle();
 			}
+			
 			this.list = new List(str, skin);
 		}
 		

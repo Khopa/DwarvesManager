@@ -68,6 +68,24 @@ public class MapArea implements IPersistent{
 		}
 		// ----
 		
+		// Clamp (Empeche de selectionner des cases en dehors de la map)
+		if(i<0){
+			w = w-Math.abs(i);
+			i =0;
+		}
+		if(j<0){
+			h = h-Math.abs(j);
+			j = 0;
+		}
+		
+		if((i+w)>tilemap.getXSize()){
+			w = tilemap.getXSize()-i;
+		}
+		
+		if((j+h)>tilemap.getYSize()){
+			h = tilemap.getYSize()-j;
+		}
+		
 		this.i = i;
 		this.j = j;
 		this.w = w;

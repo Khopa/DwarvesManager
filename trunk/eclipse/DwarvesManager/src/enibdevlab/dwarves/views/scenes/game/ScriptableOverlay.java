@@ -34,6 +34,8 @@ public class ScriptableOverlay extends Group {
 			spriteMap.get(key).remove();
 		}
 		spriteMap.put(key, actor);
+		super.addActor(actor);
+		System.out.println("Added " + key);
 	}
 	
 	/**

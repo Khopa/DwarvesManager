@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<module>
-    <entry-point class="enibdevlab.dwarves.client.GwtLauncher"/>
-    <set-configuration-property name="gdx.assetpath" value="../DwarvesManager-android/assets"/>
-    <inherits name="DwarvesManager"/>
-    <inherits name="com.badlogic.gdx.backends.gdx_backends_gwt"/>
-</module>

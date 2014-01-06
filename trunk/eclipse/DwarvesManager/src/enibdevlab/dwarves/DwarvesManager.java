@@ -88,7 +88,6 @@ public class DwarvesManager extends Game {
 		Cloud.init();
 		LevelFile.init();
 		
-		
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
 		this.setStage(new LogoScreen(this));
@@ -98,7 +97,7 @@ public class DwarvesManager extends Game {
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(.098f, .122f, .216f, 1);
+		Gdx.gl.glClearColor(.05f, .05f, .05f, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		stage.act();
 		stage.draw();
@@ -165,4 +164,15 @@ public class DwarvesManager extends Game {
 		return this.stage;
 	}
 
+	@Override
+	public void pause() {
+		super.pause();
+		GameScene.PAUSED = true;
+	}
+	
+	@Override
+	public void resume() {
+		super.resume();
+		GameScene.PAUSED = false;
+	}
 }

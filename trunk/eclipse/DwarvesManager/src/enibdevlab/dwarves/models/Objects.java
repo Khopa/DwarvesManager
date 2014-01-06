@@ -49,6 +49,9 @@ public class Objects implements IPersistent {
 		try {
 			AGameObject view = object.getViewType().getConstructor(GameObject.class).newInstance(object);
 			this.game.getView().getGameplayLayer().getObjectLayer().addActor(view);
+			if(Game.getInstance()!=null){
+				Game.getInstance().fireDwarfEvent(object.getClass().getSimpleName()+"Placed", object.getX(), object.getY());
+			}
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
@@ -68,6 +71,7 @@ public class Objects implements IPersistent {
 		for(Room room:game.getRooms().getRooms()){
 			if(room.objectIn(object)){
 				room.addObject(object);
+				if(Game.getInstance() != null) Game.getInstance().fireDwarfEvent("ObjectInRoom", object.getClass().getSimpleName(), room.getClass().getSimpleName());
 				break;
 			}
 		}

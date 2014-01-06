@@ -70,28 +70,34 @@ public final class Game implements IPersistent{
 	private String filename = "";
 	
 	/**
+	 * instance
+	 */
+	private static Game instance = null;
+	
+	/**
 	 * Constructeur, à partir d'un script Lua
 	 */
 	public Game(GameScene view, LevelFile script){
 		
+		instance = this;
 		DwarvesManagerLuaApi.init(this);
-		
 		this.rooms = new Rooms(this);
 		this.characters = new Characters(this);
 		this.objects = new Objects(this);
 		this.taskManager = new TaskManager(this);
 		this.bank = new Bank();
 		this.view = view;
-		
 		this.level = new Level(this, script);
 		
 	}
+
 
 	/**
 	 * Charge une partie à partir d'un fichier xml sauvegardé sur la machine
 	 */
 	public Game(GameScene view, String filename) {
 		
+		instance = this;
 		DwarvesManagerLuaApi.init(this);
 		
 		this.view = view;
@@ -104,6 +110,30 @@ public final class Game implements IPersistent{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Envoie d'un evenement au script LUA
+	 * @param eventID Indicatif d'evenement
+	 */
+	public void fireDwarfEvent(String eventID){
+		fireDwarfEvent(eventID, null, null);
+	}
+	
+	/**
+	 * Envoie d'un evenement au script LUA
+	 * @param eventID Indicatif d'evenement
+	 */
+	public void fireDwarfEvent(String eventID, Object param1){
+		fireDwarfEvent(eventID, param1, null);
+	}
+	
+	/**
+	 * Envoie d'un evenement au script LUA
+	 * @param eventID Indicatif d'evenement
+	 */
+	public void fireDwarfEvent(String eventID, Object param1, Object param2){
+		getLevel().getDwScript().receiveDwarfEvent(eventID, param1, param2);
 	}
 
 	public Element getXml() {
@@ -212,4 +242,7 @@ public final class Game implements IPersistent{
 		this.filename = filename;
 	}
 
+	public static Game getInstance() {
+		return instance;
+	}
 }

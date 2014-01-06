@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 import enibdevlab.dwarves.DwarvesManager;
+import enibdevlab.dwarves.models.Game;
 import enibdevlab.dwarves.models.characters.MCharacter;
 import enibdevlab.dwarves.models.objects.GameObject;
 import enibdevlab.dwarves.models.objects.Rotation;
@@ -69,6 +70,11 @@ public class GameplayScreenListener implements InputProcessor {
 	 * Zone de definition
 	 */
 	private MapArea definitionArea;
+	
+	/**
+	 * Point de depart de la zone de definition
+	 */
+	private Vector2 defineStartPoint;
 	
 	/**
 	 * Clic Droit
@@ -481,10 +487,12 @@ public class GameplayScreenListener implements InputProcessor {
 	 * Commence le dessin d'une zone de définition
 	 */
 	private void beginDefinitionArea(float x, float y){		
+		defineStartPoint = new Vector2(x, y);
 		this.definitionArea = this.scene.getGameplayLayer().getDefinitionArea().getModel();
 		this.definitionArea.setI((int)x);
 		this.definitionArea.setJ((int)y+1);
 		this.scene.getGameplayLayer().getDefinitionArea().setModel(definitionArea);
+		this.defineArea((int)x, (int)y);
 	}
 	
 	/**
@@ -500,6 +508,7 @@ public class GameplayScreenListener implements InputProcessor {
 			try {
 				room = (Room) roomConstructor.newInstance(copy, scene.getGame().getRooms());
 				scene.getGame().getRooms().addRoom(room);
+				Game.getInstance().fireDwarfEvent("roomPlaced", room.getTiles().size());
 			} catch (InstantiationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -532,6 +541,8 @@ public class GameplayScreenListener implements InputProcessor {
 			MCharacter character;
 			try {
 				character = (MCharacter) dwarfConstructor.newInstance(new Vector2(x,y));
+				
+				Game.getInstance().fireDwarfEvent(character.getClass().getSimpleName()+"Recruited");
 				
 				if(this.scene.getGame().getBank().removeMoney(character.getGoldenHello())){
 					scene.getGame().getCharacters().addCharacter(character);
@@ -585,8 +596,31 @@ public class GameplayScreenListener implements InputProcessor {
 	 */
 	private void defineArea(int x, int y){
 		if(!(definitionArea != null)) return;
-		this.definitionArea.setW((int)x-this.definitionArea.getI()+1);
-		this.definitionArea.setH((int)y-this.definitionArea.getJ());
+		
+		
+		int m_x = (int)defineStartPoint.x;
+		if(x<(int)defineStartPoint.x) m_x = (int)defineStartPoint.x+1;
+		
+		int m_y = (int)defineStartPoint.y;
+		if(y<(int)defineStartPoint.y) m_y = (int)defineStartPoint.y+1;
+		
+		int m_w = (int)x-(int)(defineStartPoint.x);
+		int m_h = (int)y-(int)(defineStartPoint.y);
+		
+		if(m_w < 0) m_w--;
+		else m_w++;
+		
+		if(m_h < 0) m_h--;
+		else m_h++;
+		
+		this.definitionArea = new MapArea(m_x,
+										  m_y,
+										  m_w,
+										  m_h,
+										  definitionArea.getTilemap());
+		
+		//System.out.println(this.definitionArea);
+		
 		this.scene.getGameplayLayer().getDefinitionArea().setModel(definitionArea);
 	}
 

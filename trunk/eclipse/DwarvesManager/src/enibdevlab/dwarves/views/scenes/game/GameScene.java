@@ -144,16 +144,17 @@ public class GameScene extends Stage{
 	 */
 	public void init(){
 	
-		// Overlayer
-		this.scriptableOverlay = new ScriptableOverlay();
-		this.addActor(this.scriptableOverlay);
+
 		// Fenetre de GUI
 		this.gameGui = new GameGui(DwarvesManager.getSkin(), this.game);
 		this.addActor(this.gameGui);
 		// Infobar
 		this.infobar = new InfoBar(this);
 		this.addActor(infobar);
-		// LOg
+		// Overlayer
+		this.scriptableOverlay = new ScriptableOverlay();
+		this.addActor(this.scriptableOverlay);
+		// Log
 		this.gameLog = new GameLog();
 		this.addActor(gameLog);
 		// 

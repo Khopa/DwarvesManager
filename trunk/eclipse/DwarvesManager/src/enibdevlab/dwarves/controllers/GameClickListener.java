@@ -1,6 +1,7 @@
 package enibdevlab.dwarves.controllers;
 
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+
 import enibdevlab.dwarves.DwarvesManager;
 import enibdevlab.dwarves.models.Game;
 

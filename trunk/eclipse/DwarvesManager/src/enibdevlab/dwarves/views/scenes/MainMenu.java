@@ -17,6 +17,7 @@ import enibdevlab.dwarves.views.Tileset;
 import enibdevlab.dwarves.views.actors.AImage;
 import enibdevlab.dwarves.views.actors.ButtonActor;
 import enibdevlab.dwarves.views.audio.MusicManager;
+import enibdevlab.dwarves.views.scenes.levelChoice.LevelChoice;
 
 /**
  * 
@@ -108,7 +109,8 @@ public class MainMenu extends Stage {
 		// Choix du niveau
 		choiceLevel.addListener(new GameClickListener(null){
 			public void clicked (InputEvent event, float x, float y) {
-				this.dw.setStage(new LoadGameMenu(DwarvesManager.getInstance().getStage(), false));
+				this.dw.setStage(new LevelChoice());
+				//this.dw.setStage(new LoadGameMenu(DwarvesManager.getInstance().getStage(), false));
 			}
 		});
 		

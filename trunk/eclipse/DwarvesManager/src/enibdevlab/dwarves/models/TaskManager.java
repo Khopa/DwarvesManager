@@ -65,6 +65,7 @@ public class TaskManager implements IPersistent{
 			// On ajoute pas les tiles qui sont pas bloquants ou qui ne peuvent être miné
 			if(!tmp.isBlocking() || !tmp.isMinable()) continue;
 			
+			Game.getInstance().fireDwarfEvent("newTile");
 			toMine.add(tile);
 			addInAccesibleTiles(tile);
 		}
@@ -95,6 +96,7 @@ public class TaskManager implements IPersistent{
 		}
 		else if(!bottom.isBlocking() || !top.isBlocking() || !left.isBlocking() || !right.isBlocking()){
 			if(!accesibleTile.contains(tile)) accesibleTile.add(tile);
+			if(Game.getInstance() != null) Game.getInstance().fireDwarfEvent("newAccessibleTile");
 		}
 	}
 	
