@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
 import enibdevlab.dwarves.DwarvesManager;
-import enibdevlab.dwarves.models.Level;
+import enibdevlab.dwarves.models.levels.Level;
 import enibdevlab.dwarves.models.misc.IPersistent;
 import enibdevlab.dwarves.views.Tileset;
 

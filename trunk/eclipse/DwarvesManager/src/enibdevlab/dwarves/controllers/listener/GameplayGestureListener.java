@@ -1,9 +1,9 @@
 package enibdevlab.dwarves.controllers.listener;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 
+import enibdevlab.dwarves.DwarvesManager;
 import enibdevlab.dwarves.views.scenes.game.GameScene;
 import enibdevlab.dwarves.views.scenes.game.GameState;
 import enibdevlab.dwarves.views.scenes.game.GameplayLayer;
@@ -54,6 +54,7 @@ public class GameplayGestureListener implements GestureListener{
 		
 		if(!(scene.getGameState() == GameState.NORMAL)) return false;
 		
+		GameplayLayer gameplay = this.scene.getGameplayLayer();
 		float amount = (initialDistance-distance)/500f;
 		
 		float r_amount = (float) (this.scene.getGameplayLayer().getScaleX() - amount/25); 
@@ -64,17 +65,27 @@ public class GameplayGestureListener implements GestureListener{
 			r_amount = 0.3f;
 		}
 		
-		GameplayLayer gameplay = this.scene.getGameplayLayer();
-		float scale1 = gameplay.getScaleX();
-		Vector2 center  = gameplay.getTilemap().getPixelCoordinate(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+		float o_amount = gameplay.getScaleX();
+		double d_amount = (double)(o_amount-r_amount);
+		
+		// On recupère la case centrale de l'écran
+		// Vector2 center  = gameplay.getTilemap().getCenterCoordinate();
+		// On effectue le scaling
 		gameplay.setScale(r_amount);
+		// gameplay.clamp();
+		// On recupère la nouvelle case centrale de l'écran
+		// Vector2 center2  = gameplay.getTilemap().getCenterCoordinate();
+		// On calcule la différence
+		// Vector2 diff    = new Vector2(center.x-center2.x, center.y-center2.y);
+		Vector2 realPos = new Vector2(gameplay.getX()/o_amount, gameplay.getY()/o_amount);
+		Vector2 newPos = new Vector2((float)(realPos.x*r_amount), (float)(realPos.y*r_amount));
+		Vector2 diff   = new Vector2((float)(d_amount*(DwarvesManager.getWidth())), (float)(d_amount*DwarvesManager.getHeight()));
+		System.out.println(newPos);
+		// TODO : Il manque sans doute une valeur de scaling sur le décalage, je verrai ça plus tard si j'ai le temps
+		// décalage pour centrer le zoom
+		gameplay.setPosition(newPos.x+diff.x, newPos.y+diff.y);
+		//gameplay.setPosition(gameplay.getX()-diff.x, gameplay.getY()-diff.y);
 		gameplay.clamp();
-		Vector2 center2  = this.scene.getGameplayLayer().getTilemap().getPixelCoordinate(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-		Vector2 diff    = new Vector2(center.x*scale1-center2.x*r_amount, center.y*scale1-center2.y*r_amount); 
-		gameplay.setPosition(gameplay.getX()-diff.x, gameplay.getY()-diff.y);
-		
-		
-
 		return true;
 	}
 

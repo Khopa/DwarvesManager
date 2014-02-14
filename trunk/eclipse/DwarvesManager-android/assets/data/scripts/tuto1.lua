@@ -5,7 +5,7 @@ TUTORIAL 1
 --]]
 
 map          = "tuto1.tmx"    -- Map
-music        = "music1.ogg"   -- Musique de départ   (music1.ogg, music2.ogg et music3.ogg dispo uniquement)
+music        = "tuto"   -- Musique de départ   (music1.ogg, music2.ogg et music3.ogg dispo uniquement)
 objective    = 2              -- Objectif en diamants
 progression  = 0              -- Variable de progression
 levelName    = "Tutorial 1"   -- Nom pour stocker les records en ligne

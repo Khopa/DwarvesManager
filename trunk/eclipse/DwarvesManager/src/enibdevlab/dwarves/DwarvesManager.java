@@ -17,6 +17,7 @@ import enibdevlab.dwarves.views.Loader;
 import enibdevlab.dwarves.views.audio.SoundManager;
 import enibdevlab.dwarves.views.lang.StringManager;
 import enibdevlab.dwarves.views.scenes.LogoScreen;
+import enibdevlab.dwarves.views.scenes.MainMenu;
 import enibdevlab.dwarves.views.scenes.game.GameScene;
 
 /**
@@ -65,6 +66,16 @@ public class DwarvesManager extends Game {
 	public static Random random = new Random();
 	
 	/**
+	 * Big font
+	 */
+	public static boolean bigFont = false;
+	
+	/**
+	 * Particles
+	 */
+	public static boolean particles = true;
+	
+	/**
 	 * Timer
 	 */
 	public static float elapsedTime = 0f;
@@ -82,15 +93,26 @@ public class DwarvesManager extends Game {
 		width = Gdx.graphics.getWidth();
 		height = Gdx.graphics.getHeight();
 		
+		System.out.println(width);
+		System.out.println(height);
+		
 		StringManager.init();
 		Loader.init();
 		SoundManager.init();
 		Cloud.init();
 		LevelFile.init();
+		Gdx.input.setCatchBackKey(true);
 		
-		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		if(width >= 768){
+			skin = new Skin(Gdx.files.internal("data/uiskinBig.json"));
+			bigFont = true;
+		}
+		else{
+			skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+			bigFont = false;
+		}
 		
-		this.setStage(new LogoScreen(this));
+		this.setStage(new MainMenu(this));
 		this.resize(width, height);
 		
 	}
@@ -138,6 +160,10 @@ public class DwarvesManager extends Game {
 		Gdx.input.setInputProcessor(stage);
 	}
 	
+	public static void setSkin(Skin skin){
+		DwarvesManager.skin = skin;
+	}
+	
 	public static int getWidth(){
 		return width;
 	}
@@ -174,5 +200,13 @@ public class DwarvesManager extends Game {
 	public void resume() {
 		super.resume();
 		GameScene.PAUSED = false;
+	}
+	
+	public static boolean isBigFont() {
+		return bigFont;
+	}
+
+	public static void setBigFont(boolean bigFont) {
+		DwarvesManager.bigFont = bigFont;
 	}
 }

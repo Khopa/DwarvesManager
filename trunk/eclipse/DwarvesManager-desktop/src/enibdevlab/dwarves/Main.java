@@ -123,6 +123,7 @@ public class Main {
 		cfg.height = (int)height;
 		cfg.fullscreen = true;
 		new LwjglApplication(new DwarvesManager(), cfg);
+		
 	}
 } 
 

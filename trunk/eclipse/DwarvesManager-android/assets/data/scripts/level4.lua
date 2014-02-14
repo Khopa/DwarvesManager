@@ -5,7 +5,7 @@ Niveau 3
 --]]
 
 map          = "level4.tmx"   -- Map
-music        = "music1.ogg"   -- Musique de départ
+music        = "game"   -- Musique de départ
 objective    = 2              -- Objectif en diamants
 progression  = 0              -- Variable de progression
 levelName    = "Niveau 4"     -- Nom pour stocker les records en ligne

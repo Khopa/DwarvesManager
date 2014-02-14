@@ -150,6 +150,13 @@ public class Objects implements IPersistent {
 		}
 		
 	}
+
+
+	public void update() {
+		for(GameObject obj:this.objects){
+			obj.update();
+		}
+	}
 	
 	
 	

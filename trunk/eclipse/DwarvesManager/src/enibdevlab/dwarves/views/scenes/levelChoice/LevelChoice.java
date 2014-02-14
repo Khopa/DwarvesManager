@@ -3,6 +3,7 @@ package enibdevlab.dwarves.views.scenes.levelChoice;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -139,6 +140,14 @@ public class LevelChoice extends Stage {
 		dragX = -1;
 		dragY = -1;
 		return super.touchUp(screenX, screenY, pointer, button);
+	}
+	
+	@Override
+	public boolean keyDown(int keyCode) {
+		if(keyCode == Input.Keys.BACK){ // Appuie du bouton retour Android => retour menu précédent
+			DwarvesManager.getInstance().setStage(previousStage);
+		}
+		return super.keyDown(keyCode);
 	}
 	
 	@Override

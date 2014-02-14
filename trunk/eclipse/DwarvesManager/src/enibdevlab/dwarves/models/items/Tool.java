@@ -2,6 +2,9 @@ package enibdevlab.dwarves.models.items;
 
 import com.badlogic.gdx.math.Vector2;
 
+import enibdevlab.dwarves.models.items.enchant.IEnchantment;
+import enibdevlab.dwarves.models.items.enchant.NoEnchantment;
+
 public abstract class Tool extends Item {
 
 	/**
@@ -20,15 +23,31 @@ public abstract class Tool extends Item {
 	 */
 	protected float durability;
 	
+	/**
+	 * Puissance de l'outil
+	 */
+	protected float power;
+	
+	/**
+	 * Modifieur d'enchantement de l'outil
+	 */
+	protected IEnchantment enchantment = null;
+	
+	/** 
+	 * @param pos
+	 * @param durability
+	 */
 	public Tool(Vector2 pos, float durability) {
 		super(pos);
 		this.damage = 0;
+		this.power = 1;
 		this.durability = durability;
+		this.enchantment = new NoEnchantment();
 	}
 	
 	@Override
-	public void onUse(){
-		this.setDamage(getDamage()+1f/this.durability);
+	public final float onUse(){
+		return enchantment.onUse(this);
 	}
 
 	public float getDamage() {
@@ -44,6 +63,34 @@ public abstract class Tool extends Item {
 	public void repair(int speed){
 		this.damage -= speed;
 		if(this.damage < 0) this.damage = 0;
+	}
+
+	public IEnchantment getEnchantment() {
+		return enchantment;
+	}
+
+	public void setEnchantment(IEnchantment enchantment) {
+		this.enchantment = enchantment;
+	}
+
+	public float getDurability() {
+		return enchantment.getDurability(this);
+	}
+
+	public float getPower() {
+		return enchantment.getPower(this);
+	}
+	
+	public float getDurabilityBase() {
+		return durability;
+	}
+
+	public float getPowerBase() {
+		return power;
+	}
+	
+	public boolean isEnchanted(){
+		return !(getEnchantment().getClass().equals(NoEnchantment.class));
 	}
 
 }

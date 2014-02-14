@@ -1,9 +1,12 @@
 package enibdevlab.dwarves.views.scenes;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
@@ -32,6 +35,8 @@ public class OptionMenu extends Stage {
 	protected Button ok;
 	protected Slider musicSlider;
 	protected Slider audioSlider;
+	protected CheckBox bigFontCheckbox;
+	protected CheckBox particleEffect;
 	
 	protected Stage previousStage;
 	
@@ -53,6 +58,18 @@ public class OptionMenu extends Stage {
 		this.musicSlider = new Slider(0.0f, 1.0f, 0.01f, false, skin);
 		this.audioSlider = new Slider(0.0f, 1.0f, 0.01f, false, skin);
 		
+		this.bigFontCheckbox = new CheckBox(" Enable Big Font", skin);
+		this.bigFontCheckbox.setSize(DwarvesManager.getWidth()/7, DwarvesManager.getHeight()/7);
+		if(DwarvesManager.isBigFont()){
+			this.bigFontCheckbox.setChecked(true);
+		}
+		
+		this.particleEffect = new CheckBox(" Enable Particles", skin);
+		this.particleEffect.setSize(DwarvesManager.getWidth()/7, DwarvesManager.getHeight()/7);
+		if(DwarvesManager.particles){
+			this.particleEffect.setChecked(true);
+		}
+		
 		this.addActor(this.table);
 		
 		this.ok.addListener(new GameClickListener(null){
@@ -72,6 +89,34 @@ public class OptionMenu extends Stage {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				SoundManager.setVolume(((Slider)(actor)).getValue());
+			}
+		});
+		
+		this.bigFontCheckbox.addListener(new ChangeListener(){
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				CheckBox checkbox = (CheckBox) actor;
+				if(checkbox.isChecked()){
+					DwarvesManager.setSkin(new Skin(Gdx.files.internal("data/uiskinBig.json")));
+					DwarvesManager.setBigFont(true);
+				}
+				else{
+					DwarvesManager.setSkin(new Skin(Gdx.files.internal("data/uiskin.json")));
+					DwarvesManager.setBigFont(false);
+				}
+			}
+		});
+		
+		this.particleEffect.addListener(new ChangeListener(){
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				CheckBox checkbox = (CheckBox) actor;
+				if(checkbox.isChecked()){
+					DwarvesManager.particles = true;
+				}
+				else{
+					DwarvesManager.particles = false;
+				}
 			}
 		});
 	}
@@ -117,12 +162,24 @@ public class OptionMenu extends Stage {
 		this.table.row();
 		this.table.add(horizontal);
 		this.table.row();
+		this.table.add(this.bigFontCheckbox);
+		this.table.row();
+		this.table.add(this.particleEffect);
+		this.table.row();
 		this.table.add(ok);
 		this.table.pack();
 		
 		this.table.setPosition(DwarvesManager.getWidth()/2 - this.table.getWidth()/2,
 							   DwarvesManager.getHeight()/2 - this.table.getHeight()/2);
 		
+	}
+	
+	@Override
+	public boolean keyDown(int keyCode) {
+		if(keyCode == Input.Keys.BACK){ // Appuie du bouton retour Android => retour menu précédent
+			DwarvesManager.getInstance().setStage(previousStage);
+		}
+		return super.keyDown(keyCode);
 	}
 	
 	

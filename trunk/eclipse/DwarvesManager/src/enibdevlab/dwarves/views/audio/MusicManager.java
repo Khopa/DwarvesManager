@@ -25,6 +25,16 @@ public class MusicManager {
 	 */
 	protected static float volume = .5f;
 	
+	/**
+	 * Internal Folder location
+	 */
+	protected static String musicFolder = "data/music/";
+	
+	/**
+	 * Music file extension
+	 */
+	protected static String format = "ogg";
+	
 	
 	public static void setVolume(float newValue){
 		assert (newValue >=0.0 && newValue <=1.0);
@@ -45,7 +55,7 @@ public class MusicManager {
 
 		if(!(current == null)) current.stop();
 
-		current = Gdx.audio.newMusic(Gdx.files.internal(filename));
+		current = Gdx.audio.newMusic(Gdx.files.internal(musicFolder+filename+"."+format));
 		if(current == null) return false;
 		
 		current.setVolume(volume);

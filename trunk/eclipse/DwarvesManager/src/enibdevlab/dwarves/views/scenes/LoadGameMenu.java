@@ -2,6 +2,7 @@ package enibdevlab.dwarves.views.scenes;
 
 import java.util.Vector;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -214,6 +215,14 @@ public class LoadGameMenu extends Stage {
 		this.table.pack();
 		
 		this.table.setPosition(DwarvesManager.getWidth()/2-table.getWidth()/2, DwarvesManager.getHeight()/2-table.getHeight()/2);
+	}
+	
+	@Override
+	public boolean keyDown(int keyCode) {
+		if(keyCode == Input.Keys.BACK){ // Appuie du bouton retour Android => retour menu précédent
+			DwarvesManager.getInstance().setStage(previousStage);
+		}
+		return super.keyDown(keyCode);
 	}
 	
 	

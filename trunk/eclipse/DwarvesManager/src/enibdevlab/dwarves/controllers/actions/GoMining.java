@@ -73,6 +73,8 @@ public class GoMining extends DwarfAction {
 	@Override
 	public void entry() {
 		
+		if(state.contains(WAITING)) return;
+		
 		// Si on a pas de pioche on va aller en chercher une
 		if(!dwarf.isCarryingPickaxe()){
 			// Recherche d'un atelier avec un ratelier qui contient au moins une pioche en état
@@ -134,8 +136,10 @@ public class GoMining extends DwarfAction {
 			if(this.movement == null){
 				this.movement = Movement.random(game, dwarf);
 			}
-			state.clear();
-			state.add(WAITING);
+			if(movement != null){
+				state.clear();
+				state.add(WAITING);
+			}
 		}
 		
 	}

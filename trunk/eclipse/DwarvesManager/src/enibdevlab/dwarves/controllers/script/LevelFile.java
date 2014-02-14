@@ -107,6 +107,13 @@ public class LevelFile {
 			}
 		}	
 	}
+	
+	
+	public static LevelFile randomLevel(){
+		return new LevelFile("Random", "Random", true, 0);
+	}
+	
+	
 
 	public String getName() {
 		return name;

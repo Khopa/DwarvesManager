@@ -1,6 +1,7 @@
 package enibdevlab.dwarves.controllers.actions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;
 
@@ -22,7 +23,7 @@ import enibdevlab.dwarves.models.characters.MCharacter;
  */
 public class Movement extends CharacterAction {
 	
-	protected  ArrayList<Node> path;
+	protected  List<Node> path;
 
 	/**
 	 * Liste des mouvements
@@ -35,14 +36,24 @@ public class Movement extends CharacterAction {
 	protected int index = 0;
 	
 	/**
+	 * Duration of each tile move
+	 */
+	protected float tileMoveDuration = 0;
+	
+	/**
 	 * Stuck
 	 */
 	protected boolean stuck = false;
 	
-	public Movement(Game game, MCharacter character, ArrayList<Node> path) {
+	public Movement(Game game, MCharacter character, List<Node> path, float tileMoveDuration) {
 		super(game, character);
 		this.path = path;
 		this.setActor(character.getView());
+		this.tileMoveDuration = tileMoveDuration;
+	}
+	
+	public Movement(Game game, MCharacter character, List<Node> path) {
+		this(game, character, path, 0.2f);
 	}
 	
 	@Override
@@ -53,7 +64,7 @@ public class Movement extends CharacterAction {
 		
 		if(path == null) return;
 		
-		for(TileMove move:PathUtils.buildPath(path, character, game)){
+		for(TileMove move:PathUtils.buildPath(path, character, game, this.tileMoveDuration)){
 			this.addMove(move);
 			move.setActor(this.actor);
 		}
@@ -63,6 +74,8 @@ public class Movement extends CharacterAction {
 
 	@Override
 	public void doAction(float delta) {
+		
+		delta*=character.getSpeed();
 		
 		if (index >= moves.size()){
 			finished = true;
@@ -93,18 +106,29 @@ public class Movement extends CharacterAction {
 	public static Movement random(Game game, MCharacter character){
 		Vector2 destination = character.getPosition().cpy();
 		int rand = DwarvesManager.random.nextInt(4);
+		System.out.println(rand);
 		switch(rand){
 		case 0:
 			destination.add(1, 0);
 			break;
 		case 1:
 			destination.add(-1, 0);
+			break;
 		case 2:
 			destination.add(0, 1);
+			break;
 		case 3:
 			destination.add(0, -1);
+			break;
 		}
-		return new Movement(game, character, PathUtils.pathToTile(character, destination, game));
+		if(Game.getInstance().getView().getGameplayLayer().getTilemap().isTileBlocking((int)destination.x, (int)destination.y)){
+			return null;
+		}
+		
+		List<Node> path = new ArrayList<Node>();
+		path.add(new Node(destination.x, destination.y));
+		
+		return new Movement(game, character, path, 0.8f);
 	}
 	
 	

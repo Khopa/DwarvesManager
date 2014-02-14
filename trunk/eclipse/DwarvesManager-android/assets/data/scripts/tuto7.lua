@@ -5,7 +5,7 @@ TUTORIAL 7
 --]]
 
 map          = "tuto7.tmx"    -- Map
-music        = "music1.ogg"   -- Musique de départ
+music        = "tuto"   -- Musique de départ
 objective    = 3              -- Objectif en diamants
 progression  = 0              -- Variable de progression
 levelName    = "Tutorial 7"   -- Nom pour stocker les records en ligne
@@ -17,7 +17,7 @@ function init()
 	if dwarf.getLang() == "fr" then
 		dwarf.popup("Tutorial 7 : Une vraie mine", "C'est votre premiere vraie mine !\nRecrutez des nains et mettez en place des\ninfrastructures pour gagner la partie !\n \nSi vous aimez le jeu, n'oubliez pas de poster un commentaire\net d'en parler autour de vous !\nChaque commentaire et telechargement m'encourage a\ncontinuer les mises a jour de cette application !\nMerci !")
 	else
-		dwarf.popup("Tutorial 7 : Your first real mine", "It's your first real mine !\nRecruit dwarves and fulfill their basics needs to achieve victory !\n \nIf you like the game, considerer writing a comment !\nEach comment and download encourages me to continue updating this application ^^\nThank you !")
+		dwarf.popup("Tutorial 7 : Your first real mine", "It's your first real mine !\nRecruit dwarves and fulfill their basics needs to achieve victory !\n \nIf you like the game, considerer writing a comment !\nEach comment and download encourages me\nto continue updating this application ^^\nThank you !")
 	end
 end
 

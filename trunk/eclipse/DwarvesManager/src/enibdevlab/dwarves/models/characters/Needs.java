@@ -22,7 +22,7 @@ public class Needs implements IPersistent {
 	 */
 	private static Random random = new Random();
 	
-	/**
+	/**d
 	 * Besoin Maximum
 	 */
 	public final static int MAX = 40000;

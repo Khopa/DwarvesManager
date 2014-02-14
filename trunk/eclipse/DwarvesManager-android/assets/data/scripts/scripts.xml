@@ -51,4 +51,12 @@
         <title lang = "fr">Niveau 6 : Le Labyrinthe</title>
         <title lang = "en">Level 6 : The Labyrinth</title>
     </script>
+    <script name = "level7.lua" textureID = "14">
+        <title lang = "fr">Niveau 7 : Archeologie</title>
+        <title lang = "en">Level 7 : Archeology</title>
+    </script>
+    <script name = "level8.lua" textureID = "15">
+        <title lang = "fr">Niveau 8 : Forteresse</title>
+        <title lang = "en">Level 8 : Dwarf Fortress</title>
+    </script>
 </scripts>

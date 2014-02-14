@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 
 import enibdevlab.dwarves.controllers.script.DwarvesManagerLuaApi;
 import enibdevlab.dwarves.controllers.script.LevelFile;
+import enibdevlab.dwarves.models.levels.Level;
 import enibdevlab.dwarves.models.misc.IPersistent;
 import enibdevlab.dwarves.views.lang.StringManager;
 import enibdevlab.dwarves.views.scenes.game.GameScene;
@@ -112,6 +113,33 @@ public final class Game implements IPersistent{
 		}
 	}
 	
+	/**
+	 * Crée un niveau aléatoire
+	 * @param gameScene
+	 */
+	public Game(GameScene view) {
+		instance = this;
+		this.view = view;
+		DwarvesManagerLuaApi.init(this);
+		
+		this.rooms = new Rooms(this);
+		this.characters = new Characters(this);
+		this.objects = new Objects(this);
+		this.taskManager = new TaskManager(this);
+		this.bank = new Bank();
+		
+		// Create a random level
+		this.level = new Level(this);
+		
+	}
+	
+	public void update(){
+		
+		this.objects.update();
+		
+	}
+
+
 	/**
 	 * Envoie d'un evenement au script LUA
 	 * @param eventID Indicatif d'evenement

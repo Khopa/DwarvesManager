@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.models.characters;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 
 import enibdevlab.dwarves.models.Entity;
@@ -49,6 +50,16 @@ public abstract class MCharacter extends Entity implements ICharacter, IPersiste
 	protected Item leftHandItem;
 	
 	/**
+	 * Multiplicateur de vitesse de déplacement
+	 */
+	protected float speed;
+	
+	/**
+	 * Delai vitesse avant que ça ne retombe à 1
+	 */
+	protected float speedTimer;
+	
+	/**
 	 * Référence vers le jeu
 	 */
 	protected Game game;
@@ -65,10 +76,16 @@ public abstract class MCharacter extends Entity implements ICharacter, IPersiste
 	 */
 	public MCharacter(Vector2 position){
 		this(position, "Unnammed", "Unnammed");
+		this.speed = 1;
+		this.speedTimer = 0;
 	}
 	
 	public void act(float delta){
-		
+		this.speedTimer -= delta;
+		if(this.speedTimer < delta){
+			this.speed = 1;
+			this.getView().setColor(Color.WHITE);
+		}
 	}
 	
 	/**
@@ -166,6 +183,22 @@ public abstract class MCharacter extends Entity implements ICharacter, IPersiste
 
 	public void setLeftHandItem(Item leftHandItem) {
 		this.leftHandItem = leftHandItem;
+	}
+
+	public float getSpeed() {
+		return speed;
+	}
+
+	public float getSpeedTimer() {
+		return speedTimer;
+	}
+
+	public void setSpeedTimer(float speedTimer) {
+		this.speedTimer = speedTimer;
+	}
+
+	public void setSpeed(float speed) {
+		this.speed = speed;
 	}
 
 

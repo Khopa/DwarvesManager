@@ -48,6 +48,16 @@ public class Loader {
 	public static BodyConfig craftmanConfig;
 	
 	/**
+	 * Configuration du nain enchanteur
+	 */
+	public static BodyConfig enchanterConfig;
+	
+	/**
+	 * Configuration du nain enchanteur
+	 */
+	public static BodyConfig warriorConfig;
+	
+	/**
 	 * Configuration de l'elfe
 	 */
 	public static BodyConfig elf;
@@ -186,6 +196,19 @@ public class Loader {
 		HeadConfig craftmanHead = new HeadConfig(craftmanHeadTileset, new Vector2(0,0));
 		craftmanConfig = new BodyConfig(craftmanBodyTileset, new Vector2(0,0), craftmanHead, dwarfMouth, dwarfEyes, dwarfHand);
 		
+		// Enchanteur
+		Tileset enchanterBodyTileset = new Tileset("data/tileset/dwarf/enchanter_body.png", 128, 128);
+		Tileset enchanterHeadTileset = new Tileset("data/tileset/dwarf/enchanter_head.png", 64, 128);
+		HeadConfig enchanterHead = new HeadConfig(enchanterHeadTileset, new Vector2(0,0));
+		enchanterConfig = new BodyConfig(enchanterBodyTileset, new Vector2(0,0), enchanterHead, dwarfMouth, dwarfEyes, dwarfHand);
+		
+		// Enchanteur
+		Tileset warriorBodyTileset = new Tileset("data/tileset/dwarf/warrior_body.png", 128, 128);
+		Tileset warriorHeadTileset = new Tileset("data/tileset/dwarf/warrior_head.png", 64, 128);
+		HeadConfig warriorHead = new HeadConfig(warriorHeadTileset, new Vector2(0,0));
+		warriorConfig = new BodyConfig(warriorBodyTileset, new Vector2(0,0), warriorHead, dwarfMouth, dwarfEyes, dwarfHand);
+		
+		
 		// Chargement de l'elfe
 		
 		Tileset elfBodyTileset = new Tileset("data/tileset/elf/elf_body.png", 128, 128);
@@ -236,7 +259,7 @@ public class Loader {
 		complaintAtlas = new Tileset("data/sprites/complaintAtlas.png", 32, 32);
 		
 		// Chargement des objets par introspection
-		objectsName = new String[]{"Bed", "TableObject", "Barrel", "Anvil", "Rack", "Counter"};
+		objectsName = new String[]{"Bed", "TableObject", "Barrel", "Anvil", "Rack", "Counter", "Hearth"};
 		objectsPackage = "enibdevlab.dwarves.models.objects.";
 		// On sait que tous les objets ne prennent qu'un Vector2 en parametre de construction
 		Class<?>[] parameters = {Vector2.class};
@@ -256,7 +279,7 @@ public class Loader {
 		// CHARGEMENT DES PIECES
 		
 		// Chargement des objets par introspection
-		charactersName = new String[]{"Miner", "Barman", "Craftman"};
+		charactersName = new String[]{"Miner", "Barman", "Craftman", "Enchanter"};
 		characterPackage = "enibdevlab.dwarves.models.characters.";
 		// On connait les paramètres des rooms (un mapArea)
 		parameters = new Class[]{Vector2.class};

@@ -48,6 +48,7 @@
 	<entry key = "Bartender" content = "Barman"/>
 	<entry key = "Miner"     content = "Mineur"/>
 	<entry key = "Craftsman" content = "Artisan"/>
+	<entry key = "Enchanter" content = "Enchanteur"/>
 	
 	<!-- Rooms -->
 	<entry key = "Dorm"      content = "Dortoir"/>
@@ -61,6 +62,7 @@
 	<entry key = "Table"     content = "Table"/>
 	<entry key = "Barrel"    content = "Fut"/>
 	<entry key = "Counter"   content = "Comptoir"/>
+	<entry key = "Hearth"    content = "Foyer"/>
 	
 	<!-- Items -->
 	<entry key = "Pickaxe"   content = "Pioche"/>

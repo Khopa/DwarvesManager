@@ -1,6 +1,7 @@
 package enibdevlab.dwarves.controllers.actions.animations;
 
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.ParallelAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 
 import enibdevlab.dwarves.models.Direction;
@@ -30,6 +31,27 @@ public class Animation {
 				Eyes.blinkAction(character, 0.2f),
 				Eyes.blinkAction(character, 0.2f),
 				new Eyes(character, false));
+	}
+	
+	/**
+	 * Action Enchanter
+	 */
+	public static SequenceAction enchant(ACharacter character, float duration){
+		return Actions.sequence(
+				new SetDirection(character, Direction.BOTTOM),
+				Actions.delay(duration/12f),
+				new SetDirection(character, Direction.RIGHT),
+				Actions.delay(duration/12f),
+				new SetDirection(character, Direction.LEFT),
+				Actions.delay(duration/12f),
+				new SetDirection(character, Direction.TOP),
+				Actions.delay(duration/12f),
+				new SetDirection(character, Direction.BOTTOM),
+				Actions.parallel(new HandsShake(character, 8f, 25f, duration/3f),
+								 new HandsUp(character, 8f, 25f, duration/3f)),
+				Actions.parallel(new HandsShake(character, 8f, -25f, duration/3f),
+								 new HandsUp(character, 8f, 25f, duration/3f))
+				);	
 	}
 	
 	/**
@@ -105,6 +127,34 @@ public class Animation {
 				Actions.rotateTo(0, .1f),
 				new HandsShake(character, 20f, 11f, 1f, true)
 				);
+	}
+	
+	/**
+	 * Action de miner
+	 */
+	public static ParallelAction mining(ACharacter character, float duration){
+		
+		if(character.getDirection() == Direction.LEFT){
+			return Actions.parallel(
+					new HandsUp(character, 20, 50, duration),
+					new HeadUp(character, 20, 50, duration),
+					new RotatePart(character, character.getRightHandItem(), 20, 40, duration)
+					);
+		}
+		else if(character.getDirection() == Direction.RIGHT){
+			return Actions.parallel(
+					new HandsUp(character, 20, 50, duration),
+					new HeadUp(character, 20, 50, duration),
+					new RotatePart(character, character.getRightHandItem(), -20, -40, duration)
+					);
+		}
+		else{
+			return Actions.parallel(
+					new HandsUp(character, 20, 50, duration),
+					new HeadUp(character, 20, 50, duration)
+					);
+		}
+		
 	}
 	
 	

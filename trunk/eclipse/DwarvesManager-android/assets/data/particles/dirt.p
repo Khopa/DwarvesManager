@@ -1,0 +1,246 @@
+Untitled
+- Delay -
+active: true
+lowMin: 0.0
+lowMax: 0.0
+- Duration - 
+lowMin: 750.0
+lowMax: 750.0
+- Count - 
+min: 0
+max: 50
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 5.0
+highMax: 5.0
+relative: false
+scalingCount: 7
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+scaling3: 1.0
+scaling4: 1.0
+scaling5: 1.0
+scaling6: 0.0
+timelineCount: 7
+timeline0: 0.0
+timeline1: 0.07534247
+timeline2: 0.4178082
+timeline3: 0.45690414
+timeline4: 0.45790413
+timeline5: 0.79452056
+timeline6: 0.94520545
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 500.0
+highMax: 1000.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 0.3
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.66
+timeline2: 1.0
+- Life Offset - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 0.0
+relative: false
+scalingCount: 2
+scaling0: 1.0
+scaling1: 1.0
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- X Offset - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 0.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Y Offset - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 0.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Shape - 
+shape: square
+- Spawn Width - 
+lowMin: -32.0
+lowMax: -32.0
+highMin: 32.0
+highMax: 32.0
+relative: false
+scalingCount: 11
+scaling0: 1.0
+scaling1: 0.0
+scaling2: 1.0
+scaling3: 0.0
+scaling4: 1.0
+scaling5: 0.0
+scaling6: 1.0
+scaling7: 0.0
+scaling8: 1.0
+scaling9: 0.0
+scaling10: 1.0
+timelineCount: 11
+timeline0: 0.0
+timeline1: 0.13013698
+timeline2: 0.21917808
+timeline3: 0.29452056
+timeline4: 0.4178082
+timeline5: 0.48630136
+timeline6: 0.5890411
+timeline7: 0.6849315
+timeline8: 0.75342464
+timeline9: 0.8630137
+timeline10: 0.9931507
+- Spawn Height - 
+lowMin: -32.0
+lowMax: -32.0
+highMin: 32.0
+highMax: 32.0
+relative: true
+scalingCount: 12
+scaling0: 1.0
+scaling1: 0.0
+scaling2: 1.0
+scaling3: 0.0
+scaling4: 1.0
+scaling5: 0.0
+scaling6: 1.0
+scaling7: 0.0
+scaling8: 1.0
+scaling9: 0.0
+scaling10: 1.0
+scaling11: 0.0
+timelineCount: 12
+timeline0: 0.0
+timeline1: 0.11643836
+timeline2: 0.17123288
+timeline3: 0.26712328
+timeline4: 0.369863
+timeline5: 0.48630136
+timeline6: 0.55479455
+timeline7: 0.6712329
+timeline8: 0.739726
+timeline9: 0.8287671
+timeline10: 0.89726025
+timeline11: 1.0
+- Scale - 
+lowMin: 16.0
+lowMax: 16.0
+highMin: 32.0
+highMax: 32.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 0.29411766
+scaling2: 0.078431375
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.34931508
+timeline2: 0.7808219
+- Velocity - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 30.0
+highMax: 100.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 0.6666667
+scaling2: 0.25490198
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.69863015
+timeline2: 1.0
+- Angle - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 360.0
+highMax: 0.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.43150684
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 360.0
+highMax: 360.0
+relative: false
+scalingCount: 4
+scaling0: 1.0
+scaling1: 0.0
+scaling2: 0.0
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.998
+timeline2: 0.999
+timeline3: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 0.19215687
+colors1: 0.19215687
+colors2: 0.19215687
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 6
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 1.0
+scaling3: 0.0
+scaling4: 0.0
+scaling5: 0.0
+timelineCount: 6
+timeline0: 0.0
+timeline1: 0.21917808
+timeline2: 0.760274
+timeline3: 0.998
+timeline4: 0.999
+timeline5: 1.0
+- Options - 
+attached: false
+continuous: false
+aligned: false
+additive: false
+behind: false
+- Image Path -
+D:\DwarvesManager\trunk\eclipse\DwarvesManager-android\assets\data\particles\dirt.png

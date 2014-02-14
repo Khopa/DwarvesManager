@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
 import enibdevlab.dwarves.DwarvesManager;
-import enibdevlab.dwarves.models.Level;
+import enibdevlab.dwarves.models.levels.Level;
 import enibdevlab.dwarves.models.world.MapArea;
 import enibdevlab.dwarves.views.Loader;
 import enibdevlab.dwarves.views.actors.AMapArea;

@@ -1,11 +1,11 @@
 package enibdevlab.dwarves.controllers.actions;
 
+import com.badlogic.gdx.Application.ApplicationType;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 import enibdevlab.dwarves.DwarvesManager;
-import enibdevlab.dwarves.controllers.actions.animations.HandsUp;
-import enibdevlab.dwarves.controllers.actions.animations.HeadUp;
+import enibdevlab.dwarves.controllers.actions.animations.Animation;
 import enibdevlab.dwarves.models.Difficulty;
 import enibdevlab.dwarves.models.Direction;
 import enibdevlab.dwarves.models.Game;
@@ -13,6 +13,7 @@ import enibdevlab.dwarves.models.characters.Complaint;
 import enibdevlab.dwarves.models.characters.Miner;
 import enibdevlab.dwarves.models.items.Pickaxe;
 import enibdevlab.dwarves.views.actors.ADiamondEffect;
+import enibdevlab.dwarves.views.actors.ParticleActor;
 import enibdevlab.dwarves.views.audio.SoundManager;
 import enibdevlab.dwarves.views.world.Tile;
 
@@ -21,7 +22,7 @@ public class Mining extends DwarfAction {
 	/**
 	 * Temps par défaut pour effectuer l'action (multiplié par la dureté du bloc)
 	 */
-	private static float MINING_TIME = .5f;
+	private static float MINING_TIME = .7f;
 	
 	/**
 	 * Progression du minage
@@ -47,6 +48,7 @@ public class Mining extends DwarfAction {
 	 * Réussite ou pas
 	 */
 	protected boolean success;
+	
 	
 	/**
 	 * Action de miner
@@ -95,7 +97,9 @@ public class Mining extends DwarfAction {
 	@Override
 	public void doAction(float delta) {
 		
-		if(progression > this.toMine.getTileProperty("hardness")*MINING_TIME){ // MINING_TIME secondes pour miner un bloc
+		float power = ((Pickaxe) miner.getRightHandItem()).getPower();
+		
+		if(progression > this.toMine.getTileProperty("hardness")*(MINING_TIME/power)){ // MINING_TIME secondes pour miner un bloc
 			int sound = DwarvesManager.random.nextInt(4);
 			SoundManager.play("mined" + Integer.toString(sound));
 			((Pickaxe)(this.dwarf.getRightHandItem())).onUse();
@@ -110,10 +114,7 @@ public class Mining extends DwarfAction {
 		}
 		else{
 			// Planifie l'animation
-			dwarf.getView().addAction(Actions.parallel(
-					new HandsUp(dwarf.getView(), 20, 50, MINING_TIME),
-					new HeadUp(dwarf.getView(), 20, 50, MINING_TIME)
-					));
+			dwarf.getView().addAction(Animation.mining(dwarf.getView(), MINING_TIME/power));
 			// On regarde si on a pas cassé la pioche
 			if(((Pickaxe)(this.dwarf.getRightHandItem())).getDamage()>=100){
 				pickaxeBroke();
@@ -123,7 +124,7 @@ public class Mining extends DwarfAction {
 		}
 		
 		progression += 1;
-		doWaiting(MINING_TIME);
+		doWaiting(MINING_TIME/power);
 	}
 
 	@Override
@@ -139,8 +140,14 @@ public class Mining extends DwarfAction {
 				this.game.getBank().addDiamond();
 				this.game.getView().addActor(new ADiamondEffect());
 			}
-			
 			miner.tileMined();
+			
+			// Effets de particules pour la hype
+			if(!(Gdx.app.getType()==ApplicationType.Android)){
+				int tw = Game.getInstance().getView().getGameplayLayer().getTilemap().getTileWidth();
+				int th = Game.getInstance().getView().getGameplayLayer().getTilemap().getTileHeight();
+				Game.getInstance().getView().getGameplayLayer().addActor(new ParticleActor(toMine.getX()*tw+tw/2f, toMine.getY()*th+th/2f, "dirt"));
+			}
 		}
 		else{
 			

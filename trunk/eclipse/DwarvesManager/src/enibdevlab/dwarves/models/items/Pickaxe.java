@@ -2,6 +2,7 @@ package enibdevlab.dwarves.models.items;
 
 import com.badlogic.gdx.math.Vector2;
 
+import enibdevlab.dwarves.models.items.enchant.Enchanted;
 import enibdevlab.dwarves.views.lang.StringManager;
 
 public class Pickaxe extends Tool {
@@ -17,6 +18,9 @@ public class Pickaxe extends Tool {
 
 	@Override
 	public int getTextureId() {
+		if(Enchanted.class.isAssignableFrom(getEnchantment().getClass())){
+			return 1;
+		};
 		return 0;
 	}
 	

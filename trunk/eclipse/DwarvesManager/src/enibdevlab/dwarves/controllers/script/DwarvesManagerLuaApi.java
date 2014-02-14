@@ -23,6 +23,7 @@ import enibdevlab.dwarves.models.Game;
 import enibdevlab.dwarves.models.characters.Barman;
 import enibdevlab.dwarves.models.characters.Craftman;
 import enibdevlab.dwarves.models.characters.Dwarf;
+import enibdevlab.dwarves.models.characters.Enchanter;
 import enibdevlab.dwarves.models.characters.Miner;
 import enibdevlab.dwarves.models.characters.Needs;
 import enibdevlab.dwarves.views.Loader;
@@ -330,6 +331,9 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 			}
 			else if(job.tojstring().equals("Bartender")){
 				game.getCharacters().addCharacter(new Barman(new Vector2(x.tofloat(), y.tofloat())));
+			}
+			else if(job.tojstring().equals("Enchanter")){
+				game.getCharacters().addCharacter(new Enchanter(new Vector2(x.tofloat(), y.tofloat())));
 			}
 			
 			return null;

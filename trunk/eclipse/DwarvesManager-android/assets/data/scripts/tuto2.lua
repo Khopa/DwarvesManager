@@ -5,7 +5,7 @@ TUTORIAL 2
 --]]
 
 map          = "tuto2.tmx"    -- Map
-music        = "music1.ogg"   -- Musique de départ
+music        = "tuto"   -- Musique de départ
 objective    = 2              -- Objectif en diamants
 progression  = 0              -- Variable de progression
 levelName    = "Tutorial 2"   -- Nom pour stocker les records en ligne
@@ -30,6 +30,7 @@ function setup()
 	dwarf.configure("Miner", true)
 	dwarf.configure("Barman", false)
 	dwarf.configure("Craftman", false)
+	dwarf.configure("Enchanter", false)
 	dwarf.configure("Dorm", false)
 	dwarf.configure("Tavern", false)
 	dwarf.configure("Workshop", true)
@@ -39,6 +40,7 @@ function setup()
 	dwarf.configure("Rack", false)
 	dwarf.configure("Counter", false)
 	dwarf.configure("TableObject", false)
+	dwarf.configure("Hearth", false)
 end
 
 -- Fonction appelée en boucle

@@ -2,6 +2,7 @@ package enibdevlab.dwarves.controllers.pathfinder;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;
 
@@ -194,7 +195,7 @@ public class PathUtils {
 	 * @param game Référence vers le jeu pour l'accés aux données
 	 * @return Séquence d'action correspondant au chemin donné
 	 */
-	public static ArrayList<TileMove> buildPath(ArrayList<Node> path, MCharacter character, Game game){
+	public static ArrayList<TileMove> buildPath(List<Node> path, MCharacter character, Game game, float moveDuration){
 
 		ArrayList<TileMove> output = new ArrayList<TileMove>();
 		
@@ -205,7 +206,7 @@ public class PathUtils {
 		for(Node node:path){
 			x = (int) (node.getPos().x*game.getLevel().getTileXSize());
 			y = (int) (node.getPos().y*game.getLevel().getTileYSize());
-			output.add(new TileMove(game, character, new Vector2(x,y), 0.2f));
+			output.add(new TileMove(game, character, new Vector2(x,y), moveDuration));
 		}
 		
 		return output;

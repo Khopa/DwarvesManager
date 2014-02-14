@@ -56,4 +56,6 @@ public interface IGameObject {
 	 */
 	public Class<? extends AGameObject> getViewType();
 	
+	public void update();
+	
 }

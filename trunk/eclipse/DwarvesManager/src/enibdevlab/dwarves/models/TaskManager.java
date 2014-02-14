@@ -2,6 +2,7 @@ package enibdevlab.dwarves.models;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -62,7 +63,7 @@ public class TaskManager implements IPersistent{
 			Tile tmp = game.getLevel().getTilemap().getTile(0, (int)(tile.x), (int)(tile.y));
 			if(tmp == null) continue;
 			
-			// On ajoute pas les tiles qui sont pas bloquants ou qui ne peuvent être miné
+			// On ajoute pas les tiles qui sont pas bloquants ou qui ne peuvent être minés
 			if(!tmp.isBlocking() || !tmp.isMinable()) continue;
 			
 			Game.getInstance().fireDwarfEvent("newTile");
@@ -117,6 +118,41 @@ public class TaskManager implements IPersistent{
 		miner.setToMine(null);
 		return;
 	}
+	
+	
+	/**
+	 * Retourne le mineur disponible le plus proche du tile donné
+	 * @param tile Tile dont on cherche le mineur disponible le plus proche
+	 * @return Le mineur disponible le plus proche du tile donné
+	 */
+	public Miner nearestAvailableMiner(Vector2 tile){
+		
+		//TODO: TEST (Je crois que ça marche pas)
+		
+		List<Miner> miners = game.getCharacters().getMiner();		
+		List<Vector2> minersPosition = new ArrayList<Vector2>();
+		
+		for(Miner miner:miners){
+			if(miner.getToMine()==null){ // mineur dispo
+				minersPosition.add(miner.getPosition());
+			}
+		}
+		
+		if(!minersPosition.isEmpty()){
+			Collections.sort(minersPosition, new VectorDistanceToPointComparator((int)tile.x, (int)tile.y));
+			for(Miner miner:miners){
+				if(miner.getPosition().equals(minersPosition.get(minersPosition.size()-1))){
+					return miner;
+				}
+			}
+		}
+		else{
+			return null;
+		}
+		return null;
+		
+	}
+	
 	
 	/**
 	 * Assignation d'un tile différent de celui donné en paramètre au mineur

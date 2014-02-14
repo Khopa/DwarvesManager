@@ -99,7 +99,7 @@ public class GameScene extends Stage{
 	 * 
 	 * Création d'une nouvelle partie
 	 * 
-	 * @param dw Référence vers le jeu
+	 * @param gdxGame Référence vers le jeu
 	 */
 	public GameScene(DwarvesManager gdxGame, LevelFile script){
 		PAUSED = false;
@@ -118,7 +118,7 @@ public class GameScene extends Stage{
 	 * 
 	 * Chargement d'une partie
 	 * 
-	 * @param dw Référence vers le jeu
+	 * @param gdxGame Référence vers le jeu
 	 */
 	public GameScene(DwarvesManager gdxGame, String path){
 		PAUSED = false;
@@ -136,6 +136,21 @@ public class GameScene extends Stage{
 		
 		this.getGame().getLevel().setup();
 	}
+	
+	/**
+	 * Création d'une nouvelle partie avec un niveau aléatoire
+	 */
+	public GameScene(DwarvesManager gdxGame){
+		PAUSED = false;
+		this.gdxGame = gdxGame;
+		this.setGame(new Game(this));
+		this.listener = new GameplayScreenListener(this);
+		
+		this.init();
+		
+		// 
+	}
+	
 	
 	/**
 	 * 
@@ -374,6 +389,13 @@ public class GameScene extends Stage{
 		}
 	}
 
+	
+	
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+		this.game.update();
+	}
 
 
 

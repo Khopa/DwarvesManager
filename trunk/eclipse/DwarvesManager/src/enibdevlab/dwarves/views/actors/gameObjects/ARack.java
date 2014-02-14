@@ -3,6 +3,7 @@ package enibdevlab.dwarves.views.actors.gameObjects;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import enibdevlab.dwarves.DwarvesManager;
+import enibdevlab.dwarves.models.items.Pickaxe;
 import enibdevlab.dwarves.models.objects.GameObject;
 import enibdevlab.dwarves.models.objects.ItemContainer;
 import enibdevlab.dwarves.models.objects.Rotation;
@@ -33,7 +34,7 @@ public class ARack extends AGameObject {
 			x += w/3;
 			for(int i = 0; i < ((ItemContainer)(this.model)).getItems().size(); i++){
 				y += w/((ItemContainer)(this.model)).getCapacity();
-				batch.draw(Loader.itemAtlas.getTile(0),
+				batch.draw(Loader.itemAtlas.getTile(((Pickaxe)((ItemContainer)(this.model)).getItems().get(i)).getTextureId()),
 						   x, y, w/2, 0, w, h, .5f, .5f, 90);
 			}
 		}
@@ -42,7 +43,7 @@ public class ARack extends AGameObject {
 			y += h/3;
 			for(int i = 0; i < ((ItemContainer)(this.model)).getItems().size(); i++){
 				x += w/((ItemContainer)(this.model)).getCapacity();
-				batch.draw(Loader.itemAtlas.getTile(0),
+				batch.draw(Loader.itemAtlas.getTile(((Pickaxe)((ItemContainer)(this.model)).getItems().get(i)).getTextureId()),
 						   x, y, 0, 0, w, h, .5f, .5f, this.getRotation());
 			}
 		}

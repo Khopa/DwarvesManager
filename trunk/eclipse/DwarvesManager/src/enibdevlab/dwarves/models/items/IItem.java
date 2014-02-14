@@ -15,6 +15,6 @@ public interface IItem {
 	/**
 	 * Effet à l'utilisation de l'objet
 	 */
-	public void onUse();
+	public float onUse();
 	
 }

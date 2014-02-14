@@ -288,4 +288,8 @@ public abstract class GameObject extends Entity implements IGameObject, IPersist
 		return obj;
 	}
 	
+	@Override
+	public void update() {	
+	}
+	
 }

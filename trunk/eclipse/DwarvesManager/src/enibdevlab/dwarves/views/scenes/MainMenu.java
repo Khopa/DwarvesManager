@@ -46,7 +46,8 @@ public class MainMenu extends Stage {
 		this.addAction(Actions.color(new Color(0,0,0,0)));
 		this.addAction(Actions.color(new Color(1,1,1,1), 1f));
 		
-		MusicManager.stop(); // stop musique
+		MusicManager.stop();
+		MusicManager.playMusic("menu");
 	}
 	
 	/**

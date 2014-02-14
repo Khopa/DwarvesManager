@@ -35,8 +35,9 @@ public class Beer extends Item {
 		return(quantity<=0);
 	}
 	
-	public void onUse(){
+	public float onUse(){
 		this.quantity --;
+		return 0f;
 	}
 
 

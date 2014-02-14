@@ -118,7 +118,7 @@ public class DwarvesManagerScript extends LuaScript{
 	}
 
 	public String getMusicFileName() {
-		return "data/music/" + context.get("music").tojstring();
+		return context.get("music").tojstring();
 	}
 
 }
