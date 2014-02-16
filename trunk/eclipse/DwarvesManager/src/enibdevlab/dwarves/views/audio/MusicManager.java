@@ -2,6 +2,7 @@ package enibdevlab.dwarves.views.audio;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.khopa.skhopa.controllers.ConfigurationManager;
 
 /**
  * 
@@ -12,7 +13,6 @@ import com.badlogic.gdx.audio.Music;
  */
 public class MusicManager {
 
-	
 	protected static boolean ENABLED = true;
 	
 	/**
@@ -35,6 +35,10 @@ public class MusicManager {
 	 */
 	protected static String format = "ogg";
 	
+	
+	public static void init(){
+		volume = ConfigurationManager.getInstance().getFloatValue("musicVolume");
+	}
 	
 	public static void setVolume(float newValue){
 		assert (newValue >=0.0 && newValue <=1.0);

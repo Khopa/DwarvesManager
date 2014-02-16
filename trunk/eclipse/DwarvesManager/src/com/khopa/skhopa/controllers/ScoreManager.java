@@ -1,5 +1,7 @@
 package com.khopa.skhopa.controllers;
 
+import java.util.List;
+
 import com.khopa.skhopa.models.Score;
 
 
@@ -25,7 +27,7 @@ public abstract class ScoreManager {
 	}
 	
 	/**
-	 * Submit score online
+	 * Submit score
 	 * @param score Score object to submit
 	 * @return Whether the operation worked or not
 	 */
@@ -36,7 +38,7 @@ public abstract class ScoreManager {
 	 * @param level Level name or String ID
 	 * @param limit Limit of score (E.g : only the 10 best score, if < 0, all the scores)
 	 */
-	public abstract Score getLevelScore(String level, int limit);
+	public abstract List<Score> getLevelScore(String level, int limit);
 
 	/**
 	 * Return the best score from the given author on the given level
@@ -49,7 +51,7 @@ public abstract class ScoreManager {
 	/**
 	 * Get ScoreManager instance
 	 */
-	public ScoreManager getInstance(){
+	public static ScoreManager getInstance(){
 		return instance;
 	}
 	

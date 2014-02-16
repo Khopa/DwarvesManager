@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.khopa.skhopa.controllers.ConfigurationManager;
 
 public class SoundManager {
 
@@ -38,6 +39,7 @@ public class SoundManager {
 	 */
 	public static void init(){
 		soundDictionnary = new HashMap<String, Sound>();
+		volume = ConfigurationManager.getInstance().getFloatValue("sfxVolume");
 	}
 	
 	/**

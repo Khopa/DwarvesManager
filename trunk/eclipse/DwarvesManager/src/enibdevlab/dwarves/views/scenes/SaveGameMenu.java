@@ -1,11 +1,8 @@
 package enibdevlab.dwarves.views.scenes;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -15,10 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import enibdevlab.dwarves.DwarvesManager;
 import enibdevlab.dwarves.controllers.GameClickListener;
-import enibdevlab.dwarves.controllers.cloud.Cloud;
-import enibdevlab.dwarves.controllers.cloud.UploadThread;
 import enibdevlab.dwarves.models.Game;
-import enibdevlab.dwarves.views.actors.WaitingEffect;
 
 public class SaveGameMenu extends Stage {
 
@@ -26,11 +20,8 @@ public class SaveGameMenu extends Stage {
 	private Button      cancel;
 	private TextField   filename;
 	private Table       table;
-	private CheckBox    saveOnCloud;
 	private Label       error;
 	
-	private WaitingEffect effect;
-	private UploadThread thread;
 	
 	private static final int WAITINGSERVER = 1;
 	private static final int NORMAL = 0;
@@ -58,7 +49,6 @@ public class SaveGameMenu extends Stage {
 		this.cancel = new ImageButton(new TextureRegionDrawable(MainMenu.buttonsImg.getTile(12)),
                       new TextureRegionDrawable(MainMenu.buttonsImg.getTile(14)));
 		
-		this.saveOnCloud = new CheckBox("Sauvegarde sur le Cloud", skin);
 		this.error = new Label("", skin);
 		
 		this.addActor(this.table);
@@ -77,49 +67,11 @@ public class SaveGameMenu extends Stage {
 				game.setFilename(filename.getText());
 				game.saveAsXmlElement();
 				
-				if(saveOnCloud.isChecked()){
-					FileHandle file = Gdx.files.external("DwarvesManager/Saves/"+game.getFilename()+".xml");
-					thread = new UploadThread(file,Cloud.instance.getUserName());
-					thread.start();
-					effect = new WaitingEffect("Sauvegarde de la partie sur serveur");
-					addActor(effect);
-					state = WAITINGSERVER;
-				}
-				else{
-					DwarvesManager.getInstance().setStage(previousStage);
-				}
+				DwarvesManager.getInstance().setStage(previousStage);
 			}
 		});
 		
 		
-	}
-	
-	@Override
-	public void act() {
-		super.act();
-		if(state == WAITINGSERVER){
-			if(thread != null && !thread.isAlive()){
-				this.state = NORMAL;
-				this.effect.remove();
-				if(thread.hasSuceeded()){
-					this.build2();
-				}
-				else{
-					error = new Label("Impossible de se connecter au serveur", DwarvesManager.getSkin());
-					build();
-				}
-			}
-		}
-	}
-	
-	private void build2() {
-		this.table.clear();
-		this.table.defaults().space(10);
-		this.table.add("Sauvegarde mise en ligne");
-		this.table.row();
-		this.table.add(cancel);
-		this.table.pack();
-		this.table.setPosition(DwarvesManager.getWidth()/2-table.getWidth()/2, DwarvesManager.getHeight()/2-table.getHeight()/2);
 	}
 
 	private void build() {
@@ -135,13 +87,6 @@ public class SaveGameMenu extends Stage {
 		buttonTable.defaults().space(25);
 		buttonTable.add(save);
 		buttonTable.add(cancel);
-		
-		if(Cloud.instance.getUserName() != ""){
-			this.table.add(saveOnCloud);
-			saveOnCloud.setChecked(true);
-			this.table.row();
-		}
-		game.log(Cloud.instance.getUserName());
 		
 		
 		this.table.add(buttonTable);

@@ -10,13 +10,15 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Timer;
+import com.khopa.skhopa.controllers.ConfigurationManager;
 
-import enibdevlab.dwarves.controllers.cloud.Cloud;
+import enibdevlab.dwarves.controllers.manager.DwarvesConfigurationManager;
+import enibdevlab.dwarves.controllers.manager.DwarvesScoreManager;
 import enibdevlab.dwarves.controllers.script.LevelFile;
 import enibdevlab.dwarves.views.Loader;
+import enibdevlab.dwarves.views.audio.MusicManager;
 import enibdevlab.dwarves.views.audio.SoundManager;
 import enibdevlab.dwarves.views.lang.StringManager;
-import enibdevlab.dwarves.views.scenes.LogoScreen;
 import enibdevlab.dwarves.views.scenes.MainMenu;
 import enibdevlab.dwarves.views.scenes.game.GameScene;
 
@@ -65,15 +67,6 @@ public class DwarvesManager extends Game {
 	 */
 	public static Random random = new Random();
 	
-	/**
-	 * Big font
-	 */
-	public static boolean bigFont = false;
-	
-	/**
-	 * Particles
-	 */
-	public static boolean particles = true;
 	
 	/**
 	 * Timer
@@ -96,20 +89,21 @@ public class DwarvesManager extends Game {
 		System.out.println(width);
 		System.out.println(height);
 		
+		new DwarvesConfigurationManager();
+		MusicManager.init();
 		StringManager.init();
 		Loader.init();
 		SoundManager.init();
-		Cloud.init();
 		LevelFile.init();
-		Gdx.input.setCatchBackKey(true);
+		new DwarvesScoreManager();
 		
-		if(width >= 768){
+		Gdx.input.setCatchBackKey(true);
+		System.out.println(ConfigurationManager.getInstance());
+		if(ConfigurationManager.getInstance().getBooleanValue("bigFont")){
 			skin = new Skin(Gdx.files.internal("data/uiskinBig.json"));
-			bigFont = true;
 		}
 		else{
 			skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-			bigFont = false;
 		}
 		
 		this.setStage(new MainMenu(this));
@@ -201,12 +195,5 @@ public class DwarvesManager extends Game {
 		super.resume();
 		GameScene.PAUSED = false;
 	}
-	
-	public static boolean isBigFont() {
-		return bigFont;
-	}
 
-	public static void setBigFont(boolean bigFont) {
-		DwarvesManager.bigFont = bigFont;
-	}
 }

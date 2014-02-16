@@ -68,6 +68,10 @@
 	<entry key = "Pickaxe"   content = "Pickaxe"/>
 	<entry key = "Beer"      content = "Beer"/>
 	
+	<!--  Score -->
+	<entry key = "BestScores" content = "Best times :"/>
+	
+	
 
 	
 	<!-- Scenarios -->

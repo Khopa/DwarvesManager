@@ -4,8 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
-import enibdevlab.dwarves.DwarvesManager;
+import com.khopa.skhopa.controllers.ConfigurationManager;
 
 public class ParticleActor extends Actor {
 	
@@ -16,7 +15,7 @@ public class ParticleActor extends Actor {
 	
 	public ParticleActor(float x, float y, String particle){
 		setPosition(x, y);
-		if(DwarvesManager.particles){
+		if(ConfigurationManager.getInstance().getBooleanValue("particle")){
 			effect = new ParticleEffect();
 			effect.load(Gdx.files.internal("data/particles/"+particle+".p"),Gdx.files.internal("data/particles"));
 			effect.start();

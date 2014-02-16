@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.khopa.skhopa.controllers.ConfigurationManager;
 
 import enibdevlab.dwarves.DwarvesManager;
 import enibdevlab.dwarves.controllers.GameClickListener;
@@ -60,13 +61,13 @@ public class OptionMenu extends Stage {
 		
 		this.bigFontCheckbox = new CheckBox(" Enable Big Font", skin);
 		this.bigFontCheckbox.setSize(DwarvesManager.getWidth()/7, DwarvesManager.getHeight()/7);
-		if(DwarvesManager.isBigFont()){
+		if(ConfigurationManager.getInstance().getBooleanValue("bigFont")){
 			this.bigFontCheckbox.setChecked(true);
 		}
 		
 		this.particleEffect = new CheckBox(" Enable Particles", skin);
 		this.particleEffect.setSize(DwarvesManager.getWidth()/7, DwarvesManager.getHeight()/7);
-		if(DwarvesManager.particles){
+		if(ConfigurationManager.getInstance().getBooleanValue("particle")){
 			this.particleEffect.setChecked(true);
 		}
 		
@@ -75,6 +76,7 @@ public class OptionMenu extends Stage {
 		this.ok.addListener(new GameClickListener(null){
 			public void clicked (InputEvent event, float x, float y) {
 				DwarvesManager.getInstance().setStage(previousStage);
+				ConfigurationManager.getInstance().save();
 			}
 		});
 		
@@ -82,6 +84,7 @@ public class OptionMenu extends Stage {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				MusicManager.setVolume(((Slider)(actor)).getValue());
+				ConfigurationManager.getInstance().setValue("musicVolume", ((Slider)(actor)).getValue());
 			}
 		});
 		
@@ -89,6 +92,7 @@ public class OptionMenu extends Stage {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				SoundManager.setVolume(((Slider)(actor)).getValue());
+				ConfigurationManager.getInstance().setValue("sfxVolume", ((Slider)(actor)).getValue());
 			}
 		});
 		
@@ -98,11 +102,11 @@ public class OptionMenu extends Stage {
 				CheckBox checkbox = (CheckBox) actor;
 				if(checkbox.isChecked()){
 					DwarvesManager.setSkin(new Skin(Gdx.files.internal("data/uiskinBig.json")));
-					DwarvesManager.setBigFont(true);
+					ConfigurationManager.getInstance().setValue("bigFont", true);
 				}
 				else{
 					DwarvesManager.setSkin(new Skin(Gdx.files.internal("data/uiskin.json")));
-					DwarvesManager.setBigFont(false);
+					ConfigurationManager.getInstance().setValue("bigFont", false);
 				}
 			}
 		});
@@ -112,10 +116,10 @@ public class OptionMenu extends Stage {
 			public void changed(ChangeEvent event, Actor actor) {
 				CheckBox checkbox = (CheckBox) actor;
 				if(checkbox.isChecked()){
-					DwarvesManager.particles = true;
+					ConfigurationManager.getInstance().setValue("particle", true);
 				}
 				else{
-					DwarvesManager.particles = false;
+					ConfigurationManager.getInstance().setValue("particle", false);
 				}
 			}
 		});

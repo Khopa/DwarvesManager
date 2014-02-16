@@ -1,7 +1,5 @@
 package enibdevlab.dwarves.views.scenes;
 
-import java.util.Vector;
-
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -18,11 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import enibdevlab.dwarves.DwarvesManager;
 import enibdevlab.dwarves.controllers.GameClickListener;
-import enibdevlab.dwarves.controllers.cloud.Cloud;
-import enibdevlab.dwarves.controllers.cloud.DownloadThread;
 import enibdevlab.dwarves.controllers.script.LevelFile;
 import enibdevlab.dwarves.views.Loader;
-import enibdevlab.dwarves.views.actors.WaitingEffect;
 import enibdevlab.dwarves.views.lang.StringManager;
 
 /**
@@ -49,15 +44,6 @@ public class LoadGameMenu extends Stage {
 	protected ScrollPane scroll;
 	protected List list;
 	private Label error;
-	
-	private WaitingEffect effect;
-	private DownloadThread thread;
-	private String toLoad;
-	
-	private int state;
-	
-	private static final int WAITINGSERVER = 0;
-	private static final int NORMAL = 1;
 	
 	// Charge on une partie
 	protected boolean load = false;
@@ -96,20 +82,7 @@ public class LoadGameMenu extends Stage {
 		this.table = new Table(skin);
 		
 		if(load){
-			
-			if(Cloud.instance.getUserName()!=""){
-				Vector<String> vect = Cloud.instance.getSaves(Cloud.instance.getUserName());
-				String[] tmp = new String[vect.size()];
-				int i = 0;
-				for(String str:vect){
-					tmp[i] = str;
-					i++;
-				}
-				this.list = new List(tmp, skin);
-			}
-			else{
-				this.list = new List(Loader.getSavegames(), skin);
-			}
+			this.list = new List(Loader.getSavegames(), skin);
 		}
 		else{
 			String[] str = new String[LevelFile.getLevels().size()];
@@ -139,51 +112,20 @@ public class LoadGameMenu extends Stage {
 		this.ok.addListener(new GameClickListener(null){
 			public void clicked (InputEvent event, float x, float y) {
 				
-				if(Cloud.instance.getUserName()!="" && load){
-					toLoad = list.getSelection();
-					thread = new DownloadThread(toLoad,Cloud.instance.getUserName());
-					thread.start();
-					effect = new WaitingEffect("Telechargement de la partie sur serveur");
-					addActor(effect);
-					state = WAITINGSERVER;
-				}
+				if(list.getSelection()==null) return;
+				
+				if(load) DwarvesManager.getInstance().loadGame(list.getSelection());
 				else{
-					if(list.getSelection()==null) return;
-					if(load) DwarvesManager.getInstance().loadGame(list.getSelection());
-					else{
-						String selection = list.getSelection();
-						for(LevelFile level:LevelFile.getLevels()){
-							if(level.getName().equals(selection)){
-								DwarvesManager.getInstance().newGame(level);
-								return;
-							}
+					String selection = list.getSelection();
+					for(LevelFile level:LevelFile.getLevels()){
+						if(level.getName().equals(selection)){
+							DwarvesManager.getInstance().newGame(level);
+							return;
 						}
 					}
 				}
-				
-				
-				
 			}
 		});
-	}
-	
-	
-	@Override
-	public void act() {
-		super.act();
-		if(state == WAITINGSERVER){
-			if(thread != null && !thread.isAlive()){
-				this.state = NORMAL;
-				this.effect.remove();
-				if(thread.hasSuceeded()){
-					DwarvesManager.getInstance().loadGame(toLoad);
-				}
-				else{
-					error.setText("Impossible de se connecter au serveur");
-					build();
-				}
-			}
-		}
 	}
 	
 	private void build() {

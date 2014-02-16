@@ -105,7 +105,7 @@ function onEvent(id, p1, p2)
 		if dwarf.getLang() == "fr" then
 			dwarf.popup("Creer la piece", "Vous devez maintenant definir l'emplacement\nde la piece en faisant glisser votre\ndoigt sur l'ecran.\n \nEssayez de faire une piece\nd'au moins 3x2 blocs")
 		else
-			dwarf.popup("Create the room", "You must know define the room area.\nUse your finger to form it.\n \nIt should be at least 3x2 blocks large.")
+			dwarf.popup("Create the room", "You must now define the room area.\nUse your fingers to form it.\n \nIt should be at least 3x2 blocks large.")
 		end
 		dwarf.moveCamera(13,4,0.5) 
 		progression = 5

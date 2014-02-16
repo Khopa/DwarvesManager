@@ -1,6 +1,6 @@
 package enibdevlab.dwarves.views.scenes;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,10 +11,11 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.khopa.skhopa.controllers.ScoreManager;
+import com.khopa.skhopa.models.Score;
 
 import enibdevlab.dwarves.DwarvesManager;
 import enibdevlab.dwarves.controllers.GameClickListener;
-import enibdevlab.dwarves.controllers.cloud.Cloud;
 import enibdevlab.dwarves.controllers.script.LevelFile;
 import enibdevlab.dwarves.models.Game;
 import enibdevlab.dwarves.views.actors.AImage;
@@ -27,17 +28,24 @@ public class Win extends Stage{
 	protected static TextureRegion img = new TextureRegion(new Texture("data/sprites/victory.png"));
 
 	public Win(Game game){
-		this.game = game;
 		
+		this.game = game;
+
+		/**
+		 * Soumission du score
+		 */
+		Score score = new Score("local", game.getLevel().getLevelName(), (int)game.getLevel().getElapsedTime());		
+		ScoreManager.getInstance().submit(score);
+		
+		/**
+		 * Creation de l'interface
+		 */
 		MusicManager.stop();
 		
 		AImage win = new AImage(img, DwarvesManager.getWidth()/2,
 				  					 DwarvesManager.getHeight()/2);
 		
-		if(Cloud.instance.getUserName() == ""){
-			win.setY(2f/3f*DwarvesManager.getHeight());
-		}
-		
+		win.setY(4f/5f*DwarvesManager.getHeight());
 		win.setScale(0.1f);
 		win.addAction(Actions.sequence(
 				Actions.parallel(
@@ -56,6 +64,19 @@ public class Win extends Stage{
 		Table table = new Table(DwarvesManager.getSkin());
 		table.defaults().space(30);
 		
+		Table scores = new Table(DwarvesManager.getSkin());
+		table.defaults().space(30);
+		
+		// Get the 3 best scores :
+		List<Score> bestScores = ScoreManager.getInstance().getLevelScore(game.getLevel().getLevelName(), 3);
+		System.out.println("Len : " + String.valueOf(bestScores.size()));
+		for(Score sco:bestScores){
+			scores.add(formatScore(sco.getScore()));
+			scores.row();
+			System.out.println(formatScore(sco.getScore()));
+		}
+	
+		
 		Table buttons = new Table(DwarvesManager.getSkin());
 		buttons.defaults().space(30);
 		
@@ -71,46 +92,27 @@ public class Win extends Stage{
 			buttons.add(next);
 		}
 		
-		if(Cloud.instance.getUserName() != ""){
-			Table records = new Table(DwarvesManager.getSkin());
-			records.defaults().space(30);
-			Table list = new Table(DwarvesManager.getSkin());
-			list.defaults().space(30);
-			
-			Cloud.instance.addRecord(game.getLevel().getLevelName(),
-									 Cloud.instance.getUserName(),
-									 game.getLevel().getFormattedElapsedTime(true)
-									 );
-			
-			records.add("Meilleurs Temps :");
-			records.row();
-			
-			ArrayList<ArrayList<String>> listRecords = Cloud.instance.getRecords(game.getLevel().getLevelName(), 5);
-			for(ArrayList<String> record:listRecords){
-				for(String data:record){
-					list.add(data);
-				}
-				list.row();
-			}
-			int i = 5;
-			while(i-listRecords.size()>0){
-				list.add(" ??? ");
-				list.add(" ??:??:?? ");
-				list.row();
-				i--;
-			}
-			
-			records.add(list);
-			table.add(records);
-			table.row();
-		}
 		
+		Table scoresH = new Table(DwarvesManager.getSkin());
+		scoresH.defaults().space(30);
+		
+		scoresH.add(StringManager.getString("BestScores"));
+		scoresH.add(scores);
+		
+		table.add(scoresH).center();
+		table.row();
 		table.add(StringManager.getString("YourTime") + game.getLevel().getFormattedElapsedTime());
 		table.row();
 		table.add(buttons).center();
 		table.pack();
 		table.setPosition(DwarvesManager.getWidth()/2-table.getWidth()/2, DwarvesManager.getHeight()/2-table.getHeight()/2);
 		this.addActor(table);
+		
+		
+		
+		/**
+		 * Listeners
+		 */
 		
 		menu.addListener(new GameClickListener(game) {
 			@Override
@@ -131,6 +133,20 @@ public class Win extends Stage{
 		this.addAction(Actions.color(new Color(0,0,0,0)));
 		this.addAction(Actions.color(new Color(1,1,1,1), 2f));
 		
+	}
+	
+	private static String formatScore(float time){
+		float elapsedTime = time;
+		int seconds = (int) elapsedTime;
+		int minutes = (int) Math.floor(elapsedTime/60);
+		
+		seconds-= minutes*60;
+		int hours = minutes/60;
+		minutes -= hours*60;
+		if(hours > 0){
+			return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+		}
+		else return String.format("%02d:%02d", minutes, seconds);
 	}
 	
 	

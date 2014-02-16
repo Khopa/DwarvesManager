@@ -119,9 +119,9 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "DwarvesManager";
 		cfg.useGL20 = false;
-		cfg.width = (int)width;
-		cfg.height = (int)height;
-		cfg.fullscreen = true;
+		cfg.width = (int)800;
+		cfg.height = (int)600;
+		cfg.fullscreen = false;
 		new LwjglApplication(new DwarvesManager(), cfg);
 		
 	}
