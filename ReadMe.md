@@ -1,7 +1,7 @@
 Dwarves Manager (Android/Desktop game)
 --------------------------------------
 
-<a href="url"><img src="http://imagizer.imageshack.us/a/img198/1917/pmrx.png" align="left" height="350"></a>
+<a href="url"><img src="http://imagizer.imageshack.us/a/img198/1917/pmrx.png" align="center" height="350"></a>
 
 *Description :*
 
