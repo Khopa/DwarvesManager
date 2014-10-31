@@ -5,8 +5,8 @@ Dwarves Manager (Android/Desktop game)
 
 **Downloads :**
 
-[Download Android app on Google Play](https://play.google.com/store/apps/details?id=enibdevlab.dwarves&hl=en)
-[Download Desktop app on Itch.io](http://khopa.itch.io/dwarves-manager)
+- [Download Android app on Google Play](https://play.google.com/store/apps/details?id=enibdevlab.dwarves&hl=en)
+- [Download Desktop app on Itch.io](http://khopa.itch.io/dwarves-manager)
 
 
 **Description :**
