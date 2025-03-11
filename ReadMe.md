@@ -3,18 +3,11 @@ Dwarves Manager (Android/Desktop game)
 
 ![image](https://user-images.githubusercontent.com/2546901/180333424-4e52671b-50b6-48de-b3f9-14c450d2f78e.png)
 
-<div style="display: inline-flex; align-items: center;">
-  <!-- Video Thumbnail -->
-  <a href="https://www.youtube.com/watch?v=m_BUnHn5pdk" target="_blank" style="display: inline-block;">
-    <img src="https://img.youtube.com/vi/m_BUnHn5pdk/0.jpg" style="width: 100%; display: block;">
-  </a>
+***
 
-  <!-- Play Button -->
-  <a href="https://www.youtube.com/watch?v=m_BUnHn5pdk" target="_blank" style="display: inline-block;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_play_button_icon_%282013%E2%80%932017%29.svg" 
-         style="width: 50px; height: auto; margin-left: 5px;">
-  </a>
-</div>
+https://github.com/user-attachments/assets/c37a2131-cff4-44f0-9f98-0bdc16e8dbba
+
+***
 
 **Downloads :**
 
