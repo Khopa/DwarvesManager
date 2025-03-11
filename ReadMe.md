@@ -3,6 +3,12 @@ Dwarves Manager (Android/Desktop game)
 
 ![image](https://user-images.githubusercontent.com/2546901/180333424-4e52671b-50b6-48de-b3f9-14c450d2f78e.png)
 
+<div align="left">
+      <a href="https://www.youtube.com/watch?v=m_BUnHn5pdk">
+         <img src="https://img.youtube.com/vi/m_BUnHn5pdk/0.jpg" style="width:100%;">
+      </a>
+</div>
+
 **Downloads :**
 
 - [Download Android app on Google Play](https://play.google.com/store/apps/details?id=enibdevlab.dwarves&hl=en)
