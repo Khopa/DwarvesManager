@@ -28,6 +28,7 @@ public class Win extends Stage{
 	protected static TextureRegion img = new TextureRegion(new Texture("data/sprites/victory.png"));
 
 	public Win(Game game){
+		super(enibdevlab.dwarves.DwarvesManager.newViewport());
 		
 		this.game = game;
 

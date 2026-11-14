@@ -13,7 +13,7 @@ import enibdevlab.dwarves.DwarvesManager;
  * Gestionnaire de configuration pour Dwarves Manager 
  * (ou pour tout jeu libgdx en fait)
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class DwarvesConfigurationManager extends ConfigurationManager {
@@ -30,7 +30,7 @@ public class DwarvesConfigurationManager extends ConfigurationManager {
 	
 	@Override
 	public void save() {
-		FileHandle file = Gdx.files.external(filePath);
+		FileHandle file = Gdx.files.local(filePath);
 		
 		this.root = new Element("config", null);
 		Element floats   = new Element("floats",null);
@@ -79,7 +79,7 @@ public class DwarvesConfigurationManager extends ConfigurationManager {
 	@Override
 	public void load() {
 		XmlReader reader = new XmlReader();
-		FileHandle file = Gdx.files.external(filePath);
+		FileHandle file = Gdx.files.local(filePath);
 		if(!file.exists()){ // Cree le fichier s'il n'existe pas
 			createNewConfigurationFile(file);
 			firstConfig();
@@ -135,7 +135,7 @@ public class DwarvesConfigurationManager extends ConfigurationManager {
 	}
 	
 	/**
-	 * Configure pour la première fois le jeu (valeurs par defaut)
+	 * Configure pour la premiÃ¨re fois le jeu (valeurs par defaut)
 	 */
 	private void firstConfig(){
 		

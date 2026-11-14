@@ -21,7 +21,7 @@ import enibdevlab.dwarves.views.scenes.SaveGameMenu;
  * 
  * Menu de pause du jeu
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GameMenu extends Window {

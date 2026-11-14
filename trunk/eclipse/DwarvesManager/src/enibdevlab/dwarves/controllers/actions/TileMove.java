@@ -16,7 +16,7 @@ import enibdevlab.dwarves.views.actors.characters.ACharacter;
  * 
  * Bouge le personnage d'un tile
  * 
- * @author ClÈment Perreau
+ * @author Cl√©ment Perreau
  *
  */
 public class TileMove extends CharacterAction {
@@ -35,17 +35,17 @@ public class TileMove extends CharacterAction {
 	protected float start;
 	
 	/**
-	 * DurÈe du mouvement pour l'interpolation
+	 * Dur√©e du mouvement pour l'interpolation
 	 */
 	protected float duration;
 	
 	/**
-	 * Position de dÈpart de l'acteur (en px)
+	 * Position de d√©part de l'acteur (en px)
 	 */
 	private float startX;
 	
 	/**
-	 * Position de dÈpart de l'acteur (en px)
+	 * Position de d√©part de l'acteur (en px)
 	 */
 	private float startY;
 	
@@ -60,7 +60,7 @@ public class TileMove extends CharacterAction {
 	private float endY;
 	
 	/**
-	 * BloquÈ
+	 * Bloqu√©
 	 */
 	private boolean stuck = false;
 	
@@ -98,7 +98,7 @@ public class TileMove extends CharacterAction {
 		else if(state.contains(MOVING)){
 			float percent = start/duration; 
 			if(percent >= 1.0) percent = 1.0f;
-			// DÈplace Effectivement le personnage
+			// D√©place Effectivement le personnage
 			actor.setPosition(startX + (endX - startX) * percent, startY + (endY - startY) * percent);
 			start += delta;
 			if(percent >= 1.0){
@@ -120,14 +120,14 @@ public class TileMove extends CharacterAction {
 	
 	public void check(){
 		
-		// VÈrifier si un nain n'est pas dÈj‡ sur ce tile ou en train de se dÈplacer dessus
+		// V√©rifier si un nain n'est pas d√©j√† sur ce tile ou en train de se d√©placer dessus
 		
 		for(MCharacter chara:this.game.getCharacters().getCharacters()){
 			
 			if(chara == this.character) continue;
 			
-			// NB : On ne gËre plus les collisions entre personnages
-			// (trop de problËme, beaucoup de situations ou les nains se bloquaient dans les couloirs Ètroits)
+			// NB : On ne g√®re plus les collisions entre personnages
+			// (trop de probl√®me, beaucoup de situations ou les nains se bloquaient dans les couloirs √©troits)
 			
 			/*Vector2 nextTile = chara.getNextTile();
 			if(nextTile != null){
@@ -160,7 +160,7 @@ public class TileMove extends CharacterAction {
 
 	@Override
 	public void finish() {
-		// Mettre ‡ jour la position du modËle en Tile
+		// Mettre √† jour la position du mod√®le en Tile
 		ACharacter view = character.getView();
 		this.character.setPosition(view.getX()/game.getLevel().getTileXSize(),
 							       view.getY()/game.getLevel().getTileYSize());

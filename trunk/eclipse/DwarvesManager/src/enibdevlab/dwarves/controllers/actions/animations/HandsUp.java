@@ -9,7 +9,7 @@ import enibdevlab.dwarves.views.actors.characters.ACharacter;
  * 
  * Le personnage effectuant cette action bougera ses mains de haut en bas
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class HandsUp extends TemporalAction {
@@ -20,12 +20,12 @@ public class HandsUp extends TemporalAction {
 	protected ACharacter acharacter;
 	
 	/**
-	 * Position y des mains au départ
+	 * Position y des mains au dÃ©part
 	 */
 	protected float y;
 	
 	/*
-	 * Rapidité de hochement
+	 * RapiditÃ© de hochement
 	 */
 	protected float velocity;
 	
@@ -35,12 +35,12 @@ public class HandsUp extends TemporalAction {
 	protected float amplitude;
 	
 	/**
-	 * Fais le personnage bouger la tête de haut en bas
+	 * Fais le personnage bouger la tÃªte de haut en bas
 	 * 
 	 * @param acharacter Personnage sur lequel on effectue l'action
-	 * @param velocity   Rapidité du mouvement
+	 * @param velocity   RapiditÃ© du mouvement
 	 * @param height     Amplitude du mouvement
-	 * @param duration   Durée
+	 * @param duration   DurÃ©e
 	 */
 	public HandsUp(ACharacter acharacter, float velocity, float height, float duration){
 		super(duration);

@@ -21,7 +21,11 @@ public class BuildWeb {
 		boolean debug = (args.length > 0 && args[0].equals("debug")) || System.getenv("WEB_DEBUG") != null;
 
 		TeaBuildConfiguration config = new TeaBuildConfiguration();
-		config.assetsPath.add(new AssetFileHandle("../assets"));
+		// The game assets live in the Android project and are shared by every platform
+		config.assetsPath.add(new AssetFileHandle("../../trunk/eclipse/DwarvesManager-android/assets"));
+		// Files in that folder the game never loads: keep them out of the published build
+		config.assetFilter = (file, isDirectory, op) ->
+				!(file.endsWith(".pdn") || file.endsWith(".py") || file.endsWith("sftpConf.xml"));
 		config.webappPath = new File("build/dist").getCanonicalPath();
 		config.targetType = TeaVMTargetType.JAVASCRIPT;
 		config.htmlTitle = "Dwarves Manager";

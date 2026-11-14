@@ -15,7 +15,7 @@ public class Enchanting extends DwarfAction {
 	protected static float DURATION = 7f;
 	
 	/**
-	 * Ratelier à enchanter
+	 * Ratelier Ã  enchanter
 	 */
 	protected Rack rack;
 	

@@ -16,7 +16,7 @@ import enibdevlab.dwarves.views.lang.StringManager;
  * 
  * Classe de base des nains
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public abstract class Dwarf extends MCharacter {
@@ -109,7 +109,7 @@ public abstract class Dwarf extends MCharacter {
 	 * Dit si le nain porte une pioche ou non
 	 */
 	public boolean isCarryingPickaxe(){
-		// On vérifie qu'on a une pioche
+		// On vÃ©rifie qu'on a une pioche
 		if(this.getRightHandItem() != null){
 			if(this.getRightHandItem() instanceof Pickaxe){
 				return true;

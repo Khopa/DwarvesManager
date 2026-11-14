@@ -14,10 +14,10 @@ import enibdevlab.dwarves.views.lang.StringManager;
 
 /**
  * 
- * Structure de données pour localiser les scripts des niveaux
- * -- Contient une liste statique des niveaux chargés (initialisé à partir de init)
+ * Structure de donnÃ©es pour localiser les scripts des niveaux
+ * -- Contient une liste statique des niveaux chargÃ©s (initialisÃ© Ã  partir de init)
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class LevelFile {
@@ -91,19 +91,19 @@ public class LevelFile {
 				}
 				
 				levels.add(new LevelFile(name, title, true, textureID));
-				System.out.println("Niveau interne : " + name + " chargé");
+				System.out.println("Niveau interne : " + name + " chargÃ©");
 			}
-		} catch (IOException e) {
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
 		
 		// Chargement des scripts du repertoire utilisateur externe
-		FileHandle scriptDirectory = Gdx.files.external(LevelFile.scriptExternalLocation);
+		FileHandle scriptDirectory = Gdx.files.local(LevelFile.scriptExternalLocation);
 
 		for(FileHandle file:scriptDirectory.list()){
 			if(file.extension().equals("lua")){
 				levels.add(new LevelFile(file.name(), file.name(), false,0));
-				System.out.println("Niveau externe : " + file.name() + " chargé");
+				System.out.println("Niveau externe : " + file.name() + " chargÃ©");
 			}
 		}	
 	}

@@ -24,11 +24,19 @@ python3 -m http.server 8080 --directory teavm/build/dist/webapp
 
 ## Layout
 
+The game exists once in this repository. This folder only holds what the browser
+build adds:
+
 | Path | Contents |
 |---|---|
-| `core/` | The game's Java sources (from `trunk/eclipse/DwarvesManager/src`), migrated to libGDX 1.14 |
+| `../trunk/eclipse/DwarvesManager/src` | The game's Java sources (libGDX 1.14), compiled by the `core` module |
+| `../trunk/eclipse/DwarvesManager-android/assets` | The game assets, packaged by the build |
+| `core/` | Gradle module that compiles the sources above (no code of its own) |
 | `teavm/` | Browser launcher (`WebLauncher`) and the TeaVM build entry point (`BuildWeb`) |
-| `assets/` | Game assets (from the Android project), with small format fixes |
+
+The older Eclipse projects under `trunk/eclipse` (desktop, Android, GWT) still ship the
+libGDX 0.9.8 jars. The sources now target libGDX 1.14, so those projects need their
+libraries and launchers updated before they build again.
 
 ## What changed from the original
 
@@ -56,10 +64,18 @@ modern libGDX and the browser:
 - **Resolution:** a fixed 720px-tall virtual resolution with a `FitViewport`, and
   width following the window's aspect ratio.
 - **Assets:** particle files re-saved in the current format, skin JSON updated, and
-  Latin-1 text files converted to UTF-8.
-- **Original bugs fixed along the way:** the save/load folder name differed in case
-  (`Saves` vs `saves`), and the main menu buttons were off centre at some aspect
-  ratios.
+  Latin-1 text files converted to UTF-8. The build leaves out the files the game never
+  loads (`sftpConf.xml`, `.pdn`, `.py`).
+- **Original bugs fixed along the way:**
+  - The save/load folder name differed in case (`Saves` vs `saves`).
+  - The main menu buttons were off centre at some aspect ratios.
+  - **Zoom drifted the camera.** Each wheel step rescaled the map position and added a guessed
+    offset, so the view slid away. `MapLayer.zoomAt()` now zooms around the cursor (around the
+    screen centre for touch pinch), keeping the map point under it fixed. Zooming in and back out
+    returns to the same view.
+  - The vertical scroll limit used the screen width instead of the height.
+  - Middle-drag scrolling and screen-edge scrolling now work in virtual-screen units, so the map
+    follows the cursor at any window size.
 
 ## Known limitations
 

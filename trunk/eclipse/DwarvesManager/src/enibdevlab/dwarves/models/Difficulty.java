@@ -3,12 +3,12 @@ package enibdevlab.dwarves.models;
 
 /**
  * 
- * Classe statique chargée de gérer la difficulté du jeu.
- * Le besoin s'est fait sentir en créant le didacticiel du jeu
- * (Certains éléments devant être désactivés pour une prise en main
+ * Classe statique chargÃ©e de gÃ©rer la difficultÃ© du jeu.
+ * Le besoin s'est fait sentir en crÃ©ant le didacticiel du jeu
+ * (Certains Ã©lÃ©ments devant Ãªtre dÃ©sactivÃ©s pour une prise en main
  * du jeu en douceur)
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Difficulty {
@@ -19,12 +19,12 @@ public class Difficulty {
 	private static boolean BREAKABLE_PICKAXE = true;
 	
 	/**
-	 * A on besoin de gérer les besoins des nains
+	 * A on besoin de gÃ©rer les besoins des nains
 	 */
 	private static boolean NEEDS_TO_MANAGE = true;
 	
 	/**
-	 * Multiplicateur de salaire (ajuste la difficulté générale)
+	 * Multiplicateur de salaire (ajuste la difficultÃ© gÃ©nÃ©rale)
 	 */
 	private static float SALARY_FACTOR = 1.0f;
 	

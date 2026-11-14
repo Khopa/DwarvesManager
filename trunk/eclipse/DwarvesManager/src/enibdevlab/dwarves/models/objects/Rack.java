@@ -13,7 +13,7 @@ import enibdevlab.dwarves.views.lang.StringManager;
  * 
  * Ratelier ou l'on stocke les pioches
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Rack extends ItemContainer {
@@ -90,7 +90,7 @@ public class Rack extends ItemContainer {
 	
 	@Override
 	public Class<? extends AGameObject> getViewType() {
-		return ARack.class; // On a besoin d'une vue spéciale car on doit afficher les pioches contenues
+		return ARack.class; // On a besoin d'une vue spÃ©ciale car on doit afficher les pioches contenues
 	}
 
 

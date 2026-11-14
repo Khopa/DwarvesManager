@@ -8,9 +8,9 @@ import enibdevlab.dwarves.views.actors.characters.ACharacter;
 /**
  * 
  * Action faisant changer la direction d'un personnage
- * (L'intérêt est de pouvoir intégrer cette action dans des séquences)
+ * (L'intÃ©rÃªt est de pouvoir intÃ©grer cette action dans des sÃ©quences)
 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class SetDirection extends Action {
@@ -21,7 +21,7 @@ public class SetDirection extends Action {
 	protected ACharacter acharacter;
 	
 	/**
-	 * Direction à donner
+	 * Direction Ã  donner
 	 */
 	protected Direction direction;
 	

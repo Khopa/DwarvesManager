@@ -1,7 +1,7 @@
 package enibdevlab.dwarves.controllers.script;
 
 
-import java.lang.reflect.Constructor;
+import enibdevlab.dwarves.Ctor;
 import java.util.HashMap;
 
 import org.luaj.vm2.LuaString;
@@ -37,9 +37,9 @@ import enibdevlab.dwarves.views.widgets.ObjectButton;
 
 /**
  * 
- * Api destinée à Lua
- * TODO : organiser l'API par fonctionnalités
- * @author Clément Perreau
+ * Api destinÃ©e Ã  Lua
+ * TODO : organiser l'API par fonctionnalitÃ©s
+ * @author ClÃ©ment Perreau
  *
  */
 public class DwarvesManagerLuaApi extends TwoArgFunction {
@@ -250,7 +250,7 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	/**
 	 * Active le bouton d'achats d'objets
-	 * @author Clément Perreau
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class enableObjects extends ZeroArgFunction{
 		@Override
@@ -262,8 +262,8 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	}
 	
 	/**
-	 * Désactive le bouton d'achats d'objets
-	 * @author Clément Perreau
+	 * DÃ©sactive le bouton d'achats d'objets
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class disableObjects extends ZeroArgFunction{
 		@Override
@@ -275,8 +275,8 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	}
 	
 	/**
-	 * Ajoute un sprite aux coordonnées cibles
-	 * @author Clément Perreau
+	 * Ajoute un sprite aux coordonnÃ©es cibles
+	 * @author ClÃ©ment Perreau
 	 *
 	 */
 	public static class addSprite extends ThreeArgFunction{
@@ -290,8 +290,8 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	}
 	
 	/**
-	 * Enlève le sprite portant la clef donnée
-	 * @author Clément
+	 * EnlÃ¨ve le sprite portant la clef donnÃ©e
+	 * @author ClÃ©ment
 	 *
 	 */
 	public static class removeSprite extends OneArgFunction{
@@ -305,7 +305,7 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	/**
 	 * Vide tous les sprites
-	 * @author Clément Perreau
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class flush extends ZeroArgFunction{
 		@Override
@@ -315,8 +315,8 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	}
 	
 	/**
-	 * Ajoute le nain désiré à l'endroit ciblé
-	 * @author Clément
+	 * Ajoute le nain dÃ©sirÃ© Ã  l'endroit ciblÃ©
+	 * @author ClÃ©ment
 	 *
 	 */
 	public static class addDwarf extends ThreeArgFunction{
@@ -341,21 +341,21 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	}
 	
 	/**
-	 * Active ou désactive l'objet qui porte le nom donné
+	 * Active ou dÃ©sactive l'objet qui porte le nom donnÃ©
 	 * @param buttons Map de boutons/constructeurs d'objets
 	 * @param type Nom du type de bouton qu'on souhaite modifier
-	 * @param enable Active ou désactive
+	 * @param enable Active ou dÃ©sactive
 	 */
-	public static void configureButton(HashMap<ObjectButton, Constructor<?>> buttons, String type, boolean enable){
+	public static void configureButton(HashMap<ObjectButton, Ctor> buttons, String type, boolean enable){
 		for(ObjectButton button:buttons.keySet()){
-			String name = buttons.get(button).getDeclaringClass().getSimpleName();
+			String name = buttons.get(button).getSimpleName();
 			if(name.equals(type)) button.setEnabled(enable);
 		}
 	}
 	
 	/**
 	 * Configure the availability of buttons
-	 * @author Clément Perreau
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class configure extends TwoArgFunction{
 		@Override
@@ -368,8 +368,8 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	}
 	
 	/**
-	 * Fait clignoter le bouton indiqué
-	 * @author Clément Perreau
+	 * Fait clignoter le bouton indiquÃ©
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class blink extends TwoArgFunction{
 		@Override
@@ -410,9 +410,9 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	
 	
-	public static void blink(HashMap<ObjectButton, Constructor<?>> buttons, String target, boolean enable){
+	public static void blink(HashMap<ObjectButton, Ctor> buttons, String target, boolean enable){
 		for(ObjectButton button:buttons.keySet()){
-			String name = buttons.get(button).getDeclaringClass().getSimpleName();
+			String name = buttons.get(button).getSimpleName();
 			if(name.equals(target)){
 				if(enable){
 					button.addAction(GUIAnimation.blink());
@@ -427,7 +427,7 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	/**
 	 * Fait clignoter un type de nain
-	 * @author Clément Perreau
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class blinkDwarf extends TwoArgFunction{
 		@Override
@@ -439,7 +439,7 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	/**
 	 * Fait clignoter un type de piece
-	 * @author Clément Perreau
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class blinkRoom extends TwoArgFunction{
 		@Override
@@ -451,7 +451,7 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	/**
 	 * Fait clignoter un type d'objet
-	 * @author Clément Perreau
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class blinkObject extends TwoArgFunction{
 		@Override
@@ -463,7 +463,7 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	/**
 	 * Compte des nains
-	 * @author Clément Perreau
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class dwarfCount extends ZeroArgFunction{
 		@Override
@@ -476,7 +476,7 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	/**
 	 * Compte des mineurs
-	 * @author Clément Perreau
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class minerCount extends ZeroArgFunction{
 		@Override
@@ -489,7 +489,7 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	/**
 	 * Retour au menu principal de la gui du jeu
-	 * @author Clément Perreau
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class backGameMenu extends ZeroArgFunction{
 		@Override
@@ -502,8 +502,8 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	
 	/**
-	 * Efface toutes les pièces
-	 * @author Clément Perreau
+	 * Efface toutes les piÃ¨ces
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class flushRooms extends TwoArgFunction{
 		@Override
@@ -515,7 +515,7 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	/**
 	 * Setter pour la valeur de besoin de sommeil
-	 * @author Clément Perreau
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class setSleepNeed extends TwoArgFunction{
 		@Override
@@ -527,8 +527,8 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	}
 	
 	/**
-	 * Setter pour la valeur de besoin de bière
-	 * @author Clément Perreau
+	 * Setter pour la valeur de besoin de biÃ¨re
+	 * @author ClÃ©ment Perreau
 	 */
 	public static class setBeerNeed extends TwoArgFunction{
 		@Override

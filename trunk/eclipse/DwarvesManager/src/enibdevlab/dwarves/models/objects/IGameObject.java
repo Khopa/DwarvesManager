@@ -9,25 +9,25 @@ import enibdevlab.dwarves.views.actors.AGameObject;
 
 /**
  * 
- * Interface à implémenter par les objets
+ * Interface Ã  implÃ©menter par les objets
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public interface IGameObject {
 
 	/**
-	 * Info pour générer la vue (index de la position bas gauche de l'objet dans l'atlas des textures d'objet)
+	 * Info pour gÃ©nÃ©rer la vue (index de la position bas gauche de l'objet dans l'atlas des textures d'objet)
 	 */
 	public int getTextureId();	
 	
 	/**
-	 * Retourne la taille X de l'objet dans le cas où il n'a pas été tourné
+	 * Retourne la taille X de l'objet dans le cas oÃ¹ il n'a pas Ã©tÃ© tournÃ©
 	 */
 	public int getNominalXSize();
 	
 	/**
-	 * Retourne la taille Y de l'objet dans le cas où il n'a pas été tourné
+	 * Retourne la taille Y de l'objet dans le cas oÃ¹ il n'a pas Ã©tÃ© tournÃ©
 	 */
 	public int getNominalYSize();
 	
@@ -52,7 +52,7 @@ public interface IGameObject {
 	public HashMap<Vector2, Class<? extends MCharacter>> getSlotsPosition();
 	
 	/**
-	 * Type de vue à créer
+	 * Type de vue Ã  crÃ©er
 	 */
 	public Class<? extends AGameObject> getViewType();
 	

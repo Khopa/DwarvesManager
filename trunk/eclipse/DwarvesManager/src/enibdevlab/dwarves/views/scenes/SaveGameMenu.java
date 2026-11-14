@@ -31,7 +31,7 @@ public class SaveGameMenu extends Stage {
 	private Game game;
 	
 	public SaveGameMenu(Stage previousStage, Game game){
-		super();
+		super(DwarvesManager.newViewport());
 		state = NORMAL;
 		this.previousStage = previousStage;
 		this.game = game;
@@ -76,7 +76,7 @@ public class SaveGameMenu extends Stage {
 
 	private void build() {
 		
-		this.table.clear();
+		this.table.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		this.table.defaults().space(10);
 		this.table.add("Sauvegarde de la partie");
 		this.table.row();

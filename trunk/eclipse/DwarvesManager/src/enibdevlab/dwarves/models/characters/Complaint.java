@@ -1,10 +1,10 @@
 package enibdevlab.dwarves.models.characters;
 
 /**
- * Plainte et leur index associé
+ * Plainte et leur index associÃ©
  * (cf assets/data/sprites/complaintAtlas.png)
  *
- * @author Clément Perreau 
+ * @author ClÃ©ment Perreau 
  *
  */
 public final class Complaint {

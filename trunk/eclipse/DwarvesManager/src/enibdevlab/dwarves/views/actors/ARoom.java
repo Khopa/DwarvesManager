@@ -1,8 +1,9 @@
 package enibdevlab.dwarves.views.actors;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
@@ -15,32 +16,32 @@ import enibdevlab.dwarves.models.world.MapArea;
 
 /**
  * 
- * Affichage d'une pièce
+ * Affichage d'une piÃ¨ce
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class ARoom extends Actor{
 
 	/**
-	 * Couleur à afficher quand une pièce n'est pas opérationnelle
+	 * Couleur Ã  afficher quand une piÃ¨ce n'est pas opÃ©rationnelle
 	 */
 	private static Color roomNotOperationnalColor = new Color(1f,0,0,.2f);
 	
 	/**
-	 * Modèle de pièce
+	 * ModÃ¨le de piÃ¨ce
 	 */
 	protected Room model;
 	
 	/**
-	 * Couleur de représentation
+	 * Couleur de reprÃ©sentation
 	 */
 	protected Color color;
 	
 	/**
-	 * Constructeur de pièce 
-	 * @param model Modèle associé
-	 * @param type Type de pièce
+	 * Constructeur de piÃ¨ce 
+	 * @param model ModÃ¨le associÃ©
+	 * @param type Type de piÃ¨ce
 	 */
 	public ARoom(Room model){
 		this.model = model;
@@ -49,7 +50,7 @@ public class ARoom extends Actor{
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha){
+	public void draw(Batch batch, float parentAlpha){
 		
 		super.draw(batch, parentAlpha);
 		
@@ -63,20 +64,20 @@ public class ARoom extends Actor{
 		
 		// Dessin des rectangles
 		batch.end();
-		Gdx.gl.glEnable(GL10.GL_BLEND);
-	    Gdx.gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+		Gdx.gl.glEnable(GL20.GL_BLEND);
+	    Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		for(MapArea area:this.model.getAreas()){
 			DwarvesManager.renderer.setProjectionMatrix(batch.getProjectionMatrix());
 			DwarvesManager.renderer.setTransformMatrix(batch.getTransformMatrix());
-			DwarvesManager.renderer.begin(ShapeType.FilledRectangle);
+			DwarvesManager.renderer.begin(ShapeType.Filled);
 			DwarvesManager.renderer.setColor(color);
-			DwarvesManager.renderer.filledRect(area.getI()*w, area.getJ()*h, area.getW()*w, area.getH()*h);
+			DwarvesManager.renderer.rect(area.getI()*w, area.getJ()*h, area.getW()*w, area.getH()*h);
 			DwarvesManager.renderer.end();
 		}
-		Gdx.gl.glDisable(GL10.GL_BLEND);
+		Gdx.gl.glDisable(GL20.GL_BLEND);
 		batch.begin();
 		
-		// Dessin du nom de la pièce 
+		// Dessin du nom de la piÃ¨ce 
 		Vector2 barycenter = model.barycenter();
 		DwarvesManager.font.setColor(Color.WHITE);
 		DwarvesManager.font.draw(batch, model.getRoomName(), barycenter.x*w,barycenter.y*h);

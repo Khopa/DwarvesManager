@@ -19,10 +19,10 @@ import enibdevlab.dwarves.models.rooms.Workshop;
  * 
  * Action de l'enchanteur
  * 
- * Consiste à trouver un ratelier rempli (e.g non vide) d'outils
+ * Consiste Ã  trouver un ratelier rempli (e.g non vide) d'outils
  * Il enchante ensuite les outils
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GoEnchanting extends DwarfAction {
@@ -131,7 +131,7 @@ public class GoEnchanting extends DwarfAction {
 	}
 	
 	/**
-	 * Verifier si le ratelier ciblé vaut le coup d'être enchanté (non vide, et pioche non enchantées)
+	 * Verifier si le ratelier ciblÃ© vaut le coup d'Ãªtre enchantÃ© (non vide, et pioche non enchantÃ©es)
 	 */
 	private boolean isRackWorthy(Rack rack){
 		
@@ -139,8 +139,8 @@ public class GoEnchanting extends DwarfAction {
 		
 		for(Item item:rack.getItems()){
 			Tool tool = (Tool) item;
-			if(!tool.isEnchanted()){ // l'outil est il non enchanté ?
-				System.out.println("Non enchantée");
+			if(!tool.isEnchanted()){ // l'outil est il non enchantÃ© ?
+				System.out.println("Non enchantÃ©e");
 				return true; // Si oui, on peut y aller
 			}
 		}

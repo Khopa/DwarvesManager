@@ -16,7 +16,7 @@ import enibdevlab.dwarves.views.world.TileMap;
  * 
  * Un niveau du jeu
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Level implements IPersistent {
@@ -50,7 +50,7 @@ public class Level implements IPersistent {
 	
 	/**
 	 * Constructeur
-	 * @param path Chemin du fichier à charger
+	 * @param path Chemin du fichier Ã  charger
 	 */
 	public Level(Game game, LevelFile script){
 		this.game = game;
@@ -67,7 +67,7 @@ public class Level implements IPersistent {
 	}
 
 	/**
-	 * Niveau aléatoire
+	 * Niveau alÃ©atoire
 	 * @param game
 	 */
 	public Level(Game game) {
@@ -150,7 +150,7 @@ public class Level implements IPersistent {
 			file = Gdx.files.internal(LevelFile.mapInternalLocation + "/" + mapName);
 		}
 		else{
-			file = Gdx.files.external(LevelFile.mapExternalLocation + "/" + mapName);
+			file = Gdx.files.local(LevelFile.mapExternalLocation + "/" + mapName);
 		}
 		return file;
 	}
@@ -187,7 +187,7 @@ public class Level implements IPersistent {
 	}
 	
 	/**
-	 * Temps avant les prochains salaires formaté
+	 * Temps avant les prochains salaires formatÃ©
 	 */
 	public String getFormattedWageTimer() {
 		float timeleft = this.thread.getTimeBeforeWages();

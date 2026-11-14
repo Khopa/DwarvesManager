@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 
 /**
  * Objet qui a une position dans le monde
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  */
 public abstract class Entity {
 
@@ -14,15 +14,15 @@ public abstract class Entity {
 	protected Vector2 position;
 	
 	/**
-	 * Crée une entité à la position donnée
-	 * @param position Position de l'entité
+	 * CrÃ©e une entitÃ© Ã  la position donnÃ©e
+	 * @param position Position de l'entitÃ©
 	 */
 	public Entity(Vector2 position){
 		this.position = position;
 	}
 	
 	/**
-	 * Crée une entité à la position (0,0)
+	 * CrÃ©e une entitÃ© Ã  la position (0,0)
 	 */
 	public Entity(){
 		this(new Vector2());

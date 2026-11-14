@@ -24,14 +24,14 @@ import enibdevlab.dwarves.views.audio.SoundManager;
  * 
  * Action de reparer ou creer des objets
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Crafting extends DwarfAction {
 	
 	
 	/**
-	 * Rapidité
+	 * RapiditÃ©
 	 */
 	private static int SPEED = 35;
 	
@@ -51,22 +51,22 @@ public class Crafting extends DwarfAction {
 	protected Movement movement;
 	
 	/**
-	 * Référence vers un rack
+	 * RÃ©fÃ©rence vers un rack
 	 */
 	protected Rack rack;
 	
 	/**
-	 * Position gardée en mcémoire
+	 * Position gardÃ©e en mcÃ©moire
 	 */
 	protected Vector2 tile;
 	
 	/**
-	 * Pourcentage de création de l'item en cours de création
+	 * Pourcentage de crÃ©ation de l'item en cours de crÃ©ation
 	 */
 	protected int craftPercent = 0;
 	
 	/**
-	 * Chemin gardé en mémoire vers le rack vu qu'on fait plein d'aller retour
+	 * Chemin gardÃ© en mÃ©moire vers le rack vu qu'on fait plein d'aller retour
 	 */
 	protected ArrayList<Node> path;
 	
@@ -91,7 +91,7 @@ public class Crafting extends DwarfAction {
 		state.clear();
 		
 		/*
-		 * Trouver un rack qui a des pioches à réparer
+		 * Trouver un rack qui a des pioches Ã  rÃ©parer
 		 */
 		ArrayList<GameObject> racks = PathUtils.getSortedUsableObjectInRoom(Rack.class, Craftman.class, workshop, dwarf.getPosition(), game);
 		
@@ -118,7 +118,7 @@ public class Crafting extends DwarfAction {
 		}
 		
 		/*
-		 * Si on ne trouve pas de rack avec des pioches à réparer, alors on fabrique des pioches (à condition qu'il reste de la place pour les stocker)
+		 * Si on ne trouve pas de rack avec des pioches Ã  rÃ©parer, alors on fabrique des pioches (Ã  condition qu'il reste de la place pour les stocker)
 		 */
 		for(GameObject obj: racks){
 			rck = (Rack)obj;
@@ -231,7 +231,7 @@ public class Crafting extends DwarfAction {
 	}
 
 	/**
-	 * Action de réparer un objet
+	 * Action de rÃ©parer un objet
 	 */
 	private void repair() {
 		
@@ -274,7 +274,7 @@ public class Crafting extends DwarfAction {
 	}
 
 	/**
-	 * Prendre une pioche à réparer
+	 * Prendre une pioche Ã  rÃ©parer
 	 */
 	private void takeItemToRepair() {
 		
@@ -300,7 +300,7 @@ public class Crafting extends DwarfAction {
 	}
 	
 	/**
-	 * Crée un mouvement vers un rack vide
+	 * CrÃ©e un mouvement vers un rack vide
 	 */
 	private boolean goToNotFullRack(){
 		ArrayList<GameObject> racks = PathUtils.getSortedUsableObjectInRoom(Rack.class, Craftman.class, workshop, dwarf.getPosition(), game);

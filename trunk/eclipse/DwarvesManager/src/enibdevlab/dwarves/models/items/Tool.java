@@ -10,14 +10,14 @@ public abstract class Tool extends Item {
 	/**
 	 * Etat de l'outil (Pour determiner si il a besoin de reparation)
 	 * e [0,100]
-	 * Quand les dommages sont à 100, l'outil est inutilisable et est envoyé à réparer
+	 * Quand les dommages sont Ã  100, l'outil est inutilisable et est envoyÃ© Ã  rÃ©parer
 	 */
 	protected float damage;
 	
 	/**
-	 * Durabilité de l'outil, plus elle est elevée plus l'outil dure longtemps
+	 * DurabilitÃ© de l'outil, plus elle est elevÃ©e plus l'outil dure longtemps
 	 * 
-	 * Durabilité de 1.0 : 100 utilisations
+	 * DurabilitÃ© de 1.0 : 100 utilisations
 	 *               2.0 : 200 utilisations ...etc
 	 * 
 	 */

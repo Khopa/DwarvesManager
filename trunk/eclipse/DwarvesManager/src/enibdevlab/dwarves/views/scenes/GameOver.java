@@ -22,6 +22,7 @@ public class GameOver extends Stage {
 	protected float start;
 	
 	public GameOver(Game game){
+		super(enibdevlab.dwarves.DwarvesManager.newViewport());
 		this.game = game;
 		AImage aimg = new AImage(img, DwarvesManager.getWidth()/2,
 									  DwarvesManager.getHeight()/2);

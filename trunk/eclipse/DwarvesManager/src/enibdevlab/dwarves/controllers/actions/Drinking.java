@@ -17,25 +17,25 @@ import enibdevlab.dwarves.models.rooms.Tavern;
 
 
 /**
- * Action d'aller boire à une table après avoir pris une bière
+ * Action d'aller boire Ã  une table aprÃ¨s avoir pris une biÃ¨re
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Drinking extends DwarfAction {
 
 	/**
-	 * Taverne où le nain est venu boire sa bière
+	 * Taverne oÃ¹ le nain est venu boire sa biÃ¨re
 	 */
 	protected Tavern tavern;
 	
 	/**
-	 * Table où le nain va aller boire
+	 * Table oÃ¹ le nain va aller boire
 	 */
 	protected TableObject tableObject;
 	
 	/**
-	 * Slot de la table utilisé
+	 * Slot de la table utilisÃ©
 	 */
 	protected Slot slot;
 	
@@ -50,9 +50,9 @@ public class Drinking extends DwarfAction {
 	
 	/**
 	 * 
-	 * Action d'aller boire à une table après avoir pris une bière
+	 * Action d'aller boire Ã  une table aprÃ¨s avoir pris une biÃ¨re
 	 * 
-	 * @param game Réference vers le jeu
+	 * @param game RÃ©ference vers le jeu
 	 * @param dwarf Nain buveur
 	 * @param tavern Taverne
 	 */
@@ -73,7 +73,7 @@ public class Drinking extends DwarfAction {
 		
 		// Selection d'un slot et construction d'un chemin
 		if(tableObject != null){
-			slot = tableObject.getAvailableSlot(); // On récupère un slot libre de la table
+			slot = tableObject.getAvailableSlot(); // On rÃ©cupÃ¨re un slot libre de la table
 			if(slot!=null){
 				ArrayList<Node> path = PathUtils.pathToSlot(dwarf, slot, game);
 				if(path != null){

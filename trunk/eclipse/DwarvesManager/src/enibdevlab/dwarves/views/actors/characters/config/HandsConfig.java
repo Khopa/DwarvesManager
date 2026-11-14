@@ -15,12 +15,12 @@ import com.badlogic.gdx.math.Vector2;
 public class HandsConfig {
 	
 	/**
-	 * Texture utilisé pour les mains
+	 * Texture utilisÃ© pour les mains
 	 */
 	protected TextureRegion handTexture;
 	
 	/**
-	 * Permet de savoir où placer la main gauche (la position de la main droite en est déduite)
+	 * Permet de savoir oÃ¹ placer la main gauche (la position de la main droite en est dÃ©duite)
 	 */
 	protected Vector2 position;
 	

@@ -8,25 +8,25 @@ import enibdevlab.dwarves.models.Game;
 
 /** 
  * 
- * Action avec référence sur le jeu
+ * Action avec rÃ©fÃ©rence sur le jeu
  * 
- * @author Clément
+ * @author ClÃ©ment
  *
  */
 public abstract class GameAction extends Action implements IStm{
 	
 	/**
-	 * Référence vers le jeu
+	 * RÃ©fÃ©rence vers le jeu
 	 */
 	protected Game game;
 	
 	/**
-	 * Temps ecoulé
+	 * Temps ecoulÃ©
 	 */
 	protected float elapsed = 0f;
 	
 	/**
-	 * Machine à état
+	 * Machine Ã  Ã©tat
 	 */
 	protected HashSet<Integer> state;
 	
@@ -36,7 +36,7 @@ public abstract class GameAction extends Action implements IStm{
 	protected boolean finished = false;
 	
 	/**
-	 * Vrai fin (passé dans l'action finish)
+	 * Vrai fin (passÃ© dans l'action finish)
 	 */
 	protected boolean finished2 = false;
 
@@ -78,7 +78,7 @@ public abstract class GameAction extends Action implements IStm{
 	}
 	
 	/**
-	 * Indique l'action comme terminée
+	 * Indique l'action comme terminÃ©e
 	 */
 	public void setFinished(){
 		this.finished = true;

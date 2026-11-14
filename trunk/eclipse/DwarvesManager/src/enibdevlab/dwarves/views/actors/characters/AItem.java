@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.views.actors.characters;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import enibdevlab.dwarves.models.Direction;
@@ -7,9 +8,9 @@ import enibdevlab.dwarves.views.Loader;
 
 /**
  * 
- * Vue des items (considéré comme une partie du corps des personnages quand ils sont en main)
+ * Vue des items (considÃ©rÃ© comme une partie du corps des personnages quand ils sont en main)
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class AItem extends AHand {
@@ -21,7 +22,7 @@ public class AItem extends AHand {
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		
 		this.adjustPosition();
 		

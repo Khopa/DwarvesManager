@@ -1,6 +1,6 @@
 package enibdevlab.dwarves.controllers.listener;
 
-import java.lang.reflect.Constructor;
+import enibdevlab.dwarves.Ctor;
 import java.lang.reflect.InvocationTargetException;
 
 import com.badlogic.gdx.Application.ApplicationType;
@@ -29,40 +29,40 @@ import enibdevlab.dwarves.views.scenes.game.GameplayLayer;
 
 /**
  * 
- * Classe qui gère les events de la scene GameplayScreen
+ * Classe qui gÃ¨re les events de la scene GameplayScreen
  * NB : Cette classe n'est pas vraiment un listener, mais elle me permet de
- * délocaliser à peu près proprement des controlleurs qui aurait été dans
+ * dÃ©localiser Ã  peu prÃ¨s proprement des controlleurs qui aurait Ã©tÃ© dans
  * les vues sinon
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GameplayScreenListener implements InputProcessor {
 
 	/**
-	 * Position de la souris sur l'écran (pas pris en charge sur Android)
+	 * Position de la souris sur l'Ã©cran (pas pris en charge sur Android)
 	 */
 	@SuppressWarnings("unused")
 	private float mouseX = 0;
 	
 	/**
-	 * Position de la souris sur l'écran (pas pris en charge sur Android)
+	 * Position de la souris sur l'Ã©cran (pas pris en charge sur Android)
 	 */
 	@SuppressWarnings("unused")
 	private float mouseY = 0;
 	
 	/**
-	 * Permet de gérer l'événement drag du doigt ou de la souris
+	 * Permet de gÃ©rer l'Ã©vÃ©nement drag du doigt ou de la souris
 	 */
 	private float dragX = 0;
 	
 	/**
-	 * Permet de gérer l'événement drag du doigt ou de la souris
+	 * Permet de gÃ©rer l'Ã©vÃ©nement drag du doigt ou de la souris
 	 */
 	private float dragY = 0;
 	
 	/**
-	 * GameplayScreen associé
+	 * GameplayScreen associÃ©
 	 */
 	private GameScene scene;
 	
@@ -94,23 +94,23 @@ public class GameplayScreenListener implements InputProcessor {
 	private boolean centralClick; 
 	
 	/**
-	 * Type de pièce en train d'être placé
+	 * Type de piÃ¨ce en train d'Ãªtre placÃ©
 	 */
-	protected Constructor<?> roomConstructor;
+	protected Ctor roomConstructor;
 	
 	/**
-	 * Type de nains en train d'être placé
+	 * Type de nains en train d'Ãªtre placÃ©
 	 */
-	protected Constructor<?> dwarfConstructor;
+	protected Ctor dwarfConstructor;
 	
 	/**
-	 * Activé ou désactivé
+	 * ActivÃ© ou dÃ©sactivÃ©
 	 */
 	protected boolean enabled = true;
 	
 	/**
-	 * Classe qui gère les events de la scene GameplayScreen
-	 * @param scene GameplayScreen associé
+	 * Classe qui gÃ¨re les events de la scene GameplayScreen
+	 * @param scene GameplayScreen associÃ©
 	 */
 	public GameplayScreenListener(GameScene scene){
 		super();
@@ -130,8 +130,8 @@ public class GameplayScreenListener implements InputProcessor {
 			
 		}
 		else if(scene.getGameState() == GameState.PLACING_ROOM){
-			if(button == 0 && definitionArea != null) addRoom(); // Ajoute la zone de définition en tant que nouvelle pièce
-			else if(button == 1) removeArea(); // Spécifique PC : clic droit = suppresion
+			if(button == 0 && definitionArea != null) addRoom(); // Ajoute la zone de dÃ©finition en tant que nouvelle piÃ¨ce
+			else if(button == 1) removeArea(); // SpÃ©cifique PC : clic droit = suppresion
 		}
 		else if(scene.getGameState() == GameState.REMOVING_ROOM){
 			removeArea();
@@ -140,7 +140,7 @@ public class GameplayScreenListener implements InputProcessor {
 			
 			if(button == 0) this.placeObject(tile.x, tile.y);
 			else if(button == 1) this.removeObject((int)tile.x, (int)tile.y);
-			// Possibilité de supprimer d'un simple clic droit sur PC 
+			// PossibilitÃ© de supprimer d'un simple clic droit sur PC 
 		
 		}
 		else if(scene.getGameState() == GameState.REMOVING_OBJECT){
@@ -195,11 +195,11 @@ public class GameplayScreenListener implements InputProcessor {
 		}
 		
 		/**
-		 * Scroll Spécifique PC/Web
+		 * Scroll SpÃ©cifique PC/Web
 		 */
 		if(centralClick){
 			if (dragX != 0 && dragY != 0){
-				this.scene.getGameplayLayer().addAction(Actions.moveBy(-(dragX-screenX), (dragY-screenY)));
+				this.scene.getGameplayLayer().addAction(Actions.moveBy(-(dragX-screenX)*dragScale(), (dragY-screenY)*dragScale()));
 			}
 			dragX = screenX;
 			dragY = screenY;
@@ -207,12 +207,12 @@ public class GameplayScreenListener implements InputProcessor {
 		}
 		
 		/*
-		 * Scroll spécifique Android
+		 * Scroll spÃ©cifique Android
 		 */
 		if(Gdx.app.getType()==ApplicationType.Android){
 			if(scene.getGameState() == GameState.NORMAL){
 				if (dragX != 0 && dragY != 0){
-					this.scene.getGameplayLayer().addAction(Actions.moveBy(-(dragX-screenX), (dragY-screenY)));
+					this.scene.getGameplayLayer().addAction(Actions.moveBy(-(dragX-screenX)*dragScale(), (dragY-screenY)*dragScale()));
 				}
 				dragX = screenX;
 				dragY = screenY;
@@ -220,9 +220,9 @@ public class GameplayScreenListener implements InputProcessor {
 			}
 			
 			
-			// Sur Android, on place les objets en faisant glisser le doigt sur l'écran
+			// Sur Android, on place les objets en faisant glisser le doigt sur l'Ã©cran
 			if(scene.getGameState()==GameState.PLACING_OBJECT){
-				// Mise à jour de la position de l'objet qu'on est en train de placer
+				// Mise Ã  jour de la position de l'objet qu'on est en train de placer
 				// On le colore aussi en rouge si il y a collision avec le decor ou un autre objet
 				GameObject obj = this.scene.getGameplayLayer().getObjectLayer().getObjectToPlace().getModel();
 				obj.setPosition(tile.x, tile.y);
@@ -258,45 +258,21 @@ public class GameplayScreenListener implements InputProcessor {
 		return false;
 	}
 	
-	public boolean scrolled(int amount) {
+	/** Web port: window pixels -> virtual screen units, so the map follows the cursor when dragged. */
+	private float dragScale(){
+		int sw = scene.getViewport().getScreenWidth();
+		return sw > 0 ? DwarvesManager.getWidth() / (float) sw : 1f;
+	}
+
+	public boolean scrolled(float amountX, float amountY) { int amount = (int)Math.signum(amountY);
 		
-		if(!enabled) return false;
+		if(!enabled || amount == 0) return false;
 		
+		// Web port: zoom around the mouse cursor (the original zoom drifted the camera)
 		GameplayLayer gameplay = this.scene.getGameplayLayer();
-		float o_amount = gameplay.getScaleX();
-		float r_amount = (float) (gameplay.getScaleX() - amount/10f);
-		
-		if (r_amount > 3f){
-			r_amount = 3f;
-		}
-		else if (r_amount < 0.3f){
-			r_amount = 0.3f;
-		}
-		else{
-			
-			// Système de zoom
-			// TODO : à perfectionner
-			double d_amount = (double)(o_amount-r_amount);
-			
-			// On recupère la case centrale de l'écran
-			// Vector2 center  = gameplay.getTilemap().getCenterCoordinate();
-			// On effectue le scaling
-			gameplay.setScale(r_amount);
-			// gameplay.clamp();
-			// On recupère la nouvelle case centrale de l'écran
-			// Vector2 center2  = gameplay.getTilemap().getCenterCoordinate();
-			// On calcule la différence
-			// Vector2 diff    = new Vector2(center.x-center2.x, center.y-center2.y);
-			Vector2 realPos = new Vector2(gameplay.getX()/o_amount, gameplay.getY()/o_amount);
-			Vector2 newPos = new Vector2((float)(realPos.x*r_amount), (float)(realPos.y*r_amount));
-			Vector2 diff   = new Vector2((float)(d_amount*(DwarvesManager.getWidth())), (float)(d_amount*DwarvesManager.getHeight()));
-			System.out.println(newPos);
-			// TODO : Il manque sans doute une valeur de scaling sur le décalage, je verrai ça plus tard si j'ai le temps
-			// décalage pour centrer le zoom
-			gameplay.setPosition(newPos.x+diff.x, newPos.y+diff.y);
-			//gameplay.setPosition(gameplay.getX()-diff.x, gameplay.getY()-diff.y);
-			gameplay.clamp();
-		}
+		Vector2 focus = DwarvesManager.screenToVirtual(Gdx.input.getX(), Gdx.input.getY());
+		float factor = (float) Math.pow(1.1, -amount);
+		gameplay.zoomAt(gameplay.getScaleX() * factor, focus.x, focus.y);
 		return false;
 	}
 
@@ -432,20 +408,20 @@ public class GameplayScreenListener implements InputProcessor {
 	 */
 	
 	/**
-	 * Place l'objet à placer
+	 * Place l'objet Ã  placer
 	 */
 	private void placeObject(float x, float y){	
-		// Place l'objet à placer
+		// Place l'objet Ã  placer
 		GameObject obj = this.scene.getGameplayLayer().getObjectLayer().getObjectToPlace().getModel();
 		if(!(obj.collide(scene.getGameplayLayer().getTilemap(), scene.getGame().getObjects()))){
 			
-			// Recrée un objet du même type que le précédent
+			// RecrÃ©e un objet du mÃªme type que le prÃ©cÃ©dent
 			// NB : c'est un peu sale, je sais
 			// TODO : clean up
 			GameObject newobj;
 			try {
 				
-				newobj = obj.getClass().getConstructor(new Class<?>[] {Vector2.class}).newInstance(new Vector2(x, y));
+				newobj = (GameObject) Ctor.forName(obj.getClass().getName()).newInstance(new Vector2(x, y));
 				
 				if(this.scene.getGame().getBank().removeMoney(newobj.getPrice())){
 					this.scene.getGame().getObjects().addObject(obj);
@@ -468,7 +444,7 @@ public class GameplayScreenListener implements InputProcessor {
 				e.printStackTrace();
 			} catch (InvocationTargetException e) {
 				e.printStackTrace();
-			} catch (NoSuchMethodException e) {
+			} catch (NullPointerException e) {
 				e.printStackTrace();
 			} catch (SecurityException e) {
 				e.printStackTrace();
@@ -477,19 +453,19 @@ public class GameplayScreenListener implements InputProcessor {
 	}
 	
 	/**
-	 * Rotation de l'objet à placer
+	 * Rotation de l'objet Ã  placer
 	 */
 	protected void rotateObject(){
 		GameObject obj = this.scene.getGameplayLayer().getObjectLayer().getObjectToPlace().getModel();
 		obj.setRotation(Rotation.rotateClockwise(obj.getRotation()));
 		if(obj.collide(scene.getGameplayLayer().getTilemap(), scene.getGame().getObjects())){
-			obj.getView().setColor(Color.RED); // Si l'objet est en collision, il est affiché en rouge
+			obj.getView().setColor(Color.RED); // Si l'objet est en collision, il est affichÃ© en rouge
 		}
 		else obj.getView().setColor(Color.WHITE);
 	}
 	
 	/**
-	 * Commence le dessin d'une zone de définition
+	 * Commence le dessin d'une zone de dÃ©finition
 	 */
 	private void beginDefinitionArea(float x, float y){		
 		defineStartPoint = new Vector2(x, y);
@@ -501,7 +477,7 @@ public class GameplayScreenListener implements InputProcessor {
 	}
 	
 	/**
-	 * Ajout de la zone de définition en tant que pièce
+	 * Ajout de la zone de dÃ©finition en tant que piÃ¨ce
 	 */
 	private void addRoom(){
 		if(definitionArea == null) return;
@@ -575,7 +551,7 @@ public class GameplayScreenListener implements InputProcessor {
 	}
 	
 	/**
-	 * Renvoye le nain situé à la position x,y
+	 * Renvoye le nain situÃ© Ã  la position x,y
 	 * @param x Position X
 	 * @param y Position Y
 	 */
@@ -597,7 +573,7 @@ public class GameplayScreenListener implements InputProcessor {
 	}
 	
 	/**
-	 * Defini la zone de definition (s'assure aussi de la màj de la vue associée)
+	 * Defini la zone de definition (s'assure aussi de la mÃ j de la vue associÃ©e)
 	 */
 	private void defineArea(int x, int y){
 		if(!(definitionArea != null)) return;
@@ -629,19 +605,19 @@ public class GameplayScreenListener implements InputProcessor {
 		this.scene.getGameplayLayer().getDefinitionArea().setModel(definitionArea);
 	}
 
-	public Constructor<?> getRoomType() {
+	public Ctor getRoomType() {
 		return roomConstructor;
 	}
 
-	public void setRoomType(Constructor<?> c) {
+	public void setRoomType(Ctor c) {
 		this.roomConstructor = c;
 	}
 	
-	public Constructor<?> getDwarfConstructor() {
+	public Ctor getDwarfConstructor() {
 		return dwarfConstructor;
 	}
 
-	public void setDwarfConstructor(Constructor<?> dwarfConstructor) {
+	public void setDwarfConstructor(Ctor dwarfConstructor) {
 		this.dwarfConstructor = dwarfConstructor;
 	}
 
@@ -674,7 +650,7 @@ public class GameplayScreenListener implements InputProcessor {
 	}
 	
 	/**
-	 * Désactive le listener
+	 * DÃ©sactive le listener
 	 */
 	public void disable(){
 		this.enabled = false;
@@ -693,4 +669,9 @@ public class GameplayScreenListener implements InputProcessor {
 	
 	
 
+
+	@Override
+	public boolean touchCancelled(int screenX, int screenY, int pointer, int button) {
+		return touchUp(screenX, screenY, pointer, button);
+	}
 }

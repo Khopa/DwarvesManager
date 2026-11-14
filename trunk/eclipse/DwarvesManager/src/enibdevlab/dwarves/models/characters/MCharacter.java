@@ -14,7 +14,7 @@ import enibdevlab.dwarves.views.actors.characters.ACharacter;
  * 
  * Modele de base des personnages du jeu
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public abstract class MCharacter extends Entity implements ICharacter, IPersistent{
@@ -25,7 +25,7 @@ public abstract class MCharacter extends Entity implements ICharacter, IPersiste
 	protected String name;
 	
 	/**
-	 * Prénom du personnage
+	 * PrÃ©nom du personnage
 	 */
 	protected String firstName;
 	
@@ -35,7 +35,7 @@ public abstract class MCharacter extends Entity implements ICharacter, IPersiste
 	protected ACharacter view;
 	
 	/**
-	 * Slot d'objet sur lequel le personnage peut être positionné
+	 * Slot d'objet sur lequel le personnage peut Ãªtre positionnÃ©
 	 */
 	protected Slot slot;
 	
@@ -50,23 +50,23 @@ public abstract class MCharacter extends Entity implements ICharacter, IPersiste
 	protected Item leftHandItem;
 	
 	/**
-	 * Multiplicateur de vitesse de déplacement
+	 * Multiplicateur de vitesse de dÃ©placement
 	 */
 	protected float speed;
 	
 	/**
-	 * Delai vitesse avant que ça ne retombe à 1
+	 * Delai vitesse avant que Ã§a ne retombe Ã  1
 	 */
 	protected float speedTimer;
 	
 	/**
-	 * Référence vers le jeu
+	 * RÃ©fÃ©rence vers le jeu
 	 */
 	protected Game game;
 	
 	/**
-	 * Prochain tile sur lequel le perso va se déplacer (Pour éviter que les personnages se superposent
-	 * lorsque l'on résout les mouvements 
+	 * Prochain tile sur lequel le perso va se dÃ©placer (Pour Ã©viter que les personnages se superposent
+	 * lorsque l'on rÃ©sout les mouvements 
 	 */
 	protected Vector2 nextTile;
 
@@ -92,7 +92,7 @@ public abstract class MCharacter extends Entity implements ICharacter, IPersiste
 	 * Constructeur
 	 * @param position Position
 	 * @param name Nom
-	 * @param firstName Prénom
+	 * @param firstName PrÃ©nom
 	 */
 	public MCharacter(Vector2 position, String name, String firstName){
 		super(position);
@@ -133,7 +133,7 @@ public abstract class MCharacter extends Entity implements ICharacter, IPersiste
 	}
 	
 	/**
-	 * Quitte le slot sur lequel il est positionné
+	 * Quitte le slot sur lequel il est positionnÃ©
 	 */
 	public void leaveSlot(){
 		this.slot = null;

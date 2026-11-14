@@ -24,7 +24,7 @@ import enibdevlab.dwarves.views.lang.StringManager;
  * 
  * Menu de chargement d'une partie
  * 
- * @author ClÈment Perreau
+ * @author Cl√©ment Perreau
  *
  */
 public class LoadGameMenu extends Stage {
@@ -42,19 +42,19 @@ public class LoadGameMenu extends Stage {
 	protected Table table;
 	protected Table scrolltable;
 	protected ScrollPane scroll;
-	protected List list;
+	protected List<String> list;
 	private Label error;
 	
 	// Charge on une partie
 	protected boolean load = false;
 	
 	/**
-	 * ScËne prÈcÈdente
+	 * Sc√®ne pr√©c√©dente
 	 */
 	protected Stage previousStage;
 	
 	public LoadGameMenu(Stage previousStage, boolean load){
-		super();
+		super(DwarvesManager.newViewport());
 		this.load = load;
 		this.previousStage = previousStage;
 		this.game = DwarvesManager.getInstance();
@@ -82,7 +82,7 @@ public class LoadGameMenu extends Stage {
 		this.table = new Table(skin);
 		
 		if(load){
-			this.list = new List(Loader.getSavegames(), skin);
+			this.list = new List<String>(skin); this.list.setItems(Loader.getSavegames());
 		}
 		else{
 			String[] str = new String[LevelFile.getLevels().size()];
@@ -91,7 +91,7 @@ public class LoadGameMenu extends Stage {
 				str[i++] = level.getTitle();
 			}
 			
-			this.list = new List(str, skin);
+			this.list = new List<String>(skin); this.list.setItems(str);
 		}
 		
 		this.ok = new ImageButton(new TextureRegionDrawable(MainMenu.buttonsImg.getTile(8)),
@@ -112,11 +112,11 @@ public class LoadGameMenu extends Stage {
 		this.ok.addListener(new GameClickListener(null){
 			public void clicked (InputEvent event, float x, float y) {
 				
-				if(list.getSelection()==null) return;
+				if(list.getSelected()==null) return;
 				
-				if(load) DwarvesManager.getInstance().loadGame(list.getSelection());
+				if(load) DwarvesManager.getInstance().loadGame(list.getSelected());
 				else{
-					String selection = list.getSelection();
+					String selection = list.getSelected();
 					for(LevelFile level:LevelFile.getLevels()){
 						if(level.getName().equals(selection)){
 							DwarvesManager.getInstance().newGame(level);
@@ -130,12 +130,12 @@ public class LoadGameMenu extends Stage {
 	
 	private void build() {
 		
-		this.scrolltable.clear();
+		this.scrolltable.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		this.scrolltable.defaults().pad(25);
 		this.scrolltable.add(this.list);
 		this.scrolltable.pack();
 		
-		this.table.clear();
+		this.table.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		this.table.defaults().space(10);
 		
 		if(load) this.table.add(StringManager.getString("LoadGame"));
@@ -161,7 +161,7 @@ public class LoadGameMenu extends Stage {
 	
 	@Override
 	public boolean keyDown(int keyCode) {
-		if(keyCode == Input.Keys.BACK){ // Appuie du bouton retour Android => retour menu prÈcÈdent
+		if(keyCode == Input.Keys.BACK){ // Appuie du bouton retour Android => retour menu pr√©c√©dent
 			DwarvesManager.getInstance().setStage(previousStage);
 		}
 		return super.keyDown(keyCode);

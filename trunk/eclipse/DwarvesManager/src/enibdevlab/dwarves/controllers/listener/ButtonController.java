@@ -11,7 +11,7 @@ import enibdevlab.dwarves.controllers.actions.animations.GUIAnimation;
 
 /**
  * This listener implements animation for buttons
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  */
 public class ButtonController extends InputListener{
 	

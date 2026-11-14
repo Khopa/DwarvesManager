@@ -1,6 +1,6 @@
 package enibdevlab.dwarves.controllers.listener;
 
-import java.lang.reflect.Constructor;
+import enibdevlab.dwarves.Ctor;
 import java.lang.reflect.InvocationTargetException;
 
 import com.badlogic.gdx.math.Vector2;
@@ -20,13 +20,13 @@ import enibdevlab.dwarves.views.scenes.game.GameScene;
  * 
  * Listener pour la gui principale du jeu
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GameGuiListener extends ChangeListener {
 
 	/**
-	 * Référence vers la vue
+	 * RÃ©fÃ©rence vers la vue
 	 */
 	protected GameGui gui;
 	
@@ -37,7 +37,7 @@ public class GameGuiListener extends ChangeListener {
 	@Override
 	public void changed(ChangeEvent event, Actor actor) {
 		
-		GameScene scene   = ((GameScene)(event.getStage())); 
+		GameScene scene   = ((GameScene)(event.getStage()));
 		
 		if(gui.getState() == GameGui.State.MAIN){
 			if(checkButton(actor, gui.getDwarfButton())){
@@ -80,9 +80,9 @@ public class GameGuiListener extends ChangeListener {
 				Game.getInstance().fireDwarfEvent("hitEraseButton");
 			}
 			else{
-				// Alors c'est un bouton pour choisir un objet à placer
-				// On passe le jeu en mode placement d'objet en instanciant l'objet associé au bouton
-				Constructor<?> c = gui.getObjectsButton().get(actor);
+				// Alors c'est un bouton pour choisir un objet Ã  placer
+				// On passe le jeu en mode placement d'objet en instanciant l'objet associÃ© au bouton
+				Ctor c = gui.getObjectsButton().get(actor);
 				if(c == null) return;
 				try {
 					GameObject object = (GameObject) c.newInstance(new Vector2(0,0));
@@ -114,13 +114,13 @@ public class GameGuiListener extends ChangeListener {
 				Game.getInstance().fireDwarfEvent("hitEraseButton");
 			}
 			else{
-				// Alors c'est un bouton pour choisir un objet à placer
-				// On passe le jeu en mode placement de pièce en donnant le type de pièce à placer
-				Constructor<?> c = gui.getRoomsButton().get(actor);
+				// Alors c'est un bouton pour choisir un objet Ã  placer
+				// On passe le jeu en mode placement de piÃ¨ce en donnant le type de piÃ¨ce Ã  placer
+				Ctor c = gui.getRoomsButton().get(actor);
 				if(c == null) return;
 				scene.getListener().setRoomType(c);
 				scene.setPlacingRoomMode();
-				Game.getInstance().fireDwarfEvent("placingRoom"+c.getDeclaringClass().getSimpleName());
+				Game.getInstance().fireDwarfEvent("placingRoom"+c.getSimpleName());
 			}
 			
 		}
@@ -132,7 +132,7 @@ public class GameGuiListener extends ChangeListener {
 				Game.getInstance().fireDwarfEvent("hitBackButton");
 			}
 			else if(checkButton(actor, gui.getEraseButton())){
-				// Togle le mode placement ou ajout de zone à miner
+				// Togle le mode placement ou ajout de zone Ã  miner
 				scene.toggleMineMode();
 				Game.getInstance().fireDwarfEvent("hitEraseButton");
 			}
@@ -145,14 +145,14 @@ public class GameGuiListener extends ChangeListener {
 				Game.getInstance().fireDwarfEvent("hitBackButton");
 			}
 			else if(checkButton(actor, gui.getEraseButton())){
-				// Togle le mode placement ou ajout de zone à miner
+				// Togle le mode placement ou ajout de zone Ã  miner
 				scene.setRemovingDwarfMode();
 				Game.getInstance().fireDwarfEvent("hitEraseButton");
 			}
 			else{
-				// Alors c'est un bouton pour choisir un nain à placer
-				// On passe le jeu en mode placement d'objet en instanciant l'objet associé au bouton
-				Constructor<?> c = gui.getRecruitsButton().get(actor);
+				// Alors c'est un bouton pour choisir un nain Ã  placer
+				// On passe le jeu en mode placement d'objet en instanciant l'objet associÃ© au bouton
+				Ctor c = gui.getRecruitsButton().get(actor);
 				if(c == null) return;
 				scene.getListener().setDwarfConstructor(c);
 				scene.setPlacingDwarvesMode();
@@ -160,13 +160,13 @@ public class GameGuiListener extends ChangeListener {
 			}
 		}
 		
-		// Repack de la table vu que la taille des widgets peut avoir changé
+		// Repack de la table vu que la taille des widgets peut avoir changÃ©
 		// gui.repack(); // en fait c'est moche
 	
 	}
 	
 	/**
-	 * Verifie si l'acteur est le bouton et si le bouton est checké
+	 * Verifie si l'acteur est le bouton et si le bouton est checkÃ©
 	 */
 	private static boolean checkButton(Actor actor, Button button){
 		return (actor == button);

@@ -3,8 +3,8 @@ package enibdevlab.dwarves.models.items.enchant;
 import enibdevlab.dwarves.models.items.Tool;
 
 /**
- * Enchantement générique
- * @author Clément Perreau
+ * Enchantement gÃ©nÃ©rique
+ * @author ClÃ©ment Perreau
  */
 public class Enchanted implements IEnchantment {
 
@@ -14,7 +14,7 @@ public class Enchanted implements IEnchantment {
 	protected float powerFactor;
 	
 	/**
-	 * Facteur de durabilité pour l'outil cible
+	 * Facteur de durabilitÃ© pour l'outil cible
 	 */
 	protected float durabilityFactor;
 	
@@ -27,7 +27,7 @@ public class Enchanted implements IEnchantment {
 	/**
 	 * Cree un enchantement classique 
 	 * @param powerFactor Facteur de puissance pour l'outil cible
-	 * @param durabilityFactor Facteur de durabilité pour l'outil cible
+	 * @param durabilityFactor Facteur de durabilitÃ© pour l'outil cible
 	 * @param enchantmentDuration Nombre d'utilisation de l'enchantement (-1 = infini)
 	 */
 	public Enchanted(float powerFactor, float durabilityFactor, float enchantmentDuration){

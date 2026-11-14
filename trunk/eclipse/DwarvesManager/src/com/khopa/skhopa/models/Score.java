@@ -5,7 +5,7 @@ package com.khopa.skhopa.models;
  * 
  * Score model
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Score {

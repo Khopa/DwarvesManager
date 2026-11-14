@@ -3,18 +3,18 @@ package enibdevlab.dwarves.controllers.actions;
 public interface IStm {
 
 	/**
-	 * Fonction appelée en entrée
+	 * Fonction appelÃ©e en entrÃ©e
 	 */
 	public void entry();
 	
 	/**
-	 * Fonction appelée en permanence
-	 * @param delta Temps écoulé depuis le dernier appel
+	 * Fonction appelÃ©e en permanence
+	 * @param delta Temps Ã©coulÃ© depuis le dernier appel
 	 */
 	public void doAction(float delta);
 	
 	/**
-	 * Appelé à la fin
+	 * AppelÃ© Ã  la fin
 	 */
 	public void finish();
 	

@@ -12,7 +12,7 @@ import enibdevlab.dwarves.views.lang.StringManager;
 public class Miner extends Dwarf {
 	
 	/**
-	 * Tile assigné à miner
+	 * Tile assignÃ© Ã  miner
 	 */
 	protected Vector2 toMine;
 
@@ -67,7 +67,7 @@ public class Miner extends Dwarf {
 	}
 
 	/**
-	 * Le nain arrête le travail pour aller se reposer
+	 * Le nain arrÃªte le travail pour aller se reposer
 	 */
 	public void stopWorking() {
 		game.getTaskManager().tileLeft(toMine);

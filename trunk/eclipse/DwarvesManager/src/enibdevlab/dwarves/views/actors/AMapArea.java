@@ -1,8 +1,9 @@
 package enibdevlab.dwarves.views.actors;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -14,23 +15,23 @@ import enibdevlab.dwarves.models.world.MapArea;
 /**
  * Vue pour le model MapArea
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  */
 public class AMapArea extends Actor{
 
 	/**
-	 * Référence vers le modèle
+	 * RÃ©fÃ©rence vers le modÃ¨le
 	 */
 	protected MapArea model;
 	
 	/**
-	 * Couleur préférentielle
+	 * Couleur prÃ©fÃ©rentielle
 	 */
 	protected Color color;
 
 	/**
 	 * Construit un actor libgdx pour afficher une mapArea
-	 * @param model Modele de MapArea à représenter
+	 * @param model Modele de MapArea Ã  reprÃ©senter
 	 */
 	public AMapArea(MapArea model){
 		this(model, new Color(0f, 0f, 1f, .2f));
@@ -38,8 +39,8 @@ public class AMapArea extends Actor{
 	
 	/**
 	 * Construit un actor libgdx pour afficher une mapArea
-	 * @param model Modele de MapArea à représenter
-	 * @param color Couleur souhaité pour la représentation
+	 * @param model Modele de MapArea Ã  reprÃ©senter
+	 * @param color Couleur souhaitÃ© pour la reprÃ©sentation
 	 */
 	public AMapArea(MapArea model, Color color){
 		this.model = model;
@@ -48,21 +49,21 @@ public class AMapArea extends Actor{
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha){
+	public void draw(Batch batch, float parentAlpha){
 		
 		int w = model.getTilemap().getTileWidth();
 		int h = model.getTilemap().getTileHeight();
 		
 		batch.end();
-		Gdx.gl.glEnable(GL10.GL_BLEND);
-	    Gdx.gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+		Gdx.gl.glEnable(GL20.GL_BLEND);
+	    Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		DwarvesManager.renderer.setProjectionMatrix(batch.getProjectionMatrix());
 		DwarvesManager.renderer.setTransformMatrix(batch.getTransformMatrix());
-		DwarvesManager.renderer.begin(ShapeType.FilledRectangle);
+		DwarvesManager.renderer.begin(ShapeType.Filled);
 		DwarvesManager.renderer.setColor(color);
-		DwarvesManager.renderer.filledRect(model.getI()*w, model.getJ()*h, model.getW()*w, model.getH()*h);
+		DwarvesManager.renderer.rect(model.getI()*w, model.getJ()*h, model.getW()*w, model.getH()*h);
 		DwarvesManager.renderer.end();
-		Gdx.gl.glDisable(GL10.GL_BLEND);
+		Gdx.gl.glDisable(GL20.GL_BLEND);
 		batch.begin();
 
 	}

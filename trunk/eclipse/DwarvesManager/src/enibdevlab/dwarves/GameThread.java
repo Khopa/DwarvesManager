@@ -14,28 +14,28 @@ import enibdevlab.dwarves.views.scenes.game.GameScene;
  * 
  * Controlleur de la partie
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GameThread extends Task {
 
 	/**
-	 * Durée en seconde d'une journée (pour versement salaire)
+	 * DurÃ©e en seconde d'une journÃ©e (pour versement salaire)
 	 */
 	private static final float dayDuration = 120;
 	
 	/**
-	 * Partie à controler
+	 * Partie Ã  controler
 	 */
 	private Game game;
 	
 	/**
-	 * Temps Ecoulé
+	 * Temps EcoulÃ©
 	 */
 	private float elapsedTime;
 	
 	/**
-	 * Temps de la journée
+	 * Temps de la journÃ©e
 	 */
 	private float dayCounter;
 	

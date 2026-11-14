@@ -23,7 +23,7 @@ public class MouthConfig {
 	protected Vector2 position;
 	
 	/*
-	 * décalage à appliquer lorsque le personnage est dirigé vers le coté
+	 * dÃ©calage Ã  appliquer lorsque le personnage est dirigÃ© vers le cotÃ©
 	 */
 	protected Vector2 sidePosition;
 	
@@ -35,11 +35,11 @@ public class MouthConfig {
 
 	/**
 	 * 
-	 * Crée une configuration pour la bouche d'un modèle
+	 * CrÃ©e une configuration pour la bouche d'un modÃ¨le
 	 * 
 	 * @param mouth    tileset de la bouche
 	 * @param position position de la bouche 
-	 * @param sidePosition décalage de position à appliquer lorsque le personnage est dirigé vers le coté
+	 * @param sidePosition dÃ©calage de position Ã  appliquer lorsque le personnage est dirigÃ© vers le cotÃ©
 	 */
 	public MouthConfig(Tileset mouth, Vector2 position, Vector2 sidePosition) {
 		this.position = position;

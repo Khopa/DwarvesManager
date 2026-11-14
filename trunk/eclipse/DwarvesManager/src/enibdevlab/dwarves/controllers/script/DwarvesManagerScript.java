@@ -8,7 +8,7 @@ import org.luaj.vm2.LuaValue;
  * 
  * Script Lua pour Dwarves Manager
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class DwarvesManagerScript extends LuaScript{
@@ -44,24 +44,20 @@ public class DwarvesManagerScript extends LuaScript{
 	 * @param filename Fichier de script Dwarves Manager
 	 */
 	public DwarvesManagerScript(LevelFile script) {
-		super(script.getName(), script.isInternal(), new String[]{"enibdevlab.dwarves.controllers.script.DwarvesManagerLuaApi"});
+		super(script.getName(), script.isInternal(), new org.luaj.vm2.LuaValue[]{new DwarvesManagerLuaApi()});
 		load();
 	}
 	
 	/**
-	 * Recherche dans le script les fonctions souhaitée
+	 * Recherche dans le script les fonctions souhaitÃ©e
 	 */
 	private void load() {
 		luaInit  = (LuaFunction) context.get("init");
 		luaSetup = (LuaFunction) context.get("setup");
 		luaRun = (LuaFunction) context.get("run");
 		
-		try{
-			luaEvent = (LuaFunction) context.get("onEvent");
-		}
-		catch(ClassCastException e){
-			luaEvent = null;
-		}
+		LuaValue ev = context.get("onEvent");
+		luaEvent = ev.isfunction() ? (LuaFunction) ev : null;
 		
 	}
 	

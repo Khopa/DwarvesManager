@@ -21,7 +21,7 @@ public class Tavern extends Room {
 	public Tavern(int i, int j, int w, int h, TileMap tilemap, Rooms rooms) {
 		super(i, j, w, h, tilemap, rooms);
 		
-		// Définition des objets requis
+		// DÃ©finition des objets requis
 		neededObjects.put(Barrel.class, 1);
 		neededObjects.put(Counter.class, 1);
 		neededObjects.put(TableObject.class, 1);

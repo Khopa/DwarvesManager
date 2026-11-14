@@ -1,8 +1,9 @@
 package enibdevlab.dwarves.views.widgets;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
+import enibdevlab.dwarves.views.TextBounds;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
@@ -12,8 +13,8 @@ import enibdevlab.dwarves.views.Tileset;
 
 /**
  * 
- * Bouton représentant un objet
- * @author Clément Perreau
+ * Bouton reprÃ©sentant un objet
+ * @author ClÃ©ment Perreau
  *
  */
 public class ObjectButton extends ImageButton {
@@ -34,7 +35,7 @@ public class ObjectButton extends ImageButton {
 	private String name;
 	
 	/**
-	 * Prix à afficher éventuellement
+	 * Prix Ã  afficher Ã©ventuellement
 	 */
 	private int price = 0;
 	
@@ -63,7 +64,7 @@ public class ObjectButton extends ImageButton {
 	}
 
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		
 		Color tmp = batch.getColor().cpy();
 		
@@ -75,14 +76,14 @@ public class ObjectButton extends ImageButton {
 		if(name != null){
 			DwarvesManager.font.setColor(Color.WHITE);
 			DwarvesManager.font.setColor(0xff, 0xff, 0xff, 0xf0);
-			TextBounds bounds = DwarvesManager.font.getBounds(name);			
+			TextBounds bounds = TextBounds.of(DwarvesManager.font, name);			
 			DwarvesManager.font.draw(batch, name,
 					this.getX()+ this.getWidth()/2 - bounds.width/2, this.getY()+this.getHeight()-bounds.height);
 		}
 		
 		if(price > 0){
 			DwarvesManager.font.setColor(Color.WHITE);
-			TextBounds bounds = DwarvesManager.font.getBounds(Integer.toString(price));
+			TextBounds bounds = TextBounds.of(DwarvesManager.font, Integer.toString(price));
 			int y = (int) (this.getY());
 			int x = (int) (this.getX()+this.getWidth()/2);
 			x -= Loader.guiAtlasSmall.getTileWidth()/2;

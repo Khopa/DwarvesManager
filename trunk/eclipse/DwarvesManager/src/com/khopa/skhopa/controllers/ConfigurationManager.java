@@ -6,7 +6,7 @@ import java.util.HashMap;
  * 
  * Configuration manager
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public abstract class ConfigurationManager {

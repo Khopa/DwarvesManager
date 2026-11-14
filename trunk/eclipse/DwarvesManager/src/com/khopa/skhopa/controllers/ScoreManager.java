@@ -9,7 +9,7 @@ import com.khopa.skhopa.models.Score;
  * 
  * Score manager as a Singleton
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public abstract class ScoreManager {

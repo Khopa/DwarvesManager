@@ -16,7 +16,7 @@ import enibdevlab.dwarves.views.actors.characters.ACharacter;
  * 
  * Liste intelligente des personnages en jeu
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Characters implements IPersistent{
@@ -38,7 +38,7 @@ public class Characters implements IPersistent{
 
 	/**
 	 * Ajoute un personnage dans la partie
-	 * @param character Personnage à ajouter
+	 * @param character Personnage Ã  ajouter
 	 */
 	public void addCharacter(MCharacter character){
 		this.characters.add(character);
@@ -50,16 +50,16 @@ public class Characters implements IPersistent{
 	
 	/**
 	 * Supprime un personnage dans la partie 
-	 * @param character Personnage à enlever
+	 * @param character Personnage Ã  enlever
 	 */
 	public void removeCharacter(MCharacter character){
 		this.characters.remove(character);
 		character.getView().remove();
 		
-		// Il faut libérer le personnage de son slot
+		// Il faut libÃ©rer le personnage de son slot
 		character.leaveSlot();
 		
-		// Si c'est un mineur, il faut faire part au task manager de l'arrêt de la tâche
+		// Si c'est un mineur, il faut faire part au task manager de l'arrÃªt de la tÃ¢che
 		if(character instanceof Miner) ((Miner) character).stopWorking();
 		
 	}

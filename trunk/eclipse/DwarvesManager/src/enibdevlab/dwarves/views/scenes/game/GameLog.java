@@ -9,7 +9,7 @@ import enibdevlab.dwarves.DwarvesManager;
 public class GameLog extends Table {
 
 	/**
-	 * Liste des infos à afficher
+	 * Liste des infos Ã  afficher
 	 */
 	protected ArrayList<String> logs;
 	
@@ -35,7 +35,7 @@ public class GameLog extends Table {
 	}
 	
 	public void update(){
-		this.clear();
+		this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		for(String log:logs.subList(logs.size()-5, logs.size())){
 			this.add(log).left();
 			this.row();

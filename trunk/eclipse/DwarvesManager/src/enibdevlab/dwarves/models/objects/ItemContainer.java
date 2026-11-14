@@ -11,7 +11,7 @@ import enibdevlab.dwarves.models.items.Item;
  * 
  * Objet qui contient des items
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public abstract class ItemContainer extends GameObject {
@@ -22,7 +22,7 @@ public abstract class ItemContainer extends GameObject {
 	private ArrayList<Item> items;
 	
 	/**
-	 * Capacité max
+	 * CapacitÃ© max
 	 */
 	protected int capacity = 8;
 	

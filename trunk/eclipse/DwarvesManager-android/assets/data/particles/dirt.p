@@ -45,6 +45,7 @@ timelineCount: 3
 timeline0: 0.0
 timeline1: 0.66
 timeline2: 1.0
+independent: false
 - Life Offset - 
 active: true
 lowMin: 0.0
@@ -58,6 +59,7 @@ scaling1: 1.0
 timelineCount: 2
 timeline0: 0.0
 timeline1: 1.0
+independent: false
 - X Offset - 
 active: true
 lowMin: 0.0
@@ -144,7 +146,7 @@ timeline8: 0.739726
 timeline9: 0.8287671
 timeline10: 0.89726025
 timeline11: 1.0
-- Scale - 
+- X Scale - 
 lowMin: 16.0
 lowMax: 16.0
 highMin: 32.0
@@ -158,6 +160,8 @@ timelineCount: 3
 timeline0: 0.0
 timeline1: 0.34931508
 timeline2: 0.7808219
+- Y Scale - 
+active: false
 - Velocity - 
 active: true
 lowMin: 0.0
@@ -242,5 +246,8 @@ continuous: false
 aligned: false
 additive: false
 behind: false
-- Image Path -
-D:\DwarvesManager\trunk\eclipse\DwarvesManager-android\assets\data\particles\dirt.png
+premultipliedAlpha: false
+spriteMode: single
+- Image Paths -
+dirt.png
+

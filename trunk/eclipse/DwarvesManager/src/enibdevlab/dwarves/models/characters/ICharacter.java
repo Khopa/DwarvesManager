@@ -7,13 +7,13 @@ import enibdevlab.dwarves.views.actors.characters.config.BodyConfig;
  * Interface des personnages
  * 
  * 
- * @author Clément Perreau 
+ * @author ClÃ©ment Perreau 
  *
  */
 public interface ICharacter {
 
 	/**
-	 * Type de modèle à afficher
+	 * Type de modÃ¨le Ã  afficher
 	 */
 	public BodyConfig getBodyConfig();
 	
@@ -23,12 +23,12 @@ public interface ICharacter {
 	public int getGoldenHello();
 	
 	/**
-	 * Salaire à la journée (6 minutes)
+	 * Salaire Ã  la journÃ©e (6 minutes)
 	 */
 	public int getSalary();
 	
 	/**
-	 * Prime de départ
+	 * Prime de dÃ©part
 	 */
 	public int getGoldenParachute();
 	

@@ -7,9 +7,9 @@ import enibdevlab.dwarves.views.actors.characters.ACharacter;
 
 /**
  * 
- * Cette action permet de faire bouger la tête d'un personnage de haut en bas
+ * Cette action permet de faire bouger la tÃªte d'un personnage de haut en bas
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class HeadUp extends TemporalAction{
@@ -20,12 +20,12 @@ public class HeadUp extends TemporalAction{
 	protected ACharacter acharacter;
 	
 	/**
-	 * Position y de la tête au départ
+	 * Position y de la tÃªte au dÃ©part
 	 */
 	protected float y;
 	
 	/*
-	 * Rapidité de hochement
+	 * RapiditÃ© de hochement
 	 */
 	protected float velocity;
 	
@@ -35,12 +35,12 @@ public class HeadUp extends TemporalAction{
 	protected float height;
 	
 	/**
-	 * Fais le personnage bouger la tête de haut en bas
+	 * Fais le personnage bouger la tÃªte de haut en bas
 	 * 
 	 * @param acharacter Personnage sur lequel on effectue l'action
-	 * @param velocity   Rapidité de hochement de tête
-	 * @param height     Hauteur du hochement de tête
-	 * @param duration   Durée
+	 * @param velocity   RapiditÃ© de hochement de tÃªte
+	 * @param height     Hauteur du hochement de tÃªte
+	 * @param duration   DurÃ©e
 	 */
 	public HeadUp(ACharacter acharacter, float velocity, float height, float duration){
 		super(duration);

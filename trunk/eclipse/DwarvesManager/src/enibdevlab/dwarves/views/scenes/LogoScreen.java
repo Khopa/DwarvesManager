@@ -14,9 +14,9 @@ import enibdevlab.dwarves.views.audio.SoundManager;
 
 /**
  * 
- * Scène qui affiche un écran de présentation avec le logo
+ * ScÃ¨ne qui affiche un Ã©cran de prÃ©sentation avec le logo
  * 
- * @author Clément
+ * @author ClÃ©ment
  *
  */
 public class LogoScreen extends Stage {
@@ -28,7 +28,7 @@ public class LogoScreen extends Stage {
 	protected AImage logo;
 	
 	public LogoScreen(DwarvesManager game){
-		super(DwarvesManager.getWidth(),DwarvesManager.getHeight(), false);
+		super(DwarvesManager.newViewport());
 		this.game = game;
 		init();
 	}
@@ -37,12 +37,12 @@ public class LogoScreen extends Stage {
 		
 		// Titre
 		TextureRegion title = new TextureRegion(new Texture("data/sprites/logo.png"));
-		this.logo = new AImage(title, Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
+		this.logo = new AImage(title, DwarvesManager.getWidth()/2,DwarvesManager.getHeight()/2);
 		this.addActor(logo);
 		
 		/* Ajout d'un mouvement pour le logo */
 		
-		float sizeLogo = (0.75f*Gdx.graphics.getWidth())/this.logo.getWidth();
+		float sizeLogo = (0.75f*DwarvesManager.getWidth())/this.logo.getWidth();
 		
 		logo.addAction(Actions.scaleBy(.1f,.1f));
 		logo.addAction(Actions.color(new Color(1f,1f,1f,0f)));

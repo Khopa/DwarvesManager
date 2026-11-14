@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.views.actors.characters;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,7 +12,7 @@ import enibdevlab.dwarves.views.actors.characters.config.BodyConfig;
 public class AHead extends ACharacterPart {
 
 	/**
-	 * Liste de sprites pour les différentes directions de la tête
+	 * Liste de sprites pour les diffÃ©rentes directions de la tÃªte
 	 */
 	protected Tileset tileset;
 	
@@ -21,7 +22,7 @@ public class AHead extends ACharacterPart {
 	protected Vector2 pupilPosition = new Vector2();
 	
 	/**
-	 * Valeur booléene qui gère le clignement des yeux
+	 * Valeur boolÃ©ene qui gÃ¨re le clignement des yeux
 	 */
 	protected boolean blink = false;
 	
@@ -32,10 +33,10 @@ public class AHead extends ACharacterPart {
 	
 	/**
 	 * 
-	 * Construit une tête pour un personnage
+	 * Construit une tÃªte pour un personnage
 	 * 
-	 * @param acharacter  Référence vers la vue principale
-	 * @param tileset Tileset de la tête
+	 * @param acharacter  RÃ©fÃ©rence vers la vue principale
+	 * @param tileset Tileset de la tÃªte
 	 */
 	public AHead(ACharacter acharacter, Tileset tileset) {
 		super(acharacter);
@@ -47,7 +48,7 @@ public class AHead extends ACharacterPart {
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha){
+	public void draw(Batch batch, float parentAlpha){
 		
 		super.draw(batch, parentAlpha);
 		
@@ -63,7 +64,7 @@ public class AHead extends ACharacterPart {
 				this.getWidth(), this.getHeight(), this.getScaleX(),
 				this.getScaleY(), this.getRotation());
 		
-		// Pour les yeux et la bouche, ça change selon les cas
+		// Pour les yeux et la bouche, Ã§a change selon les cas
 		switch(this.acharacter.direction){
 			case BOTTOM:
 				this.drawBottom(batch, parentAlpha);
@@ -85,12 +86,12 @@ public class AHead extends ACharacterPart {
 	
 	/**
 	 * 
-	 * Dessine la tête du personnage quand il se dirige vers le bas (face au joueur) (dessin des deux yeux et bouche)
+	 * Dessine la tÃªte du personnage quand il se dirige vers le bas (face au joueur) (dessin des deux yeux et bouche)
 	 * 
 	 * @param batch Batch 
-	 * @param delta Temps ecoulé depuis le dernier dessin
+	 * @param delta Temps ecoulÃ© depuis le dernier dessin
 	 */
-	protected void drawBottom(SpriteBatch batch, float parentAlpha){
+	protected void drawBottom(Batch batch, float parentAlpha){
 
 		float tileW = bodyConfig.getEyesConfig().getEyesTileset().getTileWidth();
 		float tileH = bodyConfig.getEyesConfig().getEyesTileset().getTileHeight();
@@ -143,7 +144,7 @@ public class AHead extends ACharacterPart {
 		
 		
 		/*
-		 * décalage de la bouche selon la direction que prends le personnage
+		 * dÃ©calage de la bouche selon la direction que prends le personnage
 		 */
 
 		// bouche
@@ -164,22 +165,22 @@ public class AHead extends ACharacterPart {
 	
 	/**
 	 * 
-	 * Dessine la tête du personnage quand il regarde vers le haut (pas de dessin)
+	 * Dessine la tÃªte du personnage quand il regarde vers le haut (pas de dessin)
 	 * 
 	 * @param batch Batch 
-	 * @param delta Temps ecoulé depuis le dernier dessin
+	 * @param delta Temps ecoulÃ© depuis le dernier dessin
 	 */
-	protected void drawTop(SpriteBatch batch, float parentAlpha){
+	protected void drawTop(Batch batch, float parentAlpha){
 	}
 	
 	/**
 	 * 
-	 * Dessine la tête du personnage quand il regarde vers la droite (un oeil, une bouche)
+	 * Dessine la tÃªte du personnage quand il regarde vers la droite (un oeil, une bouche)
 	 * 
 	 * @param batch Batch 
-	 * @param delta Temps ecoulé depuis le dernier dessin
+	 * @param delta Temps ecoulÃ© depuis le dernier dessin
 	 */
-	protected void drawRight(SpriteBatch batch, float parentAlpha){
+	protected void drawRight(Batch batch, float parentAlpha){
 		
 		// Oeil droit
 		
@@ -226,12 +227,12 @@ public class AHead extends ACharacterPart {
 	
 	/**
 	 * 
-	 * Dessine la tête du personnage quand il regarde vers la gauche (un oeil, une bouche)
+	 * Dessine la tÃªte du personnage quand il regarde vers la gauche (un oeil, une bouche)
 	 * 
 	 * @param batch Batch 
-	 * @param delta Temps ecoulé depuis le dernier dessin
+	 * @param delta Temps ecoulÃ© depuis le dernier dessin
 	 */
-	protected void drawLeft(SpriteBatch batch, float parentAlpha){
+	protected void drawLeft(Batch batch, float parentAlpha){
 		
 		float tileW = this.acharacter.bodyConfig.getEyesConfig().getEyesTileset().getTileWidth();
 		float tileH = this.acharacter.bodyConfig.getEyesConfig().getEyesTileset().getTileHeight();

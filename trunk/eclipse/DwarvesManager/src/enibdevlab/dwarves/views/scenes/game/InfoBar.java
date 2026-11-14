@@ -12,15 +12,15 @@ import enibdevlab.dwarves.views.lang.StringManager;
 
 /**
  * 
- * Barre d'info située en haut de l'écran
+ * Barre d'info situÃ©e en haut de l'Ã©cran
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class InfoBar extends Table{
 
 	/**
-	 * Compte à afficher
+	 * Compte Ã  afficher
 	 */
 	protected Bank model;
 	
@@ -69,7 +69,7 @@ public class InfoBar extends Table{
 	
 	private void createView() {
 		
-		this.clear();
+		this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		this.add(money);
 		this.add(moneyAmount);
 		this.add().width(50);

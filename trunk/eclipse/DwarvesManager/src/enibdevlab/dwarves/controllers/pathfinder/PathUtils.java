@@ -20,15 +20,15 @@ import enibdevlab.dwarves.views.world.Tile;
 /**
  * Quelques fonctions utiles pour simplifier l'utilisation du PathFinder
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  */
 public class PathUtils {
 
 	/**
-	 * Regarde si le personnage donné peut accéder à un tile donné, et retourne le chemin si oui
+	 * Regarde si le personnage donnÃ© peut accÃ©der Ã  un tile donnÃ©, et retourne le chemin si oui
 	 * @param character Personnage
-	 * @param tile Tile ciblé
-	 * @param game Référence vers le jeu pour l'accés aux données
+	 * @param tile Tile ciblÃ©
+	 * @param game RÃ©fÃ©rence vers le jeu pour l'accÃ©s aux donnÃ©es
 	 */
 	public static ArrayList<Node> pathToTile(MCharacter character, Vector2 tile, Game game){
 		int tx = (int)(tile.x);
@@ -47,26 +47,26 @@ public class PathUtils {
 	}
 	
 	/**
-	 * Chemin vers une pièce
-	 * Retourne le chemin vers le plus proche tile accesible composant cette pièce
+	 * Chemin vers une piÃ¨ce
+	 * Retourne le chemin vers le plus proche tile accesible composant cette piÃ¨ce
 	 * Null si il n'y a pas de chemin
 	 * @param character Personnage 
-	 * @param room Pièce à atteindre
-	 * @param game Référence vers le jeu
+	 * @param room PiÃ¨ce Ã  atteindre
+	 * @param game RÃ©fÃ©rence vers le jeu
 	 */
 	public static ArrayList<Node> pathToRoom(MCharacter character, Room room, Game game){
 		
 		int x = (int) character.getX();
 		int y = (int) character.getY();
 		
-		// On recupère tous les tiles de la pièce
+		// On recupÃ¨re tous les tiles de la piÃ¨ce
 		ArrayList<Vector2> tiles = room.getTiles();
 		
-		// On les trie par rapport à leur distance par rapport au personnage
+		// On les trie par rapport Ã  leur distance par rapport au personnage
 		Collections.sort(tiles, new VectorDistanceToPointComparator(
 		         		 x,y));
 		
-		// On renvoie le premier chemin qu'on arrive à créer
+		// On renvoie le premier chemin qu'on arrive Ã  crÃ©er
 		ArrayList<Node> path;
 		for(Vector2 tile:tiles){
 			path = pathToTile(character, tile, game);
@@ -75,15 +75,15 @@ public class PathUtils {
 			}
 		}
 		
-		// Pas de chemin trouvé
+		// Pas de chemin trouvÃ©
 		return null;
 	}
 	
 	/**
-	 * Renvoie le chemin vers un slot précis
+	 * Renvoie le chemin vers un slot prÃ©cis
 	 * @param character Personnage 
-	 * @param slot Slot à atteindre
-	 * @param game Référence vers le jeu
+	 * @param slot Slot Ã  atteindre
+	 * @param game RÃ©fÃ©rence vers le jeu
 	 * @return
 	 */
 	public static ArrayList<Node> pathToSlot(MCharacter character, Slot slot, Game game){
@@ -92,16 +92,16 @@ public class PathUtils {
 	
 	
 	/**
-	 * Retourne la liste ordonnée des pièces d'un type donné, triées par rapport à leur
-	 * distance à une position donnée
-	 * @param roomType Type de pièce
-	 * @param fromPosition Position utilisée pour trier
-	 * @param game Référence vers le jeu
+	 * Retourne la liste ordonnÃ©e des piÃ¨ces d'un type donnÃ©, triÃ©es par rapport Ã  leur
+	 * distance Ã  une position donnÃ©e
+	 * @param roomType Type de piÃ¨ce
+	 * @param fromPosition Position utilisÃ©e pour trier
+	 * @param game RÃ©fÃ©rence vers le jeu
 	 */
 	public static ArrayList<Room> getSortedRoom(Class<? extends Room> roomType, Vector2 fromPosition,  Game game){
-		// Liste des pièces du type demandé
+		// Liste des piÃ¨ces du type demandÃ©
 		ArrayList<Room> rooms = game.getRooms().getRooms(roomType, true);
-		// On trie la liste des pièces
+		// On trie la liste des piÃ¨ces
 		Collections.sort(rooms, new RoomDistanceToPointComparator(
 				         (int)fromPosition.x,(int)fromPosition.y));
 		return rooms;
@@ -109,11 +109,11 @@ public class PathUtils {
 	
 	
 	/**
-	 * Retourne la liste ordonnée des pièces opérationnelle d'un type donné, triées par rapport à leur
-	 * distance à une position donnée
-	 * @param roomType Type de pièce
-	 * @param fromPosition Position utilisée pour trier
-	 * @param game Référence vers le jeu
+	 * Retourne la liste ordonnÃ©e des piÃ¨ces opÃ©rationnelle d'un type donnÃ©, triÃ©es par rapport Ã  leur
+	 * distance Ã  une position donnÃ©e
+	 * @param roomType Type de piÃ¨ce
+	 * @param fromPosition Position utilisÃ©e pour trier
+	 * @param game RÃ©fÃ©rence vers le jeu
 	 */
 	public static ArrayList<Room> getSortedOperationnalRoom(Class<? extends Room> roomType, Vector2 fromPosition,  Game game){
 		ArrayList<Room> rooms = getSortedRoom(roomType, fromPosition, game);
@@ -127,12 +127,12 @@ public class PathUtils {
 	
 	
 	/**
-	 * Retourne la liste triée des objets d'un type donné utilisable par un personnage d'un type donné
+	 * Retourne la liste triÃ©e des objets d'un type donnÃ© utilisable par un personnage d'un type donnÃ©
 	 * @param objectType Type d'objet 
-	 * @param characterType Type de personnage qui souhaite utilisé l'objet (Mettre null si vous souhaitez ignorer ce paramètre)
-	 * @param room Pièce
-	 * @param fromPosition Position par rapport à laquelle
-	 * @param game Référence vers le jeu pour l'accés aux données
+	 * @param characterType Type de personnage qui souhaite utilisÃ© l'objet (Mettre null si vous souhaitez ignorer ce paramÃ¨tre)
+	 * @param room PiÃ¨ce
+	 * @param fromPosition Position par rapport Ã  laquelle
+	 * @param game RÃ©fÃ©rence vers le jeu pour l'accÃ©s aux donnÃ©es
 	 */
 	public static ArrayList<GameObject> getSortedUsableObjectInRoom(Class<? extends GameObject> objectType,
 														  Class<? extends MCharacter> characterType,
@@ -142,16 +142,16 @@ public class PathUtils {
 		
 		if(characterType == null) characterType = MCharacter.class;
 		
-		// Récupérer la liste des objets du type donné dans la pièce
+		// RÃ©cupÃ©rer la liste des objets du type donnÃ© dans la piÃ¨ce
 		ArrayList<GameObject> objects = room.getObjects(objectType);
 		
 		
 		if(objects.size()<=0) return null; // Si il y a pas d'objet c'est pas la peine de continuer
 		
-		// Enlever tous les objets qui n'ont pas de slot dispo pour le type de personnage donné
+		// Enlever tous les objets qui n'ont pas de slot dispo pour le type de personnage donnÃ©
 		ArrayList<GameObject> toRemove = new ArrayList<GameObject>();
 		for(GameObject obj:objects){
-			if(!obj.slotAvailable(characterType) && obj.getSlots().size() > 0){ // Un objet sans slots est toujours considéré utilisable
+			if(!obj.slotAvailable(characterType) && obj.getSlots().size() > 0){ // Un objet sans slots est toujours considÃ©rÃ© utilisable
 				toRemove.add(obj);
 			}
 		}
@@ -160,7 +160,7 @@ public class PathUtils {
 		
 		if(objects.size()<=0) return null; // Si il y a plus d'objets c'est pas la peine de continuer
 		
-		// Tri des objets par rapport à leur distance au perso
+		// Tri des objets par rapport Ã  leur distance au perso
 		Collections.sort(objects, new ObjectDistanceToPointComparator(
 		         				(int)fromPosition.x,(int)fromPosition.y));
 		
@@ -168,15 +168,15 @@ public class PathUtils {
 	}
 	
 	/**
-	 * Retourne le plus proche objet d'un type donné qui a un slot libre pour le type de personnage
-	 * du personnage qui est utilisé comme référentiel de position s'il en existe un dans la pièce donnée
-	 * NB : Ca renvoie l'objet le plus proche, pas forcément l'objet qui a le slot le plus proche
-	 * Donc sur des courtes distance ça peut sembler ne pas fonctionner parfaitement
+	 * Retourne le plus proche objet d'un type donnÃ© qui a un slot libre pour le type de personnage
+	 * du personnage qui est utilisÃ© comme rÃ©fÃ©rentiel de position s'il en existe un dans la piÃ¨ce donnÃ©e
+	 * NB : Ca renvoie l'objet le plus proche, pas forcÃ©ment l'objet qui a le slot le plus proche
+	 * Donc sur des courtes distance Ã§a peut sembler ne pas fonctionner parfaitement
 	 * @param objectType Type d'objet 
-	 * @param characterType Type de personnage qui souhaite utilisé l'objet (Mettre null si vous souhaitez ignorer ce paramètre)
-	 * @param room Pièce
-	 * @param fromPosition Position par rapport à laquelle
-	 * @param game Référence vers le jeu pour l'accés aux données
+	 * @param characterType Type de personnage qui souhaite utilisÃ© l'objet (Mettre null si vous souhaitez ignorer ce paramÃ¨tre)
+	 * @param room PiÃ¨ce
+	 * @param fromPosition Position par rapport Ã  laquelle
+	 * @param game RÃ©fÃ©rence vers le jeu pour l'accÃ©s aux donnÃ©es
 	 */
 	public static GameObject getNearestUsableObjectInRoom(Class<? extends GameObject> objectType,
 														   Class<? extends MCharacter> characterType,
@@ -189,11 +189,11 @@ public class PathUtils {
 	}
 	
 	/**
-	 * Crée et ajoute la séquence d'action correspondant au chemin donné aux actions du personnage donné
+	 * CrÃ©e et ajoute la sÃ©quence d'action correspondant au chemin donnÃ© aux actions du personnage donnÃ©
 	 * @param path Chemin
-	 * @param character Personnage concerné
-	 * @param game Référence vers le jeu pour l'accés aux données
-	 * @return Séquence d'action correspondant au chemin donné
+	 * @param character Personnage concernÃ©
+	 * @param game RÃ©fÃ©rence vers le jeu pour l'accÃ©s aux donnÃ©es
+	 * @return SÃ©quence d'action correspondant au chemin donnÃ©
 	 */
 	public static ArrayList<TileMove> buildPath(List<Node> path, MCharacter character, Game game, float moveDuration){
 
@@ -214,30 +214,30 @@ public class PathUtils {
 	
 	
 	/**
-	 * Recherche un chemin vers un tile adjacent au tile donné
+	 * Recherche un chemin vers un tile adjacent au tile donnÃ©
 	 */
 	public static ArrayList<Node> pathToAdjacentTile(Game game, MCharacter character, Vector2 tile){
 		
 		ArrayList<Node> path = new ArrayList<Node>();
 		
-		// On récupère le tile correspondant sur la map et les tiles adjacents
+		// On rÃ©cupÃ¨re le tile correspondant sur la map et les tiles adjacents
 		Tile tmp = game.getLevel().getTilemap().getTile(0, (int)tile.x, (int)tile.y);
 		Tile[] neighbours = {tmp.bottom(), tmp.top(), tmp.right(), tmp.left()}; // Tiles voisins
-		ArrayList<Vector2> valid = new ArrayList<Vector2>(); // Liste des coordonnées de tiles valides
+		ArrayList<Vector2> valid = new ArrayList<Vector2>(); // Liste des coordonnÃ©es de tiles valides
 		
-		// On élimine les tiles qui sont bloquants
+		// On Ã©limine les tiles qui sont bloquants
 		for(Tile adjacentTile:neighbours){
 			
-			// Il faut faire gaffe parce que un tile peut être null si on est sur un bord de map
+			// Il faut faire gaffe parce que un tile peut Ãªtre null si on est sur un bord de map
 			if(adjacentTile == null) continue; 
 			
-			// Crée une position valide si le tile est non bloquant
+			// CrÃ©e une position valide si le tile est non bloquant
 			if(!adjacentTile.isBlocking()){
 				valid.add(new Vector2(adjacentTile.getX(), adjacentTile.getY()));
 			}
 		}
 		
-		// On retourne le premier chemin qu'on arrive à créer
+		// On retourne le premier chemin qu'on arrive Ã  crÃ©er
 		for(Vector2 destination: valid){
 			path = pathToTile(character, destination, game);
 			if(path != null) return path;

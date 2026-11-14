@@ -6,9 +6,9 @@ import com.khopa.skhopa.controllers.ConfigurationManager;
 
 /**
  * 
- * Classe statique qui se charge de gérer les musiques
+ * Classe statique qui se charge de gÃ©rer les musiques
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class MusicManager {

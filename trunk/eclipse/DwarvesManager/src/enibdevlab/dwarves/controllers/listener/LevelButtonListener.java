@@ -8,7 +8,7 @@ import enibdevlab.dwarves.controllers.script.LevelFile;
 
 /**
  * Listener for launch level buttons
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  */
 public class LevelButtonListener extends ClickListener {
 

@@ -1,109 +1,86 @@
 package enibdevlab.dwarves.controllers.script;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-
-import org.luaj.vm2.LuaClosure;
+import org.luaj.vm2.Globals;
+import org.luaj.vm2.LoadState;
 import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.Prototype;
 import org.luaj.vm2.compiler.LuaC;
-import org.luaj.vm2.lib.jme.JmePlatform;
-import org.luaj.vm2.lib.jse.JsePlatform;
+import org.luaj.vm2.lib.BaseLib;
+import org.luaj.vm2.lib.MathLib;
+import org.luaj.vm2.lib.PackageLib;
+import org.luaj.vm2.lib.StringLib;
+import org.luaj.vm2.lib.TableLib;
 
-import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 
 /**
- * 
+ *
  * Script Lua avec LuaJ
- * 
- * @author Clément Perreau
+ *
+ * Web port: the original built JsePlatform/JmePlatform globals and loaded the
+ * game API through `require "<java class name>"`, which relies on reflection.
+ * Here we build the globals by hand from the pure-Java libraries only (no
+ * luajava, no coroutine/io/os libs, which need threads or a filesystem), and
+ * install the game API library directly.
+ *
+ * @author ClÃ©ment Perreau
  *
  */
 public class LuaScript {
-	
-	/**
-	 * Code compilé Lua
-	 */
-	protected Prototype luaCode;
-	
+
 	/**
 	 * Contexte Lua
 	 */
-	protected LuaValue context;
-	
+	protected Globals context;
+
 	/**
-	 * Nom du script 
+	 * Nom du script
 	 */
 	protected String scriptName;
-	
+
 	/**
-	 * Permet de savoir si la map est packagée ou non avec le jeu
+	 * Permet de savoir si la map est packagÃ©e ou non avec le jeu
 	 */
 	protected boolean internal;
-	
+
 	/**
-	 * Crée un nouveau script Lua à partir du fichier spécifié
+	 * CrÃ©e un nouveau script Lua Ã  partir du fichier spÃ©cifiÃ©
 	 * @param filename Nom du script LUA
-	 * @param internal Fichier interne ou non 
+	 * @param internal Fichier interne ou non
+	 * @param libraries Librairies Java Ã  installer dans le contexte
 	 */
-	public LuaScript(String filename, boolean internal, String[] required){
-		
+	public LuaScript(String filename, boolean internal, LuaValue[] libraries){
+
 		this.scriptName = filename;
 		this.internal = internal;
-		
-		/**
-		 * Création du contexte Lua en fonction de la plateforme
-		 */
-		ApplicationType platform = Gdx.app.getType();
-		if(platform == ApplicationType.Android || platform == ApplicationType.iOS){
-			// On prend la version de JLua pour Java Mobile Edition 
-			context = JmePlatform.standardGlobals();
+
+		context = new Globals();
+		context.load(new BaseLib());
+		context.load(new PackageLib());
+		context.load(new TableLib());
+		context.load(new StringLib());
+		context.load(new MathLib());
+		LoadState.install(context);
+		LuaC.install(context);
+
+		for(LuaValue lib : libraries){
+			context.load(lib);
+		}
+
+		FileHandle scriptFile;
+		if(internal){
+			scriptFile = Gdx.files.internal(LevelFile.scriptInternalLocation + "/" + filename);
 		}
 		else{
-			// On prend la version de JLua pour Java Standard Edition
-			context = JsePlatform.standardGlobals();
+			scriptFile = Gdx.files.local(LevelFile.scriptExternalLocation + "/" + filename);
 		}
-		
-		try {
-			
-			FileHandle scriptFile;
-			if(internal){
-				scriptFile = Gdx.files.internal(LevelFile.scriptInternalLocation + "/" + filename);
-			}
-			else{
-				scriptFile = Gdx.files.external(LevelFile.scriptExternalLocation + "/" + filename);
-			}
-			
-			
-			/**
-			 * Crée la liste des libs requises
-			 */
-			
-			for(String lib:required){
-				String line = "require \""+lib+"\"";
-				Prototype requirement = LuaC.compile(new ByteArrayInputStream(line.getBytes()), "script");
-				LuaClosure requirementClosure = new LuaClosure(requirement, context);
-				requirementClosure.call();
-			}
-			
-			String code = scriptFile.readString("UTF-8");
-			luaCode = LuaC.compile(new ByteArrayInputStream(code.getBytes()), "script");
-		
-			LuaClosure closure = new LuaClosure(luaCode, context);
-			closure.call();
-			
-			
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+
+		String code = scriptFile.readString("UTF-8");
+		context.load(code, "script").call();
 	}
 
 	public boolean isInternal() {
 		return internal;
 	}
-	
+
 }

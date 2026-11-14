@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.views.actors.gameObjects;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import enibdevlab.dwarves.DwarvesManager;
@@ -17,7 +18,7 @@ public class ARack extends AGameObject {
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		super.draw(batch, parentAlpha);
 		
 		int w = Loader.objectAtlas.getTileWidth();

@@ -20,7 +20,7 @@ import enibdevlab.dwarves.views.scenes.game.GameScene;
  * "Partie" du jeu
  * 
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public final class Game implements IPersistent{
@@ -36,7 +36,7 @@ public final class Game implements IPersistent{
 	private Characters characters;
 	
 	/**
-	 * Gestionnaire de pièces
+	 * Gestionnaire de piÃ¨ces
 	 */
 	private Rooms rooms;
 	
@@ -56,12 +56,12 @@ public final class Game implements IPersistent{
 	private TaskManager taskManager;
 	
 	/**
-	 * Banque qui gère l'argent du joueur
+	 * Banque qui gÃ¨re l'argent du joueur
 	 */
 	private Bank bank;
 	
 	/**
-	 * Données xml de la partie
+	 * DonnÃ©es xml de la partie
 	 */
 	private Element xml;
 
@@ -76,7 +76,7 @@ public final class Game implements IPersistent{
 	private static Game instance = null;
 	
 	/**
-	 * Constructeur, à partir d'un script Lua
+	 * Constructeur, Ã  partir d'un script Lua
 	 */
 	public Game(GameScene view, LevelFile script){
 		
@@ -94,7 +94,7 @@ public final class Game implements IPersistent{
 
 
 	/**
-	 * Charge une partie à partir d'un fichier xml sauvegardé sur la machine
+	 * Charge une partie Ã  partir d'un fichier xml sauvegardÃ© sur la machine
 	 */
 	public Game(GameScene view, String filename) {
 		
@@ -103,18 +103,18 @@ public final class Game implements IPersistent{
 		
 		this.view = view;
 		this.setFilename(filename);
-		FileHandle file = Gdx.files.external("DwarvesManager/saves/"+filename);
+		FileHandle file = Gdx.files.local("DwarvesManager/saves/"+filename);
 		XmlReader reader = new XmlReader();
 		try {
 			this.xml = reader.parse(file);
 			this.loadFromXmlElement(this.xml);
-		} catch (IOException e) {
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * Crée un niveau aléatoire
+	 * CrÃ©e un niveau alÃ©atoire
 	 * @param gameScene
 	 */
 	public Game(GameScene view) {
@@ -227,9 +227,9 @@ public final class Game implements IPersistent{
 		output.addChild(getTaskManager().saveAsXmlElement());
 		output.addChild(getBank().saveAsXmlElement());
 		
-		FileHandle file = Gdx.files.external(filename);
+		FileHandle file = Gdx.files.local(filename);
 		this.filename = file.pathWithoutExtension(); 
-		file = Gdx.files.external("DwarvesManager/Saves/"+this.filename+".xml");
+		file = Gdx.files.local("DwarvesManager/saves/"+this.filename+".xml");
 		file.writeString(output.toString(), false);
 		
 		log(StringManager.getString("Saved"));
@@ -253,7 +253,7 @@ public final class Game implements IPersistent{
 	}
 
 	/**
-	 * Seconde partie du chargement (Après l'initialisation complète des premières vues)
+	 * Seconde partie du chargement (AprÃ¨s l'initialisation complÃ¨te des premiÃ¨res vues)
 	 */
 	public void loadObjects() {
 		this.characters.loadFromXmlElement(this.xml.getChildByName("Characters"));

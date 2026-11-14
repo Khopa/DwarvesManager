@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.views.actors.characters;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -9,9 +10,9 @@ import enibdevlab.dwarves.models.Direction;
 
 /**
  * 
- * Objet graphique pour représenter les mains des personnages
+ * Objet graphique pour reprÃ©senter les mains des personnages
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class AHand extends ACharacterPart {
@@ -22,12 +23,12 @@ public class AHand extends ACharacterPart {
 	}
 	
 	/**
-	 * Coté de la main
+	 * CotÃ© de la main
 	 */
 	protected HandSide handside;
 	
 	/**
-	 * Image de la main (utilisé en tant que raccourci uniquement)
+	 * Image de la main (utilisÃ© en tant que raccourci uniquement)
 	 */
 	protected TextureRegion img; 
 	
@@ -44,7 +45,7 @@ public class AHand extends ACharacterPart {
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha){
+	public void draw(Batch batch, float parentAlpha){
 		
 		super.draw(batch, parentAlpha);
 		this.setColor(acharacter.getColor());

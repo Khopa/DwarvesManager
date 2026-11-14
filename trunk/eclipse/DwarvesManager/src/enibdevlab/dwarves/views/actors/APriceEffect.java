@@ -1,8 +1,9 @@
 package enibdevlab.dwarves.views.actors;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
+import enibdevlab.dwarves.views.TextBounds;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import enibdevlab.dwarves.DwarvesManager;
@@ -13,7 +14,7 @@ import enibdevlab.dwarves.views.Loader;
 public class APriceEffect extends Actor {
 
 	/**
-	 * Prix payé
+	 * Prix payÃ©
 	 */
 	protected String price;
 	
@@ -30,7 +31,7 @@ public class APriceEffect extends Actor {
 			this.price = Integer.toString(price);
 			this.setColor(Color.RED);
 		}
-		txtbnd = DwarvesManager.font.getBounds(Integer.toString(price));
+		txtbnd = TextBounds.of(DwarvesManager.font, Integer.toString(price));
 		this.setPosition(x, y);
 		this.setWidth(Loader.guiAtlasSmall.getTileWidth()+txtbnd.width);
 		this.setHeight(Loader.guiAtlasSmall.getTileHeight()+txtbnd.height);
@@ -38,7 +39,7 @@ public class APriceEffect extends Actor {
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		super.draw(batch, parentAlpha);
 		
 		batch.setColor(1f, 1f, 1f, this.getColor().a);

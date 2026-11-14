@@ -1,11 +1,12 @@
 package enibdevlab.dwarves.views.actors;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
+import enibdevlab.dwarves.views.TextBounds;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
@@ -16,7 +17,7 @@ import enibdevlab.dwarves.views.Primitives;
  * 
  * Provoque attente de synchronisation sur un thread de connection
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class WaitingEffect extends Group{
@@ -49,7 +50,7 @@ public class WaitingEffect extends Group{
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		
 		
 		batch.end();
@@ -57,14 +58,14 @@ public class WaitingEffect extends Group{
 		
 		// Fond
 		Primitives.enableAlphaBlending();
-		Primitives.filledRect(0, 0, DwarvesManager.getWidth(), DwarvesManager.getHeight(), bgColor);
+		Primitives.rect(0, 0, DwarvesManager.getWidth(), DwarvesManager.getHeight(), bgColor);
 		
-		TextBounds textbnd = DwarvesManager.font.getBounds(text);
+		TextBounds textbnd = TextBounds.of(DwarvesManager.font, text);
 		int w = (int) (textbnd.width + 10);
 		int h = (int) (textbnd.height + 10);
 		
 		// Zone de loading
-		Primitives.filledRect(DwarvesManager.getWidth()/2-w/2, DwarvesManager.getHeight()/2-h/2,
+		Primitives.rect(DwarvesManager.getWidth()/2-w/2, DwarvesManager.getHeight()/2-h/2,
 						w,h,bgColor);
 		Primitives.disableAlphaBlending();
 		batch.begin();

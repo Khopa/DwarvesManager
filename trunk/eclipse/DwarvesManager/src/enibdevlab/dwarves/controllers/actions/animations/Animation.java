@@ -13,7 +13,7 @@ public class Animation {
 	/**
 	 * Animation ou le personnage se plaint
 	 * Cette action dure environ 3.7 secondes
-	 * @param character Vue à animer
+	 * @param character Vue Ã  animer
 	 */
 	public static SequenceAction complaining(ACharacter character, int complaint){
 		return Actions.sequence(
@@ -56,8 +56,8 @@ public class Animation {
 	
 	/**
 	 * Animation ou un personnage attend patiemment
-	 * Durée d'environ 1.2 secondes
-	 * @param character Vue à animer
+	 * DurÃ©e d'environ 1.2 secondes
+	 * @param character Vue Ã  animer
 	 */
 	public static SequenceAction waiting(ACharacter character){
 		return Actions.sequence(
@@ -71,9 +71,9 @@ public class Animation {
 	}
 	
 	/**
-	 * Animation d'un barman qui plonge sa chope dans le fut pour remplir une bière
-	 * Durée d'environ 1 secondes
-	 * @param character Vue à animer
+	 * Animation d'un barman qui plonge sa chope dans le fut pour remplir une biÃ¨re
+	 * DurÃ©e d'environ 1 secondes
+	 * @param character Vue Ã  animer
 	 */
 	public static SequenceAction replenishing(ACharacter character){
 		return Actions.sequence(
@@ -88,8 +88,8 @@ public class Animation {
 	
 	/**
 	 * Nain qui boit
-	 * Durée d'environ 1 secondes
-	 * @param character Vue à animer
+	 * DurÃ©e d'environ 1 secondes
+	 * @param character Vue Ã  animer
 	 */
 	public static SequenceAction drinking(ACharacter character){
 		return Actions.sequence(
@@ -99,9 +99,9 @@ public class Animation {
 	}
 	
 	/**
-	 * Nain qui réclame sa bière au comptoir
-	 * Durée d'environ 1 secondes
-	 * @param character Vue à animer
+	 * Nain qui rÃ©clame sa biÃ¨re au comptoir
+	 * DurÃ©e d'environ 1 secondes
+	 * @param character Vue Ã  animer
 	 */
 	public static SequenceAction requestBeer(ACharacter character){
 		return Actions.sequence(
@@ -112,9 +112,9 @@ public class Animation {
 
 	
 	/**
-	 * Action de crafter ou réparer qqch à l'enclume
+	 * Action de crafter ou rÃ©parer qqch Ã  l'enclume
 	 * Environ 3.5 secondes
-	 * @param character Vue à animer
+	 * @param character Vue Ã  animer
 	 */
 	public static SequenceAction crafting(ACharacter character){
 		return Actions.sequence(

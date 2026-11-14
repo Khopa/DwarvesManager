@@ -8,9 +8,9 @@ import enibdevlab.dwarves.views.actors.characters.ACharacter;
 /**
  * 
  * Permet de controler la direction du regard d'un personnage
- * (ça les rend plus attachant) :3
+ * (Ã§a les rend plus attachant) :3
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Look extends TemporalAction {
@@ -31,7 +31,7 @@ public class Look extends TemporalAction {
 	protected Vector2 startPosition;
 	
 	/**
-	 * Position voulue à la fin
+	 * Position voulue Ã  la fin
 	 */
 	protected Vector2 endPosition;
 	
@@ -41,21 +41,21 @@ public class Look extends TemporalAction {
 	protected int position;
 	
 	/**
-	 * Chemin à effectuer
+	 * Chemin Ã  effectuer
 	 */
 	protected Vector2 path;
 	
 	/**
 	 * 
-	 * Fais le personnage regarder dans la direction indiquée
-	 * Pour régler la position, voici les flags binaires à utiliser :
+	 * Fais le personnage regarder dans la direction indiquÃ©e
+	 * Pour rÃ©gler la position, voici les flags binaires Ã  utiliser :
 	 * Look.TOP, Look.BOTTOM, Look.RIGHT, Look.LEFT
 	 * (TOP et RIGHT sont prioritaire)
 	 * Mettre 0 permet de recentrer le regard
 	 * 
 	 * @param acharacter Personnage
 	 * @param position Position
-	 * @param duration Durée du mouvement
+	 * @param duration DurÃ©e du mouvement
 	 */
 	public Look(ACharacter acharacter, int position, float duration){
 		super(duration);

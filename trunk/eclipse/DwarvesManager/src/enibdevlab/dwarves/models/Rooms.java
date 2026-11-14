@@ -13,9 +13,9 @@ import enibdevlab.dwarves.views.actors.ARoom;
 
 /**
  * 
- * Liste intelligente des pièces de la partie
+ * Liste intelligente des piÃ¨ces de la partie
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Rooms implements IPersistent {
@@ -26,7 +26,7 @@ public class Rooms implements IPersistent {
 	protected Game game;
 	
 	/**
-	 * Liste des pièces
+	 * Liste des piÃ¨ces
 	 */
 	protected ArrayList<Room> rooms;
 	
@@ -36,18 +36,18 @@ public class Rooms implements IPersistent {
 	}
 	
 	/**
-	 * Ajoute une pièce dans la partie
-	 * @param room Pièce à ajouter
+	 * Ajoute une piÃ¨ce dans la partie
+	 * @param room PiÃ¨ce Ã  ajouter
 	 */
 	public void addRoom(Room room){
 		
 		System.out.println(room);
 	
-		ArrayList<Room> intersected = new ArrayList<Room>(); // liste des pièces intersectées
-		ArrayList<Room> toRemove =   new ArrayList<Room>();  // liste des pièces détruites
+		ArrayList<Room> intersected = new ArrayList<Room>(); // liste des piÃ¨ces intersectÃ©es
+		ArrayList<Room> toRemove =   new ArrayList<Room>();  // liste des piÃ¨ces dÃ©truites
 		
 		for(Room room2:this.rooms){
-			if (room2.intersect(room)&&room2.getClass()==room.getClass()) intersected.add(room2); // construction de la liste des pièces intersectées
+			if (room2.intersect(room)&&room2.getClass()==room.getClass()) intersected.add(room2); // construction de la liste des piÃ¨ces intersectÃ©es
 			else{
 				if(room2.removeArea(room.getMainArea())) toRemove.add(room2);
 			}
@@ -59,12 +59,12 @@ public class Rooms implements IPersistent {
 		}
 		
 		
-		// TODO : Il y a encore des problèmes avec les objets
+		// TODO : Il y a encore des problÃ¨mes avec les objets
 		
 		
 		if(intersected.size() > 0){
 			
-			// Fusion des pièces
+			// Fusion des piÃ¨ces
 			int i = 0;
 			intersected.get(0).getAreas().add(room.getMainArea());
 			for(Room current:intersected){
@@ -124,12 +124,12 @@ public class Rooms implements IPersistent {
 	}
 	
 	/**
-	 * Enlève une zone
+	 * EnlÃ¨ve une zone
 	 * @param area
 	 */
 	public void removeArea(MapArea area){
 		
-		ArrayList<Room> toRemove = new ArrayList<Room>(); // Pièce détruite par l'opération
+		ArrayList<Room> toRemove = new ArrayList<Room>(); // PiÃ¨ce dÃ©truite par l'opÃ©ration
 		
 		for(Room room:this.rooms){
 			if(room.removeArea(area)) toRemove.add(room);
@@ -142,16 +142,16 @@ public class Rooms implements IPersistent {
 	}
 	
 	/**
-	 * Supprime une pièce de la partie 
-	 * @param object Pièce à ajouter
+	 * Supprime une piÃ¨ce de la partie 
+	 * @param object PiÃ¨ce Ã  ajouter
 	 */
 	public void removeRoom(Room room){
-		this.game.getView().getGameplayLayer().removeActor(room.getView()); // La vue de l'objet est aussi retirée
+		this.game.getView().getGameplayLayer().removeActor(room.getView()); // La vue de l'objet est aussi retirÃ©e
 		this.rooms.remove(room);
 	}
 	
 	/**
-	 * Efface toutes les pièces
+	 * Efface toutes les piÃ¨ces
 	 */
 	public void clear(){
 		for(Room room:this.getRooms()){
@@ -165,10 +165,10 @@ public class Rooms implements IPersistent {
 	}
 	
 	/**
-	 * Retourne la liste des pièces d'un type donné
-	 * @param type Type de pièce
-	 * @param mustBeOperationnal Exclu les pièces non opérationnelle ou non
-	 * @return Liste des pièces de type type
+	 * Retourne la liste des piÃ¨ces d'un type donnÃ©
+	 * @param type Type de piÃ¨ce
+	 * @param mustBeOperationnal Exclu les piÃ¨ces non opÃ©rationnelle ou non
+	 * @return Liste des piÃ¨ces de type type
 	 */
 	public ArrayList<Room> getRooms(Class<? extends Room> type, boolean mustBeOperationnal){
 		ArrayList<Room> output = new ArrayList<Room>();
@@ -184,10 +184,10 @@ public class Rooms implements IPersistent {
 	}
 
 	/**
-	 * Retourne la liste des pièces d'un type donné
-	 * ( /!\ Retourne aussi les pièces non opérationnelles)
-	 * @param type Type de pièce
-	 * @return Liste des pièces de type type
+	 * Retourne la liste des piÃ¨ces d'un type donnÃ©
+	 * ( /!\ Retourne aussi les piÃ¨ces non opÃ©rationnelles)
+	 * @param type Type de piÃ¨ce
+	 * @return Liste des piÃ¨ces de type type
 	 */
 	public ArrayList<Room> getRooms(Class<? extends Room> type){
 		return getRooms(type, false);
@@ -206,7 +206,7 @@ public class Rooms implements IPersistent {
 
 	@Override
 	public void loadFromXmlElement(Element xmlElement) {
-		// Instanciation de toutes les pièces
+		// Instanciation de toutes les piÃ¨ces
 		for(int i = 0; i<xmlElement.getChildCount(); i++){
 			Room room = Room.fromXml(xmlElement.getChild(i), game.getLevel().getTilemap(), this);
 			if(room != null){

@@ -9,15 +9,15 @@ import enibdevlab.dwarves.views.actors.characters.ACharacter;
 
 /**
  * 
- * Classe qui permet à un personnage de réagir aux évenements
+ * Classe qui permet Ã  un personnage de rÃ©agir aux Ã©venements
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class CharacterListener extends InputListener{
 
 	/**
-	 * Personnage à controller
+	 * Personnage Ã  controller
 	 */
 	protected ACharacter character;
 	
@@ -61,8 +61,8 @@ public class CharacterListener extends InputListener{
 	}
 
 	@Override
-	public boolean scrolled(InputEvent event, float x, float y, int amount) {
-		return super.scrolled(event, x, y, amount);
+	public boolean scrolled(InputEvent event, float x, float y, float amountX, float amountY) { int amount = (int)Math.signum(amountY);
+		return super.scrolled(event, x, y, amountX, amountY);
 	}
 
 	@Override

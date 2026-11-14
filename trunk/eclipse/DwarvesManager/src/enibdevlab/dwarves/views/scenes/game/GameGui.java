@@ -1,7 +1,8 @@
 package enibdevlab.dwarves.views.scenes.game;
 
 
-import java.lang.reflect.Constructor;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import enibdevlab.dwarves.Ctor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
@@ -29,16 +30,16 @@ import enibdevlab.dwarves.views.widgets.ObjectButton;
 
 /**
  * 
- * Fenêtre principale de Gui dans le jeu
+ * FenÃªtre principale de Gui dans le jeu
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GameGui extends Table {
 
 	
 	/**
-	 *  Activation des menus (utile pour activer les fonctionnalitées au fur et à mesure
+	 *  Activation des menus (utile pour activer les fonctionnalitÃ©es au fur et Ã  mesure
 	 *  dans le tuto
 	 */
 	private static boolean RECRUITMENT_ENABLED = true;
@@ -72,15 +73,15 @@ public class GameGui extends Table {
 	protected ObjectButton backButton;
 	protected ObjectButton eraseButton;
 	
-	protected HashMap<ObjectButton, Constructor<?>> objectsButton;
-	protected HashMap<ObjectButton, Constructor<?>> roomsButton;
-	protected HashMap<ObjectButton, Constructor<?>> recruitsButton;
+	protected HashMap<ObjectButton, Ctor> objectsButton;
+	protected HashMap<ObjectButton, Ctor> roomsButton;
+	protected HashMap<ObjectButton, Ctor> recruitsButton;
 	
 	protected ScrollPane scroll;
 	protected Table container;
 	
 	/**
-	 * Crée la fenêtre de Gui principale 
+	 * CrÃ©e la fenÃªtre de Gui principale 
 	 * @param skin Skin de la Gui
 	 */
 	public GameGui(Skin skin, Game game) {
@@ -131,9 +132,9 @@ public class GameGui extends Table {
 					   					new TextureRegionDrawable(Loader.guiAtlas.getTile(1)),
 					   					Loader.iconAtlas, 34);
 		
-		// Création des boutons pour chaque objets
-		objectsButton = new HashMap<ObjectButton, Constructor<?>>();
-		for(Constructor<?> c: Loader.objects){
+		// CrÃ©ation des boutons pour chaque objets
+		objectsButton = new HashMap<ObjectButton, Ctor>();
+		for(Ctor c: Loader.objects){
 			
 			int i;
 			int price;
@@ -163,9 +164,9 @@ public class GameGui extends Table {
 							  c);
 		}
 		
-		// Création des boutons pour chaque pièces
-		roomsButton = new HashMap<ObjectButton, Constructor<?>>();
-		for(Constructor<?> c: Loader.rooms){
+		// CrÃ©ation des boutons pour chaque piÃ¨ces
+		roomsButton = new HashMap<ObjectButton, Ctor>();
+		for(Ctor c: Loader.rooms){
 			
 			int i = getRoomTextureId(c);
 			System.out.println(i);
@@ -175,9 +176,9 @@ public class GameGui extends Table {
 							c);
 		}
 		
-		// Création des boutons pour chaque nain
-		recruitsButton = new HashMap<ObjectButton, Constructor<?>>();
-		for(Constructor<?> c:Loader.characters){
+		// CrÃ©ation des boutons pour chaque nain
+		recruitsButton = new HashMap<ObjectButton, Ctor>();
+		for(Ctor c:Loader.characters){
 			
 			int i;
 			int price;
@@ -208,7 +209,7 @@ public class GameGui extends Table {
 		
 	}
 
-	private String getRoomName(Constructor<?> c) {
+	private String getRoomName(Ctor c) {
 		Room room;
 		try {
 			room = (Room) c.newInstance(new MapArea(0,0,0,0,this.game.getLevel().getTilemap()), this.game.getRooms());
@@ -233,7 +234,7 @@ public class GameGui extends Table {
 	 * Sale
 	 * @return
 	 */
-	private int getRoomTextureId(Constructor<?> c){
+	private int getRoomTextureId(Ctor c){
 		Room room;
 		try {
 			room = (Room) c.newInstance(new MapArea(0,0,0,0,this.game.getLevel().getTilemap()), this.game.getRooms());
@@ -255,7 +256,7 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Packe et met à la bonne position
+	 * Packe et met Ã  la bonne position
 	 */
 	public void repack(){
 		this.pack();
@@ -264,11 +265,11 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Crée le rendu pour le menu principal
+	 * CrÃ©e le rendu pour le menu principal
 	 */
 	public void setMainMode(){
-		this.clear();
-		container.clear();
+		this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
+		container.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		
 		this.state = State.MAIN;
 		
@@ -298,11 +299,11 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Crée le rendu pour le sous menu des objets
+	 * CrÃ©e le rendu pour le sous menu des objets
 	 */
 	public void setObjectMode(){
-		this.clear();
-		container.clear();
+		this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
+		container.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		
 		this.state = State.OBJECT;
 
@@ -326,11 +327,11 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Crée le menu pour le sous menu des pièces
+	 * CrÃ©e le menu pour le sous menu des piÃ¨ces
 	 */
 	public void setRoomMode(){
-		this.clear();
-		container.clear();
+		this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
+		container.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		
 		this.state = State.ROOM;
 		
@@ -354,8 +355,8 @@ public class GameGui extends Table {
 	}
 	
 	public void setMineMode() {
-		this.clear();
-		container.clear();
+		this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
+		container.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		
 		this.state = State.MINE;
 		
@@ -372,11 +373,11 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Crée le rendu pour le sous menu de recrutement
+	 * CrÃ©e le rendu pour le sous menu de recrutement
 	 */
 	public void setRecruitMode() {
-		this.clear();
-		container.clear();
+		this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
+		container.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		
 		this.state = State.RECRUIT;
 		
@@ -436,15 +437,15 @@ public class GameGui extends Table {
 		return eraseButton;
 	}
 
-	public HashMap<ObjectButton, Constructor<?>> getObjectsButton() {
+	public HashMap<ObjectButton, Ctor> getObjectsButton() {
 		return objectsButton;
 	}
 
-	public HashMap<ObjectButton, Constructor<?>> getRoomsButton() {
+	public HashMap<ObjectButton, Ctor> getRoomsButton() {
 		return roomsButton;
 	}
 
-	public HashMap<ObjectButton, Constructor<?>> getRecruitsButton() {
+	public HashMap<ObjectButton, Ctor> getRecruitsButton() {
 		return recruitsButton;
 	}
 
@@ -453,21 +454,21 @@ public class GameGui extends Table {
 	}
 
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		
 		/**
 		 * Dessin d'un fond
 		 */
 		Primitives.prepareRenderer(batch);
-		Primitives.filledRect((int)this.getX(), (int)this.getY()-5,DwarvesManager.getWidth(), (int) this.getHeight()+7, Color.BLACK);
-		Primitives.filledRect((int)this.getX(), (int)this.getY()-6,DwarvesManager.getWidth(), 2, Color.GRAY);
+		Primitives.rect((int)this.getX(), (int)this.getY()-5,DwarvesManager.getWidth(), (int) this.getHeight()+7, Color.BLACK);
+		Primitives.rect((int)this.getX(), (int)this.getY()-6,DwarvesManager.getWidth(), 2, Color.GRAY);
 		
 		super.draw(batch, parentAlpha);
-		GameGui.drawDebug(getStage());
+
 	}
 	
 	/**
-	 * Active/Désactive le bouton de recrutement
+	 * Active/DÃ©sactive le bouton de recrutement
 	 */
 	public static void setRecruitmentButton(boolean enabled){
 		RECRUITMENT_ENABLED = enabled;
@@ -475,7 +476,7 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Active/Désactive le bouton d'achat d'objet
+	 * Active/DÃ©sactive le bouton d'achat d'objet
 	 */
 	public static void setObjectButton(boolean enabled){
 		OBJECTS_ENABLED = enabled;
@@ -483,7 +484,7 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Active/Désactive le bouton des pièces
+	 * Active/DÃ©sactive le bouton des piÃ¨ces
 	 */
 	public static void setRoomButton(boolean enabled){
 		ROOM_ENABLED = enabled;

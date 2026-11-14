@@ -7,10 +7,10 @@ import enibdevlab.dwarves.models.Game;
 
 /**
  * 
- * Cette classe permet d'ajouter une référence dans le ClickListener
+ * Cette classe permet d'ajouter une rÃ©fÃ©rence dans le ClickListener
  * de base de libGdx vers le jeu.
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GameClickListener extends ClickListener {

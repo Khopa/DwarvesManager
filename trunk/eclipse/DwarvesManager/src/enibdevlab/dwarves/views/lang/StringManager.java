@@ -60,7 +60,7 @@ public class StringManager {
 				System.out.println(key + " : " + content);
 			}
 			
-		} catch (IOException e) {
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
 

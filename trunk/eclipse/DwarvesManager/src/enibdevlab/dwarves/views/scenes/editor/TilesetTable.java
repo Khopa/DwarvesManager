@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.views.scenes.editor;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -15,10 +16,10 @@ import enibdevlab.dwarves.views.widgets.ObjectButton;
 
 /**
  * 
- * Table de la Gui dans laquelle est positionné le Widget de selection de tile
+ * Table de la Gui dans laquelle est positionnÃ© le Widget de selection de tile
  * de l'editeur
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class TilesetTable extends Table {
@@ -78,7 +79,7 @@ public class TilesetTable extends Table {
 
 	public void setMainMode(){
 		state = MAINMENU;
-		this.clear();
+		this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		
 		this.container = new Table(DwarvesManager.getSkin());
 		this.scrollPane = new ScrollPane(container, DwarvesManager.getSkin());
@@ -96,7 +97,7 @@ public class TilesetTable extends Table {
 	
 	public void setTileEditMode(){
 		state = TILEEDIT;
-		this.clear();
+		this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		
 		this.container = new Table(DwarvesManager.getSkin());
 		this.scrollPane = new ScrollPane(container, DwarvesManager.getSkin());
@@ -117,10 +118,10 @@ public class TilesetTable extends Table {
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		batch.end();
 		Primitives.prepareRenderer(batch);
-		Primitives.filledRect((int)(DwarvesManager.getWidth()-this.getWidth()-25), 0, (int) (this.getWidth()+25), (int)(this.getHeight()), Color.DARK_GRAY);
+		Primitives.rect((int)(DwarvesManager.getWidth()-this.getWidth()-25), 0, (int) (this.getWidth()+25), (int)(this.getHeight()), Color.DARK_GRAY);
 		batch.begin();
 		super.draw(batch, parentAlpha);
 	}

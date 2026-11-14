@@ -21,9 +21,9 @@ import enibdevlab.dwarves.views.scenes.levelChoice.LevelChoice;
 
 /**
  * 
- * Scene destinée à afficher le menu principal du jeu
+ * Scene destinÃ©e Ã  afficher le menu principal du jeu
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class MainMenu extends Stage {
@@ -38,7 +38,7 @@ public class MainMenu extends Stage {
 	 * @param height Taille Y
 	 */
 	public MainMenu(DwarvesManager game){
-		super(DwarvesManager.getWidth(),DwarvesManager.getHeight(), false);
+		super(DwarvesManager.newViewport());
 		this.game = game;
 		init();
 		
@@ -51,39 +51,39 @@ public class MainMenu extends Stage {
 	}
 	
 	/**
-	 * Fonction appelée à l'initialisation
-	 * Dispose les widgets de manière à créer le menu
+	 * Fonction appelÃ©e Ã  l'initialisation
+	 * Dispose les widgets de maniÃ¨re Ã  crÃ©er le menu
 	 */
 	private void init(){
 		
 		// Titre
 		TextureRegion title = new TextureRegion(new Texture("data/sprites/title.png"));
-		float sx = (0.7f*Gdx.graphics.getWidth())/title.getRegionWidth();
-		float sy = (0.25f*Gdx.graphics.getHeight())/title.getRegionHeight();
-		AImage titleText = new AImage(title, (int)(Gdx.graphics.getWidth()/2), (int) (.9f*Gdx.graphics.getHeight()));
+		float sx = (0.7f*DwarvesManager.getWidth())/title.getRegionWidth();
+		float sy = (0.25f*DwarvesManager.getHeight())/title.getRegionHeight();
+		AImage titleText = new AImage(title, (int)(DwarvesManager.getWidth()/2), (int) (.9f*DwarvesManager.getHeight()));
 		titleText.setScale(sx, sy);
 		this.addActor(titleText);
 		
 		// Logo
 		TextureRegion khopaGameText =  new TextureRegion(new Texture("data/sprites/logo.png"));
-		sx = (0.2f*Gdx.graphics.getWidth())/khopaGameText.getRegionWidth();
-		sy = (0.1f*Gdx.graphics.getHeight())/khopaGameText.getRegionHeight();
-		AImage khopaGames = new AImage(khopaGameText, (int)(Gdx.graphics.getWidth()-sx*khopaGameText.getRegionWidth()/2),
+		sx = (0.2f*DwarvesManager.getWidth())/khopaGameText.getRegionWidth();
+		sy = (0.1f*DwarvesManager.getHeight())/khopaGameText.getRegionHeight();
+		AImage khopaGames = new AImage(khopaGameText, (int)(DwarvesManager.getWidth()-sx*khopaGameText.getRegionWidth()/2),
 				                              (int)(sy*khopaGameText.getRegionHeight()/2));
 		khopaGames.setScale(sx,sy);
 		this.addActor(khopaGames);
 		
 		// Creation du menu
 		
-		// Créations des boutons
+		// CrÃ©ations des boutons
 		ButtonActor newGame      =      new ButtonActor(buttonsImg.getTile(0));
 		ButtonActor continueGame =      new ButtonActor(buttonsImg.getTile(2));
 		ButtonActor choiceLevel  =      new ButtonActor(buttonsImg.getTile(16));
 		ButtonActor options      =      new ButtonActor(buttonsImg.getTile(4));
 		ButtonActor quit         =      new ButtonActor(buttonsImg.getTile(6));
 		
-		sx =(0.35f*Gdx.graphics.getWidth())/buttonsImg.getTileWidth();
-		sy =(0.15f*Gdx.graphics.getHeight())/buttonsImg.getTileHeight();
+		sx =(0.35f*DwarvesManager.getWidth())/buttonsImg.getTileWidth();
+		sy =(0.15f*DwarvesManager.getHeight())/buttonsImg.getTileHeight();
 		
 		this.put(newGame, sx, sy, 0.65f);
 		this.put(continueGame, sx, sy, 0.50f);
@@ -125,7 +125,7 @@ public class MainMenu extends Stage {
 		// Quitter
 		quit.addListener(new GameClickListener(null){
 			public void clicked (InputEvent event, float x, float y) {
-				System.exit(0);
+				com.badlogic.gdx.Gdx.app.exit();
 			}
 		});
 			
@@ -138,7 +138,7 @@ public class MainMenu extends Stage {
 	
 	private void put(Actor actor, float sx, float sy, float yPercent){
 		actor.setScale(sx, sy);
-		actor.setPosition(Gdx.graphics.getWidth()/2-actor.getWidth()/2, Gdx.graphics.getHeight()*yPercent);
+		actor.setPosition(DwarvesManager.getWidth()/2-actor.getWidth()*sx/2, DwarvesManager.getHeight()*yPercent);
 		this.addActor(actor);
 	}
 }

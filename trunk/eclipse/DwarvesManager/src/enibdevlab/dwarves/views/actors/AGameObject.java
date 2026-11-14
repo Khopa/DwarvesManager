@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.views.actors;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,7 +16,7 @@ import enibdevlab.dwarves.models.objects.Rotation;
 public class AGameObject extends Actor {
 
 	/**
-	 * Lien vers le modèle
+	 * Lien vers le modÃ¨le
 	 */
 	protected GameObject model;
 	
@@ -30,8 +31,8 @@ public class AGameObject extends Actor {
 	}
 	
 	/**
-	 * Recupère la liste des textures requises
-	 * Appelé à l'initialisation uniquement
+	 * RecupÃ¨re la liste des textures requises
+	 * AppelÃ© Ã  l'initialisation uniquement
 	 */
 	private void getTextures(){
 		
@@ -65,7 +66,7 @@ public class AGameObject extends Actor {
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha){
+	public void draw(Batch batch, float parentAlpha){
 		
 		Color memory = batch.getColor();
 		
@@ -116,7 +117,7 @@ public class AGameObject extends Actor {
 	}
 
 	
-	private void draw270(SpriteBatch batch, float parentAlpha) {
+	private void draw270(Batch batch, float parentAlpha) {
 		
 		int xsize = model.getNominalXSize();
 		int ysize = model.getNominalYSize();
@@ -147,7 +148,7 @@ public class AGameObject extends Actor {
 		}
 	}
 
-	private void draw180(SpriteBatch batch, float parentAlpha) {
+	private void draw180(Batch batch, float parentAlpha) {
 		
 		int xsize = model.getNominalXSize();
 		int ysize = model.getNominalYSize();
@@ -179,7 +180,7 @@ public class AGameObject extends Actor {
 	}
 
 
-	private void draw90(SpriteBatch batch, float parentAlpha) {
+	private void draw90(Batch batch, float parentAlpha) {
 		
 		int xsize = model.getNominalXSize();
 		int ysize = model.getNominalYSize();
@@ -210,7 +211,7 @@ public class AGameObject extends Actor {
 		}
 	}
 
-	private void draw0(SpriteBatch batch, float parentAlpha) {
+	private void draw0(Batch batch, float parentAlpha) {
 
 			int xsize = model.getNominalXSize();
 			int ysize = model.getNominalYSize();

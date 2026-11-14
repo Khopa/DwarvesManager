@@ -13,7 +13,7 @@ public interface IItem {
 	public int getTextureId();	
 	
 	/**
-	 * Effet à l'utilisation de l'objet
+	 * Effet Ã  l'utilisation de l'objet
 	 */
 	public float onUse();
 	

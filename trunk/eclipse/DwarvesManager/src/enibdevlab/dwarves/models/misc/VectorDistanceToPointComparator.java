@@ -5,20 +5,20 @@ import java.util.Comparator;
 import com.badlogic.gdx.math.Vector2;
 
 /**
- * Compare par rapport à leur distance à un point des positions représenté par des vecteurs
+ * Compare par rapport Ã  leur distance Ã  un point des positions reprÃ©sentÃ© par des vecteurs
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class VectorDistanceToPointComparator implements Comparator<Vector2>{
 
 	/**
-	 * Position à comparer
+	 * Position Ã  comparer
 	 */
 	public int x;
 	
 	/**
-	 * Position à comparer
+	 * Position Ã  comparer
 	 */
 	public int y;
 	
