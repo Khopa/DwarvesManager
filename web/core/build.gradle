@@ -1,0 +1,5 @@
+apply plugin: "java-library"
+dependencies {
+    api "com.badlogicgames.gdx:gdx:$gdxVersion"
+    api "org.luaj:luaj-jse:$luajVersion"
+}
