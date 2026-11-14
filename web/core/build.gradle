@@ -1,0 +1,15 @@
+apply plugin: "java-library"
+
+// The game sources are not copied here: this module compiles the original
+// source folder shared with the other (Eclipse) projects.
+sourceSets {
+    main {
+        java.srcDirs = ['../../trunk/eclipse/DwarvesManager/src']
+        resources.srcDirs = []
+    }
+}
+
+dependencies {
+    api "com.badlogicgames.gdx:gdx:$gdxVersion"
+    api "org.luaj:luaj-jse:$luajVersion"
+}
