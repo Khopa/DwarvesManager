@@ -1,0 +1,14 @@
+dependencies {
+    implementation project(':core')
+    implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+    implementation "com.github.xpenatan.gdx-teavm:backend-teavm:$gdxTeaVMVersion"
+}
+
+tasks.register('buildWeb', JavaExec) {
+    dependsOn 'classes'
+    group = 'build'
+    description = 'Compile the game to JavaScript with TeaVM into build/dist'
+    mainClass = 'enibdevlab.dwarves.web.BuildWeb'
+    classpath = sourceSets.main.runtimeClasspath
+    workingDir = projectDir
+}

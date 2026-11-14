@@ -1,0 +1,20 @@
+allprojects {
+    apply plugin: 'java'
+    ext {
+        gdxVersion = '1.14.0'
+        gdxTeaVMVersion = '1.4.0'
+        luajVersion = '3.0.1'
+    }
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        options.compilerArgs += ['-Xmaxerrs', '2000']
+    }
+    repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
