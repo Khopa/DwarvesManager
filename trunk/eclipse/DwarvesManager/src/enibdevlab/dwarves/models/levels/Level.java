@@ -150,7 +150,7 @@ public class Level implements IPersistent {
 			file = Gdx.files.internal(LevelFile.mapInternalLocation + "/" + mapName);
 		}
 		else{
-			file = Gdx.files.external(LevelFile.mapExternalLocation + "/" + mapName);
+			file = Gdx.files.local(LevelFile.mapExternalLocation + "/" + mapName);
 		}
 		return file;
 	}

@@ -103,12 +103,12 @@ public final class Game implements IPersistent{
 		
 		this.view = view;
 		this.setFilename(filename);
-		FileHandle file = Gdx.files.external("DwarvesManager/saves/"+filename);
+		FileHandle file = Gdx.files.local("DwarvesManager/saves/"+filename);
 		XmlReader reader = new XmlReader();
 		try {
 			this.xml = reader.parse(file);
 			this.loadFromXmlElement(this.xml);
-		} catch (IOException e) {
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
 	}
@@ -227,9 +227,9 @@ public final class Game implements IPersistent{
 		output.addChild(getTaskManager().saveAsXmlElement());
 		output.addChild(getBank().saveAsXmlElement());
 		
-		FileHandle file = Gdx.files.external(filename);
+		FileHandle file = Gdx.files.local(filename);
 		this.filename = file.pathWithoutExtension(); 
-		file = Gdx.files.external("DwarvesManager/Saves/"+this.filename+".xml");
+		file = Gdx.files.local("DwarvesManager/saves/"+this.filename+".xml");
 		file.writeString(output.toString(), false);
 		
 		log(StringManager.getString("Saved"));

@@ -69,7 +69,7 @@ public class InfoBar extends Table{
 	
 	private void createView() {
 		
-		this.clear();
+		this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		this.add(money);
 		this.add(moneyAmount);
 		this.add().width(50);

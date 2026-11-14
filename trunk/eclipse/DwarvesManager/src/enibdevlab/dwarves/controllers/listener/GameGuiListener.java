@@ -1,6 +1,6 @@
 package enibdevlab.dwarves.controllers.listener;
 
-import java.lang.reflect.Constructor;
+import enibdevlab.dwarves.Ctor;
 import java.lang.reflect.InvocationTargetException;
 
 import com.badlogic.gdx.math.Vector2;
@@ -37,7 +37,7 @@ public class GameGuiListener extends ChangeListener {
 	@Override
 	public void changed(ChangeEvent event, Actor actor) {
 		
-		GameScene scene   = ((GameScene)(event.getStage())); 
+		GameScene scene   = ((GameScene)(event.getStage()));
 		
 		if(gui.getState() == GameGui.State.MAIN){
 			if(checkButton(actor, gui.getDwarfButton())){
@@ -82,7 +82,7 @@ public class GameGuiListener extends ChangeListener {
 			else{
 				// Alors c'est un bouton pour choisir un objet à placer
 				// On passe le jeu en mode placement d'objet en instanciant l'objet associé au bouton
-				Constructor<?> c = gui.getObjectsButton().get(actor);
+				Ctor c = gui.getObjectsButton().get(actor);
 				if(c == null) return;
 				try {
 					GameObject object = (GameObject) c.newInstance(new Vector2(0,0));
@@ -116,11 +116,11 @@ public class GameGuiListener extends ChangeListener {
 			else{
 				// Alors c'est un bouton pour choisir un objet à placer
 				// On passe le jeu en mode placement de pièce en donnant le type de pièce à placer
-				Constructor<?> c = gui.getRoomsButton().get(actor);
+				Ctor c = gui.getRoomsButton().get(actor);
 				if(c == null) return;
 				scene.getListener().setRoomType(c);
 				scene.setPlacingRoomMode();
-				Game.getInstance().fireDwarfEvent("placingRoom"+c.getDeclaringClass().getSimpleName());
+				Game.getInstance().fireDwarfEvent("placingRoom"+c.getSimpleName());
 			}
 			
 		}
@@ -152,7 +152,7 @@ public class GameGuiListener extends ChangeListener {
 			else{
 				// Alors c'est un bouton pour choisir un nain à placer
 				// On passe le jeu en mode placement d'objet en instanciant l'objet associé au bouton
-				Constructor<?> c = gui.getRecruitsButton().get(actor);
+				Ctor c = gui.getRecruitsButton().get(actor);
 				if(c == null) return;
 				scene.getListener().setDwarfConstructor(c);
 				scene.setPlacingDwarvesMode();

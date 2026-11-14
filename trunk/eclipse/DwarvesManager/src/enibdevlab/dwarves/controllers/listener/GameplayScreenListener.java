@@ -1,6 +1,6 @@
 package enibdevlab.dwarves.controllers.listener;
 
-import java.lang.reflect.Constructor;
+import enibdevlab.dwarves.Ctor;
 import java.lang.reflect.InvocationTargetException;
 
 import com.badlogic.gdx.Application.ApplicationType;
@@ -96,12 +96,12 @@ public class GameplayScreenListener implements InputProcessor {
 	/**
 	 * Type de pièce en train d'être placé
 	 */
-	protected Constructor<?> roomConstructor;
+	protected Ctor roomConstructor;
 	
 	/**
 	 * Type de nains en train d'être placé
 	 */
-	protected Constructor<?> dwarfConstructor;
+	protected Ctor dwarfConstructor;
 	
 	/**
 	 * Activé ou désactivé
@@ -258,7 +258,7 @@ public class GameplayScreenListener implements InputProcessor {
 		return false;
 	}
 	
-	public boolean scrolled(int amount) {
+	public boolean scrolled(float amountX, float amountY) { int amount = (int)Math.signum(amountY);
 		
 		if(!enabled) return false;
 		
@@ -445,7 +445,7 @@ public class GameplayScreenListener implements InputProcessor {
 			GameObject newobj;
 			try {
 				
-				newobj = obj.getClass().getConstructor(new Class<?>[] {Vector2.class}).newInstance(new Vector2(x, y));
+				newobj = (GameObject) Ctor.forName(obj.getClass().getName()).newInstance(new Vector2(x, y));
 				
 				if(this.scene.getGame().getBank().removeMoney(newobj.getPrice())){
 					this.scene.getGame().getObjects().addObject(obj);
@@ -468,7 +468,7 @@ public class GameplayScreenListener implements InputProcessor {
 				e.printStackTrace();
 			} catch (InvocationTargetException e) {
 				e.printStackTrace();
-			} catch (NoSuchMethodException e) {
+			} catch (NullPointerException e) {
 				e.printStackTrace();
 			} catch (SecurityException e) {
 				e.printStackTrace();
@@ -629,19 +629,19 @@ public class GameplayScreenListener implements InputProcessor {
 		this.scene.getGameplayLayer().getDefinitionArea().setModel(definitionArea);
 	}
 
-	public Constructor<?> getRoomType() {
+	public Ctor getRoomType() {
 		return roomConstructor;
 	}
 
-	public void setRoomType(Constructor<?> c) {
+	public void setRoomType(Ctor c) {
 		this.roomConstructor = c;
 	}
 	
-	public Constructor<?> getDwarfConstructor() {
+	public Ctor getDwarfConstructor() {
 		return dwarfConstructor;
 	}
 
-	public void setDwarfConstructor(Constructor<?> dwarfConstructor) {
+	public void setDwarfConstructor(Ctor dwarfConstructor) {
 		this.dwarfConstructor = dwarfConstructor;
 	}
 
@@ -693,4 +693,9 @@ public class GameplayScreenListener implements InputProcessor {
 	
 	
 
+
+	@Override
+	public boolean touchCancelled(int screenX, int screenY, int pointer, int button) {
+		return touchUp(screenX, screenY, pointer, button);
+	}
 }

@@ -1,9 +1,10 @@
 package enibdevlab.dwarves.views.scenes.game;
 
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
@@ -94,7 +95,7 @@ public class GameplayLayer extends MapLayer{
 	}
 
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		super.draw(batch, parentAlpha);
 		
 		/**
@@ -106,9 +107,9 @@ public class GameplayLayer extends MapLayer{
 		// des begin inutiles sachant qu'on peut avoir des centaines de "filledRectangle"
 		// à afficher) )
 		batch.end();
-		Gdx.gl.glEnable(GL10.GL_BLEND);
-	    Gdx.gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-		DwarvesManager.renderer.begin(ShapeType.FilledRectangle);
+		Gdx.gl.glEnable(GL20.GL_BLEND);
+	    Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+		DwarvesManager.renderer.begin(ShapeType.Filled);
 		
 		int w = (int) level.getTileXSize();
 		int h = (int) level.getTileYSize();
@@ -116,25 +117,25 @@ public class GameplayLayer extends MapLayer{
 		// Dessin des tiles accesibles
 		DwarvesManager.renderer.setColor(Loader.AYELLOW);
 		for(Vector2 tile:this.level.getGame().getTaskManager().getAccesibleTile()){
-			DwarvesManager.renderer.filledRect(tile.x*w, tile.y*h, w, h);
+			DwarvesManager.renderer.rect(tile.x*w, tile.y*h, w, h);
 		}
 		
 		// Dessin des tiles innacessibles
 		DwarvesManager.renderer.setColor(Loader.ARED);
 		for(Vector2 tile:this.level.getGame().getTaskManager().getInaccesibleTile()){
-			DwarvesManager.renderer.filledRect(tile.x*w, tile.y*h, w, h);
+			DwarvesManager.renderer.rect(tile.x*w, tile.y*h, w, h);
 		}
 		
 		// Debug pour connaitre les tiles assignés aux nains
 		if(DwarvesManager.debug){
 			DwarvesManager.renderer.setColor(Color.BLUE);
 			for(Vector2 tile:this.level.getGame().getTaskManager().getAssignedTile()){
-				DwarvesManager.renderer.filledRect(tile.x*w, tile.y*h, w, h);
+				DwarvesManager.renderer.rect(tile.x*w, tile.y*h, w, h);
 			}
 		}
 		
 		DwarvesManager.renderer.end();
-		Gdx.gl.glDisable(GL10.GL_BLEND);
+		Gdx.gl.glDisable(GL20.GL_BLEND);
 		batch.begin();
 	}
 	

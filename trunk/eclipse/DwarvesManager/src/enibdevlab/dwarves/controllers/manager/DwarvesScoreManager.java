@@ -73,14 +73,14 @@ public class DwarvesScoreManager extends ScoreManager {
 	public void preLoad(){
 		
 		// Recherche du fichier xml des scores
-		FileHandle file = Gdx.files.external(DwarvesScoreManager.savePath);
+		FileHandle file = Gdx.files.local(DwarvesScoreManager.savePath);
 		
 		if(file.exists()){
 			XmlReader reader = new XmlReader();
 			try {
 				this.scores = reader.parse(file);
 				return;
-			} catch (IOException e) {
+			} catch (RuntimeException e) {
 				e.printStackTrace();
 			}
 		}
@@ -138,7 +138,7 @@ public class DwarvesScoreManager extends ScoreManager {
 		}
 		
 		// Sauvegarde du score
-		FileHandle file = Gdx.files.external(DwarvesScoreManager.savePath);
+		FileHandle file = Gdx.files.local(DwarvesScoreManager.savePath);
 		file.writeString(scores.toString(), false);
 		
 		return false;

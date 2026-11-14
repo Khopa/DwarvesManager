@@ -42,7 +42,7 @@ public class OptionMenu extends Stage {
 	protected Stage previousStage;
 	
 	public OptionMenu(Stage previous){
-		super();
+		super(DwarvesManager.newViewport());
 		GameScene.PAUSED = true;
 		previousStage = previous;
 		init();
@@ -129,7 +129,7 @@ public class OptionMenu extends Stage {
 		
 		Skin skin = DwarvesManager.getSkin();
 		
-		this.table.clear();
+		this.table.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		this.table.defaults().space(10);
 		
 		Table leftPanel = new Table(skin);

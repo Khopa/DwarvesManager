@@ -1,6 +1,7 @@
 package enibdevlab.dwarves.views.scenes.editor;
 
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -50,7 +51,7 @@ public class TilesetWidget extends Widget {
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		super.draw(batch, parentAlpha);
 		batch.draw(tileset.getImgdata(), this.getX(), this.getY());
 		batch.end();

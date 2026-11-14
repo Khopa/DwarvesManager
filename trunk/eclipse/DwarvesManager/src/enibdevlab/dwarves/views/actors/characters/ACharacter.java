@@ -1,8 +1,9 @@
 package enibdevlab.dwarves.views.actors.characters;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
+import enibdevlab.dwarves.views.TextBounds;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
 import enibdevlab.dwarves.DwarvesManager;
@@ -162,7 +163,7 @@ public class ACharacter extends Group{
 	}
 
 	@Override
-	public void draw(SpriteBatch batch, float delta){
+	public void draw(Batch batch, float delta){
 		
 		batch.end();
 		Primitives.prepareRenderer(batch);
@@ -178,7 +179,7 @@ public class ACharacter extends Group{
 		batch.begin();
 		
 		String name = this.model.getFirstName() + " " + this.model.getName();
-		TextBounds txtbnd = DwarvesManager.font.getBounds(name);
+		TextBounds txtbnd = TextBounds.of(DwarvesManager.font, name);
 		
 		DwarvesManager.font.setColor(Color.RED);
 		
@@ -239,11 +240,11 @@ public class ACharacter extends Group{
 		if(this.direction == direction) return;
 				
 		this.direction = direction;
-		this.clear();
+		this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 		
 		switch(direction){
 			case BOTTOM:
-				this.clear();
+				this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 				this.addActor(this.body);
 				this.addActor(this.head);
 				this.addActor(this.rightHand);
@@ -252,7 +253,7 @@ public class ACharacter extends Group{
 				this.addActor(this.leftHandItem);
 				break;
 			case LEFT:
-				this.clear();
+				this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 				this.addActor(this.rightHandItem);
 				this.addActor(this.body);
 				this.addActor(this.head);
@@ -260,7 +261,7 @@ public class ACharacter extends Group{
 				this.addActor(this.leftHandItem);
 				break;
 			case RIGHT:
-				this.clear();
+				this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 				this.addActor(this.leftHandItem);
 				this.addActor(this.body);
 				this.addActor(this.head);
@@ -268,7 +269,7 @@ public class ACharacter extends Group{
 				this.addActor(this.rightHandItem);
 				break;
 			case TOP:
-				this.clear();
+				this.clearChildren(); // web port: clear() also drops listeners/actions since libGDX 1.0
 				this.addActor(this.rightHandItem);
 				this.addActor(this.leftHandItem);
 				this.addActor(this.rightHand);

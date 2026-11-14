@@ -51,6 +51,7 @@ public class LevelChoice extends Stage {
 	private int minPosition;
 	
 	public LevelChoice(){
+		super(enibdevlab.dwarves.DwarvesManager.newViewport());
 		this.previousStage = DwarvesManager.getInstance().getStage();
 		initWidgets();
 		build();
@@ -151,11 +152,11 @@ public class LevelChoice extends Stage {
 	}
 	
 	@Override
-	public boolean scrolled(int amount) {
+	public boolean scrolled(float amountX, float amountY) { int amount = (int)Math.signum(amountY);
 		buttonGroup.addAction(Actions.moveBy(amount*DwarvesManager.getWidth()/6f, 0));
 		if(buttonGroup.getX() > maxPosition) buttonGroup.setX(maxPosition);
 		else if(buttonGroup.getX() < minPosition) buttonGroup.setX(minPosition);
-		return super.scrolled(amount);
+		return super.scrolled(amountX, amountY);
 	}
 	
 

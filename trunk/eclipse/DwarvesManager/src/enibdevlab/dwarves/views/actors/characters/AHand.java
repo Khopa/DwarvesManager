@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.views.actors.characters;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -44,7 +45,7 @@ public class AHand extends ACharacterPart {
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha){
+	public void draw(Batch batch, float parentAlpha){
 		
 		super.draw(batch, parentAlpha);
 		this.setColor(acharacter.getColor());

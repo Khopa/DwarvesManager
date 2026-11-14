@@ -47,25 +47,16 @@ public class Objects implements IPersistent {
 		this.objects.add(object);
 		
 		try {
-			AGameObject view = object.getViewType().getConstructor(GameObject.class).newInstance(object);
+			AGameObject view = object.getViewType() == enibdevlab.dwarves.views.actors.gameObjects.ARack.class
+					? new enibdevlab.dwarves.views.actors.gameObjects.ARack(object) : new AGameObject(object);
 			this.game.getView().getGameplayLayer().getObjectLayer().addActor(view);
 			if(Game.getInstance()!=null){
 				Game.getInstance().fireDwarfEvent(object.getClass().getSimpleName()+"Placed", object.getX(), object.getY());
 			}
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
-		
+
 		// Quand on ajoute un objet, il faut vérifier les pièces
 		// si l'objet est placé dans une pièce, l'objet doit être mis au courant, et la pièce aussi
 		for(Room room:game.getRooms().getRooms()){

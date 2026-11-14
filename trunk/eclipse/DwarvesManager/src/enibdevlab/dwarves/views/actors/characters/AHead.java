@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.views.actors.characters;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -47,7 +48,7 @@ public class AHead extends ACharacterPart {
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha){
+	public void draw(Batch batch, float parentAlpha){
 		
 		super.draw(batch, parentAlpha);
 		
@@ -90,7 +91,7 @@ public class AHead extends ACharacterPart {
 	 * @param batch Batch 
 	 * @param delta Temps ecoulé depuis le dernier dessin
 	 */
-	protected void drawBottom(SpriteBatch batch, float parentAlpha){
+	protected void drawBottom(Batch batch, float parentAlpha){
 
 		float tileW = bodyConfig.getEyesConfig().getEyesTileset().getTileWidth();
 		float tileH = bodyConfig.getEyesConfig().getEyesTileset().getTileHeight();
@@ -169,7 +170,7 @@ public class AHead extends ACharacterPart {
 	 * @param batch Batch 
 	 * @param delta Temps ecoulé depuis le dernier dessin
 	 */
-	protected void drawTop(SpriteBatch batch, float parentAlpha){
+	protected void drawTop(Batch batch, float parentAlpha){
 	}
 	
 	/**
@@ -179,7 +180,7 @@ public class AHead extends ACharacterPart {
 	 * @param batch Batch 
 	 * @param delta Temps ecoulé depuis le dernier dessin
 	 */
-	protected void drawRight(SpriteBatch batch, float parentAlpha){
+	protected void drawRight(Batch batch, float parentAlpha){
 		
 		// Oeil droit
 		
@@ -231,7 +232,7 @@ public class AHead extends ACharacterPart {
 	 * @param batch Batch 
 	 * @param delta Temps ecoulé depuis le dernier dessin
 	 */
-	protected void drawLeft(SpriteBatch batch, float parentAlpha){
+	protected void drawLeft(Batch batch, float parentAlpha){
 		
 		float tileW = this.acharacter.bodyConfig.getEyesConfig().getEyesTileset().getTileWidth();
 		float tileH = this.acharacter.bodyConfig.getEyesConfig().getEyesTileset().getTileHeight();

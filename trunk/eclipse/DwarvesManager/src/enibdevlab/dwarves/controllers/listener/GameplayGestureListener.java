@@ -105,4 +105,10 @@ public class GameplayGestureListener implements GestureListener{
 		return true;
 	}
 
+
+	@Override
+	public void pinchStop() {}
+
+	@Override
+	public boolean panStop(float x, float y, int pointer, int button) { return false; }
 }

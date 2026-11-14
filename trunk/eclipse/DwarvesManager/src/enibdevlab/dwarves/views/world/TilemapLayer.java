@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.views.world;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.XmlReader.Element;
@@ -126,7 +127,7 @@ public class TilemapLayer implements IPersistent{
 	 * @param XmaxTile Dernier tile en X à dessiner
 	 * @param YmaxTile Dernier tile en Y à dessiner
 	 */
-	public void draw(TileMap tilemap, SpriteBatch batch, int XminTile, int YminTile, int XmaxTile, int YmaxTile){
+	public void draw(TileMap tilemap, Batch batch, int XminTile, int YminTile, int XmaxTile, int YmaxTile){
 		
 		if(!this.alphaBlending) batch.disableBlending();
 		
@@ -135,6 +136,8 @@ public class TilemapLayer implements IPersistent{
 		
 		for(int i = XminTile ; i< XminTile+XmaxTile; i++){
 			for(int j = YminTile; j < YminTile+YmaxTile; j++){
+				// Web port: explicit bounds check (TeaVM does not throw AIOOBE)
+				if(i < 0 || j < 0 || i >= this.tiles.length || j >= this.tiles[i].length) continue;
 				try{
 					tileId = this.tiles[i][j].getId();
 					tileset = tilemap.getTileset(this.tiles[i][j].getTilesetId());
@@ -183,6 +186,7 @@ public class TilemapLayer implements IPersistent{
 	 */
 	public Tile getTile(int i, int j) {
 		try{
+			if(i < 0 || j < 0 || i >= this.tiles.length || j >= this.tiles[i].length) return null;
 			return this.tiles[i][j];
 		}
 		catch(ArrayIndexOutOfBoundsException e){

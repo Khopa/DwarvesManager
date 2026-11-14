@@ -102,6 +102,7 @@ public class GameScene extends Stage{
 	 * @param gdxGame Référence vers le jeu
 	 */
 	public GameScene(DwarvesManager gdxGame, LevelFile script){
+		super(enibdevlab.dwarves.DwarvesManager.newViewport());
 		PAUSED = false;
 		this.gdxGame = gdxGame;
 		this.setGame(new Game(this, script));
@@ -121,6 +122,7 @@ public class GameScene extends Stage{
 	 * @param gdxGame Référence vers le jeu
 	 */
 	public GameScene(DwarvesManager gdxGame, String path){
+		super(enibdevlab.dwarves.DwarvesManager.newViewport());
 		PAUSED = false;
 		this.gdxGame = gdxGame;
 		this.setGame(new Game(this, path));
@@ -141,6 +143,7 @@ public class GameScene extends Stage{
 	 * Création d'une nouvelle partie avec un niveau aléatoire
 	 */
 	public GameScene(DwarvesManager gdxGame){
+		super(enibdevlab.dwarves.DwarvesManager.newViewport());
 		PAUSED = false;
 		this.gdxGame = gdxGame;
 		this.setGame(new Game(this));
@@ -332,9 +335,14 @@ public class GameScene extends Stage{
 	}
 
 	@Override
-	public boolean scrolled(int amount) {
-		boolean tmp = super.scrolled(amount);
-		if(!tmp) listener.scrolled(amount);
+	public boolean scrolled(float amountX, float amountY) { int amount = (int)Math.signum(amountY);
+		// Web port: give scroll focus to the ScrollPane under the mouse (side panel lists)
+		com.badlogic.gdx.math.Vector2 mp = screenToStageCoordinates(new com.badlogic.gdx.math.Vector2(Gdx.input.getX(), Gdx.input.getY()));
+		com.badlogic.gdx.scenes.scene2d.Actor over = hit(mp.x, mp.y, true);
+		while(over != null && !(over instanceof com.badlogic.gdx.scenes.scene2d.ui.ScrollPane)) over = over.getParent();
+		setScrollFocus(over);
+		boolean tmp = super.scrolled(amountX, amountY);
+		if(!tmp) listener.scrolled(amountX, amountY);
 		return tmp;
 	}
 

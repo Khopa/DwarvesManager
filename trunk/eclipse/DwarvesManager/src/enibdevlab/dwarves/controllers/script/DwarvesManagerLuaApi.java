@@ -1,7 +1,7 @@
 package enibdevlab.dwarves.controllers.script;
 
 
-import java.lang.reflect.Constructor;
+import enibdevlab.dwarves.Ctor;
 import java.util.HashMap;
 
 import org.luaj.vm2.LuaString;
@@ -346,9 +346,9 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	 * @param type Nom du type de bouton qu'on souhaite modifier
 	 * @param enable Active ou désactive
 	 */
-	public static void configureButton(HashMap<ObjectButton, Constructor<?>> buttons, String type, boolean enable){
+	public static void configureButton(HashMap<ObjectButton, Ctor> buttons, String type, boolean enable){
 		for(ObjectButton button:buttons.keySet()){
-			String name = buttons.get(button).getDeclaringClass().getSimpleName();
+			String name = buttons.get(button).getSimpleName();
 			if(name.equals(type)) button.setEnabled(enable);
 		}
 	}
@@ -410,9 +410,9 @@ public class DwarvesManagerLuaApi extends TwoArgFunction {
 	
 	
 	
-	public static void blink(HashMap<ObjectButton, Constructor<?>> buttons, String target, boolean enable){
+	public static void blink(HashMap<ObjectButton, Ctor> buttons, String target, boolean enable){
 		for(ObjectButton button:buttons.keySet()){
-			String name = buttons.get(button).getDeclaringClass().getSimpleName();
+			String name = buttons.get(button).getSimpleName();
 			if(name.equals(target)){
 				if(enable){
 					button.addAction(GUIAnimation.blink());

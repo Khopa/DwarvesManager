@@ -45,6 +45,7 @@ timelineCount: 3
 timeline0: 0.0
 timeline1: 0.66
 timeline2: 1.0
+independent: false
 - Life Offset - 
 active: true
 lowMin: 0.0
@@ -58,6 +59,7 @@ scaling1: 1.0
 timelineCount: 2
 timeline0: 0.0
 timeline1: 1.0
+independent: false
 - X Offset - 
 active: true
 lowMin: 0.0
@@ -102,7 +104,7 @@ scalingCount: 1
 scaling0: 1.0
 timelineCount: 1
 timeline0: 0.0
-- Scale - 
+- X Scale - 
 lowMin: 16.0
 lowMax: 16.0
 highMin: 32.0
@@ -116,6 +118,8 @@ timelineCount: 3
 timeline0: 0.0
 timeline1: 0.34931508
 timeline2: 0.7808219
+- Y Scale - 
+active: false
 - Velocity - 
 active: true
 lowMin: 0.0
@@ -177,8 +181,10 @@ continuous: false
 aligned: true
 additive: true
 behind: false
-- Image Path -
-D:\DwarvesManager\trunk\eclipse\DwarvesManager-android\assets\data\particles\dirt.png
+premultipliedAlpha: false
+spriteMode: single
+- Image Paths -
+dirt.png
 
 
 Untitled
@@ -220,8 +226,10 @@ timelineCount: 3
 timeline0: 0.0
 timeline1: 0.66
 timeline2: 1.0
+independent: false
 - Life Offset - 
 active: false
+independent: false
 - X Offset - 
 active: false
 - Y Offset - 
@@ -248,7 +256,7 @@ scalingCount: 1
 scaling0: 1.0
 timelineCount: 1
 timeline0: 0.0
-- Scale - 
+- X Scale - 
 lowMin: 13.0
 lowMax: 13.0
 highMin: 70.0
@@ -284,6 +292,8 @@ timeline10: 0.740726
 timeline11: 0.7818219
 timeline12: 0.84346575
 timeline13: 1.0
+- Y Scale - 
+active: false
 - Velocity - 
 active: true
 lowMin: 0.0
@@ -371,5 +381,8 @@ continuous: false
 aligned: false
 additive: true
 behind: false
-- Image Path -
-D:\DwarvesManager\trunk\eclipse\DwarvesManager-android\assets\data\particles\particle.png
+premultipliedAlpha: false
+spriteMode: single
+- Image Paths -
+particle.png
+

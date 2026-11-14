@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.views.scenes.levelChoice;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -25,7 +26,7 @@ public class LevelButton extends ButtonActor {
 	
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		super.draw(batch, parentAlpha); // dessin normal du bouton
 	}
 

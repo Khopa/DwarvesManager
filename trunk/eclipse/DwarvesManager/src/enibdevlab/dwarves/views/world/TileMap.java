@@ -1,5 +1,6 @@
 package enibdevlab.dwarves.views.world;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import java.io.IOException;
 
 import com.badlogic.gdx.Gdx;
@@ -78,7 +79,7 @@ public class TileMap extends Actor implements IPersistent{
 		try {
 			Element map = xmlReader.parse(level.getMapFile());
 			loadFromXmlElement(map);
-		}catch (IOException e) {
+		}catch (RuntimeException e) {
 			e.printStackTrace();
 		}
 	}	
@@ -117,7 +118,7 @@ public class TileMap extends Actor implements IPersistent{
 		XmlReader tilesetLoader = new XmlReader();
 		try {
 			this.tilesets[0] = new Tileset(tilesetLoader.parse(Gdx.files.internal("data/maps/tileset.tsx")));
-		} catch (IOException e) {
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
 		
@@ -179,7 +180,7 @@ public class TileMap extends Actor implements IPersistent{
 			if(tileset.getAttribute("source")!=null){
 				try {
 					this.tilesets[i] = new Tileset(xmlReader.parse(Gdx.files.internal("data/maps/"+tileset.getAttribute("source"))));
-				} catch (IOException e) {
+				} catch (RuntimeException e) {
 					e.printStackTrace();
 				}				
 			}
@@ -202,7 +203,7 @@ public class TileMap extends Actor implements IPersistent{
 	 * @param batch
 	 * @param parentAlpha
 	 */
-	public void draw(SpriteBatch batch, float parentAlpha){
+	public void draw(Batch batch, float parentAlpha){
 		super.draw(batch, parentAlpha);
 		
 		batch.setColor(this.getColor());
@@ -299,9 +300,10 @@ public class TileMap extends Actor implements IPersistent{
 	public Vector2 getClickedTile(int sx, int sy){
 		
 		// Calcul des coordonnées à l'écran par rapport à la résolution de base 
-		sx = (int) (sx*((float)(DwarvesManager.getWidth())/(float)(Gdx.graphics.getWidth()))); 
-		sy = (int) (sy*((float)(DwarvesManager.getHeight())/(float)(Gdx.graphics.getHeight()))); 
-		sy = DwarvesManager.getHeight()-sy; // car les coords sont inversés en y pour la souris 
+		// Web port: unproject through the stage viewport (handles letterboxing)
+		Vector2 v = DwarvesManager.screenToVirtual(sx, sy);
+		sx = (int) v.x;
+		sy = (int) v.y;
 	 	// A partir de là on a plus à se préoccuper du redimensionnement, on a les coordonnées de la fenêtre 	                         
 	 	// On scrolle les coordonnées pour correspondre à celle de la map 
 	 	sx -= this.parentGroup.getX(); 
@@ -332,9 +334,10 @@ public class TileMap extends Actor implements IPersistent{
 	public Vector2 getPixelCoordinate(float f, float g){
 		
 		// Calcul des coordonnées à l'écran par rapport à la résolution de base 
-		float fsx = (float) (f*((float)(DwarvesManager.getWidth())/(float)(Gdx.graphics.getWidth()))); 
-		float fsy = (float) (g*((float)(DwarvesManager.getHeight())/(float)(Gdx.graphics.getHeight()))); 
-		fsy = DwarvesManager.getHeight()-g; // car les coords sont inversés en y pour la souris 
+		// Web port: unproject through the stage viewport (handles letterboxing)
+		Vector2 v = DwarvesManager.screenToVirtual(f, g);
+		float fsx = v.x;
+		float fsy = v.y;
 	 	// A partir de là on a plus à se préoccuper du redimensionnement, on a les coordonnées de la fenêtre 	                         
 	 	// On scrolle les coordonnées pour correspondre à celle de la map 
 	 	fsx -= (float)this.parentGroup.getX(); 

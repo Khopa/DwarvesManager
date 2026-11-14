@@ -93,12 +93,12 @@ public class LevelFile {
 				levels.add(new LevelFile(name, title, true, textureID));
 				System.out.println("Niveau interne : " + name + " chargé");
 			}
-		} catch (IOException e) {
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
 		
 		// Chargement des scripts du repertoire utilisateur externe
-		FileHandle scriptDirectory = Gdx.files.external(LevelFile.scriptExternalLocation);
+		FileHandle scriptDirectory = Gdx.files.local(LevelFile.scriptExternalLocation);
 
 		for(FileHandle file:scriptDirectory.list()){
 			if(file.extension().equals("lua")){

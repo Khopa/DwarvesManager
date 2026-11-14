@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -72,7 +72,7 @@ public class DwarvesManager extends Game {
 	 * Timer
 	 */
 	public static float elapsedTime = 0f;
-	public static Timer timer = new Timer();
+	public static Timer timer;
 	
 	protected static DwarvesManager instance;
 	
@@ -80,11 +80,11 @@ public class DwarvesManager extends Game {
 	public void create() {
 
 		instance = this;
+		timer = new Timer();
 		
-		renderer = new ShapeRenderer();
+		renderer = new enibdevlab.dwarves.views.BatchAwareShapeRenderer();
 		font = new BitmapFont();
-		width = Gdx.graphics.getWidth();
-		height = Gdx.graphics.getHeight();
+		computeVirtualSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		System.out.println(width);
 		System.out.println(height);
@@ -97,7 +97,7 @@ public class DwarvesManager extends Game {
 		LevelFile.init();
 		new DwarvesScoreManager();
 		
-		Gdx.input.setCatchBackKey(true);
+		Gdx.input.setCatchKey(com.badlogic.gdx.Input.Keys.BACK, true);
 		System.out.println(ConfigurationManager.getInstance());
 		if(ConfigurationManager.getInstance().getBooleanValue("bigFont")){
 			skin = new Skin(Gdx.files.internal("data/uiskinBig.json"));
@@ -114,7 +114,8 @@ public class DwarvesManager extends Game {
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(.05f, .05f, .05f, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		stage.getViewport().apply();
 		stage.act();
 		stage.draw();
 		elapsedTime+=(Gdx.graphics.getDeltaTime());
@@ -122,8 +123,48 @@ public class DwarvesManager extends Game {
 
 	@Override
 	public void resize (int w, int h) {
-		stage.setViewport(width, height, false);
+		if(w <= 0 || h <= 0) return;
+		stage.getViewport().update(w, h, false);
 		stage.getCamera().position.set(width/2, height/2, 0);
+	}
+
+	/**
+	 * Virtual resolution: the game lays its UI out in pixels when a scene is built,
+	 * so we fix the virtual height and derive the width from the window aspect ratio.
+	 */
+	public static void computeVirtualSize(int screenW, int screenH){
+		if(screenW <= 0 || screenH <= 0){ screenW = 1280; screenH = 720; }
+		float aspect = (float)screenW / (float)screenH;
+		aspect = Math.max(1.0f, Math.min(aspect, 2.4f));
+		height = VIRTUAL_HEIGHT;
+		width = Math.round(VIRTUAL_HEIGHT * aspect);
+	}
+
+	public static final int VIRTUAL_HEIGHT = 720;
+
+	/**
+	 * Converts window (screen) coordinates to virtual stage coordinates (y up).
+	 */
+	public static com.badlogic.gdx.math.Vector2 screenToVirtual(float sx, float sy){
+		com.badlogic.gdx.math.Vector2 v = new com.badlogic.gdx.math.Vector2(sx, sy);
+		if(instance != null && instance.stage != null){
+			com.badlogic.gdx.utils.viewport.Viewport vp = instance.stage.getViewport();
+			// unproject with the camera centred on the virtual screen, independent of where
+			// a scene may have moved its camera
+			v.x = (sx - vp.getScreenX()) * width / (float) vp.getScreenWidth();
+			v.y = height - (sy - (Gdx.graphics.getHeight() - vp.getScreenY() - vp.getScreenHeight())) * height / (float) vp.getScreenHeight();
+		}
+		else{
+			v.y = height - sy;
+		}
+		return v;
+	}
+
+	public static com.badlogic.gdx.utils.viewport.Viewport newViewport(){
+		com.badlogic.gdx.utils.viewport.FitViewport vp =
+				new com.badlogic.gdx.utils.viewport.FitViewport(width, height);
+		vp.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
+		return vp;
 	}
 
 	@Override
@@ -152,6 +193,7 @@ public class DwarvesManager extends Game {
 	public void setStage(Stage stage){
 		this.stage = stage;
 		Gdx.input.setInputProcessor(stage);
+		stage.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
 	}
 	
 	public static void setSkin(Skin skin){

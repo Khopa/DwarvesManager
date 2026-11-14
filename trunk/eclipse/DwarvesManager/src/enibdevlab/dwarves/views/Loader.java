@@ -1,6 +1,6 @@
 package enibdevlab.dwarves.views;
 
-import java.lang.reflect.Constructor;
+import enibdevlab.dwarves.Ctor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
@@ -116,7 +116,7 @@ public class Loader {
 	/**
 	 * Référence sur les constructeurs des objets (permet de les instancier dynamiquement)
 	 */
-	public static Constructor<?>[] objects; 
+	public static Ctor[] objects; 
 	
 	/**
 	 * Package contenant les objets
@@ -131,7 +131,7 @@ public class Loader {
 	/**
 	 * Référence sur les constructeurs des pièces (permet de les instancier dynamiquement)
 	 */
-	public static Constructor<?>[] rooms; 
+	public static Ctor[] rooms; 
 	
 	/**
 	 * Package contenant les pièces
@@ -146,7 +146,7 @@ public class Loader {
 	/**
 	 * Référence sur les constructeurs des personnages (permet de les instancier dynamiquement)
 	 */
-	public static Constructor<?>[] characters; 
+	public static Ctor[] characters; 
 	
 	/**
 	 * Package contenant les personnages
@@ -161,7 +161,7 @@ public class Loader {
 	/**
 	 * Répertoire de sauvegarde (A partir de la carte SD sur Android, ou des documents de la session sur un Desktop)
 	 */
-	public static String saveDirectory = "DwarvesManager/Saves/";
+	public static String saveDirectory = "DwarvesManager/saves/";
 	
 	// Couleurs
 	public static Color AYELLOW = new Color(0f,.9f,0f,.25f); 
@@ -296,29 +296,15 @@ public class Loader {
 	 * @param parameters Liste des classes formant les paramètres du constructeur cherché
 	 * @return
 	 */
-	private static Constructor<?>[] introspectionLoading(
+	private static Ctor[] introspectionLoading(
 			String[] names, String packageName, @SuppressWarnings("rawtypes") Class[] parameters){
-		
-		Constructor<?>[] constructors = new Constructor<?>[names.length];
+		// Web port: explicit factories instead of Class.forName/getConstructor
+		Ctor[] constructors = new Ctor[names.length];
 		int i = 0;
 		for(String s:names){
-			try {
-				Class<?> classe = Class.forName(packageName + s);
-				try {
-					constructors[i] = classe.getConstructor(parameters);
-					i++;
-					System.out.println("Chargement de " + s + ".class");
-				} catch (NoSuchMethodException e) {
-					System.out.println("Constructeur non trouvé pour : " + s);
-					e.printStackTrace();
-				} catch (SecurityException e) {
-					System.out.println("Security exception pour : " + s);
-					e.printStackTrace();
-				}
-			} catch (ClassNotFoundException e) {
-				System.out.println("Impossible de charger la classe " + s);
-				e.printStackTrace();
-			}
+			Ctor c = Ctor.forName(packageName + s);
+			if(c != null) constructors[i++] = c;
+			else System.out.println("Impossible de charger la classe " + s);
 		}
 		return constructors;
 	}
@@ -329,7 +315,7 @@ public class Loader {
 	 */		
 	public static GameObject instanciateObjectToPlace(String objectName, Vector2 position, boolean usePackageName) {
 		if(!usePackageName) objectName = objectName.substring(objectsPackage.length());
-		for(Constructor<?> constructor:objects){
+		for(Ctor constructor:objects){
 			if(constructor.getName().substring(objectsPackage.length()).equals(objectName)){
 				try {
 					return (GameObject)(constructor.newInstance(position));
@@ -356,7 +342,7 @@ public class Loader {
 	 */
 	public static Room instantiateRoomToPlace(String roomName, MapArea area, boolean usePackageName, Rooms gameRooms){
 		if(!usePackageName) roomName = roomName.substring(roomsPackage.length());
-		for(Constructor<?> constructor:rooms){
+		for(Ctor constructor:rooms){
 			if(constructor.getName().substring(roomsPackage.length()).equals(roomName)){
 				try {
 					return (Room)(constructor.newInstance(area,gameRooms));
@@ -385,7 +371,7 @@ public class Loader {
 	 */
 	public static MCharacter instantiateCharacterToPlace(String characterName, Vector2 position, boolean usePackageName){
 		if(!usePackageName) characterName = characterName.substring(characterPackage.length());
-		for(Constructor<?> constructor:characters){
+		for(Ctor constructor:characters){
 			if(constructor.getName().substring(characterPackage.length()).equals(characterName)){
 				try {
 					return (MCharacter)(constructor.newInstance(position));
@@ -445,7 +431,7 @@ public class Loader {
 	 */
 	public static String[] getSavegames(){
 		ArrayList<String> saves = new ArrayList<String>();
-		FileHandle directoryChecker = Gdx.files.external(saveDirectory);
+		FileHandle directoryChecker = Gdx.files.local(saveDirectory);
 		for(FileHandle child:directoryChecker.list()){
 			if(child.extension().equals("xml")){
 				saves.add(child.name());

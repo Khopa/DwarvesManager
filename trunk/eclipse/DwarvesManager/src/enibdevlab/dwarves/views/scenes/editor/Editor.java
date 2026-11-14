@@ -25,6 +25,7 @@ public class Editor extends Stage {
 	 * @param yMapSize Taille Y de la map
 	 */
 	public Editor(int xMapSize, int yMapSize){
+		super(enibdevlab.dwarves.DwarvesManager.newViewport());
 		this.mapLayer = new EditorLayer(xMapSize, yMapSize);
 		this.addActor(this.mapLayer);
 		init();

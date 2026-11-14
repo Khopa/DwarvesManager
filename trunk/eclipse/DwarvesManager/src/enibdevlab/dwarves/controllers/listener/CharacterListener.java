@@ -61,8 +61,8 @@ public class CharacterListener extends InputListener{
 	}
 
 	@Override
-	public boolean scrolled(InputEvent event, float x, float y, int amount) {
-		return super.scrolled(event, x, y, amount);
+	public boolean scrolled(InputEvent event, float x, float y, float amountX, float amountY) { int amount = (int)Math.signum(amountY);
+		return super.scrolled(event, x, y, amountX, amountY);
 	}
 
 	@Override
