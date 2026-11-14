@@ -10,9 +10,9 @@ import enibdevlab.dwarves.views.lang.StringManager;
 /**
  * 
  * 
- * Lit où dorment les nains
+ * Lit oÃ¹ dorment les nains
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Bed extends GameObject {

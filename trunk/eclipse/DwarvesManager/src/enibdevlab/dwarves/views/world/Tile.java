@@ -6,9 +6,9 @@ import enibdevlab.dwarves.models.misc.IPersistent;
 
 
 /**
- * Tile destinée à être affiché
+ * Tile destinÃ©e Ã  Ãªtre affichÃ©
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  */
 public class Tile implements IPersistent{
 
@@ -23,7 +23,7 @@ public class Tile implements IPersistent{
 	protected int y;
 	
 	/**
-	 * Position de sprite associé sur le tileset
+	 * Position de sprite associÃ© sur le tileset
 	 */
 	protected int id;
 	
@@ -33,15 +33,15 @@ public class Tile implements IPersistent{
 	protected int tilesetId;
 	
 	/**
-	 * TileMapLayer associé
+	 * TileMapLayer associÃ©
 	 */
 	protected TilemapLayer layer;
 
 	/**
-	 * Crée un tile à l'endroit indiqué
+	 * CrÃ©e un tile Ã  l'endroit indiquÃ©
 	 * @param x Position X sur la map
 	 * @param y Position Y sur la map
-	 * @param id Id du sprite à afficher (par rapport au tileset de la map qui est composée de ce tile)
+	 * @param id Id du sprite Ã  afficher (par rapport au tileset de la map qui est composÃ©e de ce tile)
 	 * @param tilesetId Id du tileset
 	 */
 	public Tile(int x, int y, int id, int tilesetId, TilemapLayer layer) {

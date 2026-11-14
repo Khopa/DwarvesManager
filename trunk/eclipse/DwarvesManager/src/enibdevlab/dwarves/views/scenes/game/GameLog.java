@@ -9,7 +9,7 @@ import enibdevlab.dwarves.DwarvesManager;
 public class GameLog extends Table {
 
 	/**
-	 * Liste des infos à afficher
+	 * Liste des infos Ã  afficher
 	 */
 	protected ArrayList<String> logs;
 	

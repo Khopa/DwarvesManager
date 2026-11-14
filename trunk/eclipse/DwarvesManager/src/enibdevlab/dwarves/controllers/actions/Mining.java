@@ -20,7 +20,7 @@ import enibdevlab.dwarves.views.world.Tile;
 public class Mining extends DwarfAction {
 	
 	/**
-	 * Temps par défaut pour effectuer l'action (multiplié par la dureté du bloc)
+	 * Temps par dÃ©faut pour effectuer l'action (multipliÃ© par la duretÃ© du bloc)
 	 */
 	private static float MINING_TIME = .7f;
 	
@@ -30,7 +30,7 @@ public class Mining extends DwarfAction {
 	protected int progression;
 
 	/**
-	 * Position tile à miner
+	 * Position tile Ã  miner
 	 */
 	protected Vector2 blockPosition;
 	
@@ -45,7 +45,7 @@ public class Mining extends DwarfAction {
 	protected Miner miner;
 	
 	/**
-	 * Réussite ou pas
+	 * RÃ©ussite ou pas
 	 */
 	protected boolean success;
 	
@@ -70,7 +70,7 @@ public class Mining extends DwarfAction {
 		
 		progression = 0;
 		
-		// On vérifie qu'on a une pioche en état
+		// On vÃ©rifie qu'on a une pioche en Ã©tat
 		boolean ok = false;
 		if(dwarf.getRightHandItem() != null){
 			if(dwarf.getRightHandItem() instanceof Pickaxe){
@@ -104,7 +104,7 @@ public class Mining extends DwarfAction {
 			SoundManager.play("mined" + Integer.toString(sound));
 			((Pickaxe)(this.dwarf.getRightHandItem())).onUse();
 			
-			// On regarde sion a pas cassé la pioche
+			// On regarde sion a pas cassÃ© la pioche
 			if(((Pickaxe)(this.dwarf.getRightHandItem())).getDamage()>=100 && Difficulty.isPickaxeBreakable()){
 				pickaxeBroke();
 			}
@@ -115,7 +115,7 @@ public class Mining extends DwarfAction {
 		else{
 			// Planifie l'animation
 			dwarf.getView().addAction(Animation.mining(dwarf.getView(), MINING_TIME/power));
-			// On regarde si on a pas cassé la pioche
+			// On regarde si on a pas cassÃ© la pioche
 			if(((Pickaxe)(this.dwarf.getRightHandItem())).getDamage()>=100){
 				pickaxeBroke();
 				finished = true;

@@ -24,7 +24,7 @@ import enibdevlab.dwarves.views.lang.StringManager;
  * 
  * Menu de chargement d'une partie
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class LoadGameMenu extends Stage {
@@ -49,7 +49,7 @@ public class LoadGameMenu extends Stage {
 	protected boolean load = false;
 	
 	/**
-	 * Scène précédente
+	 * ScÃ¨ne prÃ©cÃ©dente
 	 */
 	protected Stage previousStage;
 	
@@ -161,7 +161,7 @@ public class LoadGameMenu extends Stage {
 	
 	@Override
 	public boolean keyDown(int keyCode) {
-		if(keyCode == Input.Keys.BACK){ // Appuie du bouton retour Android => retour menu précédent
+		if(keyCode == Input.Keys.BACK){ // Appuie du bouton retour Android => retour menu prÃ©cÃ©dent
 			DwarvesManager.getInstance().setStage(previousStage);
 		}
 		return super.keyDown(keyCode);

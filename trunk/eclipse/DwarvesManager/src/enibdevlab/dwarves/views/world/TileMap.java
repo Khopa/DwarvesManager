@@ -18,15 +18,15 @@ import enibdevlab.dwarves.views.Tileset;
 
 /**
  * 
- * Classe utilisée pour dessiner le monde
+ * Classe utilisÃ©e pour dessiner le monde
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class TileMap extends Actor implements IPersistent{
 	
 	/**
-	 * Liste des tilesets utilisés pour le rendu
+	 * Liste des tilesets utilisÃ©s pour le rendu
 	 */
 	protected Tileset[] tilesets;
 	
@@ -56,7 +56,7 @@ public class TileMap extends Actor implements IPersistent{
 	protected TilemapLayer[] layers;
 	
 	/**
-	 * Référence vers la classe qui contient la map
+	 * RÃ©fÃ©rence vers la classe qui contient la map
 	 */
 	protected Group parentGroup;
 	
@@ -64,11 +64,11 @@ public class TileMap extends Actor implements IPersistent{
 	
 	/**
 	 * 
-	 * Crée une nouvelle map à partir d'un fichier .tmx
+	 * CrÃ©e une nouvelle map Ã  partir d'un fichier .tmx
 	 * 
 	 * @param parent Groupe parent
-	 * @param tileset Tileset utilisé
-	 * @param mapFile Chemin vers le fichier de map à charger
+	 * @param tileset Tileset utilisÃ©
+	 * @param mapFile Chemin vers le fichier de map Ã  charger
 	 */
 	public TileMap(Group parent, Level level){
 		super();
@@ -85,11 +85,11 @@ public class TileMap extends Actor implements IPersistent{
 	
 	/**
 	 * 
-	 * Charge une map depuis des données xml
+	 * Charge une map depuis des donnÃ©es xml
 	 * 
 	 * @param parent Groupe parent
 	 * @param level Niveau du jeu
-	 * @param xmlData Données XML
+	 * @param xmlData DonnÃ©es XML
 	 */
 	public TileMap(Group parent, Level level, Element xmlData) {
 		super();
@@ -98,7 +98,7 @@ public class TileMap extends Actor implements IPersistent{
 	}
 
 	/**
-	 * Crée une map vide 
+	 * CrÃ©e une map vide 
 	 * @param xSize Taille X de la map
 	 * @param ySize Taille Y de la map
 	 */
@@ -198,7 +198,7 @@ public class TileMap extends Actor implements IPersistent{
 	}
 	
 	/**
-	 * Affiche la map à l'écran
+	 * Affiche la map Ã  l'Ã©cran
 	 * @param batch
 	 * @param parentAlpha
 	 */
@@ -225,7 +225,7 @@ public class TileMap extends Actor implements IPersistent{
 	}
 	
 	/**
-	 * Retourne les tiles du layer demandé
+	 * Retourne les tiles du layer demandÃ©
 	 * @param id Id du layer dans la liste des layers de la tilemap
 	 */
 	public Tile[][] getTiles(int id) {
@@ -234,7 +234,7 @@ public class TileMap extends Actor implements IPersistent{
 	
 	/**
 	 * Retourne le tile i,j du layer dont l'id est id dans la liste des layers de la tilemap
-	 * @param id Id du layer sur lesquel on récupère les infos
+	 * @param id Id du layer sur lesquel on rÃ©cupÃ¨re les infos
 	 * @param i Position x du tile
 	 * @param j Position Y du tile
 	 */
@@ -243,14 +243,14 @@ public class TileMap extends Actor implements IPersistent{
 	}
 
 	/**
-	 * Retourne la taille X des tiles utilisés 
+	 * Retourne la taille X des tiles utilisÃ©s 
 	 */
 	public int getTileWidth() {
 		return tileWidth;
 	}
 
 	/**
-	 * Retourne la taille Y des tiles utilisés 
+	 * Retourne la taille Y des tiles utilisÃ©s 
 	 */
 	public int getTileHeight() {
 		return tileHeight;
@@ -292,21 +292,21 @@ public class TileMap extends Actor implements IPersistent{
 	}
 	
 	/**
-	 * Retourne les coordonnées de la case sur laquelle on a cliqué, en tenant compte du scrolling et du scaling
+	 * Retourne les coordonnÃ©es de la case sur laquelle on a cliquÃ©, en tenant compte du scrolling et du scaling
 	 * @param sx Posiition X souris
 	 * @param sy Posiition Y souris
 	 */
 	public Vector2 getClickedTile(int sx, int sy){
 		
-		// Calcul des coordonnées à l'écran par rapport à la résolution de base 
+		// Calcul des coordonnÃ©es Ã  l'Ã©cran par rapport Ã  la rÃ©solution de base 
 		sx = (int) (sx*((float)(DwarvesManager.getWidth())/(float)(Gdx.graphics.getWidth()))); 
 		sy = (int) (sy*((float)(DwarvesManager.getHeight())/(float)(Gdx.graphics.getHeight()))); 
-		sy = DwarvesManager.getHeight()-sy; // car les coords sont inversés en y pour la souris 
-	 	// A partir de là on a plus à se préoccuper du redimensionnement, on a les coordonnées de la fenêtre 	                         
-	 	// On scrolle les coordonnées pour correspondre à celle de la map 
+		sy = DwarvesManager.getHeight()-sy; // car les coords sont inversÃ©s en y pour la souris 
+	 	// A partir de lÃ  on a plus Ã  se prÃ©occuper du redimensionnement, on a les coordonnÃ©es de la fenÃªtre 	                         
+	 	// On scrolle les coordonnÃ©es pour correspondre Ã  celle de la map 
 	 	sx -= this.parentGroup.getX(); 
 	 	sy -= this.parentGroup.getY(); 
-	 	// On divise par les tailles des tiles pour obtenir les coords de la case sur laquelle on a cliqué 
+	 	// On divise par les tailles des tiles pour obtenir les coords de la case sur laquelle on a cliquÃ© 
 	 	sx /= (this.getTileWidth()*this.parentGroup.getScaleX()); 
 	 	sy /= (this.getTileHeight()*this.parentGroup.getScaleY());
 		
@@ -314,10 +314,10 @@ public class TileMap extends Actor implements IPersistent{
 	}
 	
 	/**
-	 * Retourne le tile de la case sur laquelle on a cliqué
+	 * Retourne le tile de la case sur laquelle on a cliquÃ©
 	 * @param sx Posiition X souris
 	 * @param sy Posiition Y souris
-	 * @param layer Layer sur lesquel on veut récupérer le tile (en général 0)
+	 * @param layer Layer sur lesquel on veut rÃ©cupÃ©rer le tile (en gÃ©nÃ©ral 0)
 	 */
 	public Tile getClickedTile(int sx, int sy, int layer){
 		Vector2 tile = this.getClickedTile(sx, sy);
@@ -325,21 +325,21 @@ public class TileMap extends Actor implements IPersistent{
 	}
 	
 	/**
-	 * Retourne les coordonnées en pixels de l'endroit cliqué, en tenant compte du scrolling et du scaling
+	 * Retourne les coordonnÃ©es en pixels de l'endroit cliquÃ©, en tenant compte du scrolling et du scaling
 	 * @param f Posiition X souris
 	 * @param g Posiition Y souris
 	 */
 	public Vector2 getPixelCoordinate(float f, float g){
 		
-		// Calcul des coordonnées à l'écran par rapport à la résolution de base 
+		// Calcul des coordonnÃ©es Ã  l'Ã©cran par rapport Ã  la rÃ©solution de base 
 		float fsx = (float) (f*((float)(DwarvesManager.getWidth())/(float)(Gdx.graphics.getWidth()))); 
 		float fsy = (float) (g*((float)(DwarvesManager.getHeight())/(float)(Gdx.graphics.getHeight()))); 
-		fsy = DwarvesManager.getHeight()-g; // car les coords sont inversés en y pour la souris 
-	 	// A partir de là on a plus à se préoccuper du redimensionnement, on a les coordonnées de la fenêtre 	                         
-	 	// On scrolle les coordonnées pour correspondre à celle de la map 
+		fsy = DwarvesManager.getHeight()-g; // car les coords sont inversÃ©s en y pour la souris 
+	 	// A partir de lÃ  on a plus Ã  se prÃ©occuper du redimensionnement, on a les coordonnÃ©es de la fenÃªtre 	                         
+	 	// On scrolle les coordonnÃ©es pour correspondre Ã  celle de la map 
 	 	fsx -= (float)this.parentGroup.getX(); 
 	 	fsy -= (float)this.parentGroup.getY(); 
-	 	// On divise par les tailles des tiles pour obtenir les coords de la case sur laquelle on a cliqué 
+	 	// On divise par les tailles des tiles pour obtenir les coords de la case sur laquelle on a cliquÃ© 
 	 	fsx /= ((float)this.parentGroup.getScaleX()); 
 	 	fsy /= ((float)this.parentGroup.getScaleY());
 		
@@ -347,17 +347,17 @@ public class TileMap extends Actor implements IPersistent{
 	}
 	
 	/**
-	 * Coordonnées du centre
+	 * CoordonnÃ©es du centre
 	 */
 	public Vector2 getCenterCoordinate(){
 		double x = DwarvesManager.getWidth()/2;
 		double y = DwarvesManager.getHeight()/2;
-		// On scrolle les coordonnées pour correspondre à celle de la map 
+		// On scrolle les coordonnÃ©es pour correspondre Ã  celle de la map 
 		double fsx = x;
 		double fsy = y;
 	 	fsx -= (double)this.parentGroup.getX(); 
 	 	fsy -= (double)this.parentGroup.getY(); 
-	 	// On divise par les tailles des tiles pour obtenir les coords de la case sur laquelle on a cliqué 
+	 	// On divise par les tailles des tiles pour obtenir les coords de la case sur laquelle on a cliquÃ© 
 	 	fsx /= ((double)this.parentGroup.getScaleX()); 
 	 	fsy /= ((double)this.parentGroup.getScaleY());
 		return new Vector2((float)fsx,(float)fsy);

@@ -5,15 +5,15 @@ import com.badlogic.gdx.math.Vector2;
 import enibdevlab.dwarves.views.lang.StringManager;
 
 /**
- * Une bière 
+ * Une biÃ¨re 
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Beer extends Item {
 	
 	/**
-	 * Quantité restante dans la bière
+	 * QuantitÃ© restante dans la biÃ¨re
 	 */
 	protected int quantity = 4;
 

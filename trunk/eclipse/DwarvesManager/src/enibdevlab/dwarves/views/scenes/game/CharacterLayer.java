@@ -5,10 +5,10 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 /**
  * 
  * Couche sur laquelle les personnages sont rendus
- * Vide pour l'instant, mais j'aurait peut être besoin
+ * Vide pour l'instant, mais j'aurait peut Ãªtre besoin
  * de rajouter des trucs plus tard
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class CharacterLayer extends Group{

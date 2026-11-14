@@ -13,7 +13,7 @@ import enibdevlab.dwarves.views.Loader;
 public class APriceEffect extends Actor {
 
 	/**
-	 * Prix payé
+	 * Prix payÃ©
 	 */
 	protected String price;
 	

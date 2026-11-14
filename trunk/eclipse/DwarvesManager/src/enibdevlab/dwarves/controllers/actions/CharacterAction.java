@@ -5,13 +5,13 @@ import enibdevlab.dwarves.models.Game;
 import enibdevlab.dwarves.models.characters.MCharacter;
 
 /**
- * Action effectuée par les personnages
- * @author Clément Perreau
+ * Action effectuÃ©e par les personnages
+ * @author ClÃ©ment Perreau
  */
 public abstract class CharacterAction extends GameAction {
 
 	/**
-	 * Référence vers le nain acteur
+	 * RÃ©fÃ©rence vers le nain acteur
 	 */
 	protected MCharacter character;
 	

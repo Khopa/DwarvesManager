@@ -10,9 +10,9 @@ import enibdevlab.dwarves.views.lang.StringManager;
 
 /**
  * 
- * Comptoir où le barman sert les bières
+ * Comptoir oÃ¹ le barman sert les biÃ¨res
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Counter extends GameObject {
@@ -23,7 +23,7 @@ public class Counter extends GameObject {
 	protected Barman barman;
 	
 	/**
-	 * Quantité de bière posée sur le comptoir
+	 * QuantitÃ© de biÃ¨re posÃ©e sur le comptoir
 	 */
 	protected int beer = 0;
 
@@ -32,7 +32,7 @@ public class Counter extends GameObject {
 	}
 	
 	/**
-	 * Un barman indique qu'il va utiliser ce comptoir pour sa période de travail
+	 * Un barman indique qu'il va utiliser ce comptoir pour sa pÃ©riode de travail
 	 * @param barman Barman qui prend le bar
 	 */
 	public void reserve(Barman barman){
@@ -40,7 +40,7 @@ public class Counter extends GameObject {
 	}
 	
 	/**
-	 * Retourne le slot reservé au barman
+	 * Retourne le slot reservÃ© au barman
 	 */
 	public Slot getBarmanSlot(){
 		for(Slot slot:this.slots){
@@ -57,7 +57,7 @@ public class Counter extends GameObject {
 	}
 	
 	/**
-	 * Est utilisé ou non par un barman
+	 * Est utilisÃ© ou non par un barman
 	 */
 	public boolean isUsed(){
 		return (barman != null);
@@ -102,7 +102,7 @@ public class Counter extends GameObject {
 		// Slot du barman
 		slotsData.put(new Vector2(1,1), Barman.class);
 		
-		// Slot de position des personnages qui réclament à boire
+		// Slot de position des personnages qui rÃ©clament Ã  boire
 		slotsData.put(new Vector2(0,0), MCharacter.class);
 		slotsData.put(new Vector2(1,0), MCharacter.class);
 		slotsData.put(new Vector2(2,0), MCharacter.class);

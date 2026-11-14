@@ -5,13 +5,13 @@ import enibdevlab.dwarves.models.Game;
 import enibdevlab.dwarves.models.characters.Dwarf;
 
 /**
- * Action effectuée par les nains
- * @author Clément Perreau
+ * Action effectuÃ©e par les nains
+ * @author ClÃ©ment Perreau
  */
 public abstract class DwarfAction extends GameAction {
 
 	/**
-	 * Référence vers le nain acteur
+	 * RÃ©fÃ©rence vers le nain acteur
 	 */
 	protected Dwarf dwarf;
 	
@@ -26,11 +26,11 @@ public abstract class DwarfAction extends GameAction {
 	}
 	
 	/**
-	 * Abandon de l'action pour une raison quelconque qui l'a empeché de se terminer correctement
-	 * (Provoque un retour dans un état neutre)
+	 * Abandon de l'action pour une raison quelconque qui l'a empechÃ© de se terminer correctement
+	 * (Provoque un retour dans un Ã©tat neutre)
 	 */
 	public void abort(int complaint){
-		// Mouvement de tête comme pour se plaindre
+		// Mouvement de tÃªte comme pour se plaindre
 		this.dwarf.getView().addAction(Animation.complaining(this.dwarf.getView(), complaint));
 		this.state.clear();
 		this.doWaiting(6f);

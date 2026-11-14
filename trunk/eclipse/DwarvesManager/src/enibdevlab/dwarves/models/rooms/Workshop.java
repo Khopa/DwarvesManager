@@ -17,7 +17,7 @@ public class Workshop extends Room {
 	public Workshop(int i, int j, int w, int h, TileMap tilemap, Rooms rooms) {
 		super(i, j, w, h, tilemap, rooms);
 		
-		// Définition des objets requis
+		// DÃ©finition des objets requis
 		neededObjects.put(Rack.class, 1);
 		neededObjects.put(Anvil.class, 1);
 	}

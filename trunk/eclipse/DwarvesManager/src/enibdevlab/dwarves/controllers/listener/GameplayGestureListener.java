@@ -10,9 +10,9 @@ import enibdevlab.dwarves.views.scenes.game.GameplayLayer;
 
 /**
  * 
- * Listener spécifiques pour gérer certains évenements spécifiques android
+ * Listener spÃ©cifiques pour gÃ©rer certains Ã©venements spÃ©cifiques android
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GameplayGestureListener implements GestureListener{
@@ -68,21 +68,21 @@ public class GameplayGestureListener implements GestureListener{
 		float o_amount = gameplay.getScaleX();
 		double d_amount = (double)(o_amount-r_amount);
 		
-		// On recupère la case centrale de l'écran
+		// On recupÃ¨re la case centrale de l'Ã©cran
 		// Vector2 center  = gameplay.getTilemap().getCenterCoordinate();
 		// On effectue le scaling
 		gameplay.setScale(r_amount);
 		// gameplay.clamp();
-		// On recupère la nouvelle case centrale de l'écran
+		// On recupÃ¨re la nouvelle case centrale de l'Ã©cran
 		// Vector2 center2  = gameplay.getTilemap().getCenterCoordinate();
-		// On calcule la différence
+		// On calcule la diffÃ©rence
 		// Vector2 diff    = new Vector2(center.x-center2.x, center.y-center2.y);
 		Vector2 realPos = new Vector2(gameplay.getX()/o_amount, gameplay.getY()/o_amount);
 		Vector2 newPos = new Vector2((float)(realPos.x*r_amount), (float)(realPos.y*r_amount));
 		Vector2 diff   = new Vector2((float)(d_amount*(DwarvesManager.getWidth())), (float)(d_amount*DwarvesManager.getHeight()));
 		System.out.println(newPos);
-		// TODO : Il manque sans doute une valeur de scaling sur le décalage, je verrai ça plus tard si j'ai le temps
-		// décalage pour centrer le zoom
+		// TODO : Il manque sans doute une valeur de scaling sur le dÃ©calage, je verrai Ã§a plus tard si j'ai le temps
+		// dÃ©calage pour centrer le zoom
 		gameplay.setPosition(newPos.x+diff.x, newPos.y+diff.y);
 		//gameplay.setPosition(gameplay.getX()-diff.x, gameplay.getY()-diff.y);
 		gameplay.clamp();

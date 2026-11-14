@@ -18,7 +18,7 @@ public class Pathfinder implements Runnable{
 	
 	
 	/**
-	 * Mouvements diagonaux autorisés ou non
+	 * Mouvements diagonaux autorisÃ©s ou non
 	 */
 	private static boolean ALLOW_DIAGONALE_MOVEMENT= false;
 	
@@ -33,12 +33,12 @@ public class Pathfinder implements Runnable{
 	private static int DIAGONAL_MOVEMENT_COST = 14;
 	
 	/**
-	 * noeud de départ
+	 * noeud de dÃ©part
 	 */
 	protected Node beginNode;
 	
 	/**
-	 * noeud d'arrivé
+	 * noeud d'arrivÃ©
 	 */
 	protected Node goalNode;
 	
@@ -53,12 +53,12 @@ public class Pathfinder implements Runnable{
 	protected ArrayList<Node> openList = new ArrayList<Node>();
 	
 	/**
-	 * liste des noeuds déterminés comme solution du chemin
+	 * liste des noeuds dÃ©terminÃ©s comme solution du chemin
 	 */
 	protected ArrayList<Node> closeList =  new ArrayList<Node>();
 	
 	/**
-	 * liste des noeuds déterminés comme solution du chemin
+	 * liste des noeuds dÃ©terminÃ©s comme solution du chemin
 	 */
 	protected ArrayList<Node> path;
 	
@@ -70,11 +70,11 @@ public class Pathfinder implements Runnable{
 	
 	/**
 	 * 
-	 * Crée un pathfinder
+	 * CrÃ©e un pathfinder
 	 * 
 	 * @param map Map sur lasquelle on souhaite effectuer la recherche
-	 * @param begin Noeud de départ
-	 * @param goal Noeud d'arrivée
+	 * @param begin Noeud de dÃ©part
+	 * @param goal Noeud d'arrivÃ©e
 	 */
 	public Pathfinder(TileMap map, Node beginNode, Node goalNode) {
 		this.beginNode = beginNode;
@@ -85,12 +85,12 @@ public class Pathfinder implements Runnable{
 	
 	public ArrayList<Node> aStar()
 	{
-		//on ajoute le noeud de départ à liste ouverte
+		//on ajoute le noeud de dÃ©part Ã  liste ouverte
 		openList.add(this.beginNode);
 		
 		while(!openList.isEmpty())
 		{
-			//on ajoute le noeud ayant le plus faible des F de la liste ouverte à la liste fermée
+			//on ajoute le noeud ayant le plus faible des F de la liste ouverte Ã  la liste fermÃ©e
 			
 			current = findMinF();
 			
@@ -100,7 +100,7 @@ public class Pathfinder implements Runnable{
 			// On recherche les cases adjacentes au noeud courant et on calculs leurs attribut si besoin
 			getNeighbours(current);
 			
-			// Si l'on rajoute le noeud d'arrivé ou si la liste ouverte est vide alors on arrête
+			// Si l'on rajoute le noeud d'arrivÃ© ou si la liste ouverte est vide alors on arrÃªte
 			if(isOnCloseList(this.goalNode)) break;
 			else if (this.openList.isEmpty()) return null;
 		}
@@ -137,22 +137,22 @@ public class Pathfinder implements Runnable{
 		
 		if(ALLOW_DIAGONALE_MOVEMENT)
 		{
-			seekNode(xc-1 , yc-1, true, current); //en haut à gauche
-			seekNode(xc-1 , yc-1, true, current); //en haut à droite
-			seekNode(xc-1 , yc+1, true, current); //en bas à gauche
-			seekNode(xc+1 , yc+1, true, current); //en bas à droite
+			seekNode(xc-1 , yc-1, true, current); //en haut Ã  gauche
+			seekNode(xc-1 , yc-1, true, current); //en haut Ã  droite
+			seekNode(xc-1 , yc+1, true, current); //en bas Ã  gauche
+			seekNode(xc+1 , yc+1, true, current); //en bas Ã  droite
 		}
 		
 		seekNode(xc , yc-1, false, current); //en haut
-		seekNode(xc-1 , yc, false, current); //à gauche
-		seekNode(xc+1 , yc, false, current); //à droite
+		seekNode(xc-1 , yc, false, current); //Ã  gauche
+		seekNode(xc+1 , yc, false, current); //Ã  droite
 		seekNode(xc , yc+1, false, current); //en bas
 
 	}
 	
 	
 	/**
-	 * Vérifie si le noeud étudier est dans les limites de la map
+	 * VÃ©rifie si le noeud Ã©tudier est dans les limites de la map
 	 * @param node
 	 * @return retourne vrai si c'est le cas
 	 */
@@ -164,14 +164,14 @@ public class Pathfinder implements Runnable{
 	}
 	
 	/**
-	 * Ajoute à liste ouverte s'il possède les bonnes caractéristiques, s'il est : 
+	 * Ajoute Ã  liste ouverte s'il possÃ¨de les bonnes caractÃ©ristiques, s'il est : 
 	 * -dans la map
 	 * -traversable
 	 * -non contenu dans la liste dans la liste ouverte
-	 * -non contenue dans la liste femée
+	 * -non contenue dans la liste femÃ©e
 	 * alors il calcule son H
-	 * @param dx coordonnées en x du noeud testé
-	 * @param dy coordonnées en y du noeud testé
+	 * @param dx coordonnÃ©es en x du noeud testÃ©
+	 * @param dy coordonnÃ©es en y du noeud testÃ©
 	 * @param diag indique si c'est un mouvement en diagonale ou non
 	 * @param parent noeud courant
 	 */
@@ -179,7 +179,7 @@ public class Pathfinder implements Runnable{
 	{
 		Node node = new Node(dx, dy);
 		
-		//si on est hors des limites ou si le noeud est déjà dans la solution ou s'il nest pas praticable
+		//si on est hors des limites ou si le noeud est dÃ©jÃ  dans la solution ou s'il nest pas praticable
 		if (!(isOnCloseList(node) || map.isTileBlocking(dx, dy))){
 			
 			// si il n'est pas dans la liste ouverte (pas dans les solutions possible)
@@ -193,7 +193,7 @@ public class Pathfinder implements Runnable{
 				
 				openList.add(node);
 			}
-			//S'il est déjà dans la liste ouverte
+			//S'il est dÃ©jÃ  dans la liste ouverte
 			else
 			{
 				//on recalcule son G
@@ -220,8 +220,8 @@ public class Pathfinder implements Runnable{
 	}
 	
 	/**
-	 * Vérifie si le noeud est dans la liste fermée
-	 * @param probed noeud considéré
+	 * VÃ©rifie si le noeud est dans la liste fermÃ©e
+	 * @param probed noeud considÃ©rÃ©
 	 * @return
 	 */
 	public boolean isOnCloseList(Node probed){
@@ -249,8 +249,8 @@ public class Pathfinder implements Runnable{
 	}
 
 	/**
-	 * Vérifie si le noeud est dans la liste ouvert
-	 * @param probed noeud considéré
+	 * VÃ©rifie si le noeud est dans la liste ouvert
+	 * @param probed noeud considÃ©rÃ©
 	 */
 	public boolean isOnOpenList(Node probed){
 		
@@ -274,7 +274,7 @@ public class Pathfinder implements Runnable{
 	
 	
 	/**
-	 * Renvoie le noeud qui à le plus faible F de la liste ouverte
+	 * Renvoie le noeud qui Ã  le plus faible F de la liste ouverte
 	 * @return
 	 */
 	public Node findMinF()

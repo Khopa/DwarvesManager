@@ -11,20 +11,20 @@ import enibdevlab.dwarves.views.world.TileMap;
 
 /**
  * 
- * Définit une zone de la map
+ * DÃ©finit une zone de la map
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class MapArea implements IPersistent{
 	
 	/**
-	 * Coordonnées du point haut gauche X
+	 * CoordonnÃ©es du point haut gauche X
 	 */
 	protected int i;
 	
 	/**
-	 * Coordonnées du point haut gauche Y
+	 * CoordonnÃ©es du point haut gauche Y
 	 */
 	protected int j;
 	
@@ -39,7 +39,7 @@ public class MapArea implements IPersistent{
 	protected int h;
 	
 	/**
-	 * Layer principal de la map, où sont situés les tiles
+	 * Layer principal de la map, oÃ¹ sont situÃ©s les tiles
 	 */
 	protected TileMap tilemap;
 	
@@ -49,15 +49,15 @@ public class MapArea implements IPersistent{
 	protected AMapArea view;
 	
 	/**
-	 * Crée une zone de map
-	 * @param i Coordonnées du point haut gauche X
-	 * @param j Coordonnées du point haut gauche Y
+	 * CrÃ©e une zone de map
+	 * @param i CoordonnÃ©es du point haut gauche X
+	 * @param j CoordonnÃ©es du point haut gauche Y
 	 * @param w Largeur
 	 * @param h Hauteur
 	 */
 	public MapArea(int i, int j, int w, int h, TileMap tilemap){
 		
-		// Force le coin bas gauche à être considéré comme origine de la zone (i,j)
+		// Force le coin bas gauche Ã  Ãªtre considÃ©rÃ© comme origine de la zone (i,j)
 		if(w<0){
 			i = i+w;
 			w = -w;
@@ -148,14 +148,14 @@ public class MapArea implements IPersistent{
 	
 	
 	/**
-	 * Retourne les coordonnées du coin bas gauche
+	 * Retourne les coordonnÃ©es du coin bas gauche
 	 */
 	public Vector2 getBottomLeft(){
 		return new Vector2(i,j);
 	}
 	
 	/**
-	 * Obtention de la différence de position entre deux zones
+	 * Obtention de la diffÃ©rence de position entre deux zones
 	 */
 	public Vector2 deltaPosition(MapArea other){
 		return new Vector2(i-other.getI(), j-other.getJ());
@@ -194,7 +194,7 @@ public class MapArea implements IPersistent{
 	}
 	
 	/**
-	 * Dit si le tile (x,y) est situé à l'intérieur de la zone
+	 * Dit si le tile (x,y) est situÃ© Ã  l'intÃ©rieur de la zone
 	 * @param x Position X du tile
 	 * @param y Position Y du tile
 	 */
@@ -203,17 +203,17 @@ public class MapArea implements IPersistent{
 	}
 	
 	/**
-	 * Retourne la zone formée par l'intersection avec une autre zone
-	 * (Il est supposée que la zone fournie forme une intersection avec celle ci)
+	 * Retourne la zone formÃ©e par l'intersection avec une autre zone
+	 * (Il est supposÃ©e que la zone fournie forme une intersection avec celle ci)
 	 * @param area Autre Zone
 	 */
 	public MapArea getIntersection(MapArea area){
 		
-		// La position bas gauche de l'intersection formée est toujours le max des deux coordonnées
+		// La position bas gauche de l'intersection formÃ©e est toujours le max des deux coordonnÃ©es
 		int x = Math.max(this.getI(), area.getI());
 		int y = Math.max(this.getJ(), area.getJ());
 		
-		// La taille de l'intersection est trouvée par la différence entre les coordonnées
+		// La taille de l'intersection est trouvÃ©e par la diffÃ©rence entre les coordonnÃ©es
 		// haut droite minimale et la position que l'on vient de calculer
 		int w = Math.min(this.getI()+this.getW(), area.getI()+area.getW()) - x;
 		int h = Math.min(this.getJ()+this.getH(), area.getJ()+area.getH()) - y;
@@ -224,7 +224,7 @@ public class MapArea implements IPersistent{
 	
 	
 	/**
-	 * Retourne un ensemble de MapArea crée par le retrait d'une zone (éclatement) 
+	 * Retourne un ensemble de MapArea crÃ©e par le retrait d'une zone (Ã©clatement) 
 	 */
 	public ArrayList<MapArea> hollow(MapArea toRemove){
 		
@@ -233,7 +233,7 @@ public class MapArea implements IPersistent{
 
 		if(this.intersect(area)){  // Test rapide
 			
-			// Dans le pire des cas, on éclatera en 4 nouvelles zones
+			// Dans le pire des cas, on Ã©clatera en 4 nouvelles zones
 			int x = 0;
 			int y = 0;
 			int w = 0;
@@ -253,14 +253,14 @@ public class MapArea implements IPersistent{
 			h = this.h;
 			if(w>0 && h >0) result.add(new MapArea(x,y,w,h,tilemap));
 			
-			// Zone Inférieure
+			// Zone InfÃ©rieure
 			x = area.getI();
 			y = this.j;
 			w = area.getW();
 			h = area.getJ() - this.getJ();
 			if(w>0 && h >0) result.add(new MapArea(x,y,w,h,tilemap));
 			
-			// Zone Supérieure
+			// Zone SupÃ©rieure
 			x = area.getI();
 			y = area.getJ() + area.getH();
 			w = area.getW();

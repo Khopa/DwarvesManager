@@ -15,7 +15,7 @@ import enibdevlab.dwarves.views.world.TileMap;
  * 
  * Dortoir
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Dorm extends Room{
@@ -25,7 +25,7 @@ public class Dorm extends Room{
 	public Dorm(int i, int j, int w, int h, TileMap tilemap, Rooms rooms) {
 		super(i, j, w, h, tilemap, rooms);
 		
-		// Définition des objets requis
+		// DÃ©finition des objets requis
 		neededObjects.put(Bed.class, 1);
 		
 	}

@@ -5,12 +5,12 @@ import com.badlogic.gdx.math.Vector2;
 public class Node {
 	
 	/**
-	 * cout en déplacement en distance manhattan
+	 * cout en dÃ©placement en distance manhattan
 	 */
 	protected int g;
 	
 	/**
-	 * h vaut 10 si le déplacement est en ligne droite et 14 si c'est un déplacement en diagonale
+	 * h vaut 10 si le dÃ©placement est en ligne droite et 14 si c'est un dÃ©placement en diagonale
 	 */
 	protected int h;
 	
@@ -20,7 +20,7 @@ public class Node {
 	protected Vector2 pos;
 	
 	/**
-	 * noeud parent qui nous à permis d'arriver à ce noeud
+	 * noeud parent qui nous Ã  permis d'arriver Ã  ce noeud
 	 */
 	protected Node parent;
 	
@@ -31,9 +31,9 @@ public class Node {
 	
 	
 	/**
-	 * Créer un noeud
-	 * @param x coordonnées en abscisse du noeud
-	 * @param y coordonnées en ordonnée du noeud
+	 * CrÃ©er un noeud
+	 * @param x coordonnÃ©es en abscisse du noeud
+	 * @param y coordonnÃ©es en ordonnÃ©e du noeud
 	 */
 	public Node(float x, float y) {
 		this.pos = new Vector2(x,y);

@@ -12,21 +12,21 @@ import enibdevlab.dwarves.views.world.TileMap;
  * Couche d'objets
  * Couche qui regroupe tous les objets de la partie Objets
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class ObjectLayer extends Group {
 
 	/**
-	 * Map sur laquelle se déroule l'action.
-	 * On en a besoin pour positionner les différents objets correctement et
-	 * récupérer la valeur de scrolling (position de la map)
+	 * Map sur laquelle se dÃ©roule l'action.
+	 * On en a besoin pour positionner les diffÃ©rents objets correctement et
+	 * rÃ©cupÃ©rer la valeur de scrolling (position de la map)
 	 * NB : En fait non
 	 */
 	protected TileMap tilemap;
 	
 	/**
-	 * Objet à placer (apparait quand le joueur décide de placer un objet)
+	 * Objet Ã  placer (apparait quand le joueur dÃ©cide de placer un objet)
 	 */
 	protected AGameObject objectToPlace;
 	

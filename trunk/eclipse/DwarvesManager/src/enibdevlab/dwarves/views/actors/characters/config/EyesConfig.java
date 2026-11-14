@@ -8,7 +8,7 @@ import enibdevlab.dwarves.views.Tileset;
  * Cette classe permet de configurer les yeux des personnages
  * qu'ils soientt des nains, gobelins ou elfe
  * 
- * @author Yannick Guern / Clément Perreau
+ * @author Yannick Guern / ClÃ©ment Perreau
  *
  */
 public class EyesConfig {
@@ -17,27 +17,27 @@ public class EyesConfig {
 	 * position de l'oeil ET de la pupille quand elle est au centre
 	 * 
 	 * NB : @Yannick Il y a pas besoin de faire une position pour la pupille toute seule, les
-	 * sprites sont sur le même tileset et conçus pour être positionné ensemble, c'est pas pour rien
+	 * sprites sont sur le mÃªme tileset et conÃ§us pour Ãªtre positionnÃ© ensemble, c'est pas pour rien
 	 * 
 	 */
 	protected Vector2 position;
 	
 	/**
 	 * Taille de l'oeil en x 
-	 * Décalage à appliquer à la pupille quand elle est à droite de l'oeil
-	 * On en déduit aussi le décalage pour les regards vers la gauche
+	 * DÃ©calage Ã  appliquer Ã  la pupille quand elle est Ã  droite de l'oeil
+	 * On en dÃ©duit aussi le dÃ©calage pour les regards vers la gauche
 	 */
 	protected float xRadius;
 	
 	/**
 	 * Taille de l'oeil en y
-	 * Décalage à appliquer à la pupille quand elle est en haut de l'oeil
-	 * On en déduit aussi le décalage pour les regards vers la gauche
+	 * DÃ©calage Ã  appliquer Ã  la pupille quand elle est en haut de l'oeil
+	 * On en dÃ©duit aussi le dÃ©calage pour les regards vers la gauche
 	 */
 	protected float yRadius;
 	
 	/**
-	 * Tileset utilisé pour les yeux
+	 * Tileset utilisÃ© pour les yeux
 	 */
 	protected Tileset eyesTileset;
 
@@ -45,8 +45,8 @@ public class EyesConfig {
 	 * Construit une configuration pour les yeux
 	 * @param eyesTileset Tileset des yeux
 	 * @param position Position de l'oeil
-	 * @param xRadius Taille de l'oeil en x (utilisé pour limiter les mouvements de la pupille)
-	 * @param yRadius Taille de l'oeil en y (utilisé pour limiter les mouvements de la pupille)
+	 * @param xRadius Taille de l'oeil en x (utilisÃ© pour limiter les mouvements de la pupille)
+	 * @param yRadius Taille de l'oeil en y (utilisÃ© pour limiter les mouvements de la pupille)
 	 */
 	public EyesConfig(Tileset eyesTileset, Vector2 position, float xRadius, float yRadius) {
 		super();

@@ -5,9 +5,9 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 
 /**
  * 
- * Interface implémentée par les objets que l'on peut sauvegarder
+ * Interface implÃ©mentÃ©e par les objets que l'on peut sauvegarder
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public interface IPersistent {
@@ -18,7 +18,7 @@ public interface IPersistent {
 	public Element saveAsXmlElement();
 	
 	/**
-	 * Chargement de données XML
+	 * Chargement de donnÃ©es XML
 	 */
 	public void loadFromXmlElement(Element xmlElement);
 	

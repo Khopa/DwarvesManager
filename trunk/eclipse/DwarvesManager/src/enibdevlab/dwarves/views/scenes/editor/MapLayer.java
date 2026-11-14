@@ -12,7 +12,7 @@ import enibdevlab.dwarves.views.world.TileMap;
  * 
  * Couche d'affichage de map
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class MapLayer extends Group{
@@ -23,7 +23,7 @@ public class MapLayer extends Group{
 	protected TileMap tilemap;
 
 	/**
-	 * Crée un layer avec une map vide
+	 * CrÃ©e un layer avec une map vide
 	 * @param xSize Taille X de la map
 	 * @param ySize Taille Y de la map
 	 */
@@ -77,7 +77,7 @@ public class MapLayer extends Group{
 	}
 	
 	/**
-	 * S'assure que l'on ne scrolle pas en dehors de l'écran
+	 * S'assure que l'on ne scrolle pas en dehors de l'Ã©cran
 	 */
 	public void clamp() {
 		if (-this.getX() < -1f/3f*DwarvesManager.getWidth()) this.setX(1f/3f*DwarvesManager.getWidth());

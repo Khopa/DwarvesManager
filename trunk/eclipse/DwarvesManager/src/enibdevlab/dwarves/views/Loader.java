@@ -27,7 +27,7 @@ import enibdevlab.dwarves.views.lang.StringManager;
  * 
  * Charge une grande partie des ressources graphiques
  * 
- * @author Clément
+ * @author ClÃ©ment
  *
  */
 public class Loader {
@@ -109,12 +109,12 @@ public class Loader {
 	public static Tileset itemAtlas;
 	
 	/**
-	 * Atlas des plaintes (petit sprite affiché quand un nain se plaint, pour indiquer la raison)
+	 * Atlas des plaintes (petit sprite affichÃ© quand un nain se plaint, pour indiquer la raison)
 	 */
 	public static Tileset complaintAtlas;
 	
 	/**
-	 * Référence sur les constructeurs des objets (permet de les instancier dynamiquement)
+	 * RÃ©fÃ©rence sur les constructeurs des objets (permet de les instancier dynamiquement)
 	 */
 	public static Constructor<?>[] objects; 
 	
@@ -129,22 +129,22 @@ public class Loader {
 	public static String[] objectsName;
 	
 	/**
-	 * Référence sur les constructeurs des pièces (permet de les instancier dynamiquement)
+	 * RÃ©fÃ©rence sur les constructeurs des piÃ¨ces (permet de les instancier dynamiquement)
 	 */
 	public static Constructor<?>[] rooms; 
 	
 	/**
-	 * Package contenant les pièces
+	 * Package contenant les piÃ¨ces
 	 */
 	public static String roomsPackage;
 	
 	/**
-	 * Liste des pièces sous forme de String[]
+	 * Liste des piÃ¨ces sous forme de String[]
 	 */
 	public static String[] roomsName;
 	
 	/**
-	 * Référence sur les constructeurs des personnages (permet de les instancier dynamiquement)
+	 * RÃ©fÃ©rence sur les constructeurs des personnages (permet de les instancier dynamiquement)
 	 */
 	public static Constructor<?>[] characters; 
 	
@@ -154,12 +154,12 @@ public class Loader {
 	public static String characterPackage;
 	
 	/**
-	 * Liste des pièces sous forme de String[]
+	 * Liste des piÃ¨ces sous forme de String[]
 	 */
 	public static String[] charactersName;
 	
 	/**
-	 * Répertoire de sauvegarde (A partir de la carte SD sur Android, ou des documents de la session sur un Desktop)
+	 * RÃ©pertoire de sauvegarde (A partir de la carte SD sur Android, ou des documents de la session sur un Desktop)
 	 */
 	public static String saveDirectory = "DwarvesManager/Saves/";
 	
@@ -271,7 +271,7 @@ public class Loader {
 		// Chargement des objets par introspection
 		roomsName = new String[]{"Dorm", "Tavern", "Workshop"};
 		roomsPackage = "enibdevlab.dwarves.models.rooms.";
-		// On connait les paramètres des rooms (un mapArea)
+		// On connait les paramÃ¨tres des rooms (un mapArea)
 		parameters = new Class[]{MapArea.class, Rooms.class};
 		
 		rooms = introspectionLoading(roomsName, roomsPackage, parameters);
@@ -281,7 +281,7 @@ public class Loader {
 		// Chargement des objets par introspection
 		charactersName = new String[]{"Miner", "Barman", "Craftman", "Enchanter"};
 		characterPackage = "enibdevlab.dwarves.models.characters.";
-		// On connait les paramètres des rooms (un mapArea)
+		// On connait les paramÃ¨tres des rooms (un mapArea)
 		parameters = new Class[]{Vector2.class};
 		
 		characters = introspectionLoading(charactersName, characterPackage, parameters);
@@ -291,9 +291,9 @@ public class Loader {
 	
 	/**
 	 * Charge une liste de constructeur
-	 * @param names Liste des noms des classes recherchées
+	 * @param names Liste des noms des classes recherchÃ©es
 	 * @param packageName Nom du package dans lequel on recherche
-	 * @param parameters Liste des classes formant les paramètres du constructeur cherché
+	 * @param parameters Liste des classes formant les paramÃ¨tres du constructeur cherchÃ©
 	 * @return
 	 */
 	private static Constructor<?>[] introspectionLoading(
@@ -309,7 +309,7 @@ public class Loader {
 					i++;
 					System.out.println("Chargement de " + s + ".class");
 				} catch (NoSuchMethodException e) {
-					System.out.println("Constructeur non trouvé pour : " + s);
+					System.out.println("Constructeur non trouvÃ© pour : " + s);
 					e.printStackTrace();
 				} catch (SecurityException e) {
 					System.out.println("Security exception pour : " + s);
@@ -324,8 +324,8 @@ public class Loader {
 	}
 
 	/**
-	 * Instancie un GameObject à partir du nom de la classe
-	 * @param objectName Nom de la classe à instancier
+	 * Instancie un GameObject Ã  partir du nom de la classe
+	 * @param objectName Nom de la classe Ã  instancier
 	 */		
 	public static GameObject instanciateObjectToPlace(String objectName, Vector2 position, boolean usePackageName) {
 		if(!usePackageName) objectName = objectName.substring(objectsPackage.length());
@@ -352,7 +352,7 @@ public class Loader {
 	}
 	
 	/**
-	 * Instancie une pièce à partir du nom du type de pièce
+	 * Instancie une piÃ¨ce Ã  partir du nom du type de piÃ¨ce
 	 */
 	public static Room instantiateRoomToPlace(String roomName, MapArea area, boolean usePackageName, Rooms gameRooms){
 		if(!usePackageName) roomName = roomName.substring(roomsPackage.length());
@@ -379,7 +379,7 @@ public class Loader {
 	}
 	
 	/**
-	 * Instancie un personnage à partir du nom de sa classe
+	 * Instancie un personnage Ã  partir du nom de sa classe
 	 * @param characterName Nom de la classe de personnage (par exemple "Miner")
 	 * @param position Position du personnage
 	 */
@@ -408,7 +408,7 @@ public class Loader {
 	}
 	
 	/**
-	 * Retourne un nom aléatoire pour un nain
+	 * Retourne un nom alÃ©atoire pour un nain
 	 */
 	public static String randomName(){
 		FileHandle file = Gdx.files.internal("data/dwarf.name");
@@ -419,7 +419,7 @@ public class Loader {
 	}
 	
 	/**
-	 * Retourne un nom aléatoire pour un nain
+	 * Retourne un nom alÃ©atoire pour un nain
 	 */
 	public static String randomFirstName(){
 		FileHandle file = Gdx.files.internal("data/dwarf_en.name");
@@ -430,7 +430,7 @@ public class Loader {
 	}
 	
 	/**
-	 * Retourne un nom aléatoire pour un nain
+	 * Retourne un nom alÃ©atoire pour un nain
 	 */
 	public static String randomLastName(){
 		FileHandle file = Gdx.files.internal("data/dwarf_en_last.name");

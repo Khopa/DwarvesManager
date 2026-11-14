@@ -9,7 +9,7 @@ import enibdevlab.dwarves.views.actors.characters.ACharacter;
  * 
  * Le personnage effectuant cette action bougera ses mains sur l'axe x
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class HandsShake extends TemporalAction {
@@ -20,7 +20,7 @@ public class HandsShake extends TemporalAction {
 	protected ACharacter acharacter;
 	
 	/*
-	 * Rapidité de hochement
+	 * RapiditÃ© de hochement
 	 */
 	protected float velocity;
 	
@@ -30,7 +30,7 @@ public class HandsShake extends TemporalAction {
 	protected float amplitude;
 	
 	/**
-	 * Permet de savoir si les mains vont dans le même sens (1) ou non (-1)
+	 * Permet de savoir si les mains vont dans le mÃªme sens (1) ou non (-1)
 	 */
 	protected int synchrone;
 	
@@ -38,10 +38,10 @@ public class HandsShake extends TemporalAction {
 	 * Le personnage effectuant cette action bougera ses mains sur l'axe x
 	 * 
 	 * @param acharacter Personnage sur lequel on effectue l'action
-	 * @param velocity   Rapidité de hochement
+	 * @param velocity   RapiditÃ© de hochement
 	 * @param amplitude  Amplitude du mouvement
-	 * @param duration   Durée
-	 * @param synchrone  Dit si les mains bougent dans le même sens ou non
+	 * @param duration   DurÃ©e
+	 * @param synchrone  Dit si les mains bougent dans le mÃªme sens ou non
 	 */
 	
 	public HandsShake(ACharacter acharacter, float velocity, float amplitude, float duration, boolean synchrone){
@@ -57,9 +57,9 @@ public class HandsShake extends TemporalAction {
 	 * Le personnage effectuant cette action bougera ses mains sur l'axe x
 	 * 
 	 * @param acharacter Personnage sur lequel on effectue l'action
-	 * @param velocity   Rapidité de hochement
+	 * @param velocity   RapiditÃ© de hochement
 	 * @param amplitude  Amplitude du mouvement
-	 * @param duration   Durée
+	 * @param duration   DurÃ©e
 	 */
 	public HandsShake(ACharacter acharacter, float velocity, float amplitude, float duration){
 		this(acharacter, velocity, amplitude, duration, true);

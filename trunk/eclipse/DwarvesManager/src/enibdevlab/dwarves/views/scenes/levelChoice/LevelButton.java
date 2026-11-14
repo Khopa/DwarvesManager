@@ -11,7 +11,7 @@ import enibdevlab.dwarves.views.actors.ButtonActor;
  * 
  * Bouton de selection de niveau, avec une image et un texte
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class LevelButton extends ButtonActor {

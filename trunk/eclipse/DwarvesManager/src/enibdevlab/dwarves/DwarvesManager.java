@@ -25,9 +25,9 @@ import enibdevlab.dwarves.views.scenes.game.GameScene;
 /**
  * 
  * Classe principale requise par libGdx
- * (a ici le rôle d'un directeur de scène, et contient aussi quelques objets et infos statiques utiles partout dans le jeu)
+ * (a ici le rÃ´le d'un directeur de scÃ¨ne, et contient aussi quelques objets et infos statiques utiles partout dans le jeu)
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class DwarvesManager extends Game {

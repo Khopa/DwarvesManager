@@ -11,9 +11,9 @@ import enibdevlab.dwarves.views.lang.StringManager;
 
 /**
  * 
- * Enclume où travaille l'artisan
+ * Enclume oÃ¹ travaille l'artisan
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Anvil extends GameObject {

@@ -14,23 +14,23 @@ import enibdevlab.dwarves.models.world.MapArea;
 /**
  * Vue pour le model MapArea
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  */
 public class AMapArea extends Actor{
 
 	/**
-	 * Référence vers le modèle
+	 * RÃ©fÃ©rence vers le modÃ¨le
 	 */
 	protected MapArea model;
 	
 	/**
-	 * Couleur préférentielle
+	 * Couleur prÃ©fÃ©rentielle
 	 */
 	protected Color color;
 
 	/**
 	 * Construit un actor libgdx pour afficher une mapArea
-	 * @param model Modele de MapArea à représenter
+	 * @param model Modele de MapArea Ã  reprÃ©senter
 	 */
 	public AMapArea(MapArea model){
 		this(model, new Color(0f, 0f, 1f, .2f));
@@ -38,8 +38,8 @@ public class AMapArea extends Actor{
 	
 	/**
 	 * Construit un actor libgdx pour afficher une mapArea
-	 * @param model Modele de MapArea à représenter
-	 * @param color Couleur souhaité pour la représentation
+	 * @param model Modele de MapArea Ã  reprÃ©senter
+	 * @param color Couleur souhaitÃ© pour la reprÃ©sentation
 	 */
 	public AMapArea(MapArea model, Color color){
 		this.model = model;

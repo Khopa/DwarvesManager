@@ -5,8 +5,8 @@ import com.badlogic.gdx.math.Vector2;
 import enibdevlab.dwarves.models.characters.MCharacter;
 
 /**
- * Partie d'un objet où un personnage peut prendre place
- * @author Clément Perreau
+ * Partie d'un objet oÃ¹ un personnage peut prendre place
+ * @author ClÃ©ment Perreau
  */
 
 public class Slot {
@@ -17,17 +17,17 @@ public class Slot {
 	protected GameObject gameObject;
 	
 	/**
-	 * Position X du slot par rapport à l'objet
+	 * Position X du slot par rapport Ã  l'objet
 	 */
 	protected int x;
 	
 	/**
-	 * Position Y du slot par rapport à l'objet 
+	 * Position Y du slot par rapport Ã  l'objet 
 	 */
 	protected int y;
 	
 	/**
-	 * Type de personnage pouvant être accueilli
+	 * Type de personnage pouvant Ãªtre accueilli
 	 */
 	protected Class<? extends MCharacter> characterType;
 	

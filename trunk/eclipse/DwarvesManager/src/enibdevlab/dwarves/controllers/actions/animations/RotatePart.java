@@ -10,7 +10,7 @@ import enibdevlab.dwarves.views.actors.characters.ACharacterPart;
  * 
  * Le personnage effectuant cette action bougera ses mains de haut en bas
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class RotatePart extends TemporalAction {
@@ -36,17 +36,17 @@ public class RotatePart extends TemporalAction {
 	protected float angle;
 	
 	/**
-	 * Angle de départ
+	 * Angle de dÃ©part
 	 */
 	protected float startAngle = 0;
 	
 	/**
-	 * Fais le personnage bouger la tête de haut en bas
+	 * Fais le personnage bouger la tÃªte de haut en bas
 	 * 
 	 * @param acharacter Personnage sur lequel on effectue l'action
-	 * @param velocity   Rapidité du mouvement
+	 * @param velocity   RapiditÃ© du mouvement
 	 * @param height     Amplitude du mouvement
-	 * @param duration   Durée
+	 * @param duration   DurÃ©e
 	 */
 	public RotatePart(ACharacter acharacter, ACharacterPart part, float velocity, float angle, float duration){
 		super(duration);

@@ -10,12 +10,12 @@ import enibdevlab.dwarves.models.misc.IPersistent;
 public abstract class Item extends Entity implements IItem, IPersistent{
 
 	/**
-	 * Personnage possédant l'objet
+	 * Personnage possÃ©dant l'objet
 	 */
 	protected MCharacter owner;
 	
 	/**
-	 * Création d'un objet
+	 * CrÃ©ation d'un objet
 	 * @param pos Position de l'objet dans le monde
 	 */
 	public Item(Vector2 pos){

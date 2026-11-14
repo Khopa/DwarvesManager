@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 /**
  * 
  * 
- * @author Clément
+ * @author ClÃ©ment
  *
  */
 public class AImage extends Actor {

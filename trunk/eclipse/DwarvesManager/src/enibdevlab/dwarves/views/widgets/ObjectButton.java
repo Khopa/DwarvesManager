@@ -12,8 +12,8 @@ import enibdevlab.dwarves.views.Tileset;
 
 /**
  * 
- * Bouton représentant un objet
- * @author Clément Perreau
+ * Bouton reprÃ©sentant un objet
+ * @author ClÃ©ment Perreau
  *
  */
 public class ObjectButton extends ImageButton {
@@ -34,7 +34,7 @@ public class ObjectButton extends ImageButton {
 	private String name;
 	
 	/**
-	 * Prix à afficher éventuellement
+	 * Prix Ã  afficher Ã©ventuellement
 	 */
 	private int price = 0;
 	

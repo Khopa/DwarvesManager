@@ -8,9 +8,9 @@ import enibdevlab.dwarves.views.actors.characters.ACharacter;
 
 /**
  * 
- * Action pour controler les yeux du personnage (ouvert fermé)
+ * Action pour controler les yeux du personnage (ouvert fermÃ©)
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Eyes extends Action {
@@ -38,14 +38,14 @@ public class Eyes extends Action {
 	}
 	
 	
-	// Actions dérivées
+	// Actions dÃ©rivÃ©es
 	
 	/**
 	 * 
 	 * Fait clignoter des yeux le personnage qui effectue cette action
 	 * 
 	 * @param acharacter Personnage qui effectue l'action
-	 * @param duration Durée du clignotement
+	 * @param duration DurÃ©e du clignotement
 	 * @return Sequence d'actions qui simule le clignotement
 	 */
 	public static Action blinkAction(ACharacter acharacter, float duration){

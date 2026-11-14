@@ -4,9 +4,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 /**
  * 
- * Scène d'édition de map
+ * ScÃ¨ne d'Ã©dition de map
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Editor extends Stage {
@@ -18,8 +18,8 @@ public class Editor extends Stage {
 
 	/**
 	 * 
-	 * Crée une nouvelle instance de l'éditeur de map avec
-	 * une map vide de la taille désirée
+	 * CrÃ©e une nouvelle instance de l'Ã©diteur de map avec
+	 * une map vide de la taille dÃ©sirÃ©e
 	 * 
 	 * @param xMapSize Taille X de la map
 	 * @param yMapSize Taille Y de la map

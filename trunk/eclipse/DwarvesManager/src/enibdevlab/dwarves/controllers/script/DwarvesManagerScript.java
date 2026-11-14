@@ -8,7 +8,7 @@ import org.luaj.vm2.LuaValue;
  * 
  * Script Lua pour Dwarves Manager
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class DwarvesManagerScript extends LuaScript{
@@ -49,7 +49,7 @@ public class DwarvesManagerScript extends LuaScript{
 	}
 	
 	/**
-	 * Recherche dans le script les fonctions souhaitée
+	 * Recherche dans le script les fonctions souhaitÃ©e
 	 */
 	private void load() {
 		luaInit  = (LuaFunction) context.get("init");

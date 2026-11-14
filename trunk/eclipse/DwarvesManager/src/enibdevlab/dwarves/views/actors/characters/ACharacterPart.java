@@ -5,15 +5,15 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
  * 
- * Vue de base pour les objets étants des parties d'un personnage
+ * Vue de base pour les objets Ã©tants des parties d'un personnage
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public abstract class ACharacterPart extends Actor {
 
 	/**
-	 * Réference vers le personnage complet
+	 * RÃ©ference vers le personnage complet
 	 */
 	protected ACharacter acharacter;
 	

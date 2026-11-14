@@ -7,15 +7,15 @@ import enibdevlab.dwarves.views.Tileset;
 
 /**
  * 
- * Cette classe permet de représenter le corps des personnages
+ * Cette classe permet de reprÃ©senter le corps des personnages
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class ABody extends ACharacterPart {
 
 	/**
-	 * Liste d'images pour les différentes directions (Utilisé ici comme raccourci uniquement)
+	 * Liste d'images pour les diffÃ©rentes directions (UtilisÃ© ici comme raccourci uniquement)
 	 */
 	protected Tileset tileset;
 	

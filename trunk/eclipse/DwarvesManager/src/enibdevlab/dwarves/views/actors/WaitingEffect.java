@@ -16,7 +16,7 @@ import enibdevlab.dwarves.views.Primitives;
  * 
  * Provoque attente de synchronisation sur un thread de connection
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class WaitingEffect extends Group{

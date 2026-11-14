@@ -8,9 +8,9 @@ import enibdevlab.dwarves.models.misc.IPersistent;
 
 /**
  * 
- * Classe qui gère l'argent du joueur, ses dépenses et revenus mensuels
+ * Classe qui gÃ¨re l'argent du joueur, ses dÃ©penses et revenus mensuels
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Bank implements IPersistent{
@@ -21,11 +21,11 @@ public class Bank implements IPersistent{
 	private HashMap<String, Integer> income;
 	
 	/**
-	 * Dépenses
+	 * DÃ©penses
 	 */
 	private HashMap<String, Integer> expense;
 	
-	// NB : Revenus et dépenses sont pas utilisés dans la version actuelle
+	// NB : Revenus et dÃ©penses sont pas utilisÃ©s dans la version actuelle
 	
 	/**
 	 * Solde courant
@@ -38,7 +38,7 @@ public class Bank implements IPersistent{
 	private int diamonds;
 	
 	/**
-	 * Numéro de compte
+	 * NumÃ©ro de compte
 	 */
 	// non je rigole :D
 	
@@ -78,7 +78,7 @@ public class Bank implements IPersistent{
 	}
 	
 	/**
-	 * Modifie une valeur de dépense
+	 * Modifie une valeur de dÃ©pense
 	 */
 	public void updateExpense(String name, int value){
 		if(expense.containsKey(name)){
@@ -119,7 +119,7 @@ public class Bank implements IPersistent{
 
 	/**
 	 * Retrait d'argent
-	 * @return false si ça provoque un découvert (Dans ce cas l'argent n'est pas retiré et la transaction échoue)
+	 * @return false si Ã§a provoque un dÃ©couvert (Dans ce cas l'argent n'est pas retirÃ© et la transaction Ã©choue)
 	 */
 	public boolean removeMoney(int value){
 		if(this.money - value < 0){
@@ -134,7 +134,7 @@ public class Bank implements IPersistent{
 	
 	/**
 	 * Retrait d'argent
-	 * @return false si ça provoque un découvert (Dans ce cas l'argent n'est pas retiré et la transaction échoue)
+	 * @return false si Ã§a provoque un dÃ©couvert (Dans ce cas l'argent n'est pas retirÃ© et la transaction Ã©choue)
 	 */
 	public boolean forceRemoveMoney(int value){
 		this.money-=value;

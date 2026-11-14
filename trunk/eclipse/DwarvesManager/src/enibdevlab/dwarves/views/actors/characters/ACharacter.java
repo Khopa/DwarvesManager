@@ -17,10 +17,10 @@ import enibdevlab.dwarves.views.actors.characters.config.BodyConfig;
 
 /**
  * 
- * Vue utilisée pour représenter un personnage (comme un nain, un elfe ou un gobelin)
+ * Vue utilisÃ©e pour reprÃ©senter un personnage (comme un nain, un elfe ou un gobelin)
  * Fonctionne comme un groupe d'actor : Corps, Mains, Arme/Outil
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class ACharacter extends Group{
@@ -31,7 +31,7 @@ public class ACharacter extends Group{
 	protected MCharacter model;
 	
 	/**
-	 * Direction du personnage (surtout utilisée pour le dessin)
+	 * Direction du personnage (surtout utilisÃ©e pour le dessin)
 	 */
 	protected Direction direction = Direction.BOTTOM;
 	
@@ -41,7 +41,7 @@ public class ACharacter extends Group{
 	protected ABody body;
 	
 	/*
-	 * Objet représentant la tête
+	 * Objet reprÃ©sentant la tÃªte
 	 */
 	protected AHead head;
 	
@@ -66,7 +66,7 @@ public class ACharacter extends Group{
 	protected AItem rightHandItem;
 	
 	/**
-	 * Configuration du modèle 2d
+	 * Configuration du modÃ¨le 2d
 	 */
 	protected BodyConfig bodyConfig;
 	
@@ -76,7 +76,7 @@ public class ACharacter extends Group{
 	protected int complaint = -1;
 	
 	/**
-	 * Construit la vue du modèle de personnage donné
+	 * Construit la vue du modÃ¨le de personnage donnÃ©
 	 * @param mCharacter Modele
 	 */
 	public ACharacter(MCharacter mCharacter){
@@ -94,7 +94,7 @@ public class ACharacter extends Group{
 	    int h2 = (int) this.model.getGame().getLevel().getTileYSize();*/
 		
 		// RX position du tile
-		// Il faut décaler pour centrer le perso dessus
+		// Il faut dÃ©caler pour centrer le perso dessus
 		this.setPosition(this.model.getRX(),
 						 this.model.getRY());
 		
@@ -114,7 +114,7 @@ public class ACharacter extends Group{
 	}
 	
 	/**
-	 * Initialise le personnage en créant toutes les parties graphiques de celui ci
+	 * Initialise le personnage en crÃ©ant toutes les parties graphiques de celui ci
 	 */
 	private void initParts(){
 		this.body = new ABody(this);
@@ -218,7 +218,7 @@ public class ACharacter extends Group{
 		}
 		
 		
-		// Dessin des différentes parties du corps
+		// Dessin des diffÃ©rentes parties du corps
 		super.draw(batch, delta);
 		
 	}
@@ -230,8 +230,8 @@ public class ACharacter extends Group{
 	
 	
 	/**
-	 * Change la direction et réorganise l'ordre d'affichage des différentes parties
-	 * du corps en conséquence.
+	 * Change la direction et rÃ©organise l'ordre d'affichage des diffÃ©rentes parties
+	 * du corps en consÃ©quence.
 	 * @param direction Nouvelle direction
 	 */
 	public void setDirection(Direction direction){

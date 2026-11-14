@@ -9,15 +9,15 @@ import enibdevlab.dwarves.views.actors.characters.ACharacter;
 
 /**
  * 
- * Classe qui permet à un personnage de réagir aux évenements
+ * Classe qui permet Ã  un personnage de rÃ©agir aux Ã©venements
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class CharacterListener extends InputListener{
 
 	/**
-	 * Personnage à controller
+	 * Personnage Ã  controller
 	 */
 	protected ACharacter character;
 	

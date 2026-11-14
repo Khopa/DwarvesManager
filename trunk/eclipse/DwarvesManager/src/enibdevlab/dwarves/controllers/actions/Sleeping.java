@@ -26,7 +26,7 @@ public class Sleeping extends DwarfAction {
 	protected Slot slot;
 	
 	/**
-	 * Type de réveil
+	 * Type de rÃ©veil
 	 */
 	protected boolean easyWakeUp = false;
 	
@@ -38,7 +38,7 @@ public class Sleeping extends DwarfAction {
 	@Override
 	public void entry() {
 		
-		if(bed.slotAvailable()){ // On recupère et on occupe l'unique slot du lit, échec sinon
+		if(bed.slotAvailable()){ // On recupÃ¨re et on occupe l'unique slot du lit, Ã©chec sinon
 			this.slot = bed.getAvailableSlot();
 			this.slot.setOccupant(dwarf);
 		}
@@ -64,8 +64,8 @@ public class Sleeping extends DwarfAction {
 	@Override
 	public void doAction(float delta) {
 		
-		// On vérifie si le joueur n'a pas supprimé le lit sur lequel le nain dort
-		// Si c'est la cas, il se réveillera mécontent		
+		// On vÃ©rifie si le joueur n'a pas supprimÃ© le lit sur lequel le nain dort
+		// Si c'est la cas, il se rÃ©veillera mÃ©content		
 		if(!game.getObjects().getObjects().contains(bed) || bed == null){ 
 			finished = true;
 			easyWakeUp = false;
@@ -75,9 +75,9 @@ public class Sleeping extends DwarfAction {
 		// Ajout d'energie au nain
 		dwarf.getNeeds().setSleep((int) (dwarf.getNeeds().getSleep()-delta*1600)); 
 		
-		// Si le nain a fini de dormir, il se réveille tranquillement
+		// Si le nain a fini de dormir, il se rÃ©veille tranquillement
 		if(dwarf.getNeeds().hasMaxEnergy()){
-			finished = true; // Le nain se lève
+			finished = true; // Le nain se lÃ¨ve
 			easyWakeUp = true;
 			return;
 		}
@@ -95,20 +95,20 @@ public class Sleeping extends DwarfAction {
 		}
 		
 		if(easyWakeUp){
-			// Le nain se réveille tranquillement
+			// Le nain se rÃ©veille tranquillement
 			view.addAction(Actions.sequence(
 					new SetDirection(view, Direction.BOTTOM), // Se retourne
-					Actions.rotateTo(0, 1f),  // Se lève
+					Actions.rotateTo(0, 1f),  // Se lÃ¨ve
 					Eyes.blinkAction(view, 0.2f),
 					Eyes.blinkAction(view, 0.2f), // Cligne des yeux
 					new Eyes(view, false)
 					));
 		}
 		else{
-			// Le nain se réveille en colère
+			// Le nain se rÃ©veille en colÃ¨re
 			view.addAction(Actions.sequence(
 					new SetDirection(view, Direction.BOTTOM), // Se retourne
-					Actions.rotateTo(0, 1f),  // Se lève
+					Actions.rotateTo(0, 1f),  // Se lÃ¨ve
 					Eyes.blinkAction(view, 0.2f),
 					Eyes.blinkAction(view, 0.2f), // Cligne des yeux
 					Actions.parallel(new HeadUp(this.dwarf.getView(), 10f, 25f,  1.9f),

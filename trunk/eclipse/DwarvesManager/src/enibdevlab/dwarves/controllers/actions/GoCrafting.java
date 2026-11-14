@@ -16,9 +16,9 @@ import enibdevlab.dwarves.models.rooms.Workshop;
 
 /**
  * 
- * Action de l'artisan qui va réparer les pioches usagées ou en créer de nouvelles
+ * Action de l'artisan qui va rÃ©parer les pioches usagÃ©es ou en crÃ©er de nouvelles
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GoCrafting extends DwarfAction {
@@ -34,7 +34,7 @@ public class GoCrafting extends DwarfAction {
 	protected Anvil anvil;
 	
 	/**
-	 * Slot de l'enclume utilisé
+	 * Slot de l'enclume utilisÃ©
 	 */
 	protected Slot slot;
 	
@@ -53,8 +53,8 @@ public class GoCrafting extends DwarfAction {
 	
 	
 	/**
-	 * Action de l'artisan qui va réparer les pioches usagées ou en créer de nouvelles
-	 * @param game Référence vers le jeu
+	 * Action de l'artisan qui va rÃ©parer les pioches usagÃ©es ou en crÃ©er de nouvelles
+	 * @param game RÃ©fÃ©rence vers le jeu
 	 * @param dwarf Nain artisan
 	 */
 	public GoCrafting(Game game, Dwarf dwarf) {

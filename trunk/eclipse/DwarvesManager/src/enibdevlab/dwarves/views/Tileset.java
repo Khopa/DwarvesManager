@@ -11,11 +11,11 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 
 /**
  * 
- * Classe utilisée pour stocker des suites d'images
- * Découpe une image "Texture" contenant plusieurs sprites
+ * Classe utilisÃ©e pour stocker des suites d'images
+ * DÃ©coupe une image "Texture" contenant plusieurs sprites
  * en plusieurs "TextureRegion"
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Tileset implements Disposable{
@@ -46,12 +46,12 @@ public class Tileset implements Disposable{
 	protected int lineSize;
 	
 	/**
-	 * Propriétés des tiles
+	 * PropriÃ©tÃ©s des tiles
 	 */
 	protected ArrayList<HashMap<String, Integer>> properties;
 	
 	/**
-	 * Crée un tileset à partir du fichier spécifié, en utilisant XSize et YSize pour le découpage
+	 * CrÃ©e un tileset Ã  partir du fichier spÃ©cifiÃ©, en utilisant XSize et YSize pour le dÃ©coupage
 	 * 
 	 * @param path        Chemin de l'image
 	 * @param tileXSize   Taille X de chaque tile
@@ -67,19 +67,19 @@ public class Tileset implements Disposable{
 	}
 	
 	/**
-	 * Charge un tileset à partir de données Xml
-	 * @param xmlData Données Xml
+	 * Charge un tileset Ã  partir de donnÃ©es Xml
+	 * @param xmlData DonnÃ©es Xml
 	 */
 	public Tileset(Element xmlData){
 		
-		// Création du tileset à partir de l'image
+		// CrÃ©ation du tileset Ã  partir de l'image
 		imgdata = new Texture("data/maps/" + xmlData.getChildByName("image").getAttribute("source"));
 		tileSize = new int[2];
 		tileSize[0] = Integer.parseInt(xmlData.getAttribute("tilewidth"));
 		tileSize[1] = Integer.parseInt(xmlData.getAttribute("tileheight"));
 		this.prepareData();
 		
-		// Préparation des données de collisions
+		// PrÃ©paration des donnÃ©es de collisions
 		Array<Element> tilesXml = xmlData.getChildrenByName("tile");
 		int id; // temporaire pour stocker l'id du tile en cours de traitement
 		int tmp; // variable temporaire pour convertir ce qu'il y a dans l'xml en bool
@@ -116,7 +116,7 @@ public class Tileset implements Disposable{
 		
 		lineSize = width/tileSize[0];
 		
-		// Allocation Mémoire
+		// Allocation MÃ©moire
 		data = new TextureRegion[width/tileSize[0]*height/tileSize[1]];
 		collisionData = new Boolean[width/tileSize[0]*height/tileSize[1]];
 		properties = new ArrayList<HashMap<String,Integer>>();
@@ -124,7 +124,7 @@ public class Tileset implements Disposable{
 			properties.add(new HashMap<String, Integer>());
 		}
 		
-		// Creation à partir de l'image
+		// Creation Ã  partir de l'image
 		for(int i = 0; i < width/tileSize[0]; i++){
 			for(int j = 0; j < height/tileSize[1]; j++){
 				//System.out.println(j*height/tileSize[1] + i);

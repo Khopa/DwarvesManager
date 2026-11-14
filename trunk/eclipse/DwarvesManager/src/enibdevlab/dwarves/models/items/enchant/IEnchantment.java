@@ -4,9 +4,9 @@ import enibdevlab.dwarves.models.items.Tool;
 
 /**
  * 
- * Interface qui implémente les effets des outils
+ * Interface qui implÃ©mente les effets des outils
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public interface IEnchantment {

@@ -18,9 +18,9 @@ import enibdevlab.dwarves.views.world.TileMap;
 
 /**
  * 
- * Objet plaçable
+ * Objet plaÃ§able
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public abstract class GameObject extends Entity implements IGameObject, IPersistent {
@@ -36,12 +36,12 @@ public abstract class GameObject extends Entity implements IGameObject, IPersist
 	protected Rotation rotation;
 	
 	/**
-	 * Liste des coordonnées de tile par dessus lequels l'objet est.
+	 * Liste des coordonnÃ©es de tile par dessus lequels l'objet est.
 	 */
 	protected ArrayList<Vector2> tileList;
 	
 	/**
-	 * Eventuelle pièce dans laquelle l'objet est placé
+	 * Eventuelle piÃ¨ce dans laquelle l'objet est placÃ©
 	 */
 	protected Room room;
 	
@@ -73,7 +73,7 @@ public abstract class GameObject extends Entity implements IGameObject, IPersist
 	}
 	
 	/**
-	 * Dit si un slot est dispo pour le type de personnage donné
+	 * Dit si un slot est dispo pour le type de personnage donnÃ©
 	 */
 	public boolean slotAvailable(Class<? extends MCharacter> characterType){
 		for(Slot slot:this.slots){
@@ -87,7 +87,7 @@ public abstract class GameObject extends Entity implements IGameObject, IPersist
 	}
 	
 	/**
-	 * Retourne un slot disponible pour le type de personnage donné
+	 * Retourne un slot disponible pour le type de personnage donnÃ©
 	 */
 	public Slot getAvailableSlot(Class<? extends MCharacter> characterType){
 		for(Slot slot:this.slots){
@@ -146,7 +146,7 @@ public abstract class GameObject extends Entity implements IGameObject, IPersist
 	
 	/**
 	 * Collision avec map et objet
-	 * @param tilemap Map (seul le calque 0 est testé)
+	 * @param tilemap Map (seul le calque 0 est testÃ©)
 	 * @param objects Conteneur d'objets
 	 */
 	public boolean collide(TileMap tilemap, Objects objects){
@@ -158,7 +158,7 @@ public abstract class GameObject extends Entity implements IGameObject, IPersist
 	}
 
 	/**
-	 * Calcule et retourne la liste des coordonnées des tiles par dessus lequel l'objet est posé
+	 * Calcule et retourne la liste des coordonnÃ©es des tiles par dessus lequel l'objet est posÃ©
 	 */
 	public ArrayList<Vector2> updatetileList(){
 		this.tileList = new ArrayList<Vector2>();
@@ -176,7 +176,7 @@ public abstract class GameObject extends Entity implements IGameObject, IPersist
 	
 	
 	/**
-	 * Retourne la taille X occupée par l'objet en tenant compte de la rotation
+	 * Retourne la taille X occupÃ©e par l'objet en tenant compte de la rotation
 	 */
 	public int getXSize(){
 		if(rotation == Rotation.ZERO || rotation == Rotation.TWO_QUARTER){
@@ -188,7 +188,7 @@ public abstract class GameObject extends Entity implements IGameObject, IPersist
 	}
 	
 	/**
-	 * Retourne la taille Y occupée par l'objet en tenant compte de la rotation
+	 * Retourne la taille Y occupÃ©e par l'objet en tenant compte de la rotation
 	 */
 	public int getYSize(){
 		if(rotation == Rotation.ZERO || rotation == Rotation.TWO_QUARTER){
@@ -272,7 +272,7 @@ public abstract class GameObject extends Entity implements IGameObject, IPersist
 
 	@Override
 	public void loadFromXmlElement(Element xmlElement) {
-		// Inutilisable ici, car les données doivent servir à instancier un objet dont la
+		// Inutilisable ici, car les donnÃ©es doivent servir Ã  instancier un objet dont la
 		// classe peut varier
 	}
 	

@@ -3,7 +3,7 @@ package enibdevlab.dwarves.views.scenes.editor;
 public class EditorLayer extends MapLayer {
 
 	/**
-	 * Crée un layer d'éditeur avec une map vide de la taille souhaitée
+	 * CrÃ©e un layer d'Ã©diteur avec une map vide de la taille souhaitÃ©e
 	 * @param x Taille X
 	 * @param y Taille Y
 	 */

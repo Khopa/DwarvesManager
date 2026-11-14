@@ -20,13 +20,13 @@ import enibdevlab.dwarves.models.rooms.Workshop;
  * 
  * Action de travail du mineur
  * 
- * @author ClÈment Perreau
+ * @author Cl√©ment Perreau
  *
  */
 public class GoMining extends DwarfAction {
 
 	private static int WAITING = 0;          // Attente d'ordre de la part du task manager
-	private static int GOINGTOTILE = 1;      // En chemin vers le tile ‡ miner
+	private static int GOINGTOTILE = 1;      // En chemin vers le tile √† miner
 	private static int MINING = 2;           // En train de miner le tile
 	private static int SEARCHINGPICKAXE = 3; // Recherche d'une pioche
 	
@@ -46,7 +46,7 @@ public class GoMining extends DwarfAction {
 	protected Miner miner;
 	
 	/**
-	 * Tile auquel le nain doit aller pour miner (ou position mÈmoire pour la recherche de pioche)
+	 * Tile auquel le nain doit aller pour miner (ou position m√©moire pour la recherche de pioche)
 	 */
 	protected Vector2 tile;
 	
@@ -77,9 +77,9 @@ public class GoMining extends DwarfAction {
 		
 		// Si on a pas de pioche on va aller en chercher une
 		if(!dwarf.isCarryingPickaxe()){
-			// Recherche d'un atelier avec un ratelier qui contient au moins une pioche en Ètat
+			// Recherche d'un atelier avec un ratelier qui contient au moins une pioche en √©tat
 			
-			miner.stopWorking(); // On signale au task manager qu'on ne mine plus (libËre le tile ‡ miner)
+			miner.stopWorking(); // On signale au task manager qu'on ne mine plus (lib√®re le tile √† miner)
 			ArrayList<Room> workshops = PathUtils.getSortedOperationnalRoom(Workshop.class, dwarf.getPosition(), game);
 			
 			if(workshops != null){
@@ -108,13 +108,13 @@ public class GoMining extends DwarfAction {
 			return;
 		}
 		
-		// Si un tile est dÈj‡ assignÈ : pas de problËme
+		// Si un tile est d√©j√† assign√© : pas de probl√®me
 		if(this.miner.getToMine()!=null){
 			
-			// Trouver un chemin vers un tile adjacent au tile ‡ miner
+			// Trouver un chemin vers un tile adjacent au tile √† miner
 			ArrayList<Node> path = PathUtils.pathToAdjacentTile(game, dwarf, miner.getToMine());
 			
-			// CrÈe le mouvement si le chemin existe
+			// Cr√©e le mouvement si le chemin existe
 			if(path != null){
 				movement = new Movement(game, dwarf, path);
 				this.tile = new Vector2(path.get(path.size()-1).getPos().x, path.get(path.size()-1).getPos().y);
@@ -122,9 +122,9 @@ public class GoMining extends DwarfAction {
 				state.add(GOINGTOTILE);
 			}
 			else{
-				// Le mineur refuse de miner ce tile ce qui force le taskManager ‡ lui en trouver un autre
+				// Le mineur refuse de miner ce tile ce qui force le taskManager √† lui en trouver un autre
 				miner.deny();
-				// Si il n'y a pas de chemin, demander un tile diffÈrent au TaskManager
+				// Si il n'y a pas de chemin, demander un tile diff√©rent au TaskManager
 				state.clear();
 				state.add(WAITING);
 			}
@@ -171,7 +171,7 @@ public class GoMining extends DwarfAction {
 		}
 		else if (state.contains(GOINGTOTILE)){
 			if(this.dwarf.getPosition().equals(this.tile)){
-				// Commencer ‡ miner
+				// Commencer √† miner
 				mining = new Mining(game, miner, tile);
 				state.clear();
 				state.add(MINING);
@@ -192,17 +192,17 @@ public class GoMining extends DwarfAction {
 	 * Prendre une pioche dans le ratelier
 	 */
 	private void takePickaxe() {
-		// On vÈrifie que le ratelier et l'atelier existe toujours
+		// On v√©rifie que le ratelier et l'atelier existe toujours
 		if(rack == null || workshop == null){
 			abort(Complaint.NO_PICKAXE);
 			return;
-		} // Le joueur a t'il supprimÈ ces ÈlÈments ?
+		} // Le joueur a t'il supprim√© ces √©l√©ments ?
 		else if(!game.getObjects().getObjects().contains(rack) || !game.getRooms().getRooms().contains(workshop)){
 			abort(Complaint.TROLL);
 			return;
 		}
 		
-		// On vÈrifie qu'il y a bien une pioche
+		// On v√©rifie qu'il y a bien une pioche
 		Pickaxe pkx = rack.getNewPickaxe();
 		if(pkx != null){
 			this.dwarf.setRightHandItem(pkx);
@@ -210,7 +210,7 @@ public class GoMining extends DwarfAction {
 			rack.getItems().remove(pkx);
 			return;
 		}
-		else{ // sinon retour Ètat de dÈpart
+		else{ // sinon retour √©tat de d√©part
 			abort(Complaint.NO_PICKAXE);
 			return;
 		}

@@ -14,9 +14,9 @@ import enibdevlab.dwarves.views.audio.SoundManager;
 
 /**
  * 
- * Scène qui affiche un écran de présentation avec le logo
+ * ScÃ¨ne qui affiche un Ã©cran de prÃ©sentation avec le logo
  * 
- * @author Clément
+ * @author ClÃ©ment
  *
  */
 public class LogoScreen extends Stage {

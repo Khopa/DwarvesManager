@@ -57,11 +57,11 @@ public class GoSleeping extends DwarfAction {
 		int x = (int) dwarf.getX();
 		int y = (int) dwarf.getY();
 
-		// 1) On recupere une liste de dortoirs operationnels triÈs par rapport ‡ leur distance au personnage
+		// 1) On recupere une liste de dortoirs operationnels tri√©s par rapport √† leur distance au personnage
 		dorms = PathUtils.getSortedRoom(Dorm.class, new Vector2(x,y), game);
 		ArrayList<Room> toRemove = new ArrayList<Room>();
 	
-		// 2) Exclusion des piËces dont aucun lit n'est libre
+		// 2) Exclusion des pi√®ces dont aucun lit n'est libre
 		for(Room r:dorms){
 			if (!((Dorm)(r)).haveAvailableBed()){
 				toRemove.add(r);
@@ -73,13 +73,13 @@ public class GoSleeping extends DwarfAction {
 		toRemove.clear();
 		
 		/* 
-		 * 3) Pour tous les dortoirs, on cherche si il existe un chemin. DËs qu'un
-		 *  chemin est trouvÈ, on le garde (comme les piËces sont triÈes par rapport
-		 *  ‡ leur distance Manhattan vis ‡ vis du personnage, il y a de bonne chance
+		 * 3) Pour tous les dortoirs, on cherche si il existe un chemin. D√®s qu'un
+		 *  chemin est trouv√©, on le garde (comme les pi√®ces sont tri√©es par rapport
+		 *  √† leur distance Manhattan vis √† vis du personnage, il y a de bonne chance
 		 *  que ce soit la plus proche
-		 *  On pourrait calculer sinon la longueur que renvoie le Pathfinder pour chaque piËce
+		 *  On pourrait calculer sinon la longueur que renvoie le Pathfinder pour chaque pi√®ce
 		 *  Mais ce serait vraiment peu efficace en terme de temps de calcul 
-		 *  (C'est dÈj‡ pas terrible vu que c'est du java :D)
+		 *  (C'est d√©j√† pas terrible vu que c'est du java :D)
 		 */
 		Pathfinder pathfinder;
 		for(Room dorm:dorms){
@@ -101,7 +101,7 @@ public class GoSleeping extends DwarfAction {
 		
 		movement = new Movement(game, dwarf, path);
 		
-		state.add(GOINGTODORM); // Confirmation du nouvel Ètat
+		state.add(GOINGTODORM); // Confirmation du nouvel √©tat
 	}
 
 	@Override
@@ -155,10 +155,10 @@ public class GoSleeping extends DwarfAction {
 	private void goToBed(){
 		movement = null;
 		
-		// Existe il un lit non ocuupÈ ?
+		// Existe il un lit non ocuup√© ?
 		if(!dorm.haveAvailableBed()) abort(Complaint.NO_BED); // sinon stop !
 		
-		// RÈcuperer le plus proche lit libre
+		// R√©cuperer le plus proche lit libre
 		int x = (int) dwarf.getX();
 		int y = (int) dwarf.getY();
 		bed = (Bed) PathUtils.getNearestUsableObjectInRoom(Bed.class, dwarf.getClass(), dorm, new Vector2(x,y), game);
@@ -168,13 +168,13 @@ public class GoSleeping extends DwarfAction {
 			return;
 		}
 
-		// CrÈer une sous action pour aller vers le lit libre
+		// Cr√©er une sous action pour aller vers le lit libre
 		ArrayList<Node> path = PathUtils.pathToTile(dwarf, bed.getPosition(), game);
 		
 		movement = new Movement(game, dwarf, path);
 		
 		state.remove(GOINGTODORM);
-		state.add(GOINGTOBED); // Confirmation du nouvel Ètat
+		state.add(GOINGTOBED); // Confirmation du nouvel √©tat
 	}
 
 }

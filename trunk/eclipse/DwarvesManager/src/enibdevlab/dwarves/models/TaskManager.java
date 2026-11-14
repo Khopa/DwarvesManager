@@ -17,22 +17,22 @@ import enibdevlab.dwarves.views.world.Tile;
 public class TaskManager implements IPersistent{
 
 	/**
-	 * Liste des tiles à miner
+	 * Liste des tiles Ã  miner
 	 */
 	protected ArrayList<Vector2> toMine;
 	
 	/**
-	 * Liste des tiles assignés à des nains mineurs
+	 * Liste des tiles assignÃ©s Ã  des nains mineurs
 	 */
 	protected ArrayList<Vector2> assignedTile;
 	
 	/**
-	 * Liste des tiles à miner qui sont accesibles théoriquement (tile sans collision à coté)
+	 * Liste des tiles Ã  miner qui sont accesibles thÃ©oriquement (tile sans collision Ã  cotÃ©)
 	 */
 	protected ArrayList<Vector2> accesibleTile;
 	
 	/**
-	 * Référence vers le jeu
+	 * RÃ©fÃ©rence vers le jeu
 	 */
 	protected Game game;
 	
@@ -57,13 +57,13 @@ public class TaskManager implements IPersistent{
 					break; // On ajoute pas les tiles 
 				}
 			}
-			if(!ok) continue; // Tile déjà présent
+			if(!ok) continue; // Tile dÃ©jÃ  prÃ©sent
 			
 			// On regarde si le tile existe
 			Tile tmp = game.getLevel().getTilemap().getTile(0, (int)(tile.x), (int)(tile.y));
 			if(tmp == null) continue;
 			
-			// On ajoute pas les tiles qui sont pas bloquants ou qui ne peuvent être minés
+			// On ajoute pas les tiles qui sont pas bloquants ou qui ne peuvent Ãªtre minÃ©s
 			if(!tmp.isBlocking() || !tmp.isMinable()) continue;
 			
 			Game.getInstance().fireDwarfEvent("newTile");
@@ -102,7 +102,7 @@ public class TaskManager implements IPersistent{
 	}
 	
 	/**
-	 * Assignation d'un tile à un mineur
+	 * Assignation d'un tile Ã  un mineur
 	 */
 	public void assignTask(Miner miner){
 		
@@ -121,13 +121,13 @@ public class TaskManager implements IPersistent{
 	
 	
 	/**
-	 * Retourne le mineur disponible le plus proche du tile donné
+	 * Retourne le mineur disponible le plus proche du tile donnÃ©
 	 * @param tile Tile dont on cherche le mineur disponible le plus proche
-	 * @return Le mineur disponible le plus proche du tile donné
+	 * @return Le mineur disponible le plus proche du tile donnÃ©
 	 */
 	public Miner nearestAvailableMiner(Vector2 tile){
 		
-		//TODO: TEST (Je crois que ça marche pas)
+		//TODO: TEST (Je crois que Ã§a marche pas)
 		
 		List<Miner> miners = game.getCharacters().getMiner();		
 		List<Vector2> minersPosition = new ArrayList<Vector2>();
@@ -155,7 +155,7 @@ public class TaskManager implements IPersistent{
 	
 	
 	/**
-	 * Assignation d'un tile différent de celui donné en paramètre au mineur
+	 * Assignation d'un tile diffÃ©rent de celui donnÃ© en paramÃ¨tre au mineur
 	 */
 	public void assignTask(Miner miner, Vector2 notThisOne){
 		
@@ -194,7 +194,7 @@ public class TaskManager implements IPersistent{
 	}
 	
 	/**
-	 * Les listes de tiles sont mises à jour
+	 * Les listes de tiles sont mises Ã  jour
 	 * On essaye de voir si des tiles sont devenus accesibles
 	 */
 	private void update(){
@@ -229,26 +229,26 @@ public class TaskManager implements IPersistent{
 	}
 
 	/**
-	 * Un tile ne peut être miné par un mineur
+	 * Un tile ne peut Ãªtre minÃ© par un mineur
 	 */
 	public void tileRefused(Vector2 toMine) {
 		
-		// On enlève le tile des tiles assignés
+		// On enlÃ¨ve le tile des tiles assignÃ©s
 		this.assignedTile.remove(toMine);
 		
-		// On le met à la fin de la liste des toMine et de la liste des accesibles pour réduire la priorité
+		// On le met Ã  la fin de la liste des toMine et de la liste des accesibles pour rÃ©duire la prioritÃ©
 		this.toMine.remove(toMine);
 		this.toMine.add(toMine);
 		
 		if(this.accesibleTile.contains(toMine)){
 			accesibleTile.remove(toMine);
-			addInAccesibleTiles(toMine); // Permet de refaire un test d'accesibilité au cas ou
+			addInAccesibleTiles(toMine); // Permet de refaire un test d'accesibilitÃ© au cas ou
 		}
 		
 	}
 
 	/**
-	 * Un tile assigné est abandonné car le nain qui devait le faire va en pause
+	 * Un tile assignÃ© est abandonnÃ© car le nain qui devait le faire va en pause
 	 */
 	public void tileLeft(Vector2 toMine) {
 		this.assignedTile.remove(toMine);

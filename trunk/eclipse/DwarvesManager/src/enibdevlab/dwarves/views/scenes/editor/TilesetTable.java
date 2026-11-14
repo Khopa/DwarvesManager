@@ -15,10 +15,10 @@ import enibdevlab.dwarves.views.widgets.ObjectButton;
 
 /**
  * 
- * Table de la Gui dans laquelle est positionné le Widget de selection de tile
+ * Table de la Gui dans laquelle est positionnÃ© le Widget de selection de tile
  * de l'editeur
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class TilesetTable extends Table {

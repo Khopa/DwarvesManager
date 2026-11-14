@@ -7,20 +7,20 @@ import com.badlogic.gdx.math.Vector2;
 import enibdevlab.dwarves.models.objects.GameObject;
 
 /**
- * Compare par rapport à leur distance à un point des positions représenté par des vecteurs
+ * Compare par rapport Ã  leur distance Ã  un point des positions reprÃ©sentÃ© par des vecteurs
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class ObjectDistanceToPointComparator implements Comparator<GameObject>{
 
 	/**
-	 * Position à comparer
+	 * Position Ã  comparer
 	 */
 	public int x;
 	
 	/**
-	 * Position à comparer
+	 * Position Ã  comparer
 	 */
 	public int y;
 	

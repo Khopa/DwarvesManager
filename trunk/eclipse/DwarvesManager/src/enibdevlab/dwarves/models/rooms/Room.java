@@ -16,20 +16,20 @@ import enibdevlab.dwarves.views.world.TileMap;
 
 /**
  * 
- * Une pièce
+ * Une piÃ¨ce
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public abstract class Room implements IRoom, IPersistent {
 
 	/**
-	 * Liste des objets présents dans la pièce
+	 * Liste des objets prÃ©sents dans la piÃ¨ce
 	 */
 	protected ArrayList<GameObject> objects;
 	
 	/**
-	 * Liste des rectangles composant la pièce
+	 * Liste des rectangles composant la piÃ¨ce
 	 */
 	protected ArrayList<MapArea> areas;
 	
@@ -39,7 +39,7 @@ public abstract class Room implements IRoom, IPersistent {
 	protected TileMap tilemap;
 	
 	/**
-	 * Lien vers la liste des pièces
+	 * Lien vers la liste des piÃ¨ces
 	 */
 	protected Rooms rooms;
 	
@@ -49,7 +49,7 @@ public abstract class Room implements IRoom, IPersistent {
 	protected ARoom view;
 	
 	/**
-	 * Pièce opérationnelle ou non
+	 * PiÃ¨ce opÃ©rationnelle ou non
 	 */
 	protected boolean operationnal;
 	
@@ -60,13 +60,13 @@ public abstract class Room implements IRoom, IPersistent {
 
 	/**
 	 * 
-	 * Liste des rectangle composant la pièce
+	 * Liste des rectangle composant la piÃ¨ce
 	 * 
-	 * @param i Position X du tile bas gauche de la première zone qui compose la pièce
-	 * @param j Position Y du tile bas gauche de la première zone qui compose la pièce
-	 * @param w Taille X de la première zone qui compose la pièce
-	 * @param h Taille Y de la première zone qui compose la pièce
-	 * @param tilemap Map sur laquelle on ajoute la pièce
+	 * @param i Position X du tile bas gauche de la premiÃ¨re zone qui compose la piÃ¨ce
+	 * @param j Position Y du tile bas gauche de la premiÃ¨re zone qui compose la piÃ¨ce
+	 * @param w Taille X de la premiÃ¨re zone qui compose la piÃ¨ce
+	 * @param h Taille Y de la premiÃ¨re zone qui compose la piÃ¨ce
+	 * @param tilemap Map sur laquelle on ajoute la piÃ¨ce
 	 * 
 	 */
 	public Room(int i, int j, int w, int h, TileMap tilemap, Rooms rooms) {
@@ -76,7 +76,7 @@ public abstract class Room implements IRoom, IPersistent {
 		this.objects = new ArrayList<GameObject>();
 		this.rooms = rooms;
 		
-		// Ajout de la première zone
+		// Ajout de la premiÃ¨re zone
 		this.areas.add(new MapArea(i,j,w,h,this.tilemap));
 		
 	}
@@ -122,8 +122,8 @@ public abstract class Room implements IRoom, IPersistent {
 	}
 	
 	/**
-	 * Dit si la pièce intersecte une autre Room
-	 * @param room Autre pièce
+	 * Dit si la piÃ¨ce intersecte une autre Room
+	 * @param room Autre piÃ¨ce
 	 */
 	public boolean intersect(Room room){
 		for(MapArea area:this.getAreas()){
@@ -135,7 +135,7 @@ public abstract class Room implements IRoom, IPersistent {
 	}
 
 	/**
-	 * Retourne la première zone qui compose la pièce (parfois utile lors d'initialisation)
+	 * Retourne la premiÃ¨re zone qui compose la piÃ¨ce (parfois utile lors d'initialisation)
 	 */
 	public MapArea getMainArea() {
 		return this.getAreas().get(0);
@@ -151,10 +151,10 @@ public abstract class Room implements IRoom, IPersistent {
 	
 	
 	/**
-	 * Teste si l'objet donné est dans la pièce
+	 * Teste si l'objet donnÃ© est dans la piÃ¨ce
 	 */
 	public boolean objectIn(GameObject object){
-		// tous les tiles de l'objet doivent être dans la pièce
+		// tous les tiles de l'objet doivent Ãªtre dans la piÃ¨ce
 		boolean ok = false;
 		for(Vector2 tile:object.getTiles()){
 			ok = false;
@@ -171,11 +171,11 @@ public abstract class Room implements IRoom, IPersistent {
 	
 	
 	/**
-	 * Retourne le barycentre formé par les rectangles
+	 * Retourne le barycentre formÃ© par les rectangles
 	 */
 	public Vector2 barycenter(){
 		
-		// L'aire de chaque zone est utilisé comme poids ici
+		// L'aire de chaque zone est utilisÃ© comme poids ici
 		int x = 0;         // Barycentre X
 		int y = 0;         // Barycentre Y
 		int totalArea = 0; // Aire totale
@@ -195,8 +195,8 @@ public abstract class Room implements IRoom, IPersistent {
 	
 	
 	/**
-	 * Fusionne tous les rectangles qui présentent des intersections
-	 * de manière optimale (de façon à avoir le moins de MapArea possible
+	 * Fusionne tous les rectangles qui prÃ©sentent des intersections
+	 * de maniÃ¨re optimale (de faÃ§on Ã  avoir le moins de MapArea possible
 	 * sans qu'aucune MapArea ne se superpose)
 	 */
 	public void clean(){
@@ -224,7 +224,7 @@ public abstract class Room implements IRoom, IPersistent {
 						// Cas 3 : Intersection sans contenance
 						else{
 						
-							// On éclate la plus petite des deux zones en supprimant la partie qui fait intersection
+							// On Ã©clate la plus petite des deux zones en supprimant la partie qui fait intersection
 							if(area.area()>area2.area()){
 								toRemove.add(area2);
 								toAdd.addAll(area2.hollow(area));
@@ -261,7 +261,7 @@ public abstract class Room implements IRoom, IPersistent {
 	
 
 	/**
-	 * Fusionne la pièce avec celle donnée en paramètre
+	 * Fusionne la piÃ¨ce avec celle donnÃ©e en paramÃ¨tre
 	 */
 	public void fusion(Room current) {
 		for(MapArea area:current.getAreas()){
@@ -273,16 +273,16 @@ public abstract class Room implements IRoom, IPersistent {
 	public void addObject(GameObject object){
 		this.objects.add(object);
 		object.setRoom(this);
-		if(!this.operationnal) this.updateOperationalState(); // Mise à jour
+		if(!this.operationnal) this.updateOperationalState(); // Mise Ã  jour
 	}
 
 	public void removeObject(GameObject object){
 		this.objects.remove(object);
-		if(this.operationnal) this.updateOperationalState(); // Mise à jour
+		if(this.operationnal) this.updateOperationalState(); // Mise Ã  jour
 	}
 	
 	/**
-	 *  Verifie si tous les objets qui était présent le sont toujours
+	 *  Verifie si tous les objets qui Ã©tait prÃ©sent le sont toujours
 	 */
 	public void updateObjects(){
 		
@@ -299,7 +299,7 @@ public abstract class Room implements IRoom, IPersistent {
 			this.objects.remove(obj);
 		}
 		
-		this.updateOperationalState(); // Mise à jour
+		this.updateOperationalState(); // Mise Ã  jour
 	}
 	
 	
@@ -324,17 +324,17 @@ public abstract class Room implements IRoom, IPersistent {
 	
 	
 	/**
-	 * Enlève la zone donnée de la pièce (Fractionne la pièce si besoin)
-	 * @param area Zone à enlever 
-	 * @return Vrai si l'opération entraine la destruction de la pièce
+	 * EnlÃ¨ve la zone donnÃ©e de la piÃ¨ce (Fractionne la piÃ¨ce si besoin)
+	 * @param area Zone Ã  enlever 
+	 * @return Vrai si l'opÃ©ration entraine la destruction de la piÃ¨ce
 	 */
 	public boolean removeArea(MapArea area) {
 		
 		
-		ArrayList<MapArea> toRemove = new ArrayList<MapArea>(); // A enlever à la fin
-		ArrayList<MapArea> toAdd = new ArrayList<MapArea>();    // A ajouter à la fin
+		ArrayList<MapArea> toRemove = new ArrayList<MapArea>(); // A enlever Ã  la fin
+		ArrayList<MapArea> toAdd = new ArrayList<MapArea>();    // A ajouter Ã  la fin
 		
-		// Pour tous les zones qui composent la pièce
+		// Pour tous les zones qui composent la piÃ¨ce
 		for(MapArea roomArea:areas){
 			if(roomArea.intersect(area)){
 				// On enleve l'intersection
@@ -382,14 +382,14 @@ public abstract class Room implements IRoom, IPersistent {
 		// Pour chaque type d'objet requis
 		for(Class<?> objClass : this.neededObjects.keySet()){
 			counter = 0;
-			// Pour tous les objets de la pièce
+			// Pour tous les objets de la piÃ¨ce
 			for(GameObject obj:this.objects){
 				if(obj.getClass().equals(objClass)){
 					counter ++;
 				}	
 			}
 			
-			// Teste si on a compté suffisament d'objet du type objClass dans la piece
+			// Teste si on a comptÃ© suffisament d'objet du type objClass dans la piece
 			if(counter < this.neededObjects.get(objClass)){
 				return false;
 			}
@@ -411,7 +411,7 @@ public abstract class Room implements IRoom, IPersistent {
 
 	@Override
 	public void loadFromXmlElement(Element xmlElement) {
-		// Inutilisable ici, car les données doivent servir à instancier un objet dont la
+		// Inutilisable ici, car les donnÃ©es doivent servir Ã  instancier un objet dont la
 		// classe peut varier
 	}
 	

@@ -13,7 +13,7 @@ import enibdevlab.dwarves.DwarvesManager;
  * Gestionnaire de configuration pour Dwarves Manager 
  * (ou pour tout jeu libgdx en fait)
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class DwarvesConfigurationManager extends ConfigurationManager {
@@ -135,7 +135,7 @@ public class DwarvesConfigurationManager extends ConfigurationManager {
 	}
 	
 	/**
-	 * Configure pour la première fois le jeu (valeurs par defaut)
+	 * Configure pour la premiÃ¨re fois le jeu (valeurs par defaut)
 	 */
 	private void firstConfig(){
 		

@@ -44,7 +44,7 @@ public class ManageNeeds extends DwarfAction {
 			if(currentAction.finished){
 				currentAction = null;
 				state.clear();
-				// Si les besoins sont satisfaits, on arrête tout
+				// Si les besoins sont satisfaits, on arrÃªte tout
 				if(dwarf.getNeeds().isSatisfied()){
 					finished = true;
 					return;

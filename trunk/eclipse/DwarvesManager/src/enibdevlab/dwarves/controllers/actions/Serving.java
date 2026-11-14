@@ -17,9 +17,9 @@ import enibdevlab.dwarves.models.rooms.Tavern;
 
 /**
  * 
- * Action de servir une bière
+ * Action de servir une biÃ¨re
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Serving extends DwarfAction {
@@ -35,7 +35,7 @@ public class Serving extends DwarfAction {
 	protected Counter counter;
 	
 	/**
-	 * Fut de bière
+	 * Fut de biÃ¨re
 	 */
 	protected Barrel barrel;
 	
@@ -45,12 +45,12 @@ public class Serving extends DwarfAction {
 	protected Movement movement;
 	
 	/**
-	 * Position gardée en mémoire pour connaitre les destinations précises
+	 * Position gardÃ©e en mÃ©moire pour connaitre les destinations prÃ©cises
 	 */
 	protected Vector2 tile;
 	
 	/**
-	 * Chemin gardé en mémoire (car il s'agit d'un aller retour)
+	 * Chemin gardÃ© en mÃ©moire (car il s'agit d'un aller retour)
 	 */
 	protected ArrayList<Node> path;
 	
@@ -58,8 +58,8 @@ public class Serving extends DwarfAction {
 	protected static int GOINGTOCOUNTER = 1;
 	
 	/**
-	 * Action de servir une bière
-	 * @param game Référence vers le jeu
+	 * Action de servir une biÃ¨re
+	 * @param game RÃ©fÃ©rence vers le jeu
 	 * @param dwarf Nain
 	 * @param tavern Taverne
 	 */
@@ -102,12 +102,12 @@ public class Serving extends DwarfAction {
 		if(this.state.contains(GOINGTOBARREL)){
 			if(dwarf.getPosition().equals(tile)){
 
-				// Animation ou le barman pioche sa bière
+				// Animation ou le barman pioche sa biÃ¨re
 				dwarf.setRightHandItem(new Beer(new Vector2()));
 				dwarf.getView().addAction(Animation.replenishing(dwarf.getView()));
 				this.doWaiting(1.1f);
 				
-				// Nouvel état et Retour
+				// Nouvel Ã©tat et Retour
 				this.state.clear();
 				this.state.add(GOINGTOCOUNTER);
 				
@@ -129,7 +129,7 @@ public class Serving extends DwarfAction {
 	@Override
 	public void finish() {
 		dwarf.setRightHandItem(null);
-		if(this.path != null) this.counter.addBeer(); // Si on avait trouvé un chemin alors c'est bon
+		if(this.path != null) this.counter.addBeer(); // Si on avait trouvÃ© un chemin alors c'est bon
 	}
 
 }

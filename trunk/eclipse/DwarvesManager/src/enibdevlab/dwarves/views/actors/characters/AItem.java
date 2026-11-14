@@ -7,9 +7,9 @@ import enibdevlab.dwarves.views.Loader;
 
 /**
  * 
- * Vue des items (considéré comme une partie du corps des personnages quand ils sont en main)
+ * Vue des items (considÃ©rÃ© comme une partie du corps des personnages quand ils sont en main)
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class AItem extends AHand {

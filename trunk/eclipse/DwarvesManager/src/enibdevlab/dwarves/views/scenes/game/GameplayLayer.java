@@ -22,9 +22,9 @@ import enibdevlab.dwarves.views.world.TileMap;
 /**
  * Couche de Gameplay du jeu
  * C'est toute la partie "scrollable" du jeu (La map + personnages + objets)
- * + affichage des zones à miner
+ * + affichage des zones Ã  miner
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GameplayLayer extends MapLayer{
@@ -50,7 +50,7 @@ public class GameplayLayer extends MapLayer{
 	protected boolean initialized;
 
 	/**
-	 * Modèle
+	 * ModÃ¨le
 	 */
 	protected Level level;
 
@@ -87,7 +87,7 @@ public class GameplayLayer extends MapLayer{
 	}
 	
 	/**
-	 * Cette fonction est appelé quand de l'argent est depensé ou gagné pour faire apparaitre un joli effet
+	 * Cette fonction est appelÃ© quand de l'argent est depensÃ© ou gagnÃ© pour faire apparaitre un joli effet
 	 */
 	public void priceEffect(int x, int y, int price){
 		this.addActorAfter(definitionArea, new APriceEffect(x, y, price));
@@ -98,13 +98,13 @@ public class GameplayLayer extends MapLayer{
 		super.draw(batch, parentAlpha);
 		
 		/**
-		 * Dessin des tiles à miner ici
+		 * Dessin des tiles Ã  miner ici
 		 */
 		
-		// Je n'utilise pas mes primitives ici : il vaut mieux travailler à plus bas niveau
-		// car le besoin d'optimisation est assez important. (Je veux éviter de faire
+		// Je n'utilise pas mes primitives ici : il vaut mieux travailler Ã  plus bas niveau
+		// car le besoin d'optimisation est assez important. (Je veux Ã©viter de faire
 		// des begin inutiles sachant qu'on peut avoir des centaines de "filledRectangle"
-		// à afficher) )
+		// Ã  afficher) )
 		batch.end();
 		Gdx.gl.glEnable(GL10.GL_BLEND);
 	    Gdx.gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
@@ -125,7 +125,7 @@ public class GameplayLayer extends MapLayer{
 			DwarvesManager.renderer.filledRect(tile.x*w, tile.y*h, w, h);
 		}
 		
-		// Debug pour connaitre les tiles assignés aux nains
+		// Debug pour connaitre les tiles assignÃ©s aux nains
 		if(DwarvesManager.debug){
 			DwarvesManager.renderer.setColor(Color.BLUE);
 			for(Vector2 tile:this.level.getGame().getTaskManager().getAssignedTile()){

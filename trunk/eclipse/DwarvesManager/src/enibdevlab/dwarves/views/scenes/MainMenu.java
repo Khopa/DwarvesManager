@@ -21,9 +21,9 @@ import enibdevlab.dwarves.views.scenes.levelChoice.LevelChoice;
 
 /**
  * 
- * Scene destinée à afficher le menu principal du jeu
+ * Scene destinÃ©e Ã  afficher le menu principal du jeu
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class MainMenu extends Stage {
@@ -51,8 +51,8 @@ public class MainMenu extends Stage {
 	}
 	
 	/**
-	 * Fonction appelée à l'initialisation
-	 * Dispose les widgets de manière à créer le menu
+	 * Fonction appelÃ©e Ã  l'initialisation
+	 * Dispose les widgets de maniÃ¨re Ã  crÃ©er le menu
 	 */
 	private void init(){
 		
@@ -75,7 +75,7 @@ public class MainMenu extends Stage {
 		
 		// Creation du menu
 		
-		// Créations des boutons
+		// CrÃ©ations des boutons
 		ButtonActor newGame      =      new ButtonActor(buttonsImg.getTile(0));
 		ButtonActor continueGame =      new ButtonActor(buttonsImg.getTile(2));
 		ButtonActor choiceLevel  =      new ButtonActor(buttonsImg.getTile(16));

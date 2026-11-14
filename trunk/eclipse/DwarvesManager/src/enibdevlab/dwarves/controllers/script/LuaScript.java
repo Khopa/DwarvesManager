@@ -18,13 +18,13 @@ import com.badlogic.gdx.files.FileHandle;
  * 
  * Script Lua avec LuaJ
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class LuaScript {
 	
 	/**
-	 * Code compilé Lua
+	 * Code compilÃ© Lua
 	 */
 	protected Prototype luaCode;
 	
@@ -39,12 +39,12 @@ public class LuaScript {
 	protected String scriptName;
 	
 	/**
-	 * Permet de savoir si la map est packagée ou non avec le jeu
+	 * Permet de savoir si la map est packagÃ©e ou non avec le jeu
 	 */
 	protected boolean internal;
 	
 	/**
-	 * Crée un nouveau script Lua à partir du fichier spécifié
+	 * CrÃ©e un nouveau script Lua Ã  partir du fichier spÃ©cifiÃ©
 	 * @param filename Nom du script LUA
 	 * @param internal Fichier interne ou non 
 	 */
@@ -54,7 +54,7 @@ public class LuaScript {
 		this.internal = internal;
 		
 		/**
-		 * Création du contexte Lua en fonction de la plateforme
+		 * CrÃ©ation du contexte Lua en fonction de la plateforme
 		 */
 		ApplicationType platform = Gdx.app.getType();
 		if(platform == ApplicationType.Android || platform == ApplicationType.iOS){
@@ -78,7 +78,7 @@ public class LuaScript {
 			
 			
 			/**
-			 * Crée la liste des libs requises
+			 * CrÃ©e la liste des libs requises
 			 */
 			
 			for(String lib:required){

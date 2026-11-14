@@ -7,7 +7,7 @@ import enibdevlab.dwarves.views.Tileset;
 
 /**
  * 
- * Cette classe permet de configurer la tête des personnages
+ * Cette classe permet de configurer la tÃªte des personnages
  * qu'ils soientt des nains, gobelins ou elfe
  * 
  * @author Yannick Guern
@@ -17,19 +17,19 @@ import enibdevlab.dwarves.views.Tileset;
 public class HeadConfig {
 	
 	/**
-	 * Tileset utilisé pour la tête (liste de sprite)
+	 * Tileset utilisÃ© pour la tÃªte (liste de sprite)
 	 */
 	protected Tileset headTileset;
 	
 	/**
-	 * Position de la tête
+	 * Position de la tÃªte
 	 */
 	protected Vector2 position;
 
 	/**
 	 * 
-	 * @param headTileset liste des tile de la tête (de face, de derrière, de profil)
-	 * @param head position de la tête
+	 * @param headTileset liste des tile de la tÃªte (de face, de derriÃ¨re, de profil)
+	 * @param head position de la tÃªte
 	 */
 	public HeadConfig(Tileset headTileset, Vector2 head) {
 		super();

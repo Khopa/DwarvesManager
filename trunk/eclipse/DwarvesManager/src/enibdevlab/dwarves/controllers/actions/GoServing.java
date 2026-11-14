@@ -20,28 +20,28 @@ import enibdevlab.dwarves.models.rooms.Tavern;
  * 
  * Action de travail du barman
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GoServing extends DwarfAction {
 
 	/**
-	 * Barman (Dwarf casté)
+	 * Barman (Dwarf castÃ©)
 	 */
 	protected Barman barman;
 	
 	/**
-	 * Taverne où le barman va servir
+	 * Taverne oÃ¹ le barman va servir
 	 */
 	protected Tavern tavern;
 	
 	/**
-	 * Comptoir où le barman va servir
+	 * Comptoir oÃ¹ le barman va servir
 	 */
 	protected Counter counter;
 	
 	/**
-	 * Sous action de déplacement
+	 * Sous action de dÃ©placement
 	 */
 	protected Movement movement;
 	
@@ -50,9 +50,9 @@ public class GoServing extends DwarfAction {
 	 */
 	protected Serving serving;
 	
-	public static int SEARCHINGBAR = 0;    // Etat où le nain recherche une taverne où servir
-	public static int GOINGTOBAR = 1;      // Etat où le nain rejoint sa taverne et son comptoir
-	public static int SERVING = 2;         // Etat où le nain part servir (sous action serving)
+	public static int SEARCHINGBAR = 0;    // Etat oÃ¹ le nain recherche une taverne oÃ¹ servir
+	public static int GOINGTOBAR = 1;      // Etat oÃ¹ le nain rejoint sa taverne et son comptoir
+	public static int SERVING = 2;         // Etat oÃ¹ le nain part servir (sous action serving)
 	
 	public GoServing(Game game, Dwarf dwarf) {
 		super(game, dwarf);
@@ -64,14 +64,14 @@ public class GoServing extends DwarfAction {
 		this.state.clear();
 		this.state.add(SEARCHINGBAR);
 		
-		// I) Listes des tavernes opérationnelles triees par rapport à leur distance par rapport au barman
+		// I) Listes des tavernes opÃ©rationnelles triees par rapport Ã  leur distance par rapport au barman
 		ArrayList<Room> taverns = PathUtils.getSortedOperationnalRoom(Tavern.class, dwarf.getPosition(), game);
 		
-		// II) Vérification diverses
-		// a) Verifier que un comptoir est dispo, si c'est le cas on le réserve
+		// II) VÃ©rification diverses
+		// a) Verifier que un comptoir est dispo, si c'est le cas on le rÃ©serve
 		
 		
-		// On regarde pour toutes les pièces tant qu'on trouve pas
+		// On regarde pour toutes les piÃ¨ces tant qu'on trouve pas
 		boolean found = false;
 		for(Room tavern:taverns){
 			
@@ -81,7 +81,7 @@ public class GoServing extends DwarfAction {
 				Counter cnt = ((Counter)obj);
 				Slot barmanSlot = cnt.getBarmanSlot();
 				
-				// Si ce comptoir n'est pas occupé ou reservé
+				// Si ce comptoir n'est pas occupÃ© ou reservÃ©
 				if(!barmanSlot.isOccupied() && !cnt.isUsed()){
 					cnt.reserve(this.barman); // On reserve le comptoir pour que les autres barman ne l'utilise pas
 					this.counter = cnt;
@@ -98,13 +98,13 @@ public class GoServing extends DwarfAction {
 			return;
 		}
 		
-		// III) Validation, création du mouvement vers le bar et le comptoir
+		// III) Validation, crÃ©ation du mouvement vers le bar et le comptoir
 		
 		if(this.tavern != null && this.counter != null){
 			ArrayList<Node> pathToCounter = PathUtils.pathToSlot(dwarf, counter.getBarmanSlot(), game);
 			this.movement = new Movement(game, dwarf, pathToCounter);
 			this.state.clear();
-			this.state.add(GOINGTOBAR); // Màj de la stm
+			this.state.add(GOINGTOBAR); // MÃ j de la stm
 		}
 		
 		
@@ -120,7 +120,7 @@ public class GoServing extends DwarfAction {
 		}
 		
 		if(state.contains(GOINGTOBAR)){
-			// Si on est arrivé dans le bar à la position du comptoir
+			// Si on est arrivÃ© dans le bar Ã  la position du comptoir
 			if(this.dwarf.getPosition().equals(counter.getBarmanSlot().getRealPosition())){
 				this.serve();
 			}
@@ -146,7 +146,7 @@ public class GoServing extends DwarfAction {
 	 */
 	private void serve() {
 		
-		// On vérifie que le joueur n'a pas supprimé la taverne ou le comptoir et que la taverne est toujours opérationnelle
+		// On vÃ©rifie que le joueur n'a pas supprimÃ© la taverne ou le comptoir et que la taverne est toujours opÃ©rationnelle
 		if(!game.getObjects().getObjects().contains(this.counter) ||
 		   !game.getRooms().getRooms().contains(this.tavern) ||
 		   !tavern.isOperationnal()){
@@ -155,7 +155,7 @@ public class GoServing extends DwarfAction {
 			return;
 		}
 		
-		// Il regarde si un nain réclame à boire au comptoir
+		// Il regarde si un nain rÃ©clame Ã  boire au comptoir
 		boolean dwarfWaitingforBeer = false;
 		for(Slot slot:this.counter.getSlots()){
 			if(slot!=counter.getBarmanSlot() && slot.isOccupied()){
@@ -179,7 +179,7 @@ public class GoServing extends DwarfAction {
 
 	@Override
 	public void finish() {
-		// On libère le comptoir (il n'est plus considéré reservé
+		// On libÃ¨re le comptoir (il n'est plus considÃ©rÃ© reservÃ©
 		if(this.counter != null){
 			counter.liberate();
 			counter.resetBeer(); // On ne sert plus !

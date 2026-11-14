@@ -20,21 +20,21 @@ import enibdevlab.dwarves.views.audio.MusicManager;
 
 /**
  * 
- * Scene créant l'affichage du jeu
+ * Scene crÃ©ant l'affichage du jeu
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GameScene extends Stage{
 
 	
 	/**
-	 * Référence vers le modèle de la partie
+	 * RÃ©fÃ©rence vers le modÃ¨le de la partie
 	 */
 	protected Game game;
 	
 	/**
-	 * Référence vers le jeu
+	 * RÃ©fÃ©rence vers le jeu
 	 */
 	protected DwarvesManager gdxGame;
 	
@@ -89,7 +89,7 @@ public class GameScene extends Stage{
 	public static boolean PAUSED = false;
 	
 	/**
-	 * Mode cinématique
+	 * Mode cinÃ©matique
 	 */
 	@SuppressWarnings("unused")
 	private boolean cinematicMode = false;
@@ -97,9 +97,9 @@ public class GameScene extends Stage{
 	
 	/**
 	 * 
-	 * Création d'une nouvelle partie
+	 * CrÃ©ation d'une nouvelle partie
 	 * 
-	 * @param gdxGame Référence vers le jeu
+	 * @param gdxGame RÃ©fÃ©rence vers le jeu
 	 */
 	public GameScene(DwarvesManager gdxGame, LevelFile script){
 		PAUSED = false;
@@ -118,7 +118,7 @@ public class GameScene extends Stage{
 	 * 
 	 * Chargement d'une partie
 	 * 
-	 * @param gdxGame Référence vers le jeu
+	 * @param gdxGame RÃ©fÃ©rence vers le jeu
 	 */
 	public GameScene(DwarvesManager gdxGame, String path){
 		PAUSED = false;
@@ -138,7 +138,7 @@ public class GameScene extends Stage{
 	}
 	
 	/**
-	 * Création d'une nouvelle partie avec un niveau aléatoire
+	 * CrÃ©ation d'une nouvelle partie avec un niveau alÃ©atoire
 	 */
 	public GameScene(DwarvesManager gdxGame){
 		PAUSED = false;
@@ -154,7 +154,7 @@ public class GameScene extends Stage{
 	
 	/**
 	 * 
-	 * Initialise les différentes composantes du jeu
+	 * Initialise les diffÃ©rentes composantes du jeu
 	 * 
 	 */
 	public void init(){
@@ -282,7 +282,7 @@ public class GameScene extends Stage{
 	
 	
 	/**
-	 * Active le mode cinématique (16:9) + désactive les GUI
+	 * Active le mode cinÃ©matique (16:9) + dÃ©sactive les GUI
 	 */
 	public void enableCinematicMode(){
 		cinematicMode = true;
@@ -293,7 +293,7 @@ public class GameScene extends Stage{
 	}
 	
 	/**
-	 * Désactive le mode cinématique
+	 * DÃ©sactive le mode cinÃ©matique
 	 */
 	public void disableCinematicMode(){
 		cinematicMode = true;
@@ -373,7 +373,7 @@ public class GameScene extends Stage{
 	}
 
 	/**
-	 * Connecte les bons gestionnaire d'event à libgdx
+	 * Connecte les bons gestionnaire d'event Ã  libgdx
 	 */
 	public void connectInputProcessor() {
 		this.listener = new GameplayScreenListener(this);
@@ -385,7 +385,7 @@ public class GameScene extends Stage{
 			multiplexer.addProcessor(new GestureDetector(gestureListener));
 			multiplexer.addProcessor(this);
 			Gdx.input.setInputProcessor(multiplexer);
-			System.out.println("Gestionnaire d'event connecté");
+			System.out.println("Gestionnaire d'event connectÃ©");
 		}
 	}
 

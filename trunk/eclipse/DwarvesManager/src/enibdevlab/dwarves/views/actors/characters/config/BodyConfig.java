@@ -7,18 +7,18 @@ import enibdevlab.dwarves.views.Tileset;
 
 /**
  * 
- * Cette classe permet de configurer les "modèles 2d" des personnage
+ * Cette classe permet de configurer les "modÃ¨les 2d" des personnage
  * Pour savoir comment placer chaque partie du corps de ceux-ci, qu'ils
  * soit des nains, gobelins ou elfe
  * 
- * @author Clément Perreau / Yannick Guern
+ * @author ClÃ©ment Perreau / Yannick Guern
  *
  */
 public class BodyConfig {
 	
 
 	/**
-	 * Tileset utilisé pour le corps (liste de sprite)
+	 * Tileset utilisÃ© pour le corps (liste de sprite)
 	 */
 	protected Tileset bodyTileset;
 	
@@ -28,7 +28,7 @@ public class BodyConfig {
 	protected Vector2 position;
 	
 	/**
-	 * configuration de la tête
+	 * configuration de la tÃªte
 	 */
 	protected HeadConfig headConfig;
 	

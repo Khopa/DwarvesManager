@@ -7,9 +7,9 @@ import enibdevlab.dwarves.DwarvesManager;
 
 /**
  * 
- * Image qui occupe tout l'écran
+ * Image qui occupe tout l'Ã©cran
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class ABackgroundImage extends AImage {
@@ -20,7 +20,7 @@ public class ABackgroundImage extends AImage {
 	}
 	
 	/**
-	 * Redimensionne l'image par rapport à l'écran
+	 * Redimensionne l'image par rapport Ã  l'Ã©cran
 	 */
 	private void prepare(){
 		

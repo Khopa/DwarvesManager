@@ -12,9 +12,9 @@ import enibdevlab.dwarves.views.Tileset;
 
 /**
  * 
- * Un tileset pour afficher et selectionner des tiles d'un tileset à placer dans l'éditeur
+ * Un tileset pour afficher et selectionner des tiles d'un tileset Ã  placer dans l'Ã©diteur
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class TilesetWidget extends Widget {
@@ -25,7 +25,7 @@ public class TilesetWidget extends Widget {
 	protected static Color SELECTION_COLOR = new Color(0.1f,0.1f,0.7f,0.7f);
 	
 	/**
-	 * Tileset à afficher
+	 * Tileset Ã  afficher
 	 */
 	protected Tileset tileset;
 	
@@ -36,7 +36,7 @@ public class TilesetWidget extends Widget {
 	
 	public TilesetWidget(Tileset tileset){
 		this.tileset = tileset;
-		this.brush = new Rectangle(0, 0, 1, 1); // Par défaut le tile haut gauche est selectionné
+		this.brush = new Rectangle(0, 0, 1, 1); // Par dÃ©faut le tile haut gauche est selectionnÃ©
 	}
 	
 	@Override

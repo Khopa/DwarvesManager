@@ -144,7 +144,7 @@ public class LevelChoice extends Stage {
 	
 	@Override
 	public boolean keyDown(int keyCode) {
-		if(keyCode == Input.Keys.BACK){ // Appuie du bouton retour Android => retour menu précédent
+		if(keyCode == Input.Keys.BACK){ // Appuie du bouton retour Android => retour menu prÃ©cÃ©dent
 			DwarvesManager.getInstance().setStage(previousStage);
 		}
 		return super.keyDown(keyCode);

@@ -19,7 +19,7 @@ import com.khopa.skhopa.models.Score;
  * 
  * Gestion des scores pour le jeu Dwarves Manager
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class DwarvesScoreManager extends ScoreManager {
@@ -112,7 +112,7 @@ public class DwarvesScoreManager extends ScoreManager {
 				found = true;
 				Array<Element> scoreElements = level.getChildrenByName("score");
 				
-				// limiter a 10 le nombre de score enregistrés
+				// limiter a 10 le nombre de score enregistrÃ©s
 				if(scoreElements.size>=10){
 					int maximum = Integer.MIN_VALUE;
 					Element maxScoreElement = null;
@@ -129,7 +129,7 @@ public class DwarvesScoreManager extends ScoreManager {
 			}
 		}
 		
-		// Si pas d'element trouvé, on le crée
+		// Si pas d'element trouvÃ©, on le crÃ©e
 		if(!found){
 			Element level = new Element("level", null);
 			level.setAttribute("name", score.getLevel());

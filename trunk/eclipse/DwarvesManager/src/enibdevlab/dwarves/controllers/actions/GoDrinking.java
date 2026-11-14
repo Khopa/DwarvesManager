@@ -19,13 +19,13 @@ import enibdevlab.dwarves.models.rooms.Tavern;
 /**
  * Action d'aller boire
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  * 
  */
 public class GoDrinking extends DwarfAction {
 
 	/**
-	 * Taverne où le nain va aller boire
+	 * Taverne oÃ¹ le nain va aller boire
 	 */
 	protected Tavern tavern;
 	
@@ -45,7 +45,7 @@ public class GoDrinking extends DwarfAction {
 	protected Movement movement;
 	
 	/**
-	 * Sous action d'aller boire sa bière à une table
+	 * Sous action d'aller boire sa biÃ¨re Ã  une table
 	 */
 	protected Drinking drinking;
 	
@@ -62,15 +62,15 @@ public class GoDrinking extends DwarfAction {
 		
 		state.clear();
 		
-		// Objectif ici trouver une taverne opérationnelle
+		// Objectif ici trouver une taverne opÃ©rationnelle
 		ArrayList<Room> taverns = PathUtils.getSortedOperationnalRoom(Tavern.class, dwarf.getPosition(), game);
 		
-		// On choisit le chemin vers la première pièce qu'on arrive à rejoindre
+		// On choisit le chemin vers la premiÃ¨re piÃ¨ce qu'on arrive Ã  rejoindre
 		ArrayList<Node> path = null;
 		boolean ok = false;
 		for(Room tavern:taverns){
 			
-			// On vérifie que la taverne a des slots libres sur au moins un de ses comptoirs
+			// On vÃ©rifie que la taverne a des slots libres sur au moins un de ses comptoirs
 			// (en ne tenant compte que des comptoirs qui ont un serveur)
 			ok = false;
 			for(GameObject obj:tavern.getObjects(Counter.class)){
@@ -92,7 +92,7 @@ public class GoDrinking extends DwarfAction {
 			abort(Complaint.NO_BEER);
 			return;
 		}
-		else{ // Construction du chemin vers la pièce
+		else{ // Construction du chemin vers la piÃ¨ce
 			this.movement = new Movement(game, dwarf, path);
 			state.add(GOINGTOTAVERN);
 		}
@@ -108,7 +108,7 @@ public class GoDrinking extends DwarfAction {
 		}
 		
 		if(state.contains(GOINGTOTAVERN)){
-			// Si on est arrivé dans la taverne
+			// Si on est arrivÃ© dans la taverne
 			if(this.tavern.tileInside((int)dwarf.getX(), (int)dwarf.getY())){
 				goToCounter();
 			}
@@ -146,11 +146,11 @@ public class GoDrinking extends DwarfAction {
 	}
 
 	/**
-	 * Méthode qui envoie le nain vers un comptoir une fois qu'il est arrivé dans la taverne
+	 * MÃ©thode qui envoie le nain vers un comptoir une fois qu'il est arrivÃ© dans la taverne
 	 */
 	private void goToCounter() {
 		
-		// On vérifie que la taverne est toujours prête à l'emploi
+		// On vÃ©rifie que la taverne est toujours prÃªte Ã  l'emploi
 		if(tavern == null){
 			abort(Complaint.NO_BEER);
 			return;
@@ -179,7 +179,7 @@ public class GoDrinking extends DwarfAction {
 				slot = cnt.getAvailableSlot(MCharacter.class);
 				if(slot != null){ // Si il y a de la place
 					ArrayList<Node> path = PathUtils.pathToSlot(dwarf, slot, game);
-					if(path != null){ // Si on arrive à créer un chemin vers le slot
+					if(path != null){ // Si on arrive Ã  crÃ©er un chemin vers le slot
 						counter = cnt;
 						movement = new Movement(game, dwarf, path);
 						slot.setOccupant(dwarf); // reservation du slot

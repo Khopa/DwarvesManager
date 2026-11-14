@@ -11,7 +11,7 @@ import enibdevlab.dwarves.views.lang.StringManager;
  * 
  * Table de taverne
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class TableObject extends GameObject {

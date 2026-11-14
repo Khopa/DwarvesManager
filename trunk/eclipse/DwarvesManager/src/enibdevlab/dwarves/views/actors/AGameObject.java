@@ -15,7 +15,7 @@ import enibdevlab.dwarves.models.objects.Rotation;
 public class AGameObject extends Actor {
 
 	/**
-	 * Lien vers le modèle
+	 * Lien vers le modÃ¨le
 	 */
 	protected GameObject model;
 	
@@ -30,8 +30,8 @@ public class AGameObject extends Actor {
 	}
 	
 	/**
-	 * Recupère la liste des textures requises
-	 * Appelé à l'initialisation uniquement
+	 * RecupÃ¨re la liste des textures requises
+	 * AppelÃ© Ã  l'initialisation uniquement
 	 */
 	private void getTextures(){
 		

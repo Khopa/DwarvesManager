@@ -3,9 +3,9 @@ package enibdevlab.dwarves.models;
 
 /**
  * 
- * Enum pour représenter les directions
+ * Enum pour reprÃ©senter les directions
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public enum Direction{

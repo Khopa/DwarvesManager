@@ -4,9 +4,9 @@ import enibdevlab.dwarves.models.Direction;
 
 /**
  * 
- * Modèle pour la rotation d'un objet
+ * ModÃ¨le pour la rotation d'un objet
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public enum Rotation {

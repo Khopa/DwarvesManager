@@ -9,7 +9,7 @@ import com.khopa.skhopa.controllers.ConfigurationManager;
 public class SoundManager {
 
 	/**
-	 * Player de son activé ou non
+	 * Player de son activÃ© ou non
 	 */
 	protected static boolean ENABLED = true;
 	
@@ -19,7 +19,7 @@ public class SoundManager {
 	protected static float volume = 1f;
 	
 	/**
-	 * Dossier où sont stockés les sons
+	 * Dossier oÃ¹ sont stockÃ©s les sons
 	 */
 	protected static String directory = "data/sfx/";
 	
@@ -62,7 +62,7 @@ public class SoundManager {
 	}
 	
 	/**
-	 * Efface les données sur un son
+	 * Efface les donnÃ©es sur un son
 	 */
 	public static void dispose(String name){
 		soundDictionnary.get(name).dispose();

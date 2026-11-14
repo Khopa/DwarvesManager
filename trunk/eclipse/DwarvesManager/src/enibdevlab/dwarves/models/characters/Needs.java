@@ -12,7 +12,7 @@ import enibdevlab.dwarves.views.lang.StringManager;
  * 
  * Besoin du nain
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class Needs implements IPersistent {
@@ -33,17 +33,17 @@ public class Needs implements IPersistent {
 	public final static int MIN = 0;
 	
 	/**
-	 * Pas d'incrémentation nominal des besoins
+	 * Pas d'incrÃ©mentation nominal des besoins
 	 */
 	private static int STEP = 1;
 	
 	/**
-	 * Moyenne des niveau de besoin aléatoire
+	 * Moyenne des niveau de besoin alÃ©atoire
 	 */
 	private static float MEAN = 2.5f;
 
 	/**
-	 * Variance des niveau de besoin aléatoire
+	 * Variance des niveau de besoin alÃ©atoire
 	 */
 	private static float DEVIATION = 1.0f;
 	
@@ -58,17 +58,17 @@ public class Needs implements IPersistent {
 	protected int sleep;
 	
 	/**
-	 * Prédisposition au besoin de sommeil
+	 * PrÃ©disposition au besoin de sommeil
 	 */
 	protected double sleepNeed;
 	
 	/**
-	 * Prédisposition au besoin de bière
+	 * PrÃ©disposition au besoin de biÃ¨re
 	 */
 	protected double beerNeed;
 	
 	/**
-	 * Nain concerné
+	 * Nain concernÃ©
 	 */
 	protected Dwarf dwarf;
 
@@ -86,7 +86,7 @@ public class Needs implements IPersistent {
 	}
 	
 	/**
-	 * Initialise les paramètres de comportement aléatoire
+	 * Initialise les paramÃ¨tres de comportement alÃ©atoire
 	 */
 	private void randomGeneration(){
 		sleepNeed =  randomGaussianNeedFactor();
@@ -143,10 +143,10 @@ public class Needs implements IPersistent {
 	}
 	
 	/**
-	 * Dit si le nain est actuellement prêt à reprendre le travail
+	 * Dit si le nain est actuellement prÃªt Ã  reprendre le travail
 	 * 
-	 * Il faut que les valeurs de sommeil et de soif soit quand même un peu au dessus du seuil, histoire
-	 * que les nains ne s'arrêtent pas de suite.
+	 * Il faut que les valeurs de sommeil et de soif soit quand mÃªme un peu au dessus du seuil, histoire
+	 * que les nains ne s'arrÃªtent pas de suite.
 	 * 
 	 */
 	public boolean isSatisfied(){
@@ -154,21 +154,21 @@ public class Needs implements IPersistent {
 	}
 	
 	/**
-	 * Dit si le nain peut travailler dans son état actuel
+	 * Dit si le nain peut travailler dans son Ã©tat actuel
 	 */
 	public boolean isAbleToWork(){
 		return (this.sleep<4f/5f*MAX && this.beer<4f/5f*MAX);
 	}
 
 	/**
-	 * Retourne la valeur du seuil à partir duquel il devient critique d'aller dormir
+	 * Retourne la valeur du seuil Ã  partir duquel il devient critique d'aller dormir
 	 */
 	public int getSleepThreshold() {
 		return (int) (3f/4f*MAX);
 	}
 	
 	/**
-	 * Retourne la valeur du seuil à partir duquel il devient critique d'aller boire
+	 * Retourne la valeur du seuil Ã  partir duquel il devient critique d'aller boire
 	 */
 	public int getThirstThreshold() {
 		return (int) (3f/4f*MAX);

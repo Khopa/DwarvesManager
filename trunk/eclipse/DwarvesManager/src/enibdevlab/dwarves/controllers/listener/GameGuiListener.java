@@ -20,13 +20,13 @@ import enibdevlab.dwarves.views.scenes.game.GameScene;
  * 
  * Listener pour la gui principale du jeu
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GameGuiListener extends ChangeListener {
 
 	/**
-	 * Référence vers la vue
+	 * RÃ©fÃ©rence vers la vue
 	 */
 	protected GameGui gui;
 	
@@ -80,8 +80,8 @@ public class GameGuiListener extends ChangeListener {
 				Game.getInstance().fireDwarfEvent("hitEraseButton");
 			}
 			else{
-				// Alors c'est un bouton pour choisir un objet à placer
-				// On passe le jeu en mode placement d'objet en instanciant l'objet associé au bouton
+				// Alors c'est un bouton pour choisir un objet Ã  placer
+				// On passe le jeu en mode placement d'objet en instanciant l'objet associÃ© au bouton
 				Constructor<?> c = gui.getObjectsButton().get(actor);
 				if(c == null) return;
 				try {
@@ -114,8 +114,8 @@ public class GameGuiListener extends ChangeListener {
 				Game.getInstance().fireDwarfEvent("hitEraseButton");
 			}
 			else{
-				// Alors c'est un bouton pour choisir un objet à placer
-				// On passe le jeu en mode placement de pièce en donnant le type de pièce à placer
+				// Alors c'est un bouton pour choisir un objet Ã  placer
+				// On passe le jeu en mode placement de piÃ¨ce en donnant le type de piÃ¨ce Ã  placer
 				Constructor<?> c = gui.getRoomsButton().get(actor);
 				if(c == null) return;
 				scene.getListener().setRoomType(c);
@@ -132,7 +132,7 @@ public class GameGuiListener extends ChangeListener {
 				Game.getInstance().fireDwarfEvent("hitBackButton");
 			}
 			else if(checkButton(actor, gui.getEraseButton())){
-				// Togle le mode placement ou ajout de zone à miner
+				// Togle le mode placement ou ajout de zone Ã  miner
 				scene.toggleMineMode();
 				Game.getInstance().fireDwarfEvent("hitEraseButton");
 			}
@@ -145,13 +145,13 @@ public class GameGuiListener extends ChangeListener {
 				Game.getInstance().fireDwarfEvent("hitBackButton");
 			}
 			else if(checkButton(actor, gui.getEraseButton())){
-				// Togle le mode placement ou ajout de zone à miner
+				// Togle le mode placement ou ajout de zone Ã  miner
 				scene.setRemovingDwarfMode();
 				Game.getInstance().fireDwarfEvent("hitEraseButton");
 			}
 			else{
-				// Alors c'est un bouton pour choisir un nain à placer
-				// On passe le jeu en mode placement d'objet en instanciant l'objet associé au bouton
+				// Alors c'est un bouton pour choisir un nain Ã  placer
+				// On passe le jeu en mode placement d'objet en instanciant l'objet associÃ© au bouton
 				Constructor<?> c = gui.getRecruitsButton().get(actor);
 				if(c == null) return;
 				scene.getListener().setDwarfConstructor(c);
@@ -160,13 +160,13 @@ public class GameGuiListener extends ChangeListener {
 			}
 		}
 		
-		// Repack de la table vu que la taille des widgets peut avoir changé
+		// Repack de la table vu que la taille des widgets peut avoir changÃ©
 		// gui.repack(); // en fait c'est moche
 	
 	}
 	
 	/**
-	 * Verifie si l'acteur est le bouton et si le bouton est checké
+	 * Verifie si l'acteur est le bouton et si le bouton est checkÃ©
 	 */
 	private static boolean checkButton(Actor actor, Button button){
 		return (actor == button);

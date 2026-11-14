@@ -6,9 +6,9 @@ import enibdevlab.dwarves.models.rooms.Room;
 
 /**
  * 
- * Comparateur de collections : permet de trier des pièces en fonction de leur distance à un point
+ * Comparateur de collections : permet de trier des piÃ¨ces en fonction de leur distance Ã  un point
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class RoomDistanceToPointComparator implements Comparator<Room> {

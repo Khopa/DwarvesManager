@@ -10,12 +10,12 @@ import enibdevlab.dwarves.DwarvesManager;
 
 /**
  * Primitives pour le dessin de formes
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  */
 public class Primitives {
 	
 	/**
-	 * Prépare le rendu en effectuant les projections sur les bonnes matrices Gl
+	 * PrÃ©pare le rendu en effectuant les projections sur les bonnes matrices Gl
 	 */
 	public static void prepareRenderer(SpriteBatch batch){
 		DwarvesManager.renderer.setProjectionMatrix(batch.getProjectionMatrix());
@@ -31,7 +31,7 @@ public class Primitives {
 	}
 	
 	/**
-	 * Désactive l'alpha blending
+	 * DÃ©sactive l'alpha blending
 	 */
 	public static void disableAlphaBlending(){
 		Gdx.gl.glDisable(GL10.GL_BLEND);
@@ -93,13 +93,13 @@ public class Primitives {
 	
 	/**
 	 * Dessin d'une jauge
-	 * @param x Coordonnée X
-	 * @param y Coordonnée Y
+	 * @param x CoordonnÃ©e X
+	 * @param y CoordonnÃ©e Y
 	 * @param w Largeur de la jauge
 	 * @param h Hauteur de la jauge
 	 * @param borderSize Largeur des bordures
 	 * @param percent Pourcentage de remplissage
-	 * @param colorInside Couleur intérieure
+	 * @param colorInside Couleur intÃ©rieure
 	 * @param borderColor Couleur des bordures
 	 */
 	public static void gauge(int x, int y, int w, int h, int borderSize, float percent, Color colorInside, Color borderColor){
@@ -108,7 +108,7 @@ public class Primitives {
 		Primitives.filledRect(x,y,w,h,borderColor);
 		
 		/*
-		 * Largeur en px pour le pourcentage donné
+		 * Largeur en px pour le pourcentage donnÃ©
 		 */
 		int wg = (int) (percent*(w-2*borderSize));
 		

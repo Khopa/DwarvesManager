@@ -29,16 +29,16 @@ import enibdevlab.dwarves.views.widgets.ObjectButton;
 
 /**
  * 
- * Fenêtre principale de Gui dans le jeu
+ * FenÃªtre principale de Gui dans le jeu
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class GameGui extends Table {
 
 	
 	/**
-	 *  Activation des menus (utile pour activer les fonctionnalitées au fur et à mesure
+	 *  Activation des menus (utile pour activer les fonctionnalitÃ©es au fur et Ã  mesure
 	 *  dans le tuto
 	 */
 	private static boolean RECRUITMENT_ENABLED = true;
@@ -80,7 +80,7 @@ public class GameGui extends Table {
 	protected Table container;
 	
 	/**
-	 * Crée la fenêtre de Gui principale 
+	 * CrÃ©e la fenÃªtre de Gui principale 
 	 * @param skin Skin de la Gui
 	 */
 	public GameGui(Skin skin, Game game) {
@@ -131,7 +131,7 @@ public class GameGui extends Table {
 					   					new TextureRegionDrawable(Loader.guiAtlas.getTile(1)),
 					   					Loader.iconAtlas, 34);
 		
-		// Création des boutons pour chaque objets
+		// CrÃ©ation des boutons pour chaque objets
 		objectsButton = new HashMap<ObjectButton, Constructor<?>>();
 		for(Constructor<?> c: Loader.objects){
 			
@@ -163,7 +163,7 @@ public class GameGui extends Table {
 							  c);
 		}
 		
-		// Création des boutons pour chaque pièces
+		// CrÃ©ation des boutons pour chaque piÃ¨ces
 		roomsButton = new HashMap<ObjectButton, Constructor<?>>();
 		for(Constructor<?> c: Loader.rooms){
 			
@@ -175,7 +175,7 @@ public class GameGui extends Table {
 							c);
 		}
 		
-		// Création des boutons pour chaque nain
+		// CrÃ©ation des boutons pour chaque nain
 		recruitsButton = new HashMap<ObjectButton, Constructor<?>>();
 		for(Constructor<?> c:Loader.characters){
 			
@@ -255,7 +255,7 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Packe et met à la bonne position
+	 * Packe et met Ã  la bonne position
 	 */
 	public void repack(){
 		this.pack();
@@ -264,7 +264,7 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Crée le rendu pour le menu principal
+	 * CrÃ©e le rendu pour le menu principal
 	 */
 	public void setMainMode(){
 		this.clear();
@@ -298,7 +298,7 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Crée le rendu pour le sous menu des objets
+	 * CrÃ©e le rendu pour le sous menu des objets
 	 */
 	public void setObjectMode(){
 		this.clear();
@@ -326,7 +326,7 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Crée le menu pour le sous menu des pièces
+	 * CrÃ©e le menu pour le sous menu des piÃ¨ces
 	 */
 	public void setRoomMode(){
 		this.clear();
@@ -372,7 +372,7 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Crée le rendu pour le sous menu de recrutement
+	 * CrÃ©e le rendu pour le sous menu de recrutement
 	 */
 	public void setRecruitMode() {
 		this.clear();
@@ -467,7 +467,7 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Active/Désactive le bouton de recrutement
+	 * Active/DÃ©sactive le bouton de recrutement
 	 */
 	public static void setRecruitmentButton(boolean enabled){
 		RECRUITMENT_ENABLED = enabled;
@@ -475,7 +475,7 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Active/Désactive le bouton d'achat d'objet
+	 * Active/DÃ©sactive le bouton d'achat d'objet
 	 */
 	public static void setObjectButton(boolean enabled){
 		OBJECTS_ENABLED = enabled;
@@ -483,7 +483,7 @@ public class GameGui extends Table {
 	}
 	
 	/**
-	 * Active/Désactive le bouton des pièces
+	 * Active/DÃ©sactive le bouton des piÃ¨ces
 	 */
 	public static void setRoomButton(boolean enabled){
 		ROOM_ENABLED = enabled;

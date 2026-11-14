@@ -14,11 +14,11 @@ import enibdevlab.dwarves.models.characters.MCharacter;
 /**
  * 
  * Cette classe fait un peu comme la classe SequenceAction de libgdx,
- * Je voulais hÈriter de celle ci, car j'ai besoin lors de ma sÈquence
- * de vÈrifier si le personnage n'est pas bloquÈ. Or, c'Ètait impossible
- * d'avoir accËs ‡ ces attributs l‡ (car privÈs!) ‡ partir de SequenceAction.
+ * Je voulais h√©riter de celle ci, car j'ai besoin lors de ma s√©quence
+ * de v√©rifier si le personnage n'est pas bloqu√©. Or, c'√©tait impossible
+ * d'avoir acc√®s √† ces attributs l√† (car priv√©s!) √† partir de SequenceAction.
  * 
- * @author ClÈment Perreau
+ * @author Cl√©ment Perreau
  *
  */
 public class Movement extends CharacterAction {

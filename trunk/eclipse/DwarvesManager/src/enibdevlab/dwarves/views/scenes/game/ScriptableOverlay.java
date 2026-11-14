@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
  * 
  * This layer is used to insert additionnal sprites in the game using scripts
  * 
- * @author Clément Perreau
+ * @author ClÃ©ment Perreau
  *
  */
 public class ScriptableOverlay extends Group {
