@@ -199,7 +199,7 @@ public class GameplayScreenListener implements InputProcessor {
 		 */
 		if(centralClick){
 			if (dragX != 0 && dragY != 0){
-				this.scene.getGameplayLayer().addAction(Actions.moveBy(-(dragX-screenX), (dragY-screenY)));
+				this.scene.getGameplayLayer().addAction(Actions.moveBy(-(dragX-screenX)*dragScale(), (dragY-screenY)*dragScale()));
 			}
 			dragX = screenX;
 			dragY = screenY;
@@ -212,7 +212,7 @@ public class GameplayScreenListener implements InputProcessor {
 		if(Gdx.app.getType()==ApplicationType.Android){
 			if(scene.getGameState() == GameState.NORMAL){
 				if (dragX != 0 && dragY != 0){
-					this.scene.getGameplayLayer().addAction(Actions.moveBy(-(dragX-screenX), (dragY-screenY)));
+					this.scene.getGameplayLayer().addAction(Actions.moveBy(-(dragX-screenX)*dragScale(), (dragY-screenY)*dragScale()));
 				}
 				dragX = screenX;
 				dragY = screenY;
@@ -258,45 +258,21 @@ public class GameplayScreenListener implements InputProcessor {
 		return false;
 	}
 	
+	/** Web port: window pixels -> virtual screen units, so the map follows the cursor when dragged. */
+	private float dragScale(){
+		int sw = scene.getViewport().getScreenWidth();
+		return sw > 0 ? DwarvesManager.getWidth() / (float) sw : 1f;
+	}
+
 	public boolean scrolled(float amountX, float amountY) { int amount = (int)Math.signum(amountY);
 		
-		if(!enabled) return false;
+		if(!enabled || amount == 0) return false;
 		
+		// Web port: zoom around the mouse cursor (the original zoom drifted the camera)
 		GameplayLayer gameplay = this.scene.getGameplayLayer();
-		float o_amount = gameplay.getScaleX();
-		float r_amount = (float) (gameplay.getScaleX() - amount/10f);
-		
-		if (r_amount > 3f){
-			r_amount = 3f;
-		}
-		else if (r_amount < 0.3f){
-			r_amount = 0.3f;
-		}
-		else{
-			
-			// Système de zoom
-			// TODO : à perfectionner
-			double d_amount = (double)(o_amount-r_amount);
-			
-			// On recupère la case centrale de l'écran
-			// Vector2 center  = gameplay.getTilemap().getCenterCoordinate();
-			// On effectue le scaling
-			gameplay.setScale(r_amount);
-			// gameplay.clamp();
-			// On recupère la nouvelle case centrale de l'écran
-			// Vector2 center2  = gameplay.getTilemap().getCenterCoordinate();
-			// On calcule la différence
-			// Vector2 diff    = new Vector2(center.x-center2.x, center.y-center2.y);
-			Vector2 realPos = new Vector2(gameplay.getX()/o_amount, gameplay.getY()/o_amount);
-			Vector2 newPos = new Vector2((float)(realPos.x*r_amount), (float)(realPos.y*r_amount));
-			Vector2 diff   = new Vector2((float)(d_amount*(DwarvesManager.getWidth())), (float)(d_amount*DwarvesManager.getHeight()));
-			System.out.println(newPos);
-			// TODO : Il manque sans doute une valeur de scaling sur le décalage, je verrai ça plus tard si j'ai le temps
-			// décalage pour centrer le zoom
-			gameplay.setPosition(newPos.x+diff.x, newPos.y+diff.y);
-			//gameplay.setPosition(gameplay.getX()-diff.x, gameplay.getY()-diff.y);
-			gameplay.clamp();
-		}
+		Vector2 focus = DwarvesManager.screenToVirtual(Gdx.input.getX(), Gdx.input.getY());
+		float factor = (float) Math.pow(1.1, -amount);
+		gameplay.zoomAt(gameplay.getScaleX() * factor, focus.x, focus.y);
 		return false;
 	}
 
