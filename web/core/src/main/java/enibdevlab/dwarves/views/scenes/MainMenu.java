@@ -138,7 +138,7 @@ public class MainMenu extends Stage {
 	
 	private void put(Actor actor, float sx, float sy, float yPercent){
 		actor.setScale(sx, sy);
-		actor.setPosition(DwarvesManager.getWidth()/2-actor.getWidth()/2, DwarvesManager.getHeight()*yPercent);
+		actor.setPosition(DwarvesManager.getWidth()/2-actor.getWidth()*sx/2, DwarvesManager.getHeight()*yPercent);
 		this.addActor(actor);
 	}
 }
