@@ -5,15 +5,15 @@ TUTORIAL 2
 --]]
 
 map          = "tuto2.tmx"    -- Map
-music        = "tuto"   -- Musique de départ
+music        = "tuto"   -- Musique de dÃ©part
 objective    = 2              -- Objectif en diamants
 progression  = 0              -- Variable de progression
 levelName    = "Tutorial 2"   -- Nom pour stocker les records en ligne
 nextLevel    = "tuto3.lua"    -- Niveau Suivant
 
--- Cette fonction est appelée au début de la partie --
+-- Cette fonction est appelÃ©e au dÃ©but de la partie --
 function init()
-	dwarf.addMoney(15000)  -- Argent de départ
+	dwarf.addMoney(15000)  -- Argent de dÃ©part
 	if dwarf.getLang() == "fr" then
 		dwarf.popup("Tutorial 2 : Une histoire de Pioche", "Aucun nain ne travaille dans votre mine !\nUtilisez le bouton de recrutement pour recruter\nun nain mineur !");
 	else
@@ -21,9 +21,9 @@ function init()
 	end
 end
 
--- Cette fonction est appelée é chaque fois que la map est chargée --
+-- Cette fonction est appelÃ©e Ã© chaque fois que la map est chargÃ©e --
 function setup()
-	dwarf.moveCamera(13,13,0.5) -- Position de départ de la caméra
+	dwarf.moveCamera(13,13,0.5) -- Position de dÃ©part de la camÃ©ra
 	dwarf.restoreGui()
 	dwarf.disableRoom()
 	dwarf.disableObjects()
@@ -43,7 +43,7 @@ function setup()
 	dwarf.configure("Hearth", false)
 end
 
--- Fonction appelée en boucle
+-- Fonction appelÃ©e en boucle
 function run()
 
 	if progression == 1 then

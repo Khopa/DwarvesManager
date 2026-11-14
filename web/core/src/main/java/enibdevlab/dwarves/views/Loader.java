@@ -161,7 +161,7 @@ public class Loader {
 	/**
 	 * Répertoire de sauvegarde (A partir de la carte SD sur Android, ou des documents de la session sur un Desktop)
 	 */
-	public static String saveDirectory = "DwarvesManager/Saves/";
+	public static String saveDirectory = "DwarvesManager/saves/";
 	
 	// Couleurs
 	public static Color AYELLOW = new Color(0f,.9f,0f,.25f); 

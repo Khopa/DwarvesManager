@@ -5,30 +5,30 @@ TUTORIAL 1
 --]]
 
 map          = "tuto1.tmx"    -- Map
-music        = "tuto"   -- Musique de départ   (music1.ogg, music2.ogg et music3.ogg dispo uniquement)
+music        = "tuto"   -- Musique de dÃ©part   (music1.ogg, music2.ogg et music3.ogg dispo uniquement)
 objective    = 2              -- Objectif en diamants
 progression  = 0              -- Variable de progression
 levelName    = "Tutorial 1"   -- Nom pour stocker les records en ligne
-nextLevel    = "tuto2.lua"    -- Niveau Suivant (si on ne met rien, le jeu ne proposera pas de passer au niveau suivant à la fin de la partie)
+nextLevel    = "tuto2.lua"    -- Niveau Suivant (si on ne met rien, le jeu ne proposera pas de passer au niveau suivant Ã  la fin de la partie)
 
 said = false
 said2 = false
 
--- Cette fonction est appelée au début de la partie --
+-- Cette fonction est appelÃ©e au dÃ©but de la partie --
 function init()
-	dwarf.addMoney(5000)  -- Argent de départ
+	dwarf.addMoney(5000)  -- Argent de dÃ©part
 	dwarf.addDwarf(12,5, "Miner")
 end
 
--- Cette fonction est appelée à chaque fois que la map est chargée --
+-- Cette fonction est appelÃ©e Ã  chaque fois que la map est chargÃ©e --
 function setup()
-	dwarf.moveCamera(13,13,0.5) -- Position de départ de la caméra
+	dwarf.moveCamera(13,13,0.5) -- Position de dÃ©part de la camÃ©ra
 	dwarf.disableRecruitment()
 	dwarf.disableRoom()
 	dwarf.disableObjects()
 end
 
--- Fonction appelée en boucle toutes les secondes
+-- Fonction appelÃ©e en boucle toutes les secondes
 function run()
 	if progression==0 then
 		initial()

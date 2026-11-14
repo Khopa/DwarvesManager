@@ -229,7 +229,7 @@ public final class Game implements IPersistent{
 		
 		FileHandle file = Gdx.files.local(filename);
 		this.filename = file.pathWithoutExtension(); 
-		file = Gdx.files.local("DwarvesManager/Saves/"+this.filename+".xml");
+		file = Gdx.files.local("DwarvesManager/saves/"+this.filename+".xml");
 		file.writeString(output.toString(), false);
 		
 		log(StringManager.getString("Saved"));

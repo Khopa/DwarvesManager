@@ -336,6 +336,11 @@ public class GameScene extends Stage{
 
 	@Override
 	public boolean scrolled(float amountX, float amountY) { int amount = (int)Math.signum(amountY);
+		// Web port: give scroll focus to the ScrollPane under the mouse (side panel lists)
+		com.badlogic.gdx.math.Vector2 mp = screenToStageCoordinates(new com.badlogic.gdx.math.Vector2(Gdx.input.getX(), Gdx.input.getY()));
+		com.badlogic.gdx.scenes.scene2d.Actor over = hit(mp.x, mp.y, true);
+		while(over != null && !(over instanceof com.badlogic.gdx.scenes.scene2d.ui.ScrollPane)) over = over.getParent();
+		setScrollFocus(over);
 		boolean tmp = super.scrolled(amountX, amountY);
 		if(!tmp) listener.scrolled(amountX, amountY);
 		return tmp;
