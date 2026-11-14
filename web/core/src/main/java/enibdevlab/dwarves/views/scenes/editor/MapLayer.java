@@ -56,8 +56,11 @@ public class MapLayer extends Group{
 		
 		// Scroll souris
 		if(Gdx.app.getType() != ApplicationType.Android){
-			int x = Gdx.input.getX();
-			int y = Gdx.input.getY();
+			// Web port: edge scrolling in virtual coordinates (y down, like the original),
+			// otherwise a window larger than the virtual screen scrolls from mid-screen
+			com.badlogic.gdx.math.Vector2 v = DwarvesManager.screenToVirtual(Gdx.input.getX(), Gdx.input.getY());
+			int x = (int) v.x;
+			int y = (int) (DwarvesManager.getHeight() - v.y);
 			if(x>DwarvesManager.getWidth()-5){
 				this.setX(this.getX()-d);
 			}
@@ -81,13 +84,33 @@ public class MapLayer extends Group{
 	 */
 	public void clamp() {
 		if (-this.getX() < -1f/3f*DwarvesManager.getWidth()) this.setX(1f/3f*DwarvesManager.getWidth());
-		if (-this.getY() < -1f/3f*DwarvesManager.getWidth()) this.setY(1f/3f*DwarvesManager.getWidth());
+		if (-this.getY() < -1f/3f*DwarvesManager.getHeight()) this.setY(1f/3f*DwarvesManager.getHeight());
 		
 		float maxX = this.getScaleX()*this.tilemap.getTileWidth()*this.tilemap.getXSize() - 2f*DwarvesManager.getWidth()/3f;
 		float maxY = this.getScaleY()*this.tilemap.getTileHeight()*this.tilemap.getYSize() - 2f*DwarvesManager.getHeight()/3f;
 		
 		if (-this.getX() > maxX) this.setX(-maxX);
 		if (-this.getY() > maxY) this.setY(-maxY);
+	}
+
+	public static final float MIN_ZOOM = 0.3f, MAX_ZOOM = 3f;
+
+	/**
+	 * Zooms around a focus point given in stage (virtual screen) coordinates:
+	 * the map point under the focus stays under it. Replaces the original zoom
+	 * code, which rescaled the position and added a guessed offset, so the
+	 * camera drifted at every zoom step.
+	 */
+	public void zoomAt(float newScale, float focusX, float focusY) {
+		newScale = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, newScale));
+		float oldScale = this.getScaleX();
+		if (newScale == oldScale) return;
+		// map coordinates of the point under the focus
+		float mapX = (focusX - this.getX()) / oldScale;
+		float mapY = (focusY - this.getY()) / oldScale;
+		this.setScale(newScale);
+		this.setPosition(focusX - mapX * newScale, focusY - mapY * newScale);
+		this.clamp();
 	}
 
 	public TileMap getTilemap() {

@@ -57,9 +57,16 @@ modern libGDX and the browser:
   width following the window's aspect ratio.
 - **Assets:** particle files re-saved in the current format, skin JSON updated, and
   Latin-1 text files converted to UTF-8.
-- **Original bugs fixed along the way:** the save/load folder name differed in case
-  (`Saves` vs `saves`), and the main menu buttons were off centre at some aspect
-  ratios.
+- **Original bugs fixed along the way:**
+  - The save/load folder name differed in case (`Saves` vs `saves`).
+  - The main menu buttons were off centre at some aspect ratios.
+  - **Zoom drifted the camera.** Each wheel step rescaled the map position and added a guessed
+    offset, so the view slid away. `MapLayer.zoomAt()` now zooms around the cursor (around the
+    screen centre for touch pinch), keeping the map point under it fixed. Zooming in and back out
+    returns to the same view.
+  - The vertical scroll limit used the screen width instead of the height.
+  - Middle-drag scrolling and screen-edge scrolling now work in virtual-screen units, so the map
+    follows the cursor at any window size.
 
 ## Known limitations
 
